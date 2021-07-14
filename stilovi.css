@@ -1,0 +1,28 @@
+header {
+	background-color: #BF9000;
+	color: #274E13;
+	font-weight: bold;
+	font-size: 18px;
+	height: 50px;
+	width: 100%;
+	position: absolute;
+}
+
+footer {
+	background-color: #BF9000;
+	position:absolute;
+    bottom:0;
+    width:100%;
+    height:15px;
+}
+
+.topnav a {
+	color: blue;
+	text-align: right;
+	font-weight: normal;
+	font-size: 15px;
+	float: right;
+	padding: 8px;
+	margin-top: -15px;
+	margin-right: 20px;
+}
