@@ -26,3 +26,15 @@ footer {
 	margin-top: -15px;
 	margin-right: 20px;
 }
+
+.searchForm{
+	margin-top: 40px;
+	text-align: center; 
+}
+
+.buttonSearch{
+	width: 20px;
+	background-image: url(images/search2.png);
+	background-repeat: no-repeat;
+	vertical-align: middle;
+}
