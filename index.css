@@ -10,10 +10,12 @@ header {
 
 footer {
 	background-color: #BF9000;
-	position:absolute;
-    bottom:0;
     width:100%;
     height:15px;
+	left: 0;
+	right: 0;
+	bottom: 0; 
+    height:[footer-height] 
 }
 
 .topnav a {
@@ -36,5 +38,30 @@ footer {
 	width: 20px;
 	background-image: url(images/search2.png);
 	background-repeat: no-repeat;
+	border-radius: 15px;
 	vertical-align: middle;
 }
+
+.restaurants{
+	margin: auto;
+	margin-bottom: 10px;
+	border-style: solid;
+	border-color: black;
+	border-width: 2px;
+	border-radius: 15px;
+	width: 35%;
+}
+
+.infoRestaurant{
+	float: right; 
+	margin-top: 50px; 
+	margin-right: 15px; 
+	border-radius: 15px;
+	width: 23px; 
+	height: 23px;
+	background-image: url(images/infoRest.png);
+	background-repeat: no-repeat;
+	vertical-align: middle;
+	
+}
+
