@@ -4,14 +4,15 @@
 		<meta charset="UTF-8">
 		<script src="vue.js"></script>
 		<link rel="stylesheet" href="index.css">
+		<link rel="stylesheet" href="modal.css">
 		<title>Web projekat</title>
 	</head>
 	<body>
 		<header>
 				<span>Web projekat</span>
 				<div class="topnav">
-					<a href=""> Prijavite se!</a>
-					<a href=""> Registrujte se!</a>
+					<button  id="logInOpenModal">Prijavite se!</button>
+					<button  id="registerOpenModal">Registrujte se!</button>
 				</div>
 		</header>
 		<br/>
@@ -39,6 +40,32 @@
 		
 		<script src="index.js"> </script>
 
+		<div id="logInModal" class="modal">
+
+		  <div class="modal-content">
+			<span class="close">&times;</span>
+			<form>
+				<table style="text-align: left; margin: auto">
+				<br/>
+					<tr>
+						<td> Korisničko ime:</td>
+						<td><input id="logInUsername" type="text"></input></td>
+					</tr>
+					<tr>
+						<td> Lozinka:</td>
+						<td><input id="logInPassword" type="text"></input></td>
+					</tr>
+					<tr style="text-align: right">
+						<td> </td>
+						<td> <input style="background-color: #597EAA; color: white; cursor: pointer;" type="submit" value="Prijavite se!"> </input> </td>
+					</tr>
+				</table>
+			</form>
+		  </div>
+
+		</div>
+
+		<script src= "modal.js"></script>
 		
 		<footer>
 		</footer>

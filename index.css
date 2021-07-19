@@ -1,5 +1,5 @@
 header {
-	background-color: #BF9000;
+	background-color: #F0B500;
 	color: #274E13;
 	font-weight: bold;
 	font-size: 18px;
@@ -9,7 +9,7 @@ header {
 }
 
 footer {
-	background-color: #BF9000;
+	background-color: #F0B500;
     width:100%;
     height:15px;
 	left: 0;
@@ -18,8 +18,9 @@ footer {
     height:[footer-height] 
 }
 
-.topnav a {
-	color: blue;
+.topnav button {
+	color: white;
+	background-color: #597EAA;
 	text-align: right;
 	font-weight: normal;
 	font-size: 15px;
@@ -27,6 +28,7 @@ footer {
 	padding: 8px;
 	margin-top: -15px;
 	margin-right: 20px;
+	cursor: pointer
 }
 
 .searchForm{
@@ -64,4 +66,3 @@ footer {
 	vertical-align: middle;
 	
 }
-
