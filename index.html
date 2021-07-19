@@ -41,7 +41,6 @@
 		<script src="index.js"> </script>
 
 		<div id="logInModal" class="modal">
-
 		  <div class="modal-content">
 			<span class="close">&times;</span>
 			<form>
@@ -53,7 +52,7 @@
 					</tr>
 					<tr>
 						<td> Lozinka:</td>
-						<td><input id="logInPassword" type="text"></input></td>
+						<td><input id="logInPassword" type="password"></input></td>
 					</tr>
 					<tr style="text-align: right">
 						<td> </td>
@@ -62,7 +61,50 @@
 				</table>
 			</form>
 		  </div>
-
+		</div>
+		
+		<div id="registerModal" class="modal">
+		  <div class="modal-content">
+			<span class="close">&times;</span>
+			<form>
+				<table style="text-align: left; margin: auto">
+				<br/>
+					<tr>
+						<td> Ime:</td>
+						<td><input id="name" type="text"></input></td>
+					</tr>
+					<tr>
+						<td> Prezime:</td>
+						<td><input id="surname" type="text"></input></td>
+					</tr>
+					<tr>
+						<td>Datum rođenja: </td>
+						<td> <input id="dateOfBirth" type="date"> </input> </td>
+					</tr>
+					<tr>
+						<td> Pol: </td>
+						<td>
+							<select id="sex">
+								<option id="male">Muško</option>
+								<option id="female">Žensko</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Korisničko ime:</td>
+						<td> <input id="registerUsername" type="text"> </input> </td>
+					</tr>
+					<tr>
+						<td>Lozinka: </td>
+						<td> <input id="registerPassword" type="text"> </input> </td>
+					</tr>
+					<tr style="text-align: right">
+						<td> </td>
+						<td> <input style="background-color: #597EAA; color: white; cursor: pointer;" type="submit" value="Registrujte se!"> </input> </td>
+					</tr>
+				</table>
+			</form>
+		  </div>
 		</div>
 
 		<script src= "modal.js"></script>
