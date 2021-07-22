@@ -1,49 +1,87 @@
-var logInModal = document.getElementById("logInModal");
+Vue.component('app-modal', {
+	data: function(){
+		return{
+			showLogIn: false,
+			showRegister: false
+		};
+	},
+template: `<div>
+				<div class="topnav"> 
+				<button  id="logInOpenModal" @click="showLogIn = true;">Prijavite se!</button>
+				<button  id="registerOpenModal" @click="showRegister = true;">Registrujte se!</button>
+			   </div>
+			   
+			  <div id="logInModal" class="modal" v-show="showLogIn">
+			  <div class="modal-content">
+				<span class="close" @click="showLogIn = false">&times;</span>
+				<form>
+					<table style="text-align: left; margin: auto">
+					<br/>
+						<tr>
+							<td> Korisničko ime:</td>
+							<td><input id="logInUsername" type="text"></input></td>
+						</tr>
+						<tr>
+							<td> Lozinka:</td>
+							<td><input id="logInPassword" type="password"></input></td>
+						</tr>
+						<tr style="text-align: right">
+							<td> </td>
+							<td> <input style="background-color: #597EAA; color: white; cursor: pointer;" type="submit" value="Prijavite se!"> </input> </td>
+						</tr>
+					</table>
+				</form>
+			  </div>
+			</div>
+			
+			<div id="registerModal" class="modal" v-if="showRegister">
+			  <div class="modal-content">
+				<span class="close" @click="showRegister = false">&times;</span>
+				<form>
+					<table style="text-align: left; margin: auto">
+					<br/>
+						<tr>
+							<td> Ime:</td>
+							<td><input id="name" type="text"></input></td>
+						</tr>
+						<tr>
+							<td> Prezime:</td>
+							<td><input id="surname" type="text"></input></td>
+						</tr>
+						<tr>
+							<td>Datum rođenja: </td>
+							<td> <input id="dateOfBirth" type="date"> </input> </td>
+						</tr>
+						<tr>
+							<td> Pol: </td>
+							<td>
+								<select id="sex">
+									<option id="male">Muško</option>
+									<option id="female">Žensko</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Korisničko ime:</td>
+							<td> <input id="registerUsername" type="text"> </input> </td>
+						</tr>
+						<tr>
+							<td>Lozinka: </td>
+							<td> <input id="registerPassword" type="text"> </input> </td>
+						</tr>
+						<tr style="text-align: right">
+							<td> </td>
+							<td> <input style="background-color: #597EAA; color: white; cursor: pointer;" type="submit" value="Registrujte se!"> </input> </td>
+						</tr>
+					</table>
+				</form>
+			  </div>
+			</div>
+		</div>`
+});
 
-// Get the button that opens the modal
-var btnLogInOpen = document.getElementById("logInOpenModal");
+var modal = new Vue({
+	el: '#modal',
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btnLogInOpen.onclick = function() {
-  logInModal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  logInModal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == logInModal) {
-    logInModal.style.display = "none";
-  }
-}
-
-var registerModal = document.getElementById("registerModal");
-
-// Get the button that opens the modal
-var btnRegisterOpen = document.getElementById("registerOpenModal");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[1];
-
-// When the user clicks the button, open the modal 
-btnRegisterOpen.onclick = function() {
-  registerModal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  registerModal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == registerModal) {
-    registerModal.style.display = "none";
-  }
-}
+	
+})
