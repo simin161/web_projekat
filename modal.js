@@ -81,7 +81,5 @@ template: `<div>
 });
 
 var modal = new Vue({
-	el: '#modal',
-
-	
+	el: '#modal',	
 })
