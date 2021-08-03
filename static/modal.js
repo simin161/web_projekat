@@ -3,6 +3,7 @@ Vue.component('app-modal', {
 		return{
 			showLogIn: false,
 			showRegister: false,
+			returnMessage: "",
 			userForRegistration : {id : "",
 								   username : "",
 								   password : "",
@@ -81,6 +82,7 @@ template: `<div>
 							<td> <input style="background-color: #597EAA; color: white; cursor: pointer;" type="submit" v-on:click="registerUser" value="Registrujte se!"> </input> </td>
 						</tr>
 					</table>
+					<p> {{returnMessage}}</p>
 				</form>
 			  </div>
 			</div>
@@ -90,7 +92,9 @@ template: `<div>
 		registerUser : function(){
 			event.preventDefault();
 			axios.post('/registerUser', this.userForRegistration).
-			then(response => (console.log(response)));
+			then(response =>(
+				this.returnMessage = response.data == "SUCCESS" ? "Uspesno ste se registrovali!" : "Postojece korisnicko ime ili nevalidni podaci!"
+			));
 		}
 		
 	}

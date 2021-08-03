@@ -1,12 +1,19 @@
 [
   {
-    "collectedPoints": 0,
-    "id": "1",
     "username": "da",
+    "password": "ad"
+  },
+  {
+    "username": "1",
+    "password": "ad"
+  },
+  {
+    "username": "31112",
+    "password": "ad"
+  },
+  {
+    "username": "da1",
     "password": "ad",
-    "name": "sdaf",
-    "surname": "sa",
-    "sex": "Muško",
-    "dateOfBirth": "0001-01-01"
+    "userType": "customer"
   }
 ]

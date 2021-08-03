@@ -1,0 +1,42 @@
+[
+  {
+    "collectedPoints": 0,
+    "id": "1",
+    "username": "da",
+    "password": "ad",
+    "name": "sdaf",
+    "surname": "sa",
+    "sex": "Muško",
+    "dateOfBirth": "0001-01-01"
+  },
+  {
+    "collectedPoints": 0,
+    "id": "2",
+    "username": "1",
+    "password": "ad",
+    "name": "sdaf",
+    "surname": "sa",
+    "sex": "Žensko",
+    "dateOfBirth": "0001-01-01"
+  },
+  {
+    "collectedPoints": 0,
+    "id": "3",
+    "username": "31112",
+    "password": "ad",
+    "name": "sdaf",
+    "surname": "sa",
+    "sex": "Muško",
+    "dateOfBirth": "0001-01-01"
+  },
+  {
+    "collectedPoints": 0,
+    "id": "4",
+    "username": "da1",
+    "password": "ad",
+    "name": "sdaf",
+    "surname": "sa",
+    "sex": "Muško",
+    "dateOfBirth": "0001-01-01"
+  }
+]
