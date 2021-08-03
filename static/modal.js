@@ -19,7 +19,7 @@ template: `<div>
 				<div class="topnav"> 
 				<button  id="logInOpenModal" @click="showLogIn = true;">Prijavite se!</button>
 				<button  id="registerOpenModal" @click="showRegister = true;">Registrujte se!</button>
-			   </div>
+			    </div>
 			   
 			  <div id="logInModal" class="modal" v-show="showLogIn">
 			  <div class="modal-content">
@@ -110,7 +110,3 @@ template: `<div>
 		
 	}
 });
-
-var modal = new Vue({
-	el: '#modal',	
-})

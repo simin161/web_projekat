@@ -2,42 +2,22 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<script src="vue.js"></script>
-		<script src="vue-router.js"></script>
-		<script src="axios.js"></script>
 		<link rel="stylesheet" href="index.css">
 		<link rel="stylesheet" href="modal.css">
 		<title>Web projekat</title>
 	</head>
 	<body>
-		<header>
-				<span>Web projekat</span>
-				<div id="modal">
-					<app-modal></app-modal>
-				</div>
-		</header>
-		<br/>
-		
-		<form class="searchForm">
-			<input type="text" placeholder="Naziv restorana..."/>
-			<select id="tipRestorana">
-				<option value="">Tip restorana</option>
-			</select>
-			<input type="text" placeholder="Lokacija..."/> 
-			<input type="text" placeholder="Prosečna ocena"/>
-			<input type="button" class="buttonSearch"/>
-		</form>
-		<hr>
-		
+				
 		<div id="app"> 
-			<app-restaurants></app-restaurants>
+			<first-page></first-page>
 		</div>
 		
+		<script src="vue.js"></script>
+		<script src="vue-router.js"></script>
+		<script src="axios.js"></script>
 		<script src="index.js"></script>
-
-		
-
-		<script src= "modal.js"></script>
+		<script src="modal.js"></script>
+		<script src="app.js"></script>
 		
 		<footer>
 		</footer>
