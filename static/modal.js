@@ -4,6 +4,8 @@ Vue.component('app-modal', {
 			showLogIn: false,
 			showRegister: false,
 			returnMessage: "",
+			backgroundColor : "#597EAA",
+			cursorStyle : "pointer",
 			userForRegistration : {id : "",
 								   username : "",
 								   password : "",
@@ -79,7 +81,7 @@ template: `<div>
 						</tr>
 						<tr style="text-align: right">
 							<td> </td>
-							<td> <input style="background-color: #597EAA; color: white; cursor: pointer;" type="submit" v-on:click="registerUser" value="Registrujte se!"> </input> </td>
+							<td> <input :disabled="!isComplete" v-bind:style="{'background-color': backgroundColor, 'color': 'white', 'cursor': cursorStyle}" type="submit" v-on:click="registerUser" value="Registrujte se!"> </input> </td>
 						</tr>
 					</table>
 					<p> {{returnMessage}}</p>
@@ -88,6 +90,15 @@ template: `<div>
 			</div>
 		</div>`
 	,
+	computed : {
+		  isComplete () {
+		    flag = this.userForRegistration.name && this.userForRegistration.surname && this.userForRegistration.dateOfBirth && this.userForRegistration.sex && this.userForRegistration.username && this.userForRegistration.password;
+		    this.backgroundColor = flag ? "#597EAA" : "#808080";
+		    this.cursorStyle = flag ? "pointer" : "default";
+		    return flag;
+		  }
+	},
+		
 	methods : {
 		registerUser : function(){
 			event.preventDefault();
