@@ -2,7 +2,7 @@ package beans;
 
 import java.util.Date;
 
-public abstract class User {
+public class User {
 	protected String id;
 	protected String username;
 	protected String password;

@@ -2,7 +2,14 @@ Vue.component('app-modal', {
 	data: function(){
 		return{
 			showLogIn: false,
-			showRegister: false
+			showRegister: false,
+			userForRegistration : {id : "",
+								   username : "",
+								   password : "",
+								   name : "",
+								   surname : "",
+								   sex : "",
+								   dateOfBirth : ""}
 		};
 	},
 template: `<div>
@@ -37,25 +44,25 @@ template: `<div>
 			<div id="registerModal" class="modal" v-if="showRegister">
 			  <div class="modal-content">
 				<span class="close" @click="showRegister = false">&times;</span>
-				<form>
+				<form id="register">
 					<table style="text-align: left; margin: auto">
 					<br/>
 						<tr>
 							<td> Ime:</td>
-							<td><input id="name" type="text"></input></td>
+							<td><input id="name" v-model="userForRegistration.name" type="text"></input></td>
 						</tr>
 						<tr>
 							<td> Prezime:</td>
-							<td><input id="surname" type="text"></input></td>
+							<td><input id="surname" v-model="userForRegistration.surname" type="text"></input></td>
 						</tr>
 						<tr>
 							<td>Datum rođenja: </td>
-							<td> <input id="dateOfBirth" type="date"> </input> </td>
+							<td> <input id="dateOfBirth" v-model="userForRegistration.dateOfBirth" type="date"> </input> </td>
 						</tr>
 						<tr>
 							<td> Pol: </td>
 							<td>
-								<select id="sex">
+								<select id="sex" v-model="userForRegistration.sex">
 									<option id="male">Muško</option>
 									<option id="female">Žensko</option>
 								</select>
@@ -63,21 +70,30 @@ template: `<div>
 						</tr>
 						<tr>
 							<td>Korisničko ime:</td>
-							<td> <input id="registerUsername" type="text"> </input> </td>
+							<td> <input id="registerUsername" type="text" v-model="userForRegistration.username"> </input> </td>
 						</tr>
 						<tr>
 							<td>Lozinka: </td>
-							<td> <input id="registerPassword" type="text"> </input> </td>
+							<td> <input id="registerPassword" type="text" v-model="userForRegistration.password"> </input> </td>
 						</tr>
 						<tr style="text-align: right">
 							<td> </td>
-							<td> <input style="background-color: #597EAA; color: white; cursor: pointer;" type="submit" value="Registrujte se!"> </input> </td>
+							<td> <input style="background-color: #597EAA; color: white; cursor: pointer;" type="submit" v-on:click="registerUser" value="Registrujte se!"> </input> </td>
 						</tr>
 					</table>
 				</form>
 			  </div>
 			</div>
 		</div>`
+	,
+	methods : {
+		registerUser : function(){
+			event.preventDefault();
+			axios.post('/registerUser', this.userForRegistration).
+			then(response => (console.log(response)));
+		}
+		
+	}
 });
 
 var modal = new Vue({

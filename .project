@@ -14,4 +14,16 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>static/axios.js</name>
+			<type>1</type>
+			<location>D:/Treca/Letnji semestar/WEB_PROJEKAT/web_projekat/static/axios.js</location>
+		</link>
+		<link>
+			<name>static/vue-router.js</name>
+			<type>1</type>
+			<location>D:/Treca/Letnji semestar/WEB_PROJEKAT/web_projekat/static/vue-router.js</location>
+		</link>
+	</linkedResources>
 </projectDescription>
