@@ -31,6 +31,12 @@ footer {
 	cursor: pointer
 }
 
+.topnav {
+	margin-top : 10px;
+	margin-right: 20px;
+	float: right;
+}
+
 .searchForm{
 	margin-top: 40px;
 	text-align: center; 
@@ -65,4 +71,11 @@ footer {
 	background-repeat: no-repeat;
 	vertical-align: middle;
 	
+}
+
+.welcome{
+	margin-top: 150px;
+	margin-left: 80px;
+	margin-bottom: 475px;
+	color: #274E13;
 }

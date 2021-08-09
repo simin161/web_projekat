@@ -1,37 +1,41 @@
 Vue.component('welcome-page', {
 	data: function(){
 		return{
-			items: ['Hello Vue!', '123', '456', '789', '101112']
+			items: ['Hello Vue!', '123', '456', '789', '101112'],
+			userType: "manager"
 		};
 	},
 template: `<div>
 		<header>
 		<span>Web projekat</span>
+		<div class="topnav">
+			<span v-if="userType === 'customer'"> 
+				<a>Pregled restorana </a>
+			</span>
+			<span v-if="userType === 'administrator'" >
+				<a>Dodavanje restorana </a>
+				<a>Dodavanje korisnika</a>
+				<a>Pregled restorana </a>
+				<a>Pregled korisnika </a>
+			</span>
+			<span v-if="userType === 'manager'">
+				<a>Prikaz restorana</a>
+				<a>Pregled zahteva </a>
+			</span>
+			<span v-if="userType === 'deliverer'">
+				<a>Pregled zahteva</a>
+				<a>Porudzbine bez dostavljaca</a>
+				<a>Pregled dostava</a>
+			</span>
+			<a> Moj nalog </a>
+			<a> Odjava </a>
+		</div>
 		</header>
 		<br/>
 		
-		<form class="searchForm">
-			<input type="text" placeholder="Naziv restorana..."/>
-			<select >
-				<option value="">Tip restorana</option>
-			</select>
-			<input type="text" placeholder="Lokacija..."/> 
-			<input type="text" placeholder="Prosečna ocena"/>
-			<input type="button" class="buttonSearch"/>
-		</form>
-		<hr>
-			<div>
-				<div class="restaurants" v-for="item in items">
-					<span style="float: left; margin-top: 15px">
-						<img style="border-radius: 5px;" src="http://placekitten.com/g/200/200" height="90px" width="90px">
-					</span> 
-					<span>
-						<button class="infoRestaurant"> </button> 
-					</span>
-					<p>{{item}}</p>
-					<p>Tip restorana </p>
-					<p>Lokacija </p> 
-				</div>
-			</div>
+		<div class="welcome">
+			<h1>Dobrodosli, (TODO: ime + prezime/ korisnicko ime)</h1>
+		</div>
+		
 		</div>`
 });
