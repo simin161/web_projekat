@@ -7,6 +7,8 @@ Vue.component('app-modal', {
 			returnLogInMessage: "",
 			backgroundColor : "#597EAA",
 			cursorStyle : "pointer",
+			backgroundColorLogIn : "#597EAA",
+			cursorStyleLogIn : "pointer",
 			userForRegistration : {id : "",
 								   username : "",
 								   password : "",
@@ -42,7 +44,7 @@ template: `<div>
 						</tr>
 						<tr style="text-align: right">
 							<td> </td>
-							<td> <input style="background-color: #597EAA; color: white; cursor: pointer;" type="submit" v-on:click="logInUser" value="Prijavite se!"> </input> </td>
+							<td> <input :disabled="!isCompleteLogIn" v-bind:style="{'background-color': backgroundColorLogIn, 'color': 'white', 'cursor': cursorStyleLogIn}" type="submit" v-on:click="logInUser" value="Prijavite se!"> </input> </td>
 						</tr>
 					</table>
 					<p> {{returnLogInMessage}}</p>
@@ -102,6 +104,12 @@ template: `<div>
 		    this.backgroundColor = flag ? "#597EAA" : "#808080";
 		    this.cursorStyle = flag ? "pointer" : "default";
 		    return flag;
+		  },
+		  isCompleteLogIn () {
+			  flag = this.userForLogIn.username && this.userForLogIn.password;
+			    this.backgroundColorLogIn = flag ? "#597EAA" : "#808080";
+			    this.cursorStyleLogIn = flag ? "pointer" : "default";
+			    return flag;
 		  }
 	},
 		
