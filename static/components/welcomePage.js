@@ -27,7 +27,7 @@ template: `<div>
 				<a>Porudzbine bez dostavljaca</a>
 				<a>Pregled dostava</a>
 			</span>
-			<a> Moj nalog </a>
+			<a href="#/edit-profile"> Moj nalog </a>
 			<a> Odjava </a>
 		</div>
 		</header>
