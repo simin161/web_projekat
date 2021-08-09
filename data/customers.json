@@ -28,5 +28,65 @@
     "surname": "sa",
     "sex": "Žensko",
     "dateOfBirth": "0011-11-11"
+  },
+  {
+    "collectedPoints": 0,
+    "id": "4",
+    "username": "da11",
+    "password": "ad",
+    "name": "sdaf",
+    "surname": "sa",
+    "sex": "Muško",
+    "dateOfBirth": "0001-01-01"
+  },
+  {
+    "collectedPoints": 0,
+    "id": "5",
+    "username": "da12",
+    "password": "ad",
+    "name": "sdaf",
+    "surname": "sa",
+    "sex": "Žensko",
+    "dateOfBirth": "0001-01-01"
+  },
+  {
+    "collectedPoints": 0,
+    "id": "6",
+    "username": "da7",
+    "password": "ad",
+    "name": "sdaf",
+    "surname": "sa",
+    "sex": "Muško",
+    "dateOfBirth": "0007-07-07"
+  },
+  {
+    "collectedPoints": 0,
+    "id": "7",
+    "username": "da790",
+    "password": "ad",
+    "name": "sdaf",
+    "surname": "sa",
+    "sex": "Muško",
+    "dateOfBirth": "0007-07-07"
+  },
+  {
+    "collectedPoints": 0,
+    "id": "8",
+    "username": "da23",
+    "password": "ad",
+    "name": "sdaf",
+    "surname": "sa",
+    "sex": "Muško",
+    "dateOfBirth": "0001-01-01"
+  },
+  {
+    "collectedPoints": 0,
+    "id": "9",
+    "username": "da1222",
+    "password": "2",
+    "name": "sdaf",
+    "surname": "sa",
+    "sex": "Muško",
+    "dateOfBirth": "0001-01-01"
   }
 ]

@@ -104,7 +104,7 @@ template: `<div>
 			event.preventDefault();
 			axios.post('/registerUser', this.userForRegistration).
 			then(response =>(
-				this.returnMessage = response.data == "SUCCESS" ? "Uspesno ste se registrovali!" : "Postojece korisnicko ime ili nevalidni podaci!"
+				this.returnMessage = response.data == "SUCCESS" ? router.push('/welcome-page') : "Postojece korisnicko ime ili nevalidni podaci!"
 			));
 		}
 		
