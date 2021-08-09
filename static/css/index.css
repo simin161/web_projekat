@@ -38,7 +38,7 @@ footer {
 
 .buttonSearch{
 	width: 20px;
-	background-image: url(images/search2.png);
+	background-image: url(../images/search2.png);
 	background-repeat: no-repeat;
 	border-radius: 15px;
 	vertical-align: middle;
@@ -61,7 +61,7 @@ footer {
 	border-radius: 15px;
 	width: 23px; 
 	height: 23px;
-	background-image: url(images/infoRest.png);
+	background-image: url(../images/infoRest.png);
 	background-repeat: no-repeat;
 	vertical-align: middle;
 	
