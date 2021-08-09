@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import beans.Customer;
+import beans.UserInfo;
 import services.RegistrationService;
 
 public class SparkAppMain {
@@ -27,6 +28,17 @@ public class SparkAppMain {
 			String returnValue = "FAILURE";
 			
 			if(registrationService.registerCustomer((Customer) gson.fromJson(req.body(), Customer.class))) {
+				returnValue = "SUCCESS";
+			}
+			
+			return returnValue;
+		});
+		
+		post("/logInUser", (req, res) -> {
+			res.type("application/json");
+			String returnValue = "FAILURE";
+			
+			if(registrationService.logInUser((UserInfo) gson.fromJson(req.body(), UserInfo.class))) {
 				returnValue = "SUCCESS";
 			}
 			

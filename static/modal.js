@@ -4,6 +4,7 @@ Vue.component('app-modal', {
 			showLogIn: false,
 			showRegister: false,
 			returnMessage: "",
+			returnLogInMessage: "",
 			backgroundColor : "#597EAA",
 			cursorStyle : "pointer",
 			userForRegistration : {id : "",
@@ -12,7 +13,11 @@ Vue.component('app-modal', {
 								   name : "",
 								   surname : "",
 								   sex : "",
-								   dateOfBirth : ""}
+								   dateOfBirth : ""},
+			userForLogIn : {username : "",
+							password : "",
+							userType : ""							
+			}
 		};
 	},
 template: `<div>
@@ -29,17 +34,18 @@ template: `<div>
 					<br/>
 						<tr>
 							<td> Korisničko ime:</td>
-							<td><input id="logInUsername" type="text"></input></td>
+							<td><input id="logInUsername" v-model="userForLogIn.username" type="text"></input></td>
 						</tr>
 						<tr>
 							<td> Lozinka:</td>
-							<td><input id="logInPassword" type="password"></input></td>
+							<td><input id="logInPassword" v-model="userForLogIn.password" type="password"></input></td>
 						</tr>
 						<tr style="text-align: right">
 							<td> </td>
-							<td> <input style="background-color: #597EAA; color: white; cursor: pointer;" type="submit" value="Prijavite se!"> </input> </td>
+							<td> <input style="background-color: #597EAA; color: white; cursor: pointer;" type="submit" v-on:click="logInUser" value="Prijavite se!"> </input> </td>
 						</tr>
 					</table>
+					<p> {{returnLogInMessage}}</p>
 				</form>
 			  </div>
 			</div>
@@ -106,6 +112,13 @@ template: `<div>
 			then(response =>(
 				this.returnMessage = response.data == "SUCCESS" ? router.push('/welcome-page') : "Postojece korisnicko ime ili nevalidni podaci!"
 			));
+		},
+		logInUser : function(){
+			event.preventDefault();
+			axios.post('/logInUser', this.userForLogIn).
+			then(response =>(
+					this.returnLogInMessage = response.data == "SUCCESS" ? router.push('/welcome-page') : "Pogresno korisnicko ime ili lozinka!"
+					));
 		}
 		
 	}

@@ -23,6 +23,14 @@ public class RegistrationService {
 		}
 		return returnValue;
 	}
+	
+	public boolean logInUser(UserInfo user) {
+		boolean returnValue = false;
+		if(checkLogInParameters(user.getUsername(), user.getPassword())){
+			returnValue = true;
+		}
+		return returnValue;
+	}
 
 	private boolean checkExistanceOfUsername(String username) {
 		boolean returnValue = false;
@@ -30,7 +38,21 @@ public class RegistrationService {
 		for(UserInfo user : userInfoDAO.getAllUsers()) {
 		    	if(username.equals(user.getUsername())) {
 		    		returnValue = true;
+		    		break;
 		    	}
+		}
+		
+		return returnValue;
+	}
+	
+	private boolean checkLogInParameters(String username, String password) {
+		boolean returnValue = false;
+		
+		for(UserInfo user : userInfoDAO.getAllUsers()) {
+			if(username.equals(user.getUsername()) && password.equals(user.getPassword())) {
+				returnValue = true;
+				break;
+			}
 		}
 		
 		return returnValue;
