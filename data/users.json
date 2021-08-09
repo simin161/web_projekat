@@ -1,26 +1,16 @@
 [
   {
     "username": "da",
-    "password": "ad"
-  },
-  {
-    "username": "1",
-    "password": "ad"
-  },
-  {
-    "username": "31112",
-    "password": "ad"
+    "password": "ad",
+    "userType": "customer"
   },
   {
     "username": "da1",
-    "password": "ad"
+    "password": "ad",
+    "userType": "customer"
   },
   {
-    "username": "342123",
-    "password": "ad"
-  },
-  {
-    "username": "da11",
+    "username": "da2223",
     "password": "ad",
     "userType": "customer"
   }
