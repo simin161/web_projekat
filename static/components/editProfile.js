@@ -24,7 +24,7 @@ template: `<div>
 			</span>
 			<span v-if="userType === 'deliverer'">
 				<a>Pregled zahteva</a>
-				<a>Porudzbine bez dostavljaca</a>
+				<a>Porudžbine bez dostavljača</a>
 				<a>Pregled dostava</a>
 			</span>
 			<a> Odjava </a>
@@ -49,15 +49,15 @@ template: `<div>
 						<td><input type="text"></input></td>
 					</tr>
 					<tr>
-						<td>Datum rodjenja:</td>
+						<td>Datum rođenja:</td>
 						<td><input type="date"></input> </td>
 					</tr>
 					<tr>
 						<td>Pol:</td>
 						<td>
 							<select>
-								<option>Musko</option>
-								<option>Zensko</option>
+								<option>Muško</option>
+								<option>Žensko</option>
 							</select>
 						</td>
 					</tr>
@@ -71,13 +71,11 @@ template: `<div>
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="button" value="Sacuvaj"></input></td>
+						<td><input type="button" value="Sačuvaj"></input></td>
 						<td></td>
 					</tr>
 				</table>
 			</form>
 		</div>
-		
-		
 		</div>`
 });
