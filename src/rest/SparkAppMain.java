@@ -32,7 +32,7 @@ public class SparkAppMain {
 				returnValue = "SUCCESS";
 				
 				Session session = req.session(true);
-				req.attribute("loggedUser", registrationService.findCustomerForLogin(((Customer) 
+				req.attribute("loggedUser", registrationService.findCustomerForLogIn(((Customer) 
 						gson.fromJson(req.body(), Customer.class)).getUsername()));
 			}
 			
@@ -46,13 +46,18 @@ public class SparkAppMain {
 			UserInfo user = (UserInfo) gson.fromJson(req.body(), UserInfo.class);
 			switch(registrationService.logInUser(user)) {
 				case "customer": returnValue = "SUCCESS";
-								 req.attribute("loggedUser", registrationService.findCustomerForLogin(user.getUsername()));
+								 req.attribute("loggedUser", registrationService.findCustomerForLogIn(user.getUsername()));
 					break;
 				case "manager" : returnValue = "SUCCESS";
+								 req.attribute("loggedUser", registrationService.findManagerForLogIn(user.getUsername()));
 					break;
 				case "deliverer" : returnValue = "SUCCESS";
+								   req.attribute("loggedUser", registrationService.findDelivererForLogIn(user.getUsername()));
+
 					break;
 				case "administrator" : returnValue = "SUCCESS";
+									   req.attribute("loggedUser", registrationService.findAdministratorForLogIn(user.getUsername()));
+
 					break;
 			}
 			
