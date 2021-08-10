@@ -53,4 +53,14 @@ public class CustomerDAO {
 	public void addCustomer(Customer newCustomer) {
 		allCustomers.add(newCustomer);
 	}
+	
+	public Customer findCustomerByUsername(String username) {
+		Customer customer = null;
+		for(Customer c : allCustomers) {
+			if(username.equals(c.getUsername())) {
+				customer = c;
+			}
+		}
+		return customer;
+	}
 }
