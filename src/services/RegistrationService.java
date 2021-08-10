@@ -1,6 +1,7 @@
 package services;
 
 import beans.Customer;
+import beans.User;
 import beans.UserInfo;
 import dao.CustomerDAO;
 import dao.UserInfoDAO;
@@ -24,11 +25,15 @@ public class RegistrationService {
 		return returnValue;
 	}
 	
-	public boolean logInUser(UserInfo user) {
-		boolean returnValue = false;
-		if(checkLogInParameters(user.getUsername(), user.getPassword())){
-			returnValue = true;
-		}
+	public String logInUser(UserInfo userForLogIn) {
+		String returnValue = "";
+		for(UserInfo user : userInfoDAO.getAllUsers()) {
+	    	if(userForLogIn.getUsername().equals(user.getUsername()) 
+	    			&& userForLogIn.getPassword().equals(user.getPassword())) {
+	    		returnValue = user.getUserType();
+	    		break;
+	    	}
+	}
 		return returnValue;
 	}
 
@@ -45,16 +50,8 @@ public class RegistrationService {
 		return returnValue;
 	}
 	
-	private boolean checkLogInParameters(String username, String password) {
-		boolean returnValue = false;
-		
-		for(UserInfo user : userInfoDAO.getAllUsers()) {
-			if(username.equals(user.getUsername()) && password.equals(user.getPassword())) {
-				returnValue = true;
-				break;
-			}
-		}
-		
-		return returnValue;
+	public Customer findCustomerForLogin(String username) {
+		return customerDAO.findCustomerByUsername(username);
 	}
+	
 }

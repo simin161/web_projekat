@@ -12,6 +12,7 @@ import com.google.gson.GsonBuilder;
 import beans.Customer;
 import beans.UserInfo;
 import services.RegistrationService;
+import spark.Session;
 
 public class SparkAppMain {
 
@@ -29,6 +30,10 @@ public class SparkAppMain {
 			
 			if(registrationService.registerCustomer((Customer) gson.fromJson(req.body(), Customer.class))) {
 				returnValue = "SUCCESS";
+				
+				Session session = req.session(true);
+				req.attribute("loggedUser", registrationService.findCustomerForLogin(((Customer) 
+						gson.fromJson(req.body(), Customer.class)).getUsername()));
 			}
 			
 			return returnValue;
@@ -37,9 +42,18 @@ public class SparkAppMain {
 		post("/logInUser", (req, res) -> {
 			res.type("application/json");
 			String returnValue = "FAILURE";
-			
-			if(registrationService.logInUser((UserInfo) gson.fromJson(req.body(), UserInfo.class))) {
-				returnValue = "SUCCESS";
+			Session session = req.session(true);
+			UserInfo user = (UserInfo) gson.fromJson(req.body(), UserInfo.class);
+			switch(registrationService.logInUser(user)) {
+				case "customer": returnValue = "SUCCESS";
+								 req.attribute("loggedUser", registrationService.findCustomerForLogin(user.getUsername()));
+					break;
+				case "manager" : returnValue = "SUCCESS";
+					break;
+				case "deliverer" : returnValue = "SUCCESS";
+					break;
+				case "administrator" : returnValue = "SUCCESS";
+					break;
 			}
 			
 			return returnValue;
