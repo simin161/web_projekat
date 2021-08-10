@@ -1,5 +1,6 @@
 package rest;
 
+import static spark.Spark.get;
 import static spark.Spark.port;
 import static spark.Spark.post;
 import static spark.Spark.staticFiles;
@@ -10,6 +11,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import beans.Customer;
+import beans.User;
 import beans.UserInfo;
 import services.RegistrationService;
 import spark.Session;
@@ -62,6 +64,16 @@ public class SparkAppMain {
 			}
 			
 			return returnValue;
+		});
+		
+		get("/logOutUser", (req, res) -> {
+			Session session = req.session(true);
+			User user = req.attribute("loggedUser");
+			
+			if(user != null) {
+				session.invalidate();
+			}
+			return true;
 		});
 	}
 }
