@@ -11,16 +11,19 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import beans.Customer;
+import beans.Restaurant;
 import beans.User;
 import beans.UserInfo;
 import services.RegistrationService;
+import services.RestaurantService;
 import spark.Session;
 
 public class SparkAppMain {
 
-	private static Gson g = new Gson();
 	private static Gson gson = new GsonBuilder().setDateFormat("yyyy-mm-dd").setPrettyPrinting().create();
 	private static RegistrationService registrationService = new RegistrationService();
+	private static RestaurantService restaurantService = new RestaurantService();
+	
 	public static void main(String[] args) throws Exception {
 		port(9000);
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
@@ -74,6 +77,11 @@ public class SparkAppMain {
 				session.invalidate();
 			}
 			return true;
+		});
+		
+		get("/getAllRestaurants", (req, res) -> {
+			res.type("application/json");
+			return gson.toJson(restaurantService.getAllRestaurants());
 		});
 	}
 }
