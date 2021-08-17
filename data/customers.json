@@ -88,5 +88,15 @@
     "surname": "sa",
     "sex": "Muško",
     "dateOfBirth": "0001-01-01"
+  },
+  {
+    "collectedPoints": 0,
+    "id": "10",
+    "username": "da555",
+    "password": "ad",
+    "name": "sdaf",
+    "surname": "sa",
+    "sex": "Muško",
+    "dateOfBirth": "0001-01-01"
   }
 ]

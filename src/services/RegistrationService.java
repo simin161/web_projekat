@@ -1,15 +1,23 @@
 package services;
 
+import beans.Administrator;
 import beans.Customer;
-import beans.User;
+import beans.Deliverer;
+import beans.Manager;
 import beans.UserInfo;
+import dao.AdministratorDAO;
 import dao.CustomerDAO;
+import dao.DelivererDAO;
+import dao.ManagerDAO;
 import dao.UserInfoDAO;
 
 public class RegistrationService {
 
 	private UserInfoDAO userInfoDAO = new UserInfoDAO();
 	private CustomerDAO customerDAO = new CustomerDAO();
+	private ManagerDAO managerDAO = new ManagerDAO();
+	private AdministratorDAO administratorDAO = new AdministratorDAO();
+	private DelivererDAO delivererDAO = new DelivererDAO();
 	
 	public boolean registerCustomer(Customer newCustomer) {
 		boolean returnValue = false;
@@ -50,8 +58,21 @@ public class RegistrationService {
 		return returnValue;
 	}
 	
-	public Customer findCustomerForLogin(String username) {
+	public Customer findCustomerForLogIn(String username) {
 		return customerDAO.findCustomerByUsername(username);
 	}
 	
+	public Manager findManagerForLogIn(String username) {
+		return managerDAO.findManagerByUsername(username);
+	}
+	
+	
+	public Administrator findAdministratorForLogIn(String username) {
+		return administratorDAO.findAdministratorByUsername(username);
+	}
+	
+	public Deliverer findDelivererForLogIn(String username) {
+		return delivererDAO.findDelivererByUsername(username);
+	}
+	 
 }
