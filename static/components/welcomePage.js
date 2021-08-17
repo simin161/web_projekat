@@ -13,7 +13,7 @@ template: `<div>
 				<a>Pregled restorana </a>
 			</span>
 			<span v-if="userType === 'administrator'" >
-				<a>Dodavanje restorana </a>
+				<a href="#/createRestaurant">Dodavanje restorana </a>
 				<a>Dodavanje korisnika</a>
 				<a>Pregled restorana </a>
 				<a>Pregled korisnika </a>
