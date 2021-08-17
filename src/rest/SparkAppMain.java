@@ -20,7 +20,7 @@ public class SparkAppMain {
 	private static Gson gson = new GsonBuilder().setDateFormat("yyyy-mm-dd").setPrettyPrinting().create();
 	private static RegistrationService registrationService = new RegistrationService();
 	public static void main(String[] args) throws Exception {
-		port(9000);
+		port(8080);
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
 				
 		post("/registerUser", (req, res) -> {
