@@ -31,11 +31,18 @@ Vue.component('create-restaurant', {
 			   	<br/>
 			   		<tr>
 			   			<td>Naziv restorana: </td>
-			   			<td><input id="restaurantName" v-model="restaurantForCreate.restaurantName"</td>
+			   			<td><input id="restaurantName" v-model="restaurantForCreate.restaurantName"/></td>
 			   		</tr>
 			   		<tr>
 			   			<td>Tip restorana: </td>
-			   			<td></td>
+			   			<td><select name="types" id="type-select">
+			   					<option value="">Izaberite</option>
+			   					<option value="">Tip 1</option>
+			   					<option value="">Tip 2</option>
+			   					<option value="">Tip 3</option>
+			   					<option value="">Tip 4</option>
+			   				</select>
+			   			</td>
 			   		</tr>
 			   		<tr>
 			   			<td>Lokacija: </td>
@@ -43,7 +50,10 @@ Vue.component('create-restaurant', {
 			   		</tr>
 			   		<tr>
 			   			<td>Logo: </td>
-			   			<td></td>
+			   			<td><input type="file" name="imageFile" id="imgFile"/>
+			   				
+			   			
+			   			</td>
 			   		</tr>
 			   		<tr>
 			   			<td>Menadžer: </td>
