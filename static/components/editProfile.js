@@ -1,7 +1,9 @@
 Vue.component('edit-profile', {
 	data: function(){
 		return{
-			loggedUser: null
+			loggedUser: null,
+			isDisabled: true,
+			backgroundColor: "#808080"
 		};
 	},
 template: `<div>
@@ -36,25 +38,25 @@ template: `<div>
 				<table>
 					<tr>
 						<td> </td>
-						<td> <input type="button" value="Izmeni nalog"></input> </td>
+						<td> <input type="button" style="background-color: #597EAA; color: white" value="Izmeni nalog" @click="isDisabled = false; backgroundColor = '#597EAA'"></input> </td>
 						<td> </td>
 					</tr>
 					<tr>
 						<td>Ime: </td>
-						<td> <input type="text"> </input> </td>
+						<td> <input type="text" :disabled="isDisabled"> </input> </td>
 					</tr>
 					<tr>
 						<td>Prezime: </td>
-						<td><input type="text"></input></td>
+						<td><input type="text" :disabled="isDisabled"></input></td>
 					</tr>
 					<tr>
 						<td>Datum rođenja:</td>
-						<td><input type="date"></input> </td>
+						<td><input type="date" :disabled="isDisabled"></input> </td>
 					</tr>
 					<tr>
 						<td>Pol:</td>
 						<td>
-							<select>
+							<select :disabled="isDisabled">
 								<option>Muško</option>
 								<option>Žensko</option>
 							</select>
@@ -62,15 +64,15 @@ template: `<div>
 					</tr>
 					<tr>
 						<td>Korisnicko ime: </td>
-						<td><input type="text"></input></td>
+						<td><input type="text" :disabled="isDisabled"></input></td>
 					</tr>
 					<tr>
 						<td>Lozinka: </td>
-						<td><input type="text"></input></td>
+						<td><input type="text" :disabled="isDisabled"></input></td>
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="button" value="Sačuvaj"></input></td>
+						<td><input type="button" v-bind:style="{'background-color': backgroundColor, 'color': 'white'}" value="Sačuvaj" :disabled="isDisabled"></input></td>
 						<td></td>
 					</tr>
 				</table>
