@@ -1,6 +1,6 @@
 Vue.component('sign-out', {
 	
-template: `<input type='button' value="Odjava" v-on:click="logOut"> </input>`,
+template: `<input style="background-color: #597EAA; color: white" type='button' value="Odjava" v-on:click="logOut"> </input>`,
 
 methods:{
 	logOut : function(){
