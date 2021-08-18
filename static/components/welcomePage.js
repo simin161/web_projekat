@@ -28,7 +28,7 @@ template: `<div>
 				<a>Pregled dostava</a>
 			</span>
 			<a href="#/edit-profile"> Moj nalog </a>
-			<input type='button' value="Odjava" v-on:click="logOut"> </input>
+			<sign-out></sign-out>
 		</div>
 		</header>
 		<br/>
@@ -38,14 +38,4 @@ template: `<div>
 		</div>
 		
 		</div>`
-	,
-	methods:{
-		logOut : function(){
-			event.preventDefault();
-			axios.get('/logOutUser').
-			then(response =>(
-				router.push('/')
-			));
-		}
-	}
 });

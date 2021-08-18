@@ -27,7 +27,7 @@ template: `<div>
 				<a>Porudžbine bez dostavljača</a>
 				<a>Pregled dostava</a>
 			</span>
-			<a> Odjava </a>
+			<sign-out></sign-out>
 		</div>
 		</header>
 		<br/>
