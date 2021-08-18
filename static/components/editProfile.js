@@ -1,7 +1,6 @@
 Vue.component('edit-profile', {
 	data: function(){
 		return{
-			userType: "manager",
 			loggedUser: null
 		};
 	},

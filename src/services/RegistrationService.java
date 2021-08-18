@@ -5,6 +5,7 @@ import beans.Customer;
 import beans.Deliverer;
 import beans.Manager;
 import beans.UserInfo;
+import beans.UserType;
 import dao.AdministratorDAO;
 import dao.CustomerDAO;
 import dao.DelivererDAO;
@@ -26,15 +27,15 @@ public class RegistrationService {
 			newCustomer.setId(Integer.toString(customerDAO.getAllCustomers().size() + 1));
 			customerDAO.addCustomer(newCustomer);
 			customerDAO.save();
-			userInfoDAO.addUser(new UserInfo(newCustomer.getUsername(), newCustomer.getPassword(), "customer"));
+			userInfoDAO.addUser(new UserInfo(newCustomer.getUsername(), newCustomer.getPassword(), UserType.CUSTOMER));
 			userInfoDAO.save();
 			returnValue = true;
 		}
 		return returnValue;
 	}
 	
-	public String logInUser(UserInfo userForLogIn) {
-		String returnValue = "";
+	public UserType logInUser(UserInfo userForLogIn) {
+		UserType returnValue = UserType.ERROR;
 		for(UserInfo user : userInfoDAO.getAllUsers()) {
 	    	if(userForLogIn.getUsername().equals(user.getUsername()) 
 	    			&& userForLogIn.getPassword().equals(user.getPassword())) {

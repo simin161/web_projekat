@@ -9,6 +9,7 @@ public class User {
 	protected String name;
 	protected String surname;
 	protected String sex;
+	protected UserType userType;
 	protected Date dateOfBirth;
 	
 	public String getId() {
@@ -28,6 +29,9 @@ public class User {
 	}
 	public String getSex() {
 		return sex;
+	}
+	public UserType getUserType() {
+		return userType;
 	}
 	public Date getDateOfBirth() {
 		return dateOfBirth;
@@ -49,6 +53,9 @@ public class User {
 	}
 	public void setSex(String sex) {
 		this.sex = sex;
+	}
+	public void setUserType(UserType userType) {
+		this.userType = userType;
 	}
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
