@@ -1,4 +1,4 @@
-Vue.component('create-restaurant', {
+Vue.component('create-manager', {
 
 	data: function(){
 		
@@ -6,13 +6,10 @@ Vue.component('create-restaurant', {
 			showCreate: false,
 			returnMessage : "",
 			returnCreateMessage: "",
-			restaurantForCreate: { restaurantName: "",
-								   restaurantType: "",
-								   restaurantLocation: "",
-								   restaurantLogo: "",
-								   restaurantManager: ""
-								 },
 			managerForCreate: {
+								managerName: "",
+								managerSurname: "",
+								
 								
 			
 							  },
@@ -34,36 +31,28 @@ Vue.component('create-restaurant', {
 			   		<table style="text-align: left, margin: auto">
 			   		<br/>
 			   			<tr>
-			   				<td>Naziv restorana: </td>
-			   				<td><input id="restaurantName" v-model="restaurantForCreate.restaurantName"/></td>
+			   				<td>Ime: </td>
+			   				<td><input id="managerName" v-model="managerForCreate.managerName"/></td>
 			   			</tr>
 			   			<tr>
-			   				<td>Tip restorana: </td>
-			   				<td><select name="types" id="type-select">
-			   						<option value="">Izaberite</option>
-			   						<option value="">Tip 1</option>
-			   						<option value="">Tip 2</option>
-			   						<option value="">Tip 3</option>
-			   						<option value="">Tip 4</option>
-			   					</select>
+			   				<td>Prezime: </td>
+			   				<td><input id="managerSurname" v-model="managerForCreate.managerSurname"/></td>
 			   				</td>
 			   			</tr>
 			   			<tr>
-			   				<td>Lokacija: </td>
+			   				<td>Podatak 3: </td>
 			   				<td></td>
 			   			</tr>
 			   			<tr>
-			   				<td>Logo: </td>
+			   				<td>Podatak 4: </td>
 			   				<td><input type="file" name="imageFile" id="imgFile"/>
 			   				
 			   			
 			   				</td>
 			   			</tr>
 			   			<tr>
-			   				<td>Menadžer: </td>
-			   				<td><select name="managers" id="managerSelect">
-			   						<option value="">Izaberite</option>
-			   					</select>	
+			   				<td>Podatak 5: </td>
+			   				<td>
 			   				</td>
 			   				<td><input type="button" style="background-color: #597EAA; color: white" value= "+"></input></td>
 			   			</tr>

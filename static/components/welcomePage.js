@@ -11,10 +11,8 @@ template: `<div>
 			<span v-if="loggedUser.userType === 'CUSTOMER'"> 
 				<a>Pregled restorana </a>
 			</span>
-			<span v-if="userType === 'administrator'" >
-				<a href="#/createRestaurant">Dodavanje restorana </a>
 			<span v-if="loggedUser.userType === 'ADMINISTRATOR'" >
-				<a>Dodavanje restorana </a>
+				<a href="#/createRestaurant">Dodavanje restorana </a>
 				<a>Dodavanje korisnika</a>
 				<a>Pregled restorana </a>
 				<a>Pregled korisnika </a>
