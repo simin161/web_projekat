@@ -18,5 +18,15 @@
     "username": "xxxZivoradxxx",
     "password": "zivorad",
     "userType": "CUSTOMER"
+  },
+  {
+      "username": "manager",
+      "password": "manager",
+      "userType": "MANAGER"
+  },
+  {
+  	  "username": "deliverer",
+      "password": "deliverer",
+      "userType": "DELIVERER"
   }
 ]
