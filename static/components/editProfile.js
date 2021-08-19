@@ -1,7 +1,7 @@
 Vue.component('edit-profile', {
 	data: function(){
 		return{
-			loggedUser: null,
+			loggedUser: { type: Object, default: () => ({}) },
 			isDisabled: true,
 			backgroundColor: "#808080"
 		};
@@ -10,20 +10,20 @@ template: `<div>
 		<header>
 		<span>Web projekat</span>
 		<div class="topnav">
-			<span v-if="userType === 'customer'"> 
+			<span v-if="loggedUser.userType === 'CUSTOMER'"> 
 				<a>Pregled restorana </a>
 			</span>
-			<span v-if="userType === 'administrator'" >
+			<span v-if="loggedUser.userType === 'ADMINISTRATOR'" >
 				<a>Dodavanje restorana </a>
 				<a>Dodavanje korisnika</a>
 				<a>Pregled restorana </a>
 				<a>Pregled korisnika </a>
 			</span>
-			<span v-if="userType === 'manager'">
+			<span v-if="loggedUser.userType === 'MANAGER'">
 				<a>Prikaz restorana</a>
 				<a>Pregled zahteva </a>
 			</span>
-			<span v-if="userType === 'deliverer'">
+			<span v-if="loggedUser.userType === 'DELIVERER'">
 				<a>Pregled zahteva</a>
 				<a>Porudžbine bez dostavljača</a>
 				<a>Pregled dostava</a>
@@ -43,20 +43,20 @@ template: `<div>
 					</tr>
 					<tr>
 						<td>Ime: </td>
-						<td> <input type="text" :disabled="isDisabled"> </input> </td>
+						<td> <input type="text" v-model="loggedUser.name" :disabled="isDisabled"> </input> </td>
 					</tr>
 					<tr>
 						<td>Prezime: </td>
-						<td><input type="text" :disabled="isDisabled"></input></td>
+						<td><input type="text" v-model="loggedUser.surname" :disabled="isDisabled"></input></td>
 					</tr>
 					<tr>
 						<td>Datum rođenja:</td>
-						<td><input type="date" :disabled="isDisabled"></input> </td>
+						<td><input type="date" v-model="loggedUser.dateOfBirth" :disabled="isDisabled"></input> </td>
 					</tr>
 					<tr>
 						<td>Pol:</td>
 						<td>
-							<select :disabled="isDisabled">
+							<select v-model="loggedUser.sex" :disabled="isDisabled">
 								<option>Muško</option>
 								<option>Žensko</option>
 							</select>
@@ -64,11 +64,11 @@ template: `<div>
 					</tr>
 					<tr>
 						<td>Korisnicko ime: </td>
-						<td><input type="text" :disabled="isDisabled"></input></td>
+						<td><input type="text" v-model="loggedUser.username" :disabled="isDisabled"></input></td>
 					</tr>
 					<tr>
 						<td>Lozinka: </td>
-						<td><input type="text" :disabled="isDisabled"></input></td>
+						<td><input type="password" v-model="loggedUser.password" :disabled="isDisabled"></input></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -79,4 +79,9 @@ template: `<div>
 			</form>
 		</div>
 		</div>`
+	,
+	mounted(){
+	axios.get("/getLoggedUser")
+	.then(response => (this.loggedUser = response.data[0]))
+}
 });

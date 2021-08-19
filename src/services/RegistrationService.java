@@ -25,6 +25,7 @@ public class RegistrationService {
 		
 		if(!checkExistanceOfUsername(newCustomer.getUsername())) {
 			newCustomer.setId(Integer.toString(customerDAO.getAllCustomers().size() + 1));
+			newCustomer.setUserType(UserType.CUSTOMER);
 			customerDAO.addCustomer(newCustomer);
 			customerDAO.save();
 			userInfoDAO.addUser(new UserInfo(newCustomer.getUsername(), newCustomer.getPassword(), UserType.CUSTOMER));
