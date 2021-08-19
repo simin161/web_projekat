@@ -19,7 +19,7 @@ template: `<div>
 			</span>
 			<span v-if="loggedUser.userType === 'MANAGER'">
 				<a>Prikaz restorana</a>
-				<a>Pregled zahteva </a>
+				<a href="#/orders-for-acceptance">Pregled zahteva </a>
 			</span>
 			<span v-if="loggedUser.userType === 'DELIVERER'">
 				<a>Pregled zahteva</a>

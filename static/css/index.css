@@ -50,7 +50,24 @@ footer {
 	vertical-align: middle;
 }
 
-.restaurants{
+.buttonAccept{
+	width: 23px;
+	heigth: 20px;
+	background-image: url(../images/accept.png);
+	background-repeat: no-repeat;
+	vertical-align : middle;
+	margin-right: 15%;
+}
+
+.buttonDecline{
+	width: 23px;
+	height: 22px;
+	background-image: url(../images/decline.png);
+	background-repeat: no-repeat;
+	vertical-align: middle;
+}
+
+.lists{
 	margin: auto;
 	margin-bottom: 10px;
 	border-style: solid;
