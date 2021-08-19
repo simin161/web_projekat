@@ -69,7 +69,7 @@ template: `<div>
 					</tr>
 					<tr>
 						<td>Lozinka: </td>
-						<td><input type="password" v-model="loggedUser.password" :disabled="isDisabled"></input></td>
+						<td><input type="password" v-model="loggedUser.password" :disabled="isComplete"></input></td>
 					</tr>
 					<tr>
 						<td></td>
