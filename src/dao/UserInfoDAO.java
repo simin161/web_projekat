@@ -18,6 +18,14 @@ public class UserInfoDAO {
 	private ArrayList<UserInfo> allUsers;
 	private Gson gson = new GsonBuilder().setDateFormat("yyyy-mm-dd").setPrettyPrinting().create();
 	
+	private static UserInfoDAO instance;
+	public static UserInfoDAO getInstance() {
+		if(instance == null) {
+			instance =  new UserInfoDAO();
+		}
+		return instance;
+	}
+	
 	public UserInfoDAO() {
 		load();
 	}

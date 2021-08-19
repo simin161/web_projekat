@@ -79,5 +79,27 @@ public class SparkAppMain {
 			users.add(session.attribute("loggedUser"));
 			return gson.toJson(users);
 		});
+		
+		post("/editProfile", (req,res)->{
+			res.type("application/json");
+			Session session = req.session(true);
+			User user = session.attribute("loggedUser");
+			if(user != null) {
+				switch(user.getUserType()) {
+				case CUSTOMER:
+					break;
+				case MANAGER:
+					break;
+				case DELIVERER:
+					break;
+				case ADMINISTRATOR:
+					break;
+				default:
+				}
+			}
+			
+			
+			return "SUCCESS";
+		});
 	}
 }
