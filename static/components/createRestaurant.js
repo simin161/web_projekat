@@ -57,7 +57,10 @@ Vue.component('create-restaurant', {
 			   		</tr>
 			   		<tr>
 			   			<td>Menadžer: </td>
-			   			<td></td>
+			   			<td><select name="managers" id="managerSelect">
+			   					<option value="">Izaberite</option>
+			   				</select>	
+			   			</td>
 			   		</tr>
 	
 	`
