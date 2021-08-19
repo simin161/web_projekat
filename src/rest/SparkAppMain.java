@@ -65,7 +65,7 @@ public class SparkAppMain {
 			return returnValue;
 		});
 		
-		get("/logOutUser", (req, res) -> {
+		get("/logOutUser", (req, res) ->{
 			Session session = req.session(true);
 			User user = req.attribute("loggedUser");
 			
@@ -75,9 +75,10 @@ public class SparkAppMain {
 			return true;
 		});
 		
-		get("/getAllRestaurants", (req, res) -> {
+		get("/getAllRestaurants", (req, res) ->{
 			res.type("application/json");
 			return gson.toJson(restaurantService.getAllRestaurants());
+		});
 
 		get("/getLoggedUser", (req,res) ->{
 			res.type("application/json");
