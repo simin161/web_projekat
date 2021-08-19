@@ -2,51 +2,11 @@
   {
     "username": "da",
     "password": "ad",
-    "userType": "customer"
+    "userType": "CUSTOMER"
   },
   {
-    "username": "da1",
-    "password": "ad",
-    "userType": "customer"
-  },
-  {
-    "username": "da2223",
-    "password": "ad",
-    "userType": "customer"
-  },
-  {
-    "username": "da11",
-    "password": "ad",
-    "userType": "customer"
-  },
-  {
-    "username": "da12",
-    "password": "ad",
-    "userType": "customer"
-  },
-  {
-    "username": "da7",
-    "password": "ad",
-    "userType": "customer"
-  },
-  {
-    "username": "da790",
-    "password": "ad",
-    "userType": "customer"
-  },
-  {
-    "username": "da23",
-    "password": "ad",
-    "userType": "customer"
-  },
-  {
-    "username": "da1222",
-    "password": "2",
-    "userType": "customer"
-  },
-  {
-    "username": "da555",
-    "password": "ad",
-    "userType": "customer"
+    "username": "admin",
+    "password": "admin",
+    "userType": "ADMINISTRATOR"
   }
 ]

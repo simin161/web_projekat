@@ -6,6 +6,7 @@ import static spark.Spark.post;
 import static spark.Spark.staticFiles;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -37,7 +38,7 @@ public class SparkAppMain {
 				returnValue = "SUCCESS";
 				
 				Session session = req.session(true);
-				req.attribute("loggedUser", registrationService.findCustomerForLogIn(((Customer) 
+				session.attribute("loggedUser", registrationService.findCustomerForLogIn(((Customer) 
 						gson.fromJson(req.body(), Customer.class)).getUsername()));
 			}
 			
@@ -46,24 +47,19 @@ public class SparkAppMain {
 		
 		post("/logInUser", (req, res) -> {
 			res.type("application/json");
-			String returnValue = "FAILURE";
+			String returnValue = "SUCCESS";
 			Session session = req.session(true);
 			UserInfo user = (UserInfo) gson.fromJson(req.body(), UserInfo.class);
 			switch(registrationService.logInUser(user)) {
-				case "customer": returnValue = "SUCCESS";
-								 req.attribute("loggedUser", registrationService.findCustomerForLogIn(user.getUsername()));
+				case CUSTOMER: session.attribute("loggedUser", registrationService.findCustomerForLogIn(user.getUsername()));
 					break;
-				case "manager" : returnValue = "SUCCESS";
-								 req.attribute("loggedUser", registrationService.findManagerForLogIn(user.getUsername()));
+				case MANAGER: session.attribute("loggedUser", registrationService.findManagerForLogIn(user.getUsername()));
 					break;
-				case "deliverer" : returnValue = "SUCCESS";
-								   req.attribute("loggedUser", registrationService.findDelivererForLogIn(user.getUsername()));
-
+				case DELIVERER: session.attribute("loggedUser", registrationService.findDelivererForLogIn(user.getUsername()));
 					break;
-				case "administrator" : returnValue = "SUCCESS";
-									   req.attribute("loggedUser", registrationService.findAdministratorForLogIn(user.getUsername()));
-
+				case ADMINISTRATOR : session.attribute("loggedUser", registrationService.findAdministratorForLogIn(user.getUsername()));
 					break;
+				default: returnValue = "FAILURE";
 			}
 			
 			return returnValue;
@@ -82,6 +78,13 @@ public class SparkAppMain {
 		get("/getAllRestaurants", (req, res) -> {
 			res.type("application/json");
 			return gson.toJson(restaurantService.getAllRestaurants());
+
+		get("/getLoggedUser", (req,res) ->{
+			res.type("application/json");
+			Session session = req.session(true);
+			ArrayList<User> users = new ArrayList<User>();
+			users.add(session.attribute("loggedUser"));
+			return gson.toJson(users);
 		});
 	}
 }

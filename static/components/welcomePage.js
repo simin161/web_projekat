@@ -1,51 +1,47 @@
 Vue.component('welcome-page', {
 	data: function(){
 		return{
-			items: ['Hello Vue!', '123', '456', '789', '101112'],
-			userType: "manager"
+			loggedUser: null
 		};
 	},
 template: `<div>
 		<header>
 		<span>Web projekat</span>
 		<div class="topnav">
-			<span v-if="userType === 'customer'"> 
+			<span v-if="loggedUser.userType === 'CUSTOMER'"> 
 				<a>Pregled restorana </a>
 			</span>
 			<span v-if="userType === 'administrator'" >
 				<a href="#/createRestaurant">Dodavanje restorana </a>
+			<span v-if="loggedUser.userType === 'ADMINISTRATOR'" >
+				<a>Dodavanje restorana </a>
 				<a>Dodavanje korisnika</a>
 				<a>Pregled restorana </a>
 				<a>Pregled korisnika </a>
 			</span>
-			<span v-if="userType === 'manager'">
+			<span v-if="loggedUser.userType === 'MANAGER'">
 				<a>Prikaz restorana</a>
 				<a>Pregled zahteva </a>
 			</span>
-			<span v-if="userType === 'deliverer'">
+			<span v-if="loggedUser.userType === 'DELIVERER'">
 				<a>Pregled zahteva</a>
 				<a>Porudzbine bez dostavljaca</a>
 				<a>Pregled dostava</a>
 			</span>
 			<a href="#/edit-profile"> Moj nalog </a>
-			<input type='button' value="Odjava" v-on:click="logOut"> </input>
+			<sign-out></sign-out>
 		</div>
 		</header>
 		<br/>
 		
 		<div class="welcome">
-			<h1>Dobrodosli, (TODO: ime + prezime/ korisnicko ime)</h1>
+			<h1>Dobrodosli, {{loggedUser.username}}</h1>
 		</div>
 		
 		</div>`
 	,
-	methods:{
-		logOut : function(){
-			event.preventDefault();
-			axios.get('/logOutUser').
-			then(response =>(
-				router.push('/')
-			));
-		}
-	}
+	mounted(){
+	axios.get("/getLoggedUser")
+	.then(response => (this.loggedUser = response.data[0]))
+}
 });
