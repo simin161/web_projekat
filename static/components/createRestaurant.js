@@ -65,7 +65,7 @@ Vue.component('create-restaurant', {
 			   						<option value="">Izaberite</option>
 			   					</select>	
 			   				</td>
-			   				<td><input type="button" style="background-color: #597EAA; color: white" value= "+"></input></td>
+			   				<td><input type="button" style="background-color: #597EAA; color: white" value= "+" onclick="location.href='/#/createManager.js'"></input></td>
 			   			</tr>
 			   			<tr>
 			   				<td><input type="button" style="background-color: #597EAA; color: white" value="Kreiraj restoran" @click="isDisabled = false; backgroundColor = '#597EAA'"></input></td>
