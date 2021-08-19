@@ -11,10 +11,16 @@ import java.util.ArrayList;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import beans.Administrator;
 import beans.Customer;
+import beans.Deliverer;
+import beans.Manager;
 import beans.User;
 import beans.UserInfo;
+import services.AdministratorService;
 import services.CustomerService;
+import services.DelivererService;
+import services.ManagerService;
 import services.RegistrationService;
 import spark.Session;
 
@@ -24,6 +30,9 @@ public class SparkAppMain {
 	private static Gson gson = new GsonBuilder().setDateFormat("yyyy-mm-dd").setPrettyPrinting().create();
 	private static RegistrationService registrationService = new RegistrationService();
 	private static CustomerService customerService = new CustomerService();
+	private static ManagerService managerService = new ManagerService();
+	private static AdministratorService administratorService = new AdministratorService();
+	private static DelivererService delivererService = new DelivererService();
 
 	public static void main(String[] args) throws Exception {
 		port(9000);
@@ -113,10 +122,22 @@ public class SparkAppMain {
 									.findCustomerForLogIn(gson.fromJson(req.body(), Customer.class).getUsername()));
 						break;
 					case MANAGER:
+						returnValue = managerService.editManager(gson.fromJson(req.body(), Manager.class));
+						if (returnValue)
+							session.attribute("loggedUser", registrationService
+									.findManagerForLogIn(gson.fromJson(req.body(), Manager.class).getUsername()));
 						break;
 					case DELIVERER:
+						returnValue = delivererService.editDeliverer(gson.fromJson(req.body(), Deliverer.class));
+						if (returnValue)
+							session.attribute("loggedUser", registrationService
+									.findDelivererForLogIn(gson.fromJson(req.body(), Deliverer.class).getUsername()));
 						break;
 					case ADMINISTRATOR:
+						returnValue = administratorService.editAdministrator(gson.fromJson(req.body(), Administrator.class));
+						if (returnValue)
+							session.attribute("loggedUser", registrationService
+									.findAdministratorForLogIn(gson.fromJson(req.body(), Administrator.class).getUsername()));
 						break;
 					default:
 					}
