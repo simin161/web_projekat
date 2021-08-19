@@ -14,6 +14,7 @@ import com.google.gson.GsonBuilder;
 import beans.Customer;
 import beans.User;
 import beans.UserInfo;
+import services.CustomerService;
 import services.RegistrationService;
 import spark.Session;
 
@@ -22,6 +23,7 @@ public class SparkAppMain {
 	private static Gson g = new Gson();
 	private static Gson gson = new GsonBuilder().setDateFormat("yyyy-mm-dd").setPrettyPrinting().create();
 	private static RegistrationService registrationService = new RegistrationService();
+	private static CustomerService customerService = new CustomerService();
 	public static void main(String[] args) throws Exception {
 		port(9000);
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
@@ -84,9 +86,13 @@ public class SparkAppMain {
 			res.type("application/json");
 			Session session = req.session(true);
 			User user = session.attribute("loggedUser");
+			boolean returnValue = false;
 			if(user != null) {
 				switch(user.getUserType()) {
 				case CUSTOMER:
+					customerService.editCustomer(gson.fromJson(req.body(), Customer.class));
+					session.attribute("loggedUser", registrationService.findCustomerForLogIn(gson.fromJson(req.body(), Customer.class).getUsername()));
+					returnValue = true;
 					break;
 				case MANAGER:
 					break;
@@ -99,7 +105,7 @@ public class SparkAppMain {
 			}
 			
 			
-			return "SUCCESS";
+			return returnValue ? "Uspesno ste izmenili podatke!" : "Doslo je do greske";
 		});
 	}
 }

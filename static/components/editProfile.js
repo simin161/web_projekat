@@ -78,13 +78,14 @@ template: `<div>
 					</tr>
 				</table>
 			</form>
+			<p>{{message}} </p>
 		</div>
 		</div>`
 	,
 	methods : {
 		save : function(){
-			axios.post("/editProfile", loggedUser)
-			.then(response => (message = response.data))
+			axios.post("/editProfile", this.loggedUser)
+			.then(response => (this.message = response.data))
 		}
 	}
 	,
