@@ -13,5 +13,10 @@
     "username": "milenica",
     "password": "milena",
     "userType": "CUSTOMER"
+  },
+  {
+    "username": "xxxZivoradxxx",
+    "password": "zivorad",
+    "userType": "CUSTOMER"
   }
 ]

@@ -20,5 +20,16 @@
     "sex": "Žensko",
     "userType": "CUSTOMER",
     "dateOfBirth": "1998-06-08"
+  },
+  {
+    "collectedPoints": 0,
+    "id": "3",
+    "username": "xxxZivoradxxx",
+    "password": "zivorad",
+    "name": "Zivorad",
+    "surname": "Miskovic",
+    "sex": "Muško",
+    "userType": "CUSTOMER",
+    "dateOfBirth": "1965-05-26"
   }
 ]
