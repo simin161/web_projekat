@@ -40,7 +40,7 @@ public class RegistrationService {
 		return returnValue;
 	}
 
-	private boolean checkExistanceOfUsername(String username) {
+	public boolean checkExistanceOfUsername(String username) {
 		boolean returnValue = false;
 		
 		for(UserInfo user : UserInfoDAO.getInstance().getAllUsers()) {

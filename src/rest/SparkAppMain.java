@@ -90,9 +90,9 @@ public class SparkAppMain {
 			if(user != null) {
 				switch(user.getUserType()) {
 				case CUSTOMER:
-					customerService.editCustomer(gson.fromJson(req.body(), Customer.class));
-					session.attribute("loggedUser", registrationService.findCustomerForLogIn(gson.fromJson(req.body(), Customer.class).getUsername()));
-					returnValue = true;
+					returnValue = customerService.editCustomer(gson.fromJson(req.body(), Customer.class));
+					if(returnValue)
+						session.attribute("loggedUser", registrationService.findCustomerForLogIn(gson.fromJson(req.body(), Customer.class).getUsername()));
 					break;
 				case MANAGER:
 					break;
@@ -105,7 +105,7 @@ public class SparkAppMain {
 			}
 			
 			
-			return returnValue ? "Uspesno ste izmenili podatke!" : "Doslo je do greske";
+			return returnValue ? "Uspesna izmena podataka" : "Pogresni podaci!";
 		});
 	}
 }
