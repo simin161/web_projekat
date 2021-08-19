@@ -9,5 +9,16 @@
     "sex": "Muško",
     "userType": "CUSTOMER",
     "dateOfBirth": "0001-01-01"
+  },
+  {
+    "collectedPoints": 0,
+    "id": "2",
+    "username": "milenica",
+    "password": "milena",
+    "name": "Milena",
+    "surname": "Majovic",
+    "sex": "Žensko",
+    "userType": "CUSTOMER",
+    "dateOfBirth": "1998-06-08"
   }
 ]

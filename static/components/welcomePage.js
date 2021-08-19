@@ -1,7 +1,7 @@
 Vue.component('welcome-page', {
 	data: function(){
 		return{
-			loggedUser: null
+			loggedUser: { type: Object, default: () => ({}) }
 		};
 	},
 template: `<div>
