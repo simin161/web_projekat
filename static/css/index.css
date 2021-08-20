@@ -8,25 +8,6 @@ header {
 	position: absolute;
 }
 
-.topnav button {
-	color: white;
-	background-color: #597EAA;
-	text-align: right;
-	font-weight: normal;
-	font-size: 15px;
-	float: right;
-	padding: 8px;
-	margin-top: -25px;
-	margin-right: 20px;
-	cursor: pointer
-}
-
-.topnav {
-	margin-top : 10px;
-	margin-right: 20px;
-	float: right;
-}
-
 .searchForm{
 	margin-top: 40px;
 	text-align: center; 
@@ -36,8 +17,8 @@ header {
 	width: 20px;
 	background-image: url(../images/search2.png);
 	background-repeat: no-repeat;
-	border-radius: 15px;
 	vertical-align: middle;
+	border-width: 1px;
 }
 
 .buttonAccept{
@@ -71,12 +52,13 @@ header {
 	float: right; 
 	margin-top: 50px; 
 	margin-right: 15px; 
-	border-radius: 15px;
 	width: 23px; 
 	height: 23px;
 	background-image: url(../images/infoRest.png);
 	background-repeat: no-repeat;
 	vertical-align: middle;
+	border-width: 1px;
+	cursor: pointer;
 	
 }
 

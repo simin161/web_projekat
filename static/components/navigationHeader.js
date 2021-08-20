@@ -5,31 +5,36 @@ Vue.component('navigation-header', {
 		};
 	},
 	template : `<div>
-					<header>
-						<span>Web projekat</span>
-						<div class="topnav">
-							<span v-if="loggedUser.userType === 'CUSTOMER'"> 
-								<a>Pregled restorana </a>
-							</span>
-							<span v-if="loggedUser.userType === 'ADMINISTRATOR'" >
-								<a>Dodavanje restorana </a>
-								<a>Dodavanje korisnika</a>
-								<a>Pregled restorana </a>
-								<a>Pregled korisnika </a>
-							</span>
-							<span v-if="loggedUser.userType === 'MANAGER'">
-								<a href="#/show-restaurant">Prikaz restorana</a>
-								<a href="#/orders-for-acceptance">Pregled zahteva </a>
-							</span>
-							<span v-if="loggedUser.userType === 'DELIVERER'">
-								<a>Pregled zahteva</a>
-								<a>Porudzbine bez dostavljaca</a>
-								<a>Pregled dostava</a>
-							</span>
-							<a href="#/edit-profile"> Moj nalog </a>
-							<sign-out></sign-out>
-						</div>
-					</header>
+						<ul v-if="loggedUser.userType === 'CUSTOMER'">
+							<li><a class="active" href="#/welcome-page">Početna</a></li>
+							<li><a>Pregled restorana</a></li>
+							<li><a href="#/edit-profile"> Moj nalog </a></li>
+							<li class="right"><sign-out></sign-out></li>
+						</ul>
+							<ul v-if="loggedUser.userType === 'ADMINISTRATOR'" >
+								<li><a class="active" href="#/welcome-page">Početna</a></li>
+								<li><a>Dodavanje restorana </a></li>
+								<li><a>Dodavanje korisnika</a></li>
+								<li><a>Pregled restorana </a></li>
+								<li><a>Pregled korisnika </a></li>
+								<li><a href="#/edit-profile"> Moj nalog </a></li>
+								<li class="right"><sign-out></sign-out></li>
+							</ul>
+							<ul v-if="loggedUser.userType === 'MANAGER'">
+								<li><a class="active" href="#/welcome-page">Početna</a></li>
+								<li><a href="#/show-restaurant">Prikaz restorana</a></li>
+								<li><a href="#/orders-for-acceptance">Pregled zahteva </a></li>
+								<li><a href="#/edit-profile"> Moj nalog </a></li>
+								<li class="right"><sign-out></sign-out></li>
+							</ul>
+							<ul v-if="loggedUser.userType === 'DELIVERER'">
+								<li><a class="active" href="#/welcome-page">Početna</a></li>
+								<li><a>Pregled zahteva</a></li>
+								<li><a>Porudzbine bez dostavljaca</a></li>
+								<li><a>Pregled dostava</a></li>
+								<li><a href="#/edit-profile"> Moj nalog </a></li>
+								<li class="right"><sign-out></sign-out></li>
+							</ul>
 					<br/>
 				</div>`
 		,
