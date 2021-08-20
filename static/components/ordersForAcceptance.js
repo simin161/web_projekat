@@ -5,15 +5,7 @@ Vue.component('orders-for-acceptance', {
 		};
 	},
 template: ` <div>
-			<header>
-				<span>Web projekat</span>
-				<div class="topnav">
-					<a>Prikaz restorana</a>
-					<a href="#/edit-profile">Moj nalog</a>
-					<sign-out></sign-out>
-				</div>
-			</header>
-			<br/>
+			<navigation-header></navigation-header>
 			<div class="searchForm">
 			</div>
 			<hr/>
