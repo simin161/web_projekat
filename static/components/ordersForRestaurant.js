@@ -9,7 +9,7 @@ Vue.component("orders-for-restaurant", {
 		<div>
 			<div class="lists" v-for="item in items">
 				<div>
-					<span style="margin-left: 45%; margin-top: 50%">
+					<span>
 						<button class="orderStatus"></button>
 					</span>
 					<p>{{item}}</p>

@@ -25,7 +25,7 @@ template: `<div>
 		<hr>
 			<div>
 				<div class="lists" v-for="item in items">
-					<span style="float: left; margin-top: 15px">
+					<span style="float: left; margin-top: 15px;">
 						<img style="border-radius: 5px;" src="http://placekitten.com/g/200/200" height="90px" width="90px">
 					</span> 
 					<span>
