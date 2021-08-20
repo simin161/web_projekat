@@ -1,7 +1,8 @@
 Vue.component('show-restaurant',{
 	data: function(){
 		return{
-			items: ['Hello Vue!', '123', '456', '789', '101112']
+			items: ['Hello Vue!', '123', '456', '789', '101112'],
+			showComponent : '1'
 		};
 	}
 	,
@@ -42,10 +43,23 @@ Vue.component('show-restaurant',{
 			</div>
 			<hr style="width: 100%">
 			<div style="margin-left: 35%;">
-				<input type="button" value="Prikaz kupaca"></input>
-				<input type="button" value="Prikaz artikala"></input>
-				<input type="button" value="Prikaz porudzbina"></input>
-				<input type="button" value="Prikaz komentara"></input>
+				<input type="button" value="Prikaz kupaca" @click="showComponent='1'"></input>
+				<input type="button" value="Prikaz artikala" @click="showComponent='2'"></input>
+				<input type="button" value="Prikaz porudzbina" @click="showComponent='3'"></input>
+				<input type="button" value="Prikaz komentara" @click="showComponent='4'"></input>
+			</div>
+			</br>
+			<div v-if="showComponent === '1'">
+				<customers-for-restaurant></customers-for-restaurant>
+			</div>
+			<div v-if="showComponent === '2'">
+				<articles-for-restaurant></articles-for-restaurant>
+			</div>
+			<div v-if="showComponent === '3'">
+				<orders-for-restaurant></orders-for-restaurant>
+			</div>
+			<div v-if="showComponent === '4'">
+				<comments-for-restaurant></comments-for-restaurant>
 			</div>
 		 </div>
 	`

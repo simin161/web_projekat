@@ -3,3 +3,55 @@ input[type=button]{
   color: white;
   cursor: pointer;
 }
+
+.deleteArticle{
+	float: right; 
+	margin-top: 40px; 
+	margin-right: 15px; 
+	height: 24px;
+	width: 24px;
+	background-image: url(../images/delete2.png);
+	background-repeat: no-repeat
+	vertical-align: middle;
+}
+
+.changeArticle{
+	float: right; 
+	margin-top: 40px; 
+	margin-right: 15px; 
+	height: 24px;
+	width: 24px;
+	background-image: url(../images/edit2.png);
+	background-repeat: no-repeat
+	vertical-align: middle;
+	
+}
+
+.orderStatus{
+	float: right; 
+	margin-top: 80px; 
+	margin-right: 15px; 
+	height: 24px;
+	width: 24px;
+	vertical-align: middle;
+}
+
+.accept{
+	width: 23px;
+	heigth: 20px;
+	background-image: url(../images/accept.png);
+	background-repeat: no-repeat;
+	vertical-align : middle;
+	margin-top: 50px; 
+	margin-right: 15px; 
+}
+
+.decline{
+	width: 23px;
+	height: 22px;
+	background-image: url(../images/decline.png);
+	background-repeat: no-repeat;
+	margin-top: 50px; 
+	margin-right: 15px; 
+	vertical-align: middle;
+}
