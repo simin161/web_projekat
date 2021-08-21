@@ -15,6 +15,7 @@ import beans.Administrator;
 import beans.Customer;
 import beans.Deliverer;
 import beans.Manager;
+import beans.Restaurant;
 import beans.User;
 import beans.UserInfo;
 import services.AdministratorService;
@@ -160,8 +161,13 @@ public class SparkAppMain {
 			res.type("application/json");
 			Session session = req.session(true);
 			
+			String returnValue = "FAILURE";
 
-			return null;
+			if(restaurantService.createRestaurant((Restaurant) gson.fromJson(req.body(), Restaurant.class))){
+				returnValue = "SUCCESS";
+			}
+
+			return returnValue;
 		});
 		
 	}

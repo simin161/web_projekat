@@ -12,13 +12,24 @@ import dao.RestaurantDAO;
 
 public class RestaurantService {
 
-	public void createRestaurant(Restaurant newRestaurant) {
+	public boolean createRestaurant(Restaurant newRestaurant) {
 		
-		newRestaurant.setId(Integer.toString(RestaurantDAO.getInstance().getAllRestaurants().size()) + 1);
-		newRestaurant.setStatus(RestaurantStatus.CLOSED);
-		newRestaurant.setArticles(new ArrayList<Article>());
-		RestaurantDAO.getInstance().addRestaurant(newRestaurant);
-		RestaurantDAO.getInstance().saveRestaurants();
+		boolean returnValue = false;
+		
+		try {
+			
+			newRestaurant.setId(Integer.toString(RestaurantDAO.getInstance().getAllRestaurants().size()) + 1);
+			newRestaurant.setStatus(RestaurantStatus.CLOSED);
+			newRestaurant.setArticles(new ArrayList<Article>());
+			RestaurantDAO.getInstance().addRestaurant(newRestaurant);
+			RestaurantDAO.getInstance().saveRestaurants();
+			returnValue = true;
+			
+		}catch(Exception e) {
+			returnValue = false;
+		}
+		
+		return returnValue;
 		
 	}
 	

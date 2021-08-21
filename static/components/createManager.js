@@ -7,8 +7,12 @@ Vue.component('create-manager', {
 			returnMessage : "",
 			returnCreateMessage: "",
 			managerForCreate: {
+								managerUserName: "",
 								managerName: "",
 								managerSurname: "",
+								managerGender: "",
+								managerDateOfBirth: "",
+								managerRestaurant: "",
 								
 								
 			
