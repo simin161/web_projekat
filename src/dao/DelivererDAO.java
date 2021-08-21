@@ -18,6 +18,15 @@ public class DelivererDAO {
 	
 	private Gson gson = new GsonBuilder().setDateFormat("yyyy-mm-dd").setPrettyPrinting().create();
 	
+	private static DelivererDAO instance;
+	public static DelivererDAO getInstance() {
+		if(instance == null) {
+			instance =  new DelivererDAO();
+		}
+		return instance;
+	}
+	
+	
 	public DelivererDAO() {
 		load();
 	}

@@ -20,6 +20,14 @@ public class ManagerDAO {
 	
 	private Gson gson = new GsonBuilder().setDateFormat("yyyy-mm-dd").setPrettyPrinting().create();
 	
+	private static ManagerDAO instance;
+	public static ManagerDAO getInstance() {
+		if(instance == null) {
+			instance =  new ManagerDAO();
+		}
+		return instance;
+	}
+	
 	public ManagerDAO() {
 		load();
 	}

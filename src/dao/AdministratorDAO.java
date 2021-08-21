@@ -14,9 +14,16 @@ import com.google.gson.GsonBuilder;
 import beans.Administrator;
 
 public class AdministratorDAO {
-	private ArrayList<Administrator> allAdministrators;
-	
+	private ArrayList<Administrator> allAdministrators;	
 	private Gson gson = new GsonBuilder().setDateFormat("yyyy-mm-dd").setPrettyPrinting().create();
+	
+	private static AdministratorDAO instance;
+	public static AdministratorDAO getInstance() {
+		if(instance == null) {
+			instance = new AdministratorDAO();
+		}
+		return instance;
+	}
 	
 	public AdministratorDAO() {
 		load();

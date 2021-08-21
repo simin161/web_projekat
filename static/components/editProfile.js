@@ -3,7 +3,8 @@ Vue.component('edit-profile', {
 		return{
 			loggedUser: { type: Object, default: () => ({}) },
 			isDisabled: true,
-			backgroundColor: "#808080"
+			backgroundColor: "#808080",
+			message : ""
 		};
 	},
 template: `<div>
@@ -68,17 +69,25 @@ template: `<div>
 					</tr>
 					<tr>
 						<td>Lozinka: </td>
-						<td><input type="password" v-model="loggedUser.password" :disabled="isDisabled"></input></td>
+						<td><input type="password" v-model="loggedUser.password" :disabled="isComplete"></input></td>
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="button" v-bind:style="{'background-color': backgroundColor, 'color': 'white'}" value="Sačuvaj" :disabled="isDisabled"></input></td>
+						<td><input type="button" v-bind:style="{'background-color': backgroundColor, 'color': 'white'}" value="Sačuvaj" :disabled="isDisabled" v-on:click="save"></input></td>
 						<td></td>
 					</tr>
 				</table>
 			</form>
+			<p>{{message}} </p>
 		</div>
 		</div>`
+	,
+	methods : {
+		save : function(){
+			axios.post("/editProfile", this.loggedUser)
+			.then(response => (this.message = response.data))
+		}
+	}
 	,
 	mounted(){
 	axios.get("/getLoggedUser")
