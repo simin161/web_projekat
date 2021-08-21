@@ -2,101 +2,34 @@
   {
     "collectedPoints": 0,
     "id": "1",
-    "username": "da",
+    "username": "Silfaa",
     "password": "ad",
-    "name": "sdaf",
-    "surname": "sa",
+    "name": "Silfonije",
+    "surname": "Sasic",
     "sex": "Muško",
+    "userType": "CUSTOMER",
     "dateOfBirth": "0001-01-01"
   },
   {
     "collectedPoints": 0,
     "id": "2",
-    "username": "da1",
-    "password": "ad",
-    "name": "sdaf",
-    "surname": "sa",
-    "sex": "Muško",
-    "dateOfBirth": "0001-01-01"
+    "username": "milenica",
+    "password": "milena",
+    "name": "Milena",
+    "surname": "Majovic",
+    "sex": "Žensko",
+    "userType": "CUSTOMER",
+    "dateOfBirth": "1998-06-08"
   },
   {
     "collectedPoints": 0,
     "id": "3",
-    "username": "da2223",
-    "password": "ad",
-    "name": "sdaf",
-    "surname": "sa",
-    "sex": "Žensko",
-    "dateOfBirth": "0011-11-11"
-  },
-  {
-    "collectedPoints": 0,
-    "id": "4",
-    "username": "da11",
-    "password": "ad",
-    "name": "sdaf",
-    "surname": "sa",
+    "username": "xxxZivoradxxx",
+    "password": "zivorad",
+    "name": "Zivorad",
+    "surname": "Miskovic",
     "sex": "Muško",
-    "dateOfBirth": "0001-01-01"
-  },
-  {
-    "collectedPoints": 0,
-    "id": "5",
-    "username": "da12",
-    "password": "ad",
-    "name": "sdaf",
-    "surname": "sa",
-    "sex": "Žensko",
-    "dateOfBirth": "0001-01-01"
-  },
-  {
-    "collectedPoints": 0,
-    "id": "6",
-    "username": "da7",
-    "password": "ad",
-    "name": "sdaf",
-    "surname": "sa",
-    "sex": "Muško",
-    "dateOfBirth": "0007-07-07"
-  },
-  {
-    "collectedPoints": 0,
-    "id": "7",
-    "username": "da790",
-    "password": "ad",
-    "name": "sdaf",
-    "surname": "sa",
-    "sex": "Muško",
-    "dateOfBirth": "0007-07-07"
-  },
-  {
-    "collectedPoints": 0,
-    "id": "8",
-    "username": "da23",
-    "password": "ad",
-    "name": "sdaf",
-    "surname": "sa",
-    "sex": "Muško",
-    "dateOfBirth": "0001-01-01"
-  },
-  {
-    "collectedPoints": 0,
-    "id": "9",
-    "username": "da1222",
-    "password": "2",
-    "name": "sdaf",
-    "surname": "sa",
-    "sex": "Muško",
-    "dateOfBirth": "0001-01-01"
-  },
-  {
-    "collectedPoints": 0,
-    "id": "10",
-    "username": "da555",
-    "password": "ad",
-    "name": "sdaf",
-    "surname": "sa",
-    "sex": "Muško",
-    "dateOfBirth": "0001-01-01"
+    "userType": "CUSTOMER",
+    "dateOfBirth": "1965-05-26"
   }
 ]

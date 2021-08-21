@@ -1,52 +1,32 @@
 [
   {
-    "username": "da",
+    "username": "Silfaa",
     "password": "ad",
-    "userType": "customer"
+    "userType": "CUSTOMER"
   },
   {
-    "username": "da1",
-    "password": "ad",
-    "userType": "customer"
+    "username": "admin",
+    "password": "admin",
+    "userType": "ADMINISTRATOR"
   },
   {
-    "username": "da2223",
-    "password": "ad",
-    "userType": "customer"
+    "username": "milenica",
+    "password": "milena",
+    "userType": "CUSTOMER"
   },
   {
-    "username": "da11",
-    "password": "ad",
-    "userType": "customer"
+    "username": "xxxZivoradxxx",
+    "password": "zivorad",
+    "userType": "CUSTOMER"
   },
   {
-    "username": "da12",
-    "password": "ad",
-    "userType": "customer"
+      "username": "manager",
+      "password": "manager",
+      "userType": "MANAGER"
   },
   {
-    "username": "da7",
-    "password": "ad",
-    "userType": "customer"
-  },
-  {
-    "username": "da790",
-    "password": "ad",
-    "userType": "customer"
-  },
-  {
-    "username": "da23",
-    "password": "ad",
-    "userType": "customer"
-  },
-  {
-    "username": "da1222",
-    "password": "2",
-    "userType": "customer"
-  },
-  {
-    "username": "da555",
-    "password": "ad",
-    "userType": "customer"
+  	  "username": "deliverer",
+      "password": "deliverer",
+      "userType": "DELIVERER"
   }
 ]

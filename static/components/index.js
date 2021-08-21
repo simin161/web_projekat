@@ -5,15 +5,9 @@ Vue.component('first-page', {
 		};
 	},
 template: `<div>
-		<header>
-		<span>Web projekat</span>
-				<div id="modal">
-					<app-modal></app-modal>
-				</div>
-		</header>
+		<app-modal></app-modal>
 		<br/>
-		
-		<form class="searchForm">
+		<form class="searchForm" style="">
 			<input type="text" placeholder="Naziv restorana..."/>
 			<select id="tipRestorana">
 				<option value="">Tip restorana</option>

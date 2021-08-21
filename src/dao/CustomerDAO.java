@@ -18,6 +18,14 @@ public class CustomerDAO {
 	private ArrayList<Customer> allCustomers;
 	private Gson gson = new GsonBuilder().setDateFormat("yyyy-mm-dd").setPrettyPrinting().create();
 	
+	private static CustomerDAO instance;
+	public static CustomerDAO getInstance() {
+		if(instance == null) {
+			instance = new CustomerDAO();
+		}
+		return instance;
+	}
+	
 	public CustomerDAO() {
 		load();
 	}

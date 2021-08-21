@@ -1,0 +1,12 @@
+[
+  {
+    "id": "1",
+    "username": "deliverer",
+    "password": "deliverer",
+    "name": "Postar",
+    "surname": "Postarovic",
+    "sex": "Muško",
+    "userType": "DELIVERER",
+    "dateOfBirth": "1985-02-03"
+  }
+]
