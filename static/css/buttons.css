@@ -11,7 +11,7 @@ input[type=button]{
 	height: 24px;
 	width: 24px;
 	background-image: url(../images/delete2.png);
-	background-repeat: no-repeat
+	background-repeat: no-repeat;
 	vertical-align: middle;
 }
 
@@ -22,7 +22,7 @@ input[type=button]{
 	height: 24px;
 	width: 24px;
 	background-image: url(../images/edit2.png);
-	background-repeat: no-repeat
+	background-repeat: no-repeat;
 	vertical-align: middle;
 	
 }
