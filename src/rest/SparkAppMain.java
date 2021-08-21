@@ -169,8 +169,5 @@ public class SparkAppMain {
 
 			return returnValue;
 		});
-		
 	}
-
-	
 }
