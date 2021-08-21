@@ -3,16 +3,68 @@
     "id": "1",
     "name": "da",
     "restaurantType": "ad",
-    "articles": null,
-    "status": 1,
     "restaurantLogo": ""
   },
   {
     "id": "2",
     "name": "da1",
     "restaurantType": "ad",
-    "articles": null,
-    "status": 0,
     "restaurantLogo": "http://placekitten.com/g/200/200"
+  },
+  {
+    "id": "21",
+    "name": "hjgh",
+    "restaurantType": "",
+    "articles": [],
+    "status": "CLOSED",
+    "restaurantLogo": ""
+  },
+  {
+    "id": "31",
+    "name": "sdsd",
+    "restaurantType": "",
+    "articles": [],
+    "status": "CLOSED",
+    "restaurantLogo": ""
+  },
+  {
+    "id": "41",
+    "name": "asd",
+    "restaurantType": "",
+    "articles": [],
+    "status": "CLOSED",
+    "restaurantLogo": ""
+  },
+  {
+    "id": "51",
+    "name": "asd",
+    "restaurantType": "",
+    "articles": [],
+    "status": "CLOSED",
+    "restaurantLogo": ""
+  },
+  {
+    "id": "61",
+    "name": "fdgsfsdaa",
+    "restaurantType": "",
+    "articles": [],
+    "status": "CLOSED",
+    "restaurantLogo": ""
+  },
+  {
+    "id": "71",
+    "name": "ZASTO NEMA TIP",
+    "restaurantType": "",
+    "articles": [],
+    "status": "CLOSED",
+    "restaurantLogo": ""
+  },
+  {
+    "id": "81",
+    "name": "ko je idiot",
+    "restaurantType": "Tip 3",
+    "articles": [],
+    "status": "CLOSED",
+    "restaurantLogo": ""
   }
 ]

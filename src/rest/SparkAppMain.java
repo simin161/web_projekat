@@ -163,9 +163,13 @@ public class SparkAppMain {
 			
 			String returnValue = "FAILURE";
 
+			System.out.print(((Restaurant) gson.fromJson(req.body(), Restaurant.class)).getRestaurantType());
+			
 			if(restaurantService.createRestaurant((Restaurant) gson.fromJson(req.body(), Restaurant.class))){
 				returnValue = "SUCCESS";
 			}
+			
+			
 
 			return returnValue;
 		});

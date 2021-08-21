@@ -6,11 +6,11 @@ Vue.component('create-restaurant', {
 			showCreate: false,
 			returnMessage : "",
 			returnCreateMessage: "",
-			restaurantForCreate: { restaurantName: "",
+			restaurantForCreate: { name: "",
 								   restaurantType: "",
-								   restaurantLocation: "",
 								   restaurantLogo: "",
-								   restaurantManager: ""
+								   manager: null,
+								   location: null
 								 },
 			managerForCreate: {
 								
@@ -35,16 +35,16 @@ Vue.component('create-restaurant', {
 			   		<br/>
 			   			<tr>
 			   				<td>Naziv restorana: </td>
-			   				<td><input id="restaurantName" v-model="restaurantForCreate.restaurantName"/></td>
+			   				<td><input id="restaurantName" v-model="restaurantForCreate.name"/></td>
 			   			</tr>
 			   			<tr>
 			   				<td>Tip restorana: </td>
-			   				<td><select name="types" id="type-select">
-			   						<option value="">Izaberite</option>
-			   						<option value="">Tip 1</option>
-			   						<option value="">Tip 2</option>
-			   						<option value="">Tip 3</option>
-			   						<option value="">Tip 4</option>
+			   				<td><select name="types" id="type-select" v-model="restaurantForCreate.restaurantType">
+			   						<option>Izaberite</option>
+			   						<option>Tip 1</option>
+			   						<option>Tip 2</option>
+			   						<option>Tip 3</option>
+			   						<option>Tip 4</option>
 			   					</select>
 			   				</td>
 			   			</tr>
@@ -65,10 +65,10 @@ Vue.component('create-restaurant', {
 			   						<option value="">Izaberite</option>
 			   					</select>	
 			   				</td>
-			   				<td><input type="button" style="background-color: #597EAA; color: white" value= "+" on-click="location.href='/#/createManager.js'"></input></td>
+			   				<td><input type="button" style="background-color: #597EAA; color: white" value= "+" @click="location.href='/#/createManager.js'"></input></td>
 			   			</tr>
 			   			<tr>
-			   				<td><input type="button" style="background-color: #597EAA; color: white" value="Kreiraj restoran" @click="isDisabled = false; backgroundColor = '#597EAA'" on-click = "createRestaurant()"></input></td>
+			   				<td><input type="button" style="background-color: #597EAA; color: white" value="Kreiraj restoran" @click = "createRestaurant()" backgroundColor = '#597EAA'></input></td>
 			   			</tr>
 			   		</table>
 			   	</form>
