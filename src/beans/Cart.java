@@ -3,6 +3,7 @@ package beans;
 import java.util.ArrayList;
 
 public class Cart {
+	private String cartId;
 	private ArrayList<Article> articles;
 	private Customer customer;
 	private double price;
@@ -24,6 +25,12 @@ public class Cart {
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	public String getCartId() {
+		return cartId;
+	}
+	public void setCartId(String cartId) {
+		this.cartId = cartId;
 	}
 	
 	
