@@ -72,4 +72,19 @@ public class CartService {
 		return new ArrayList<Article>();
 	}
 	
+	public double totalPrice(String username) {
+		
+		double totalPrice=0.0;
+		for(Cart c : CartDAO.getInstance().getAllCarts()) {
+			if(c.getCustomer().getUsername().equals(username)) {
+				for(Article a : c.getArticles()) {
+					totalPrice += a.getPrice();
+				}
+			}
+		}
+		
+		return totalPrice;
+		
+	}
+	
 }
