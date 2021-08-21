@@ -23,10 +23,11 @@ Vue.component('app-modal', {
 		};
 	},
 template: `<div>
-				<div class="topnav"> 
-				<button  id="logInOpenModal" @click="showLogIn = true;">Prijavite se!</button>
-				<button  id="registerOpenModal" @click="showRegister = true;">Registrujte se!</button>
-			    </div>
+			    <ul>
+			    	<li><p style="color: #666; margin-left: 15%">Porudžbinac</p> </li>
+			    	<li class="right"><a @click="showLogIn = true">Prijava</a></li>
+			    	<li class="right"><a @click="showRegister = true">Registracija</a></li>
+			    </ul>
 			   
 			  <div id="logInModal" class="modal" v-show="showLogIn">
 			  <div class="modal-content">
@@ -35,18 +36,21 @@ template: `<div>
 					<table style="text-align: left; margin: auto">
 					<br/>
 						<tr>
-							<td> Korisničko ime:</td>
-							<td><input id="logInUsername" v-model="userForLogIn.username" type="text"></input></td>
+							<td><input placeholder="Korisnicko ime..." id="logInUsername" v-model="userForLogIn.username" type="text"></input></td>
 						</tr>
 						<tr>
-							<td> Lozinka:</td>
-							<td><input id="logInPassword" v-model="userForLogIn.password" type="password"></input></td>
-						</tr>
-						<tr style="text-align: right">
-							<td> </td>
-							<td> <input :disabled="!isCompleteLogIn" v-bind:style="{'background-color': backgroundColorLogIn, 'color': 'white', 'cursor': cursorStyleLogIn}" type="submit" v-on:click="logInUser" value="Prijavite se!"> </input> </td>
+							<td><input placeholder="Lozinka..." id="logInPassword" v-model="userForLogIn.password" type="password"></input></td>
 						</tr>
 					</table>
+					<input :disabled="!isCompleteLogIn" 
+							v-bind:style="{'background-color': backgroundColorLogIn,
+											'color': 'white', 
+											'cursor': cursorStyleLogIn, 
+											'margin-top': '3%',
+											'margin-right' : '3.5%',
+											'width': '35%'}"
+							 type="submit" v-on:click="logInUser" value="Prijavite se!"> </input>
+
 					<p> {{returnLogInMessage}}</p>
 				</form>
 			  </div>

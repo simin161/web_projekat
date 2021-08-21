@@ -5,14 +5,7 @@ Vue.component('first-page', {
 		};
 	},
 template: `<div>
-		<header>
-		<span>Web projekat</span>
-				<div id="modal">
-					<app-modal></app-modal>
-				</div>
-		</header>
-		<br/>
-		
+		<app-modal></app-modal>
 		<form class="searchForm">
 			<input type="text" placeholder="Naziv restorana..."/>
 			<select id="tipRestorana">
@@ -24,9 +17,11 @@ template: `<div>
 		</form>
 		<hr>
 			<div>
+
 				<div class="restaurants" v-for="item in restaurats">
 					<span style="float: left; margin-top: 15px">
 						<img style="border-radius: 5px;" :src="item.restaurantLogo" height="90px" width="90px">
+
 					</span> 
 					<span>
 						<button class="infoRestaurant"> </button> 

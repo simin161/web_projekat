@@ -8,31 +8,7 @@ Vue.component('edit-profile', {
 		};
 	},
 template: `<div>
-		<header>
-		<span>Web projekat</span>
-		<div class="topnav">
-			<span v-if="loggedUser.userType === 'CUSTOMER'"> 
-				<a>Pregled restorana </a>
-			</span>
-			<span v-if="loggedUser.userType === 'ADMINISTRATOR'" >
-				<a>Dodavanje restorana </a>
-				<a>Dodavanje korisnika</a>
-				<a>Pregled restorana </a>
-				<a>Pregled korisnika </a>
-			</span>
-			<span v-if="loggedUser.userType === 'MANAGER'">
-				<a>Prikaz restorana</a>
-				<a>Pregled zahteva </a>
-			</span>
-			<span v-if="loggedUser.userType === 'DELIVERER'">
-				<a>Pregled zahteva</a>
-				<a>Porudžbine bez dostavljača</a>
-				<a>Pregled dostava</a>
-			</span>
-			<sign-out></sign-out>
-		</div>
-		</header>
-		<br/>
+			<navigation-header></navigation-header>
 		
 		<div style="margin-top: 100px; margin-left: 42%; margin-bottom:23%">
 			<form>
