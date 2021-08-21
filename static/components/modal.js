@@ -3,6 +3,7 @@ Vue.component('app-modal', {
 		return{
 			showLogIn: false,
 			showRegister: false,
+		    scrolled: false,
 			returnMessage: "",
 			returnLogInMessage: "",
 			backgroundColor : "#597EAA",
@@ -23,7 +24,7 @@ Vue.component('app-modal', {
 		};
 	},
 template: `<div>
-			    <ul>
+			    <ul :class="scrolled ? 'scroll' : ''">
 			    	<li><p style="color: #666; margin-left: 15%">Porudžbinac</p> </li>
 			    	<li class="right"><a @click="showLogIn = true">Prijava</a></li>
 			    	<li class="right"><a @click="showRegister = true">Registracija</a></li>
@@ -131,7 +132,15 @@ template: `<div>
 			then(response =>(
 					this.returnLogInMessage = response.data == "SUCCESS" ? router.push('/welcome-page') : "Pogresno korisnicko ime ili lozinka!"
 					));
-		}
-		
+		},
+		handleScroll () {
+		    this.scrolled = window.scrollY > 0;
+		  }
+	},
+	created () {
+	  window.addEventListener('scroll', this.handleScroll);
+	},
+	destroyed () {
+	  window.removeEventListener('scroll', this.handleScroll);
 	}
 });
