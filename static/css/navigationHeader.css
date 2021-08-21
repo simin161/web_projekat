@@ -5,6 +5,9 @@ ul {
   overflow: hidden;
   border: 1px solid #fab978;
   background-color: #fab978;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 li {
@@ -30,4 +33,5 @@ li a.active {
 
 .right {
 	float : right;
+	margin-right: 1%;
 }
