@@ -6,7 +6,8 @@ Vue.component('first-page', {
 	},
 template: `<div>
 		<app-modal></app-modal>
-		<form class="searchForm">
+		<br/>
+		<form class="searchForm" style="">
 			<input type="text" placeholder="Naziv restorana..."/>
 			<select id="tipRestorana">
 				<option value="">Tip restorana</option>
@@ -19,7 +20,7 @@ template: `<div>
 			<div>
 
 				<div class="lists" v-for="item in restaurats">
-					<span style="float: left;">
+					<span style="float: left; margin-top: 15px">
 						<img style="border-radius: 5px;" :src="item.restaurantLogo" height="90px" width="90px">
 
 					</span> 

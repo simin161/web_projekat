@@ -92,7 +92,8 @@ public class SparkAppMain {
 			return true;
 		});
 
-		get("/getAllRestaurants", (req, res) ->{
+		get("/getAllRestaurants", (req, res) -> {
+
 			res.type("application/json");
 			return gson.toJson(restaurantService.getAllRestaurants());
 		});
