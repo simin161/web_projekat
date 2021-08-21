@@ -11,6 +11,10 @@ public class Restaurant {
 	private Location location;
 	private String restaurantLogo; //ili BufferedImage
 	
+	//proveriti
+	private Manager manager;
+	
+	
 	public String getId() {
 		return id;
 	}
@@ -52,5 +56,11 @@ public class Restaurant {
 	}
 	public void setRestaurantLogo(String restaurantLogo) {
 		this.restaurantLogo = restaurantLogo;
+	}
+	public Manager getManager() {
+		return manager;
+	}
+	public void setManager(Manager manager) {
+		this.manager = manager;
 	}
 }

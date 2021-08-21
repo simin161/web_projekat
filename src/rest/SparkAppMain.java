@@ -13,12 +13,8 @@ import com.google.gson.GsonBuilder;
 
 import beans.Administrator;
 import beans.Customer;
-<<<<<<< HEAD
-import beans.Restaurant;
-=======
 import beans.Deliverer;
 import beans.Manager;
->>>>>>> izmenaProfila
 import beans.User;
 import beans.UserInfo;
 import services.AdministratorService;
@@ -159,5 +155,16 @@ public class SparkAppMain {
 
 			return returnValue ? "Uspesna izmena podataka" : "Pogresni podaci!";
 		});
+		
+		post("/createRestaurant", (req, res) -> {
+			res.type("application/json");
+			Session session = req.session(true);
+			
+
+			return null;
+		});
+		
 	}
+
+	
 }
