@@ -24,22 +24,19 @@ Vue.component('create-restaurant', {
 	},
 	
 	template: `<div>
-			   <header>
-			   <span>Web projekat</span>
-			   </header>
-			   <br/>
+			   <navigation-header></navigation-header>
 			   
-			   <div style="margin-top: 100px; margin-left: 42%; margin-bottom:23%">
+			   <div style="margin-top: 100px; margin-left: 38%; margin-bottom:23%">
 			   	<form>
-			   		<table style="text-align: left, margin: auto">
+			   		<table style="text-align: left, margin-left:auto;margin-right:auto;">
 			   		<br/>
 			   			<tr>
-			   				<td>Naziv restorana: </td>
-			   				<td><input id="restaurantName" v-model="restaurantForCreate.name"/></td>
+			   				<td style="font-size: 20px">Naziv restorana: </td>
+			   				<td><input style="font-size: 20px" id="restaurantName" v-model="restaurantForCreate.name"/></td>
 			   			</tr>
 			   			<tr>
-			   				<td>Tip restorana: </td>
-			   				<td><select name="types" id="type-select" v-model="restaurantForCreate.restaurantType">
+			   				<td style="font-size: 20px">Tip restorana: </td>
+			   				<td><select style="font-size: 20px" name="types" id="type-select" v-model="restaurantForCreate.restaurantType">
 			   						<option>Izaberite</option>
 			   						<option>Tip 1</option>
 			   						<option>Tip 2</option>
@@ -49,26 +46,26 @@ Vue.component('create-restaurant', {
 			   				</td>
 			   			</tr>
 			   			<tr>
-			   				<td>Lokacija: </td>
+			   				<td style="font-size: 20px">Lokacija: </td>
 			   				<td></td>
 			   			</tr>
 			   			<tr>
-			   				<td>Logo: </td>
-			   				<td><input type="file" name="imageFile" id="imgFile"/>
+			   				<td style="font-size: 20px">Logo: </td>
+			   				<td><input style="font-size: 20px" type="file" name="imageFile" id="imgFile"/>
 			   				
 			   			
 			   				</td>
 			   			</tr>
 			   			<tr>
-			   				<td>Menadžer: </td>
-			   				<td><select name="managers" id="managerSelect">
+			   				<td style="font-size: 20px">Menadžer: </td>
+			   				<td><select style="font-size: 20px" name="managers" id="managerSelect">
 			   						<option value="">Izaberite</option>
 			   					</select>	
 			   				</td>
-			   				<td><input type="button" style="background-color: #597EAA; color: white" value= "+" @click="location.href='/#/createManager.js'"></input></td>
+			   				<td><input type="button" style="background-color: #597EAA; color: white, font-size: 20px" value= "+" @click="location.href='/#/createManager.js'"></input></td>
 			   			</tr>
 			   			<tr>
-			   				<td><input type="button" style="background-color: #597EAA; color: white" value="Kreiraj restoran" @click = "createRestaurant()" backgroundColor = '#597EAA'></input></td>
+			   				<td><input type="button" style="background-color: #597EAA; color: white, font-size: 20px" value="Kreiraj restoran" @click = "createRestaurant()" backgroundColor = '#597EAA'></input></td>
 			   			</tr>
 			   		</table>
 			   	</form>
