@@ -20,7 +20,7 @@ template: `<div>
 			<div>
 
 				<div class="lists" v-for="item in restaurats">
-					<span style="float: left; margin-top: 15px">
+					<span style="float: left;">
 						<img style="border-radius: 5px;" :src="item.restaurantLogo" height="90px" width="90px">
 
 					</span> 
