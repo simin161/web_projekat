@@ -3,19 +3,23 @@ Vue.component('edit-profile', {
 		return{
 			loggedUser: { type: Object, default: () => ({}) },
 			isDisabled: true,
-			backgroundColor: "#808080",
+			backgroundColor: "#f8f1f1",
 			message : ""
 		};
 	},
 template: `<div>
 			<navigation-header></navigation-header>
+			<ul :class="scrolled ? 'scrollRest' : 'rest'">
+				<li><a @click="isDisabled = false; backgroundColor = '#5eaaa8'">Izmeni nalog</a> </li>
+			</ul>
+			<br/>
 		
 		<div style="margin-top: 100px; margin-left: 42%; margin-bottom:23%">
 			<form>
 				<table>
 					<tr>
 						<td> </td>
-						<td> <input type="button" style="background-color: #597EAA; color: white" value="Izmeni nalog" @click="isDisabled = false; backgroundColor = '#597EAA'"></input> </td>
+						<!--<td> <input type="button" style="background-color: #597EAA; color: white" value="Izmeni nalog" @click="isDisabled = false; backgroundColor = '#597EAA'"></input> </td>-->
 						<td> </td>
 					</tr>
 					<tr>
