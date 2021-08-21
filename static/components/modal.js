@@ -6,9 +6,9 @@ Vue.component('app-modal', {
 		    scrolled: false,
 			returnMessage: "",
 			returnLogInMessage: "",
-			backgroundColor : "#597EAA",
+			backgroundColor : "#5EAAA8",
 			cursorStyle : "pointer",
-			backgroundColorLogIn : "#597EAA",
+			backgroundColorLogIn : "#5EAAA8",
 			cursorStyleLogIn : "pointer",
 			userForRegistration : {id : "",
 								   username : "",
@@ -25,7 +25,7 @@ Vue.component('app-modal', {
 	},
 template: `<div>
 			    <ul :class="scrolled ? 'scroll' : ''">
-			    	<li><p style="color: #666; margin-left: 15%">Porudžbinac</p> </li>
+			    	<li><p style="color: #f8f1f1; margin-left: 15%">Porudžbinac</p> </li>
 			    	<li class="right"><a @click="showLogIn = true">Prijava</a></li>
 			    	<li class="right"><a @click="showRegister = true">Registracija</a></li>
 			    </ul>
@@ -92,11 +92,8 @@ template: `<div>
 							<td>Lozinka: </td>
 							<td> <input id="registerPassword" type="text" v-model="userForRegistration.password"> </input> </td>
 						</tr>
-						<tr style="text-align: right">
-							<td> </td>
-							<td> <input :disabled="!isComplete" v-bind:style="{'background-color': backgroundColor, 'color': 'white', 'cursor': cursorStyle}" type="submit" v-on:click="registerUser" value="Registrujte se!"> </input> </td>
-						</tr>
 					</table>
+					<input :disabled="!isComplete" v-bind:style="{'background-color': backgroundColor, 'color': 'white', 'cursor': cursorStyle}" type="submit" v-on:click="registerUser" value="Registrujte se!"> </input>
 					<p> {{returnMessage}}</p>
 				</form>
 			  </div>
@@ -106,13 +103,13 @@ template: `<div>
 	computed : {
 		  isComplete () {
 		    flag = this.userForRegistration.name && this.userForRegistration.surname && this.userForRegistration.dateOfBirth && this.userForRegistration.sex && this.userForRegistration.username && this.userForRegistration.password;
-		    this.backgroundColor = flag ? "#597EAA" : "#808080";
+		    this.backgroundColor = flag ? "#5EAAA8" : "#f8f1f1";
 		    this.cursorStyle = flag ? "pointer" : "default";
 		    return flag;
 		  },
 		  isCompleteLogIn () {
 			  flag = this.userForLogIn.username && this.userForLogIn.password;
-			    this.backgroundColorLogIn = flag ? "#597EAA" : "#808080";
+			    this.backgroundColorLogIn = flag ? "#5EAAA8" : "#f8f1f1";
 			    this.cursorStyleLogIn = flag ? "pointer" : "default";
 			    return flag;
 		  }
