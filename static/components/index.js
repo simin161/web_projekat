@@ -10,7 +10,9 @@ template: `<div>
 		<form class="searchForm" style="">
 			<input type="text" placeholder="Naziv restorana..."/>
 			<select id="tipRestorana">
-				<option value="">Tip restorana</option>
+				<option value="">Tip 1</option>
+				<option>Tip 2</option>
+				<option>Tip 3</option>
 			</select>
 			<input type="text" placeholder="Lokacija..."/> 
 			<input type="text" placeholder="Prosečna ocena"/>
