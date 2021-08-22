@@ -175,6 +175,20 @@ public class SparkAppMain {
 			return returnValue;
 		});
 		
+		post("/createManager", (req, res) -> {
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			String returnValue = "FAILURE";
+			
+			if(managerService.createManager((Manager) gson.fromJson(req.body(), Manager.class)))
+				returnValue="SUCCESS";
+			
+			
+			return returnValue;
+			
+		});
+		
 	}
 
 	

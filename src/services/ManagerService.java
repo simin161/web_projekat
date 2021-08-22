@@ -8,6 +8,9 @@ import dao.ManagerDAO;
 import dao.RestaurantDAO;
 
 public class ManagerService {
+	
+	RestaurantService restaurantService = new RestaurantService();
+	
 	public boolean editManager(Manager editedManager) {
 		boolean returnValue = false;
 
@@ -43,7 +46,7 @@ public class ManagerService {
 		return regService.checkExistanceOfUsername(newUsername);
 	}
 	
-	public boolean createManager(Manager newManager, String restaurantId) {
+	public boolean createManager(Manager newManager) {
 		
 		boolean returnValue= false;
 		
@@ -51,7 +54,6 @@ public class ManagerService {
 			
 			newManager.setId(Integer.toString(ManagerDAO.getInstance().getAllManagers().size()) + 1);
 			newManager.setPassword(newManager.getUsername());
-			//newManager.setRestaurant();
 			
 			returnValue = true;
 			
