@@ -44,13 +44,15 @@ template: `<div>
 						</tr>
 					</table>
 					<input :disabled="!isCompleteLogIn" 
+							 @mouseover="mouseOver"
+							 @mouseleave="mouseLeave"
 							v-bind:style="{'background-color': backgroundColorLogIn,
 											'color': 'white', 
 											'cursor': cursorStyleLogIn, 
 											'margin-top': '3%',
 											'margin-right' : '3.5%',
 											'width': '35%'}"
-							 type="submit" v-on:click="logInUser" value="Prijavite se!"> </input>
+							 type="button" v-on:click="logInUser" value="Prijavite se!"> </input>
 
 					<p> {{returnLogInMessage}}</p>
 				</form>
@@ -90,10 +92,10 @@ template: `<div>
 						</tr>
 						<tr>
 							<td>Lozinka: </td>
-							<td> <input id="registerPassword" type="text" v-model="userForRegistration.password"> </input> </td>
+							<td> <input  id="registerPassword" type="text" v-model="userForRegistration.password"> </input> </td>
 						</tr>
 					</table>
-					<input :disabled="!isComplete" v-bind:style="{'background-color': backgroundColor, 'color': 'white', 'cursor': cursorStyle}" type="submit" v-on:click="registerUser" value="Registrujte se!"> </input>
+					<input :disabled="!isComplete" @mouseover="mouseOver" @mouseleave="mouseLeave" v-bind:style="{'background-color': backgroundColor, 'color': 'white', 'cursor': cursorStyle}" type="submit" v-on:click="registerUser" value="Registrujte se!"> </input>
 					<p> {{returnMessage}}</p>
 				</form>
 			  </div>
@@ -132,7 +134,16 @@ template: `<div>
 		},
 		handleScroll () {
 		    this.scrolled = window.scrollY > 0;
-		  }
+		  },
+		  mouseOver : function(){
+			  this.backgroundColorLogIn =  "#79b9b6";
+			  this.backgroundColor =  "#79b9b6";
+		  },
+		  mouseLeave : function(){
+				  this.backgroundColorLogIn =  "#5eaaa8" ;
+				  this.backgroundColor =  "#5eaaa8" ;
+
+			  }
 	},
 	created () {
 	  window.addEventListener('scroll', this.handleScroll);
