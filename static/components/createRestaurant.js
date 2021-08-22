@@ -37,7 +37,6 @@ Vue.component('create-restaurant', {
 			   			<tr>
 			   				<td style="font-size: 20px">Tip restorana: </td>
 			   				<td><select style="font-size: 20px" name="types" id="type-select" v-model="restaurantForCreate.restaurantType">
-			   						<option>Izaberite</option>
 			   						<option>Tip 1</option>
 			   						<option>Tip 2</option>
 			   						<option>Tip 3</option>
@@ -62,10 +61,10 @@ Vue.component('create-restaurant', {
 			   						<option value="">Izaberite</option>
 			   					</select>	
 			   				</td>
-			   				<td><input type="button" style="background-color: #597EAA; color: white, font-size: 20px" value= "+" @click="location.href='/#/createManager.js'"></input></td>
+			   				<td><input type="button" style="background-color: #597EAA; color: white" value= "+" onclick="window.location.href='/#/createManager'"></input></td>
 			   			</tr>
 			   			<tr>
-			   				<td><input type="button" style="background-color: #597EAA; color: white, font-size: 20px" value="Kreiraj restoran" @click = "createRestaurant()" backgroundColor = '#597EAA'></input></td>
+			   				<td><input type="button" style="background-color: #597EAA; color: white" value="Kreiraj restoran" @click = "createRestaurant()" backgroundColor = '#597EAA'></input></td>
 			   			</tr>
 			   		</table>
 			   	</form>
@@ -79,7 +78,7 @@ Vue.component('create-restaurant', {
 				event.preventDefault();
 				axios.post('/createRestaurant', this.restaurantForCreate).
 				then(response =>(this.returnMessage = response.data == "SUCCESS" 
-				 ? router.push('/welcome-page') : "Nevalidni podaci!"));
+				 ? router.push('/createRestaurant') : "Nevalidni podaci!"));
 				
 			
 			}

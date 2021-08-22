@@ -7,14 +7,12 @@ Vue.component('create-manager', {
 			returnMessage : "",
 			returnCreateMessage: "",
 			managerForCreate: {
-								managerUserName: "",
-								managerName: "",
-								managerSurname: "",
-								managerGender: "",
-								managerDateOfBirth: "",
-								managerRestaurant: "",
-								
-								
+								username: "",
+								name: "",
+								surname: "",
+								sex: "",
+								dateOfBirth: null,
+								restaurant: null
 			
 							  },
 			isDisabled: true,
@@ -25,47 +23,44 @@ Vue.component('create-manager', {
 	},
 	
 	template: `<div>
-			   <header>
-			   <span>Web projekat</span>
-			   </header>
-			   <br/>
+			   <navigation-header></navigation-header>
 			   
 			   <div style="margin-top: 100px; margin-left: 42%; margin-bottom:23%">
 			   	<form>
 			   		<table style="text-align: left, margin: auto">
 			   		<br/>
 			   			<tr>
+			   				<td>Korisničko ime:</td>
+			   				<td><input id="managerUsername" v-model="managerForCreate.username"/></td>
+			   			</tr>
+			   			<tr>
 			   				<td>Ime: </td>
-			   				<td><input id="managerName" v-model="managerForCreate.managerName"/></td>
+			   				<td><input id="managerName" v-model="managerForCreate.name"/></td>
 			   			</tr>
 			   			<tr>
 			   				<td>Prezime: </td>
-			   				<td><input id="managerSurname" v-model="managerForCreate.managerSurname"/></td>
+			   				<td><input id="surname" v-model="managerForCreate.managerSurname"/></td>
 			   				</td>
 			   			</tr>
 			   			<tr>
-			   				<td>Podatak 3: </td>
-			   				<td></td>
-			   			</tr>
-			   			<tr>
-			   				<td>Podatak 4: </td>
-			   				<td><input type="file" name="imageFile" id="imgFile"/>
-			   				
-			   			
-			   				</td>
-			   			</tr>
-			   			<tr>
-			   				<td>Podatak 5: </td>
-			   				<td>
-			   				</td>
-			   				<td><input type="button" style="background-color: #597EAA; color: white" value= "+"></input></td>
-			   			</tr>
-			   			<tr>
-			   				<td><input type="button" style="background-color: #597EAA; color: white" value="Kreiraj restoran" @click="isDisabled = false; backgroundColor = '#597EAA'"></input></td>
+			   				<td><input type="button" style="background-color: #597EAA; color: white" value="Kreiraj menadžera" @click="createManager()"></input></td>
 			   			</tr>
 			   		</table>
 			   	</form>
 			</div>
 		</div>
 	`
+	,
+	methods: {
+	
+		createManager : function(){
+		
+			event.preventDefault();
+			axios.post('/createManager', this.managerForCreate).
+			then(response =>(this.returnMessage = response.data == "SUCCESS"
+			 ? router.push('/createManager') : "Nevalidni podaci!"));
+		
+		}
+	
+	}
 });

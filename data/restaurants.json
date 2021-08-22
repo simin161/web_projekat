@@ -66,5 +66,13 @@
     "articles": [],
     "status": "CLOSED",
     "restaurantLogo": ""
+  },
+  {
+    "id": "91",
+    "name": "Danas je divan dan",
+    "restaurantType": "Tip 3",
+    "articles": [],
+    "status": "CLOSED",
+    "restaurantLogo": ""
   }
 ]
