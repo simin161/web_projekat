@@ -29,7 +29,7 @@ li a:hover:not(.active) {
 
 li a.active {
   color: white;
-  background-color: #5EAAA8;
+  background-color: #5EAAA8;  
 }
 
 .right {

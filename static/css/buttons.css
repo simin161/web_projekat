@@ -4,6 +4,12 @@ input[type=button]{
   cursor: pointer;
 }
 
+input[type=button]:hover{
+	background-color: #79b9b6;
+		transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
+	
+}
+
 input[type=text], [type=password], [type=date]{
 	outline: 0;
 	border: none;
