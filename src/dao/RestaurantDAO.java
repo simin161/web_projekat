@@ -78,4 +78,16 @@ public class RestaurantDAO {
 		
 	}
 	
+	public Restaurant findRestaurantById(String id) {
+	
+		Restaurant restaurant = new Restaurant();
+		for( Restaurant r : allRestaurants){
+			
+			if(r.getId().equals(id))
+				return r;
+		}
+		
+		return null;
+		
+	}
 }

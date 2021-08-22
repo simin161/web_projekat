@@ -1,9 +1,11 @@
 package services;
 
 import beans.Manager;
+import beans.Restaurant;
 import beans.UserInfo;
 import beans.UserType;
 import dao.ManagerDAO;
+import dao.RestaurantDAO;
 
 public class ManagerService {
 	public boolean editManager(Manager editedManager) {
@@ -40,4 +42,28 @@ public class ManagerService {
 		RegistrationService regService = new RegistrationService();
 		return regService.checkExistanceOfUsername(newUsername);
 	}
+	
+	public boolean createManager(Manager newManager, String restaurantId) {
+		
+		boolean returnValue= false;
+		
+		try {
+			
+			newManager.setId(Integer.toString(ManagerDAO.getInstance().getAllManagers().size()) + 1);
+			newManager.setPassword(newManager.getUsername());
+			//newManager.setRestaurant();
+			
+			returnValue = true;
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			returnValue = false;
+			
+		}
+		
+		return returnValue;
+		
+	}
+	
 }

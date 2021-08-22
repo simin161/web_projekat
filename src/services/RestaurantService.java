@@ -42,4 +42,10 @@ public class RestaurantService {
 		return RestaurantDAO.getInstance().getAllRestaurants();
 	}
 	
+	
+	public Restaurant findRestaurantById(String id) {
+		
+		return RestaurantDAO.getInstance().findRestaurantById(id);
+		
+	}
 }
