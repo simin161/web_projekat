@@ -16,6 +16,16 @@ public class RestaurantDAO {
 	private ArrayList<Restaurant> allRestaurants;
 	private Gson gson = new GsonBuilder().setDateFormat("yyyy-mm-dd").setPrettyPrinting().create();
 	
+	private static RestaurantDAO instance;
+	
+	public static RestaurantDAO getInstance() {
+		if(instance == null) {
+			instance = new RestaurantDAO();
+		}
+		
+		return instance;
+	}
+	
 	public RestaurantDAO() {
 		load();
 	}
@@ -32,6 +42,22 @@ public class RestaurantDAO {
 	
 	public ArrayList<Restaurant> getAll(){
 		return allRestaurants;
+	}
+	
+	public Restaurant findById(String restaurantId) {
+		if(restaurantId == null)
+			return null;
+		
+		Restaurant returnValue = null;
+		
+		for(Restaurant restaurant : allRestaurants) {
+			if(restaurant.getId().equals(restaurantId)) {
+				returnValue = restaurant;
+				break;
+			}
+		}
+		
+		return returnValue;
 	}
 
 }

@@ -1,5 +1,8 @@
 [
   {
+  	"restaurant": {
+  		"id": "1"
+  	},
     "id": "1",
     "username": "manager",
     "password": "manager",
