@@ -15,6 +15,7 @@ import beans.Administrator;
 import beans.Customer;
 import beans.Deliverer;
 import beans.Manager;
+import beans.Restaurant;
 import beans.User;
 import beans.UserInfo;
 import services.AdministratorService;
@@ -151,6 +152,16 @@ public class SparkAppMain {
 			}
 
 			return returnValue ? "Uspesna izmena podataka" : "Pogresni podaci!";
+		});
+		
+		get("/restaurantForManager", (req, res)->{
+			res.type("application/json");
+			Session session = req.session(true);
+			Manager loggedManager = session.attribute("loggedUser");
+			Restaurant restaurant = managerService.findRestaurantForManager(loggedManager);
+			ArrayList<Restaurant> returnValue = new ArrayList<Restaurant>();
+			returnValue.add(restaurant);
+			return gson.toJson(returnValue);
 		});
 	}
 }

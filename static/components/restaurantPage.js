@@ -1,7 +1,7 @@
 Vue.component('show-restaurant',{
 	data: function(){
 		return{
-			items: ['Hello Vue!', '123', '456', '789', '101112'],
+			restaurant:  { type: Object, default: () => ({}) },
 			showComponent : '1',
 			scrolled: false
 		};
@@ -21,20 +21,20 @@ Vue.component('show-restaurant',{
 			<br/>
 			<div style="margin-top: 3%; margin-left: 35%">
 				<p style="float: left;">
-					<img src="http://placekitten.com/g/200/200" height="65%" width="65%">
+					<img :src="restaurant.restaurantLogo" height="65%" width="65%">
 				</p>
 				<table>
 					</br>					
 					<tr>
 						<td>Restoran</td>
-						<td><input type="text"></input></td>
+						<td><input type="text" v-model="restaurant.name"></input></td>
 					</tr>
 					</br>
 					
 					<tr>
 						<td>Tip restorana </td>
 						<td> 
-							<select>
+							<select v-model="restaurant.restaurantType">
 								<option>Tip</option>
 							</select>
 						</td>
@@ -43,7 +43,7 @@ Vue.component('show-restaurant',{
 					
 					<tr>
 						<td>Lokacija</td>
-						<td> <input type="text"></input></td>
+						<td> <input type="text" v-model="restaurant.location"></input></td>
 					</tr>
 					</br>
 				</table>
@@ -84,4 +84,8 @@ Vue.component('show-restaurant',{
 	destroyed () {
 	  window.removeEventListener('scroll', this.handleScroll);
 	},
+	mounted(){
+		axios.get("/restaurantForManager")
+		.then(response => (this.restaurant = response.data[0] ))
+	}
 });
