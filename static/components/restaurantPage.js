@@ -10,6 +10,7 @@ Vue.component('show-restaurant',{
 	template: `
 		 <div>
 		 	<navigation-header></navigation-header>
+		 	<div v-if="restaurant != null">
 			<ul :class="scrolled ? 'scrollRest' : 'rest'">
 				<li><a>Izmeni sliku</a> </li>
 				<li><a>Izmeni podatake</a></li>
@@ -70,6 +71,10 @@ Vue.component('show-restaurant',{
 			</div>
 			<div v-if="showComponent === '4'">
 				<comments-for-restaurant></comments-for-restaurant>
+			</div>
+			</div>
+			<div v-if="restaurant == null" class="animated fadeIn" >
+				<img class="center" src="../images/noRestaurant.png"/>
 			</div>
 		 </div>
 	`,
