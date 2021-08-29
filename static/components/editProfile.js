@@ -2,81 +2,60 @@ Vue.component('edit-profile', {
 	data: function(){
 		return{
 			loggedUser: { type: Object, default: () => ({}) },
+			user: null,
 			isDisabled: true,
-			backgroundColor: "#808080",
+			visibility: "hidden",
+			backgroundColor: "#f8f1f1",
 			message : ""
 		};
 	},
 template: `<div>
-		<header>
-		<span>Web projekat</span>
-		<div class="topnav">
-			<span v-if="loggedUser.userType === 'CUSTOMER'"> 
-				<a>Pregled restorana </a>
-			</span>
-			<span v-if="loggedUser.userType === 'ADMINISTRATOR'" >
-				<a>Dodavanje restorana </a>
-				<a>Dodavanje korisnika</a>
-				<a>Pregled restorana </a>
-				<a>Pregled korisnika </a>
-			</span>
-			<span v-if="loggedUser.userType === 'MANAGER'">
-				<a>Prikaz restorana</a>
-				<a>Pregled zahteva </a>
-			</span>
-			<span v-if="loggedUser.userType === 'DELIVERER'">
-				<a>Pregled zahteva</a>
-				<a>Porudžbine bez dostavljača</a>
-				<a>Pregled dostava</a>
-			</span>
-			<sign-out></sign-out>
-		</div>
-		</header>
-		<br/>
+			<navigation-header></navigation-header>
+			<ul :class="scrolled ? 'scrollRest' : 'rest'">
+				<li><a @click="isDisabled = false; backgroundColor = '#5eaaa8'; visibility = 'visible'">Izmeni nalog</a> </li>
+			</ul>
+			<br/>
 		
-		<div style="margin-top: 100px; margin-left: 42%; margin-bottom:23%">
+		<div style="margin-top: 100px; margin-left: 38%; margin-bottom:23%" >
 			<form>
-				<table>
-					<tr>
-						<td> </td>
-						<td> <input type="button" style="background-color: #597EAA; color: white" value="Izmeni nalog" @click="isDisabled = false; backgroundColor = '#597EAA'"></input> </td>
-						<td> </td>
-					</tr>
-					<tr>
+				<table style="width: 50%">
+					<tr >
 						<td>Ime: </td>
 						<td> <input type="text" v-model="loggedUser.name" :disabled="isDisabled"> </input> </td>
 					</tr>
+					<br/>
 					<tr>
 						<td>Prezime: </td>
 						<td><input type="text" v-model="loggedUser.surname" :disabled="isDisabled"></input></td>
 					</tr>
+					<br/>
 					<tr>
 						<td>Datum rođenja:</td>
-						<td><input type="date" v-model="loggedUser.dateOfBirth" :disabled="isDisabled"></input> </td>
+						<td><input style="width:57%" type="date" v-model="loggedUser.dateOfBirth" :disabled="isDisabled"></input> </td>
 					</tr>
+					<br/>
 					<tr>
 						<td>Pol:</td>
 						<td>
-							<select v-model="loggedUser.sex" :disabled="isDisabled">
+							<select v-model="loggedUser.sex" style="width:57%" :disabled="isDisabled">
 								<option>Muško</option>
 								<option>Žensko</option>
 							</select>
 						</td>
 					</tr>
+					<br/>
 					<tr>
-						<td>Korisnicko ime: </td>
+						<td>Korisničko ime: </td>
 						<td><input type="text" v-model="loggedUser.username" :disabled="isDisabled"></input></td>
 					</tr>
+					<br/>
 					<tr>
 						<td>Lozinka: </td>
-						<td><input type="password" v-model="loggedUser.password" :disabled="isComplete"></input></td>
+						<td><input type="password" v-model="loggedUser.password" :disabled="isDisabled"></input></td>
 					</tr>
-					<tr>
-						<td></td>
-						<td><input type="button" v-bind:style="{'background-color': backgroundColor, 'color': 'white'}" value="Sačuvaj" :disabled="isDisabled" v-on:click="save"></input></td>
-						<td></td>
-					</tr>
+					<br/>
 				</table>
+				<input @mouseover="mouseOver" @mouseleave="mouseLeave" type="button" v-bind:style="{'background-color': backgroundColor, 'color': 'white', 'visibility': visibility, 'width':'37%'}" value="Sačuvaj"  v-on:click="save"></input>
 			</form>
 			<p>{{message}} </p>
 		</div>
@@ -86,11 +65,17 @@ template: `<div>
 		save : function(){
 			axios.post("/editProfile", this.loggedUser)
 			.then(response => (this.message = response.data))
-		}
+		},
+		  mouseOver : function(){
+			  this.backgroundColor =  "#79b9b6";
+		  },
+		  mouseLeave : function(){
+				  this.backgroundColor =  "#5eaaa8" ;
+		  }
 	}
 	,
 	mounted(){
 	axios.get("/getLoggedUser")
-	.then(response => (this.loggedUser = response.data[0]))
+	.then(response => (this.loggedUser = response.data[0] ))
 }
 });

@@ -31,5 +31,16 @@
     "sex": "Muško",
     "userType": "CUSTOMER",
     "dateOfBirth": "1965-05-26"
+  },
+  {
+    "collectedPoints": 0,
+    "id": "4",
+    "username": "da",
+    "password": "ad",
+    "name": "sdaf",
+    "surname": "sa",
+    "sex": "Žensko",
+    "userType": "CUSTOMER",
+    "dateOfBirth": "0011-02-11"
   }
 ]

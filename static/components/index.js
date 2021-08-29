@@ -5,18 +5,14 @@ Vue.component('first-page', {
 		};
 	},
 template: `<div>
-		<header>
-		<span>Web projekat</span>
-				<div id="modal">
-					<app-modal></app-modal>
-				</div>
-		</header>
+		<app-modal></app-modal>
 		<br/>
-		
-		<form class="searchForm">
+		<form class="searchForm" style="">
 			<input type="text" placeholder="Naziv restorana..."/>
 			<select id="tipRestorana">
-				<option value="">Tip restorana</option>
+				<option value="">Tip 1</option>
+				<option>Tip 2</option>
+				<option>Tip 3</option>
 			</select>
 			<input type="text" placeholder="Lokacija..."/> 
 			<input type="text" placeholder="Prosečna ocena"/>
@@ -24,7 +20,7 @@ template: `<div>
 		</form>
 		<hr>
 			<div>
-				<div class="restaurants" v-for="item in restaurats">
+				<div class="lists" v-for="item in restaurats">
 					<span style="float: left; margin-top: 15px">
 						<img style="border-radius: 5px;" :src="item.restaurantLogo" height="90px" width="90px">
 					</span> 

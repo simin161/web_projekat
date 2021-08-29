@@ -20,13 +20,18 @@
     "userType": "CUSTOMER"
   },
   {
-      "username": "manager",
-      "password": "manager",
-      "userType": "MANAGER"
+    "username": "manager",
+    "password": "manager",
+    "userType": "MANAGER"
   },
   {
-  	  "username": "deliverer",
-      "password": "deliverer",
-      "userType": "DELIVERER"
+    "username": "deliverer",
+    "password": "deliverer",
+    "userType": "DELIVERER"
+  },
+  {
+    "username": "da",
+    "password": "ad",
+    "userType": "CUSTOMER"
   }
 ]

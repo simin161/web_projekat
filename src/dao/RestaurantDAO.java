@@ -61,6 +61,21 @@ public class RestaurantDAO {
 	
 	public void addRestaurant(Restaurant newRestaurant) {
 		allRestaurants.add(newRestaurant);
+
+	public Restaurant findById(String restaurantId) {
+		if(restaurantId == null)
+			return null;
+		
+		Restaurant returnValue = null;
+		
+		for(Restaurant restaurant : allRestaurants) {
+			if(restaurant.getId().equals(restaurantId)) {
+				returnValue = restaurant;
+				break;
+			}
+		}
+		
+		return returnValue;
 	}
 
 	public List<Restaurant> findRestaurantByName(String name) {

@@ -93,6 +93,8 @@ public class SparkAppMain {
 		});
 
 		get("/getAllRestaurants", (req, res) ->{
+		
+		get("/getAllRestaurants", (req, res) -> {
 			res.type("application/json");
 			return gson.toJson(restaurantService.getAllRestaurants());
 		});
@@ -168,6 +170,15 @@ public class SparkAppMain {
 			}
 
 			return returnValue;
+
+		get("/restaurantForManager", (req, res)->{
+			res.type("application/json");
+			Session session = req.session(true);
+			Manager loggedManager = session.attribute("loggedUser");
+			Restaurant restaurant = managerService.findRestaurantForManager(loggedManager);
+			ArrayList<Restaurant> returnValue = new ArrayList<Restaurant>();
+			returnValue.add(restaurant);
+			return gson.toJson(returnValue);
 		});
 	}
 }

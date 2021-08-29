@@ -1,9 +1,11 @@
 package services;
 
 import beans.Manager;
+import beans.Restaurant;
 import beans.UserInfo;
 import beans.UserType;
 import dao.ManagerDAO;
+import dao.RestaurantDAO;
 
 public class ManagerService {
 	public boolean editManager(Manager editedManager) {
@@ -34,6 +36,17 @@ public class ManagerService {
 		}
 
 		return returnValue;
+	}
+	
+	public Restaurant findRestaurantForManager(Manager loggedManager) {
+		return RestaurantDAO.getInstance().findById(loggedManager.getRestaurant().getId());
+	}
+	
+	private boolean checkIfEmptyOrNull(String str) {
+		if(str == null || str.equals(""))
+			return true;
+		
+		return false;
 	}
 
 	private boolean checkUsername(String newUsername) {
