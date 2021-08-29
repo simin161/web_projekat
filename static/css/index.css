@@ -19,7 +19,13 @@
 	vertical-align : middle;
 	margin-right: 15%;
 }
-
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+  width: 50%;
+}
 .buttonDecline{
 	width: 23px;
 	height: 22px;
@@ -57,4 +63,28 @@
 	margin-left: 80px;
 	margin-bottom: 475px;
 	color: #274E13;
+}
+.animated {
+    -webkit-animation-duration: 10s;
+    animation-duration: 5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+     
+@-webkit-keyframes fadeIn {
+    0% {opacity: 0;}
+	         100% {opacity: 1;}
+    }
+         
+@keyframes fadeIn {
+	0% {opacity: 0;}
+        100% {opacity: 1;}
+    }
+         
+.fadeIn {
+	-webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+h1,h2,h3,h4,h5,h6{
+	color: #2c5453
 }

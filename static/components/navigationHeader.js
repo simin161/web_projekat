@@ -30,9 +30,9 @@ Vue.component('navigation-header', {
 							</ul>
 							<ul :class="scrolled ? 'scroll' : ''" v-if="loggedUser.userType === 'DELIVERER'">
 								<li><a class="active" href="#/welcome-page">Početna</a></li>
-								<li><a>Pregled zahteva</a></li>
-								<li><a>Porudzbine bez dostavljaca</a></li>
-								<li><a>Pregled dostava</a></li>
+								<li><a href="#/order-review">Pregled zahteva</a></li>
+								<li><a href='#/orders-without-deliverer'>Porudžbine bez dostavljača</a></li>
+								<li><a href='#/all-orders'>Pregled dostava</a></li>
 								<li><a href="#/edit-profile"> Moj nalog </a></li>
 								<li class="right"><sign-out></sign-out></li>
 							</ul>

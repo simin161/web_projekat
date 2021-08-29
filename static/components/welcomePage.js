@@ -6,9 +6,11 @@ Vue.component('welcome-page', {
 	},
 template: `<div>
 				<navigation-header></navigation-header>
-				<div class="welcome">
-					<h1>Dobrodosli, {{loggedUser.username}}</h1>
-				</div>
+				<div class="animated fadeIn">
+					<div class="welcome">
+						<h1>Dobrodošli, {{loggedUser.username}}</h1>
+					</div>
+				<div>
 		   </div>`
 
 	,
