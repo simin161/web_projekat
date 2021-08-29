@@ -1,22 +1,25 @@
 Vue.component("orders-for-restaurant", {
 	data: function(){
 		return{
-			items: ['Hello Vue!', '123', '456', '789', '101112']
+			orders: null
 		};
 	}
 	,
 	template: `
 		<div>
-			<div class="lists" v-for="item in items">
+			<div class="lists" v-for="order in orders">
 				<div>
 					<span>
 						<button class="orderStatus"></button>
 					</span>
-					<p>{{item}}</p>
+					<p>{{order}}</p>
 					<p>Porudzbina</p>
 					<p>Dostavljac</p> 
 					<p>Cena</p>
 				</div>
+			</div>
+			<div class="animated fadeIn" v-if="orders === null">
+				<img class="center" src="../images/noOrders.png"/>
 			</div>
 		</div>
 		`

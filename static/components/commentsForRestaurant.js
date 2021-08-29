@@ -1,13 +1,13 @@
 Vue.component("comments-for-restaurant", {
 	data: function(){
 		return{
-			items: ['Hello Vue!', '123', '456', '789', '101112']
+			comments: null
 		};
 	}
 	,
 	template: `
 		<div>
-			<div class="lists" v-for="item in items">
+			<div class="lists" v-for="comment in comments">
 				<div>
 					<span style="float: right">
 						<input type="button" class="accept"></input>
@@ -18,6 +18,10 @@ Vue.component("comments-for-restaurant", {
 					<p>Dostavljac</p> 
 					<p>Cena</p>
 				</div>
+			</div>
+			<div v-if="comments === null" class="animated fadeIn">
+				<img class="center" src="../images/noComments.png"/>
+			</div>
 			</div>
 		</div>
 		`
