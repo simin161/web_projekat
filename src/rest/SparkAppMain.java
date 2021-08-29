@@ -93,6 +93,10 @@ public class SparkAppMain {
 		});
 
 		get("/getAllRestaurants", (req, res) ->{
+			
+			return false;
+			
+		});
 		
 		get("/getAllRestaurants", (req, res) -> {
 			res.type("application/json");
@@ -170,7 +174,8 @@ public class SparkAppMain {
 			}
 
 			return returnValue;
-
+		});
+		
 		get("/restaurantForManager", (req, res)->{
 			res.type("application/json");
 			Session session = req.session(true);
@@ -180,5 +185,6 @@ public class SparkAppMain {
 			returnValue.add(restaurant);
 			return gson.toJson(returnValue);
 		});
+	
 	}
 }

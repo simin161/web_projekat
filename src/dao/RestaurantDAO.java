@@ -61,7 +61,8 @@ public class RestaurantDAO {
 	
 	public void addRestaurant(Restaurant newRestaurant) {
 		allRestaurants.add(newRestaurant);
-
+	}
+	
 	public Restaurant findById(String restaurantId) {
 		if(restaurantId == null)
 			return null;
