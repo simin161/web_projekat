@@ -1,7 +1,7 @@
 Vue.component('create-restaurant', {
 
 	data: function(){
-		
+	
 		return{
 			showCreate: false,
 			returnMessage : "",
@@ -24,7 +24,7 @@ Vue.component('create-restaurant', {
 	},
 	
 	template: `<div>
-			   <navigation-header></navigation-header>
+			   <navigation-header></navigation-5header>
 			   
 			   <div style="margin-top: 100px; margin-left: 38%; margin-bottom:23%">
 			   	<form>
@@ -36,13 +36,16 @@ Vue.component('create-restaurant', {
 			   			</tr>
 			   			<tr>
 			   				<td style="font-size: 20px">Tip restorana: </td>
-			   				<td><select style="font-size: 20px" name="types" id="type-select" v-model="restaurantForCreate.restaurantType">
+			   				
+			   				<td>
+			   					<select style="font-size: 20px" name="types" id="type-select" v-model="restaurantForCreate.restaurantType">
 			   						<option>Tip 1</option>
 			   						<option>Tip 2</option>
 			   						<option>Tip 3</option>
 			   						<option>Tip 4</option>
 			   					</select>
 			   				</td>
+			   				
 			   			</tr>
 			   			<tr>
 			   				<td style="font-size: 20px">Lokacija: </td>
@@ -57,9 +60,11 @@ Vue.component('create-restaurant', {
 			   			</tr>
 			   			<tr>
 			   				<td style="font-size: 20px">Menadžer: </td>
-			   				<td><select style="font-size: 20px" name="managers" id="managerSelect">
+			   				<td>
+			   					<select style="font-size: 20px" name="managers" id="managerSelect" >
 			   						<option value="">Izaberite</option>
 			   					</select>	
+			   				
 			   				</td>
 			   				<td><input type="button" style="background-color: #597EAA; color: white" value= "+" onclick="window.location.href='/#/createManager'"></input></td>
 			   			</tr>
