@@ -18,6 +18,7 @@ Vue.component('show-restaurant',{
 				<li><a @click="showComponent='2'">Prikaži artikle</a></li>
 				<li><a @click="showComponent='3'">Prikaži porudžbine</a></li>
 				<li><a @click="showComponent='4'">Prikaži komentare</a></li>
+				<li v-if="showComponent === '2'" ><a class="add" href="#/add-article">Dodaj artikal</a></li>
 			</ul>
 			<br/>
 			<div style="margin-top: 3%; margin-left: 35%">
