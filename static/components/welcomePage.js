@@ -6,11 +6,9 @@ Vue.component('welcome-page', {
 	},
 template: `<div>
 				<navigation-header></navigation-header>
-				<div>
-					<div class="welcome">
-						<h1>Dobrodošli, {{loggedUser.username}}</h1>
-					</div>
-				<div>
+				<div class="welcome">
+					<h1>Dobrodošli, {{loggedUser.username}}</h1>
+				</div>
 		   </div>`
 	,
 	mounted(){

@@ -12,12 +12,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import beans.Administrator;
+import beans.Article;
 import beans.Customer;
 import beans.Deliverer;
 import beans.Manager;
 import beans.Restaurant;
 import beans.User;
 import beans.UserInfo;
+import dto.ArticleDTO;
 import services.AdministratorService;
 import services.CustomerService;
 import services.DelivererService;
@@ -162,6 +164,20 @@ public class SparkAppMain {
 			ArrayList<Restaurant> returnValue = new ArrayList<Restaurant>();
 			returnValue.add(restaurant);
 			return gson.toJson(returnValue);
+		});
+		
+		post("/addArticle", (req, res) ->{
+			res.type("application/json");
+			Session session = req.session(true);
+			Manager loggedManager = session.attribute("loggedUser");
+			Article article = new Article(gson.fromJson(req.body(), ArticleDTO.class));
+			restaurantService.addArticleToRestaurant(loggedManager.getRestaurant().getId(), article);
+			
+			return "SUCCESS";
+		});
+		
+		get("/getArticlesForRestaurant", (req, res)->{
+			return null;
 		});
 	}
 }

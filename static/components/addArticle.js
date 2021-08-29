@@ -4,10 +4,10 @@ Vue.component("add-article",{
 				article:{
 						id: "",
 						name: "",
-						price: "",
+						price: null,
 						articleType: "",
 						restaurant: "",
-						quantity: "",
+						quantity: null,
 						description: "",
 						articleImage: ""
 				}
@@ -43,12 +43,12 @@ Vue.component("add-article",{
 					<br/>
 					<tr>
 						<td>Količina:</td>
-						<td><input type="text" v-model="article.quantity"></input></td>
+						<td><input type="number" v-model.number="article.quantity"></input></td>
 					</tr>
 					<br/>
 					<tr>
 						<td>Cena:</td>
-						<td><input type="text" v-model="article.price"></input></td>
+						<td><input type="number" v-model.number="article.price"></input></td>
 					</tr>
 					<br/>
 					<tr>
@@ -57,11 +57,17 @@ Vue.component("add-article",{
 					</tr>
 					<br/>
 				</table>
-				<input @mouseover="mouseOver" @mouseleave="mouseLeave" type="button" v-bind:style="{'background-color': backgroundColor, 'color': 'white', 'visibility': visibility, 'width':'37%'}" value="Sačuvaj"  v-on:click="save"></input>
+				<input type="button" value="Sačuvaj"  v-on:click="save"></input>
 			</form>
-			<p>{{message}} </p>
+			
 		</div>
 		</div>
 	`
-	
+	,
+	methods : {
+		save : function(){
+			axios.post("/addArticle", this.article)
+			.then(response=>(router.push("/show-restaurant")))
+		}
+	}
 });

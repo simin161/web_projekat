@@ -1,6 +1,8 @@
 package dao;
 
+import java.io.IOException;
 import java.io.Reader;
+import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -37,6 +39,19 @@ public class RestaurantDAO {
 			reader.close();
 		}catch(Exception e) {
 			allRestaurants = new ArrayList<Restaurant>();
+		}
+	}
+	
+	public void save() {
+		try {
+			Writer writer;
+			writer = Files.newBufferedWriter(Paths.get("data/restaurants.json"));
+			Gson gson1 = new GsonBuilder().setDateFormat("yyyy-mm-dd").excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
+			gson1.toJson(allRestaurants, writer);
+			writer.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	

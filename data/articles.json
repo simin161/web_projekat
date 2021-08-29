@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "gospodi pomiluj",
+    "price": 1.0,
+    "articleType": "DRINK",
+    "restaurant": {
+      "id": "1"
+    },
+    "quantity": 500.0,
+    "description": "Ubistveni koktel",
+    "articleImage": ""
+  },
+  {
+    "id": "2",
+    "name": "esus pomogi",
+    "price": 234.0,
+    "articleType": "FOOD",
+    "restaurant": {
+      "id": "1"
+    },
+    "quantity": 500.0,
+    "description": "Glavno jelo koje ide uz koktel \"Gospodi pomiluj\"",
+    "articleImage": ""
+  }
+]

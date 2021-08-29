@@ -2,13 +2,22 @@ package beans;
 
 import java.util.ArrayList;
 
+import com.google.gson.annotations.Expose;
+
 public class Restaurant {
+	@Expose
 	private String id;
+	@Expose
 	private String name;
+	@Expose
 	private String restaurantType; //razmisliti
+	@Expose
 	private ArrayList<Article> articles;
+	@Expose
 	private RestaurantStatus status;
+	@Expose
 	private Location location;
+	@Expose
 	private String restaurantLogo; //ili BufferedImage
 	
 	public String getId() {
