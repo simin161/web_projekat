@@ -21,6 +21,7 @@ import beans.User;
 import beans.UserInfo;
 import dto.ArticleDTO;
 import services.AdministratorService;
+import services.ArticleService;
 import services.CustomerService;
 import services.DelivererService;
 import services.ManagerService;
@@ -37,6 +38,7 @@ public class SparkAppMain {
 	private static ManagerService managerService = new ManagerService();
 	private static AdministratorService administratorService = new AdministratorService();
 	private static DelivererService delivererService = new DelivererService();
+	private static ArticleService articleService = new ArticleService();
 
 	public static void main(String[] args) throws Exception {
 		port(9000);
@@ -177,7 +179,9 @@ public class SparkAppMain {
 		});
 		
 		get("/getArticlesForRestaurant", (req, res)->{
-			return null;
+			Session session = req.session(true);
+			Manager loggedManager = session.attribute("loggedUser");
+			return gson.toJson(articleService.getArticlesForRestaurant(loggedManager.getRestaurant().getId()));
 		});
 	}
 }
