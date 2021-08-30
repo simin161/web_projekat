@@ -1,6 +1,8 @@
 package dao;
 
+import java.io.IOException;
 import java.io.Reader;
+import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -51,6 +53,34 @@ public class OrderDAO {
 		
 	}
 	
+	public void save() {
+		
+		try {
+			Writer writer;
+			writer = Files.newBufferedWriter(Paths.get("data/orders.json"));
+			gson.toJson(allOrders, writer);
+			writer.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
+	public void addOrder(Order newOrder) {
+		allOrders.add(newOrder);
+	}
+	
+	public Order findOrderById(String orderId) {
+		
+		Order order = null;
+		for(Order o : allOrders) {
+			if(orderId.equals(o.getId())) {
+				order = o;
+			}
+		}
+		
+		return order;
+	}
 	
 }
