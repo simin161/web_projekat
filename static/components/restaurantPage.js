@@ -53,7 +53,17 @@ Vue.component('show-restaurant',{
 						<td>Slika: </td>
 						<td><input type="file" @change="imageSelected"></input></td>
 					</tr>
+					<tr>
+						<td>Status:</td>
+						<td>
+							<select :disabled="enable" v-model="restaurant.status">
+								<option value="OPEN">Otvoren</option>
+								<option value="CLOSED">Zatvoren</option>
+							</select>
+						</td>
+					</tr>
 				</table>
+
 				<input type="button" v-bind:style="{'visibility': visibility}" value="Sačuvaj"  v-on:click="save"></input>
 			</div>
 			<hr style="width: 100%">
