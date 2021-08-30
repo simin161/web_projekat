@@ -175,9 +175,9 @@ public class SparkAppMain {
 			Article article = new Article(gson.fromJson(req.body(), ArticleDTO.class));
 			Session session = req.session(true);
 			Manager loggedManager = session.attribute("loggedUser");
-			restaurantService.addArticleToRestaurant(loggedManager.getRestaurant().getId(), article);
-
-			return "SUCCESS";
+			boolean ret = restaurantService.addArticleToRestaurant(loggedManager.getRestaurant().getId(), article);
+			
+			return ret ? "Uspešno ste dodali artikal!" : "Naziv artikla već postoji!";
 		});
 
 		get("/getArticlesForRestaurant", (req, res) -> {

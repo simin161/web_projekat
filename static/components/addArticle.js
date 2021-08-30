@@ -11,7 +11,7 @@ Vue.component("add-article",{
 						description: "",
 						articleImage: null
 				},
-				file: null
+				message: ""
 			}
 	},
 	
@@ -60,7 +60,7 @@ Vue.component("add-article",{
 				</table>
 				<input type="button" value="Sačuvaj"  v-on:click="save"></input>
 			</form>
-			
+			<h3>{{message}}</h3>
 		</div>
 		</div>
 	`
@@ -68,7 +68,7 @@ Vue.component("add-article",{
 	methods : {
 		save : function(){
 			axios.post("/addArticle", this.article)
-			.then(response=>(router.push("/show-restaurant")))
+			.then(response=>(this.message = response.data))
 		},
 		imageSelected(event){
 			const file = document.querySelector('input[type=file]').files[0]

@@ -22,9 +22,13 @@ public class Article {
 	public Article(ArticleDTO dto) {
 		this.id = dto.getId();
 		this.name = dto.getName();
-		this.price = Double.parseDouble(dto.getPrice());
+		if(!dto.getPrice().equals(""))
+			this.price = Double.parseDouble(dto.getPrice());
+		
 		this.articleType = dto.getArticleType();
-		this.quantity = Double.parseDouble(dto.getQuantity());
+		if(!dto.getQuantity().equals(""))
+			this.quantity = Double.parseDouble(dto.getQuantity());
+		
 		this.description = dto.getDescription();
 		this.articleImage = dto.getArticleImage();
 	}

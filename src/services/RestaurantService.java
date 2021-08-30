@@ -19,7 +19,7 @@ public class RestaurantService {
 		return RestaurantDAO.getInstance().getAll();
 	}
 
-	public void addArticleToRestaurant(String idRestaurant, Article newArticle) {
+	public boolean addArticleToRestaurant(String idRestaurant, Article newArticle) {
 		newArticle.setRestaurant(new Restaurant());
 		newArticle.getRestaurant().setId(idRestaurant);
 		if (!checkIfArticleNameExists(idRestaurant, newArticle.getName())) {
@@ -38,7 +38,9 @@ public class RestaurantService {
 			Restaurant restaurant = RestaurantDAO.getInstance().findById(idRestaurant);
 			restaurant.getArticles().add(newArticle);
 			updateRestaurantList(restaurant);
+			return true;
 		}
+		return false;
 
 	}
 
@@ -47,7 +49,7 @@ public class RestaurantService {
 		restaurant.setArticles(ArticleDAO.getInstance().getArticlesForRestaurant(idRestaurant));
 
 		for (Article article : restaurant.getArticles()) {
-			if (article.getName().equals(newArticleName)) {
+			if (article.getName().toLowerCase().equals(newArticleName.toLowerCase())) {
 				return true;
 			}
 		}
