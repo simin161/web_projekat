@@ -1,18 +1,17 @@
 package services;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 
 import beans.Article;
 import beans.Restaurant;
 import dao.ArticleDAO;
 import dao.RestaurantDAO;
+import javaxt.utils.Base64;
 
 public class RestaurantService {
 
@@ -25,17 +24,13 @@ public class RestaurantService {
 		newArticle.getRestaurant().setId(idRestaurant);
 		if (!checkIfArticleNameExists(idRestaurant, newArticle.getName())) {
 			newArticle.setId(String.valueOf(ArticleDAO.getInstance().getAll().size() + 1));
-			newArticle.setArticleImage("../upload/" + newArticle.getArticleImage());
-			/*try {
-				newArticle.setArticleImage(saveImage(newArticle.getArticleImage()));
+			try {
+				newArticle.setArticleImage(saveImage(newArticle.getArticleImage(), newArticle.getId()));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			/*
-			 * catch (IOException e) { // TODO Auto-generated catch block
-			 * e.printStackTrace(); }
-			 */
+
 			ArticleDAO.getInstance().addArticle(newArticle);
 			ArticleDAO.getInstance().save();
 
@@ -46,26 +41,22 @@ public class RestaurantService {
 
 	}
 
-	private String saveImage(String imageName) throws Exception {
+	private String saveImage(String file64, String id) throws Exception {
 
 		String imagePath = ".." + File.separator + "upload";
-
-		// Files.copy(file.getInputStream(),filePath);
-		InputStream is = null;
-		OutputStream os = null;
-		try {
-			is = new FileInputStream(new File("/" + imageName));
-			os = new FileOutputStream(new File(imagePath));
-			byte[] buffer = new byte[1024];
-			int length;
-			while ((length = is.read(buffer)) > 0) {
-				os.write(buffer, 0, length);
-			}
-		} finally {
-			is.close();
-			os.close();
+		
+		String base64Image = file64.split(",")[1];
+		String ext = file64.split(",")[0].split("/")[1].split(";")[0];
+		if(ext.equals("jpeg")) {
+			ext = "jpg";
 		}
+		String imageName = "a" + id + "." + ext;
+		byte[] imageBytes = Base64.decode(base64Image);
 
+		BufferedImage img = ImageIO.read(new ByteArrayInputStream(imageBytes));
+		File file = new File("static/upload/" + imageName);
+		ImageIO.write(img, "jpg", file);
+		imagePath  += File.separator +  file.getName();
 		return imagePath;
 	}
 

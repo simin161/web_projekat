@@ -1,26 +1,14 @@
 [
   {
     "id": "1",
-    "name": "a",
-    "price": 1.0,
+    "name": "Burger",
+    "price": 650.0,
     "articleType": "FOOD",
     "restaurant": {
       "id": "1"
     },
-    "quantity": 1.0,
-    "description": "a",
-    "articleImage": ""
-  },
-  {
-    "id": "2",
-    "name": "q",
-    "price": 1.0,
-    "articleType": "FOOD",
-    "restaurant": {
-      "id": "1"
-    },
-    "quantity": 1.0,
-    "description": "q",
-    "articleImage": "../upload/a.jpg"
+    "quantity": 500.0,
+    "description": "burger burger",
+    "articleImage": "..\\upload\\a1.jpg"
   }
 ]

@@ -9,8 +9,9 @@ Vue.component("add-article",{
 						restaurant: "",
 						quantity: null,
 						description: "",
-						articleImage: ""
-				}
+						articleImage: null
+				},
+				file: null
 			}
 	},
 	
@@ -70,7 +71,15 @@ Vue.component("add-article",{
 			.then(response=>(router.push("/show-restaurant")))
 		},
 		imageSelected(event){
-			this.article.articleImage = event.target.files[0].name
+			const file = document.querySelector('input[type=file]').files[0]
+			const reader = new FileReader()
+
+			let rawImg;
+			reader.onloadend = () => {
+			   this.article.articleImage = reader.result;
+			}
+			reader.readAsDataURL(file);
+			
 		}
 	}
 });

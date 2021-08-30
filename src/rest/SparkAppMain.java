@@ -169,8 +169,6 @@ public class SparkAppMain {
 			return gson.toJson(returnValue);
 		});
 
-		File uploadDir = new File("upload");
-		uploadDir.mkdir(); // create the upload directory if it doesn't exist
 
 		post("/addArticle", (req, res) -> {
 			res.type("application/json");
