@@ -7,7 +7,14 @@ public class Cart {
 	private ArrayList<Article> articles;
 	private Customer customer;
 	private double price;
+	private Restaurant restaurant;
 	
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
+	}
 	public ArrayList<Article> getArticles() {
 		return articles;
 	}
