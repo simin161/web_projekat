@@ -124,6 +124,20 @@ public class OrderDAO {
 		return order;
 	}
 	
-	
+	public void deleteOrder(String id) {
+		
+		for(Order o : allOrders) {
+			if(id.equals(o.getId()))
+			{
+				if(o.getOrderStatus().equals(OrderStatus.PROCESSING))
+				{
+					allOrders.remove(o);
+					break;
+				}
+				
+			}
+		}
+		
+	}
 	
 }

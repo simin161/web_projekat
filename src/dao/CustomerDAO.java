@@ -71,4 +71,15 @@ public class CustomerDAO {
 		}
 		return customer;
 	}
+	
+	public void addPoints() {
+		
+	}
+	
+	public void removePoints() {
+		
+		
+		
+	}
+	
 }

@@ -44,4 +44,10 @@ public class OrderService {
 		
 	}
 	
+	public void deleteOrder(String id) {
+		OrderDAO.getInstance().deleteOrder(id);
+	}
+	
+	
+	
 }
