@@ -3,8 +3,10 @@ Vue.component('show-restaurant',{
 		return{
 			restaurant:  { type: Object, default: () => ({}) },
 			showComponent : '1',
-			scrolled: false
-		};
+			scrolled: false,
+			enable : true,
+			visibility: "hidden"
+			};
 	}
 	,
 	template: `
@@ -12,8 +14,7 @@ Vue.component('show-restaurant',{
 		 	<navigation-header></navigation-header>
 		 	<div v-if="restaurant != null">
 			<ul :class="scrolled ? 'scrollRest' : 'rest'">
-				<li><a>Izmeni sliku</a> </li>
-				<li><a>Izmeni podatake</a></li>
+				<li><a @click="enable = false; visibility='visible'">Izmeni podatake</a></li>
 				<li><a @click="showComponent = '1'">Prikaži kupce</a></li>
 				<li><a @click="showComponent='2'">Prikaži artikle</a></li>
 				<li><a @click="showComponent='3'">Prikaži porudžbine</a></li>
@@ -21,45 +22,41 @@ Vue.component('show-restaurant',{
 				<li v-if="showComponent === '2'" ><a class="add" href="#/add-article">Dodaj artikal</a></li>
 			</ul>
 			<br/>
+			<img :src="restaurant.restaurantLogo" height="100%" width="100%">	
 			<div style="margin-top: 3%; margin-left: 35%">
-				<p style="float: left;">
+			<!---	<p style="float: left;">
 					<img :src="restaurant.restaurantLogo" height="65%" width="65%">
-				</p>
+				</p> --->
 				<table>
 					</br>					
 					<tr>
-						<td>Restoran</td>
-						<td><input type="text" v-model="restaurant.name"></input></td>
+						<td>Restoran:</td>
+						<td><input type="text" :disabled="enable" v-model="restaurant.name"></input></td>
 					</tr>
 					</br>
 					
 					<tr>
-						<td>Tip restorana </td>
+						<td>Tip restorana: </td>
 						<td> 
-							<select v-model="restaurant.restaurantType">
+							<select :disabled="enable" v-model="restaurant.restaurantType">
 								<option>Tip</option>
 							</select>
 						</td>
 					</tr>
 					</br>
-					
 					<tr>
-						<td>Lokacija</td>
-						<td> <input type="text" v-model="restaurant.location"></input></td>
+						<td>Lokacija:</td>
+						<td> <input :disabled="enable" type="text" v-model="restaurant.location"></input></td>
 					</tr>
 					</br>
+					<tr v-bind:style="{'visibility': visibility}">
+						<td>Slika: </td>
+						<td><input type="file" @change="imageSelected"></input></td>
+					</tr>
 				</table>
-				<!--<input style="margin-left: -10%" type="button" value="Promena slike"></input>
-				<input type="button" value="Izmeni podatke"></input>-->
-				<input type="button" value="Sacuvaj"></input>
+				<input type="button" v-bind:style="{'visibility': visibility}" value="Sačuvaj"  v-on:click="save"></input>
 			</div>
 			<hr style="width: 100%">
-			<!--<div style="margin-left: 35%;">
-				<input type="button" value="Prikaz kupaca" @click="showComponent='1'"></input>
-				<input type="button" value="Prikaz artikala" @click="showComponent='2'"></input>
-				<input type="button" value="Prikaz porudzbina" @click="showComponent='3'"></input>
-				<input type="button" value="Prikaz komentara" @click="showComponent='4'"></input>
-			</div> -->
 			</br>
 			<div v-if="showComponent === '1'">
 				<customers-for-restaurant></customers-for-restaurant>
@@ -82,7 +79,22 @@ Vue.component('show-restaurant',{
 	methods:{
 		 handleScroll () {
 	    this.scrolled = window.scrollY > 0;
-	  }
+	  },
+	  save : function(){
+			axios.post("/editRestaurant", this.restaurant)
+			.then(response=>(this.restaurant = response.data[0]))
+		},
+		imageSelected(event){
+			const file = document.querySelector('input[type=file]').files[0]
+			const reader = new FileReader()
+
+			let rawImg;
+			reader.onloadend = () => {
+			   this.restaurant.restaurantLogo = reader.result;
+			}
+			reader.readAsDataURL(file);
+			
+		}
 	},
 	created () {
 	  window.addEventListener('scroll', this.handleScroll);

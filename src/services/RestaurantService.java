@@ -25,8 +25,9 @@ public class RestaurantService {
 		if (!checkIfArticleNameExists(idRestaurant, newArticle.getName())) {
 			newArticle.setId(String.valueOf(ArticleDAO.getInstance().getAll().size() + 1));
 			try {
-				
-				newArticle.setArticleImage(ImageService.getInstance().saveImage(newArticle.getArticleImage(), "a" + newArticle.getId()));
+
+				newArticle.setArticleImage(
+						ImageService.getInstance().saveImage(newArticle.getArticleImage(), "a" + newArticle.getId()));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -66,5 +67,29 @@ public class RestaurantService {
 				break;
 			}
 		}
+	}
+
+	public void editRestaurant(Restaurant editedRestaurant) {
+		for (Restaurant restaurant : RestaurantDAO.getInstance().getAll()) {
+			if (restaurant.getId().equals(editedRestaurant.getId())) {
+				if (checkIfImageChanged(restaurant.getRestaurantLogo(), editedRestaurant.getRestaurantLogo())) {
+					try {
+						editedRestaurant.setRestaurantLogo(ImageService.getInstance()
+								.saveImage(editedRestaurant.getRestaurantLogo(), "r" + editedRestaurant.getId()));
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+
+				RestaurantDAO.getInstance().getAll().set(Integer.parseInt(restaurant.getId()) - 1, editedRestaurant);
+				RestaurantDAO.getInstance().save();
+				break;
+			}
+		}
+	}
+
+	private boolean checkIfImageChanged(String oldImage, String newImage) {
+		
+		return oldImage != null && (newImage != null && !newImage.equals("")) &&  !oldImage.equals(newImage);
 	}
 }
