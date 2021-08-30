@@ -87,11 +87,12 @@
 	0% {opacity: 0;}
         100% {opacity: 1;}
     }
-         
+        
 .fadeIn {
 	-webkit-animation-name: fadeIn;
     animation-name: fadeIn;
 }
+
 h1,h2,h3,h4,h5,h6{
 	color: #2c5453
 }

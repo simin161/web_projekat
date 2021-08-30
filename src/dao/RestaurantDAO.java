@@ -11,6 +11,7 @@ import java.util.Arrays;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import beans.Article;
 import beans.Restaurant;
 
 public class RestaurantDAO {
@@ -74,5 +75,19 @@ public class RestaurantDAO {
 		
 		return returnValue;
 	}
+	
+	public boolean checkIfArticleNameExists(String idRestaurant, String newArticleName) {
+		Restaurant restaurant = RestaurantDAO.getInstance().findById(idRestaurant);
+		restaurant.setArticles(ArticleDAO.getInstance().getArticlesForRestaurant(idRestaurant));
+
+		for (Article article : restaurant.getArticles()) {
+			if (article.getName().toLowerCase().equals(newArticleName.toLowerCase())) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 
 }

@@ -54,7 +54,7 @@ public class ArticleDAO {
 		ArrayList<Article> articles = new ArrayList<Article>();
 		
 		for(Article article : allArticles) {
-			if(article != null && article.getRestaurant().getId().equals(idRestaurant) && !article.isDeleted()) {
+			if(article.getRestaurant().getId().equals(idRestaurant) && !article.isDeleted()) {
 				articles.add(article);
 			}
 		}
@@ -80,5 +80,21 @@ public class ArticleDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public Article findById(String id) {
+		if(id == null)
+			return null;
+		
+		Article retVal = new Article();
+		
+		for(Article article : allArticles) {
+			if(article.getId().equals(id)) {
+				retVal = article;
+				break;
+			}
+		}
+		
+		return retVal;
 	}
 }

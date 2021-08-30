@@ -23,7 +23,7 @@ Vue.component('show-restaurant',{
 			</ul>
 			<br/>
 			<img :src="restaurant.restaurantLogo" height="100%" width="100%">	
-			<div style="margin-top: 3%; margin-left: 35%">
+			<div style=" margin-left: 35%">
 			<!---	<p style="float: left;">
 					<img :src="restaurant.restaurantLogo" height="65%" width="65%">
 				</p> --->

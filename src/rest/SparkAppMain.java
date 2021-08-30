@@ -206,5 +206,30 @@ public class SparkAppMain {
 			Restaurant restaurant = managerService.findRestaurantForManager(loggedManager);
 			return gson.toJson(articleService.getArticlesForRestaurant(restaurant.getId()));
 		});
+		
+		post("/showArticle", (req, res) -> {
+			Session session = req.session(true);
+			session.attribute("article", gson.fromJson(req.body(), Article.class));
+			return "SUCCESS";
+		});
+		
+		get("/getChoosenArticle", (req, res) -> {
+			res.type("application/json");
+			Session session = req.session(true);
+			ArrayList<Article> articles = new ArrayList<Article>();
+			articles.add(session.attribute("article"));
+			return gson.toJson(articles);
+		});
+		
+		post("/editArticle", (req, res) -> {
+			res.type("application/json");
+			Article editedArticle = new Article(gson.fromJson(req.body(), ArticleDTO.class));
+			articleService.editArticle(editedArticle);
+			Session session = req.session(true);
+			session.attribute("article", articleService.findById(editedArticle.getId()));
+			ArrayList<Article> articles = new ArrayList<Article>();
+			articles.add(session.attribute("article"));
+			return gson.toJson(articles);
+		});
 	}
 }

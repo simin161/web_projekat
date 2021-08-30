@@ -7,6 +7,7 @@ const orderReview = {template: '<order-review></order-review>'}
 const ordersWithoutDeliverer = {template: '<orders-without-deliverer></orders-without-deliverer>'}
 const allOrders = {template: '<all-orders></all-orders>'}
 const addArticle = {template: '<add-article></add-article>'}
+const editArticle = {template: '<edit-article></edit-article>'}
 
 const router = new VueRouter({
 	  mode: 'hash',
@@ -19,7 +20,8 @@ const router = new VueRouter({
 	    { path: '/order-review',  component: orderReview},
 	    { path: '/orders-without-deliverer', component: ordersWithoutDeliverer},
 	    { path: '/all-orders', component: allOrders},
-	    { path: '/add-article', component: addArticle}
+	    { path: '/add-article', component: addArticle},
+	    { path: '/show-article', component: editArticle}
 	  ]
 });
 

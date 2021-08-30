@@ -1,16 +1,16 @@
 [
   {
     "id": "1",
-    "name": "Burger",
-    "price": 650.0,
+    "name": "Crystal burger",
+    "price": 800.0,
     "articleType": "FOOD",
     "restaurant": {
       "id": "1"
     },
-    "quantity": 500.0,
-    "description": "burger burger",
+    "quantity": 650.0,
+    "description": "Specijalitet kuće",
     "articleImage": "..\\upload\\a1.jpg",
-    "isDeleted": true
+    "isDeleted": false
   },
   {
     "id": "2",

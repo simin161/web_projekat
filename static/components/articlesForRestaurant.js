@@ -15,7 +15,7 @@ Vue.component("articles-for-restaurant", {
 						</span> 
 						<span>
 							<button class="deleteArticle" @click="deleteArticle(article)"></button> 
-							<button class="changeArticle"></button>
+							<button class="changeArticle" @click="editArticle(article)"></button>
 						</span>
 						<p>{{article.name}}</p>
 						<p>Cena: {{article.price}} dinara</p>
@@ -37,7 +37,11 @@ Vue.component("articles-for-restaurant", {
 			console.log(article)
 			axios.post("/deleteArticle", article)
 			.then(response => (this.articles = response.data))
-		} 
+		} ,
+		editArticle : function(article){
+			axios.post("/showArticle", article)
+			.then(respone => (router.push("/show-article")))
+		}
 	}
 	, mounted(){
 		axios.get("/getArticlesForRestaurant")
