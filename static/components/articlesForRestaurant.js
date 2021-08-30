@@ -14,7 +14,7 @@ Vue.component("articles-for-restaurant", {
 							<img style="border-radius: 5px;" :src="article.articleImage" height="90px" width="90px">
 						</span> 
 						<span>
-							<button class="deleteArticle"></button> 
+							<button class="deleteArticle" @click="deleteArticle(article)"></button> 
 							<button class="changeArticle"></button>
 						</span>
 						<p>{{article.name}}</p>
@@ -31,6 +31,14 @@ Vue.component("articles-for-restaurant", {
 			</div>
 		</div>
 		`
+	,
+	methods: {
+		deleteArticle : function(article){
+			console.log(article)
+			axios.post("/deleteArticle", article)
+			.then(response => (this.articles = response.data))
+		} 
+	}
 	, mounted(){
 		axios.get("/getArticlesForRestaurant")
 			.then(response => (this.articles = response.data))

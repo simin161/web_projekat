@@ -9,7 +9,8 @@
     },
     "quantity": 500.0,
     "description": "burger burger",
-    "articleImage": "..\\upload\\a1.jpg"
+    "articleImage": "..\\upload\\a1.jpg",
+    "isDeleted": true
   },
   {
     "id": "2",
@@ -21,6 +22,7 @@
     },
     "quantity": 500.0,
     "description": "Salata sa avokadom",
-    "articleImage": "..\\upload\\a2.jpg"
+    "articleImage": "..\\upload\\a2.jpg",
+    "isDeleted": false
   }
 ]

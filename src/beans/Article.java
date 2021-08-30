@@ -16,7 +16,16 @@ public class Article {
 	private double quantity;
 	private String description;
 	private String articleImage; //ili BufferedImage?
+	private boolean isDeleted;
 	
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
 	public Article() {}
 	
 	public Article(ArticleDTO dto) {

@@ -197,5 +197,14 @@ public class SparkAppMain {
 			returnValue.add(restaurant);
 			return gson.toJson(returnValue);
 		});
+		
+		post("/deleteArticle", (req, res) -> {
+			res.type("application/json");
+			articleService.deleteArticle(gson.fromJson(req.body(), Article.class));
+			Session session = req.session(true);
+			Manager loggedManager = session.attribute("loggedUser");
+			Restaurant restaurant = managerService.findRestaurantForManager(loggedManager);
+			return gson.toJson(articleService.getArticlesForRestaurant(restaurant.getId()));
+		});
 	}
 }

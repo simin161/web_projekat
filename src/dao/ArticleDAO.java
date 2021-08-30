@@ -54,7 +54,7 @@ public class ArticleDAO {
 		ArrayList<Article> articles = new ArrayList<Article>();
 		
 		for(Article article : allArticles) {
-			if(article != null && article.getRestaurant().getId().equals(idRestaurant)) {
+			if(article != null && article.getRestaurant().getId().equals(idRestaurant) && !article.isDeleted()) {
 				articles.add(article);
 			}
 		}
