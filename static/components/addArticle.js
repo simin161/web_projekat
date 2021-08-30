@@ -53,7 +53,7 @@ Vue.component("add-article",{
 					<br/>
 					<tr>
 						<td>Slika: </td>
-						<td><input type="file" v-model="article.articleImage"></input></td>
+						<td><input type="file" @change="imageSelected"></input></td>
 					</tr>
 					<br/>
 				</table>
@@ -68,6 +68,9 @@ Vue.component("add-article",{
 		save : function(){
 			axios.post("/addArticle", this.article)
 			.then(response=>(router.push("/show-restaurant")))
+		},
+		imageSelected(event){
+			this.article.articleImage = event.target.files[0].name
 		}
 	}
 });

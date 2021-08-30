@@ -94,7 +94,7 @@ public class SparkAppMain {
 			}
 			return true;
 		});
-		
+
 		get("/getAllRestaurants", (req, res) -> {
 			res.type("application/json");
 			return gson.toJson(restaurantService.getAllRestaurants());
@@ -113,8 +113,8 @@ public class SparkAppMain {
 			Session session = req.session(true);
 			User editedUser = null;
 			try {
-				editedUser= gson.fromJson(req.body(), User.class);
-			}catch(Exception e) {
+				editedUser = gson.fromJson(req.body(), User.class);
+			} catch (Exception e) {
 				return "Pogresni podaci";
 			}
 			boolean returnValue = false;
@@ -122,7 +122,7 @@ public class SparkAppMain {
 			if (editedUser.getDateOfBirth() != null && !editedUser.getName().trim().equals("")
 					&& !editedUser.getSurname().trim().equals("") && !editedUser.getUsername().trim().equals("")
 					&& !editedUser.getPassword().trim().equals("")) {
-				
+
 				User user = session.attribute("loggedUser");
 				if (user != null) {
 					switch (user.getUserType()) {
@@ -145,10 +145,11 @@ public class SparkAppMain {
 									.findDelivererForLogIn(gson.fromJson(req.body(), Deliverer.class).getUsername()));
 						break;
 					case ADMINISTRATOR:
-						returnValue = administratorService.editAdministrator(gson.fromJson(req.body(), Administrator.class));
+						returnValue = administratorService
+								.editAdministrator(gson.fromJson(req.body(), Administrator.class));
 						if (returnValue)
-							session.attribute("loggedUser", registrationService
-									.findAdministratorForLogIn(gson.fromJson(req.body(), Administrator.class).getUsername()));
+							session.attribute("loggedUser", registrationService.findAdministratorForLogIn(
+									gson.fromJson(req.body(), Administrator.class).getUsername()));
 						break;
 					default:
 					}
@@ -157,8 +158,8 @@ public class SparkAppMain {
 
 			return returnValue ? "Uspesna izmena podataka" : "Pogresni podaci!";
 		});
-		
-		get("/restaurantForManager", (req, res)->{
+
+		get("/restaurantForManager", (req, res) -> {
 			res.type("application/json");
 			Session session = req.session(true);
 			Manager loggedManager = session.attribute("loggedUser");
@@ -167,18 +168,21 @@ public class SparkAppMain {
 			returnValue.add(restaurant);
 			return gson.toJson(returnValue);
 		});
-		
-		post("/addArticle", (req, res) ->{
+
+		File uploadDir = new File("upload");
+		uploadDir.mkdir(); // create the upload directory if it doesn't exist
+
+		post("/addArticle", (req, res) -> {
 			res.type("application/json");
+			Article article = new Article(gson.fromJson(req.body(), ArticleDTO.class));
 			Session session = req.session(true);
 			Manager loggedManager = session.attribute("loggedUser");
-			Article article = new Article(gson.fromJson(req.body(), ArticleDTO.class));
 			restaurantService.addArticleToRestaurant(loggedManager.getRestaurant().getId(), article);
-			
+
 			return "SUCCESS";
 		});
-		
-		get("/getArticlesForRestaurant", (req, res)->{
+
+		get("/getArticlesForRestaurant", (req, res) -> {
 			Session session = req.session(true);
 			Manager loggedManager = session.attribute("loggedUser");
 			return gson.toJson(articleService.getArticlesForRestaurant(loggedManager.getRestaurant().getId()));

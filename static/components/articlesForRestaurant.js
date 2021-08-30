@@ -28,7 +28,7 @@ Vue.component("articles-for-restaurant", {
 			</div>
 			<div class="animated fadeIn" v-if="articles === null">
 				<img class="center" src="../images/noArticles.png"/>
-			</div
+			</div>
 		</div>
 		`
 	, mounted(){

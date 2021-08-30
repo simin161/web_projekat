@@ -1,5 +1,7 @@
 package beans;
 
+import java.io.File;
+
 import com.google.gson.annotations.Expose;
 
 import dto.ArticleDTO;

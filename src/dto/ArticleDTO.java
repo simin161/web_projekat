@@ -1,7 +1,8 @@
 package dto;
 
+import java.io.File;
+
 import beans.ArticleType;
-import beans.Restaurant;
 
 public class ArticleDTO {
 	private String id;
