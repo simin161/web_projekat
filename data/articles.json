@@ -10,5 +10,17 @@
     "quantity": 500.0,
     "description": "burger burger",
     "articleImage": "..\\upload\\a1.jpg"
+  },
+  {
+    "id": "2",
+    "name": "Salata",
+    "price": 250.0,
+    "articleType": "FOOD",
+    "restaurant": {
+      "id": "1"
+    },
+    "quantity": 500.0,
+    "description": "Salata sa avokadom",
+    "articleImage": "..\\upload\\a2.jpg"
   }
 ]

@@ -25,7 +25,8 @@ public class RestaurantService {
 		if (!checkIfArticleNameExists(idRestaurant, newArticle.getName())) {
 			newArticle.setId(String.valueOf(ArticleDAO.getInstance().getAll().size() + 1));
 			try {
-				newArticle.setArticleImage(saveImage(newArticle.getArticleImage(), newArticle.getId()));
+				
+				newArticle.setArticleImage(ImageService.getInstance().saveImage(newArticle.getArticleImage(), "a" + newArticle.getId()));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -39,25 +40,6 @@ public class RestaurantService {
 			updateRestaurantList(restaurant);
 		}
 
-	}
-
-	private String saveImage(String file64, String id) throws Exception {
-
-		String imagePath = ".." + File.separator + "upload";
-		
-		String base64Image = file64.split(",")[1];
-		String ext = file64.split(",")[0].split("/")[1].split(";")[0];
-		if(ext.equals("jpeg")) {
-			ext = "jpg";
-		}
-		String imageName = "a" + id + "." + ext;
-		byte[] imageBytes = Base64.decode(base64Image);
-
-		BufferedImage img = ImageIO.read(new ByteArrayInputStream(imageBytes));
-		File file = new File("static/upload/" + imageName);
-		ImageIO.write(img, "jpg", file);
-		imagePath  += File.separator +  file.getName();
-		return imagePath;
 	}
 
 	private boolean checkIfArticleNameExists(String idRestaurant, String newArticleName) {
