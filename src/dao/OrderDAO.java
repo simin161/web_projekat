@@ -13,6 +13,7 @@ import com.google.gson.GsonBuilder;
 
 import beans.Customer;
 import beans.Order;
+import beans.OrderStatus;
 
 public class OrderDAO {
 
@@ -52,6 +53,46 @@ public class OrderDAO {
 		return allOrders;
 		
 	}
+	
+	public ArrayList<Order> getAllOrdersFromCustomer(String id){
+		
+		ArrayList<Order> orders = new ArrayList<Order>();
+	
+		for(Order o : allOrders) {
+			
+			if(id.equals(o.getCustomer().getId())) {
+				orders.add(o);
+			}
+			
+		}
+		
+		return orders;
+		
+	}
+	
+	public ArrayList<Order> getUndeliveredOrdersForCustomer(String id){
+		
+		ArrayList<Order> orders = getAllOrdersFromCustomer(id);
+		ArrayList<Order> undeliveredOrders = new ArrayList<Order>();
+		
+		for(Order o : orders) {
+			
+			if(o.getOrderStatus()!= OrderStatus.CANCELED) {
+				
+				if(o.getOrderStatus() != OrderStatus.DELIVERED) {
+					
+					undeliveredOrders.add(o);
+					
+				}
+				
+			}
+			
+		}
+		
+		return undeliveredOrders;
+		
+	}
+	
 	
 	public void save() {
 		
