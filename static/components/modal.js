@@ -54,7 +54,7 @@ template: `<div>
 											'width': '35%'}"
 							 type="button" v-on:click="logInUser" value="Prijavite se!"> </input>
 
-					<p> {{returnLogInMessage}}</p>
+					<p style="color: red"> {{returnLogInMessage}}</p>
 				</form>
 			  </div>
 			</div>
@@ -96,7 +96,7 @@ template: `<div>
 						</tr>
 					</table>
 					<input :disabled="!isComplete" @mouseover="mouseOver" @mouseleave="mouseLeave" v-bind:style="{'background-color': backgroundColor, 'color': 'white', 'cursor': cursorStyle}" type="submit" v-on:click="registerUser" value="Registrujte se!"> </input>
-					<p> {{returnMessage}}</p>
+					<p style="color: red"> {{returnMessage}}</p>
 				</form>
 			  </div>
 			</div>
@@ -104,13 +104,18 @@ template: `<div>
 	,
 	computed : {
 		  isComplete () {
-		    flag = this.userForRegistration.name && this.userForRegistration.surname && this.userForRegistration.dateOfBirth && this.userForRegistration.sex && this.userForRegistration.username && this.userForRegistration.password;
+		    flag = /\S/.test(this.userForRegistration.name) &&
+		    /\S/.test(this.userForRegistration.surname) && 
+		    /\S/.test(this.userForRegistration.dateOfBirth) && 
+		    /\S/.test(this.userForRegistration.sex) && 
+		    /\S/.test(this.userForRegistration.username) && 
+		    /\S/.test(this.userForRegistration.password);
 		    this.backgroundColor = flag ? "#5EAAA8" : "#f8f1f1";
 		    this.cursorStyle = flag ? "pointer" : "default";
 		    return flag;
 		  },
 		  isCompleteLogIn () {
-			  flag = this.userForLogIn.username && this.userForLogIn.password;
+			    flag = /\S/.test(this.userForLogIn.username) && /\S/.test(this.userForLogIn.password);
 			    this.backgroundColorLogIn = flag ? "#5EAAA8" : "#f8f1f1";
 			    this.cursorStyleLogIn = flag ? "pointer" : "default";
 			    return flag;
@@ -128,9 +133,15 @@ template: `<div>
 		logInUser : function(){
 			event.preventDefault();
 			axios.post('/logInUser', this.userForLogIn).
-			then(response =>(
-					this.returnLogInMessage = response.data == "SUCCESS" ? router.push('/welcome-page') : "Pogresno korisnicko ime ili lozinka!"
-					));
+			then(response =>{
+				if(response.data === "SUCCESS"){
+					router.push('/welcome-page');
+				}
+				else{
+					this.returnLogInMessage = "Pogrešno korisničko ime ili lozinka!";
+				}
+				
+			});
 		},
 		handleScroll () {
 		    this.scrolled = window.scrollY > 0;
