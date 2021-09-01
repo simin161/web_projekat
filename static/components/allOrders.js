@@ -1,7 +1,7 @@
 Vue.component('all-orders',{
 	data: function(){
 		return{
-			items: ['Hello Vue!', '123', '456', '789', '101112'],
+			orders: null,
 			show: false,
 			scrolled: false
 		};
@@ -16,18 +16,21 @@ Vue.component('all-orders',{
 				<li><a @click="loadUndelivered">Nedostavljene porudžbine</a></li>
 			</ul>
 
-			<div style="margin-top: 6%">
-				<div class="lists" v-for="item in items">
+			<div style="margin-top: 6%" v-if="orders != null">
+				<div class="lists" v-for="order in orders">
 					<div>
 						<span v-if="show===true">
 							<button class="orderStatus"></button>
 						</span>
-						<p>{{item}}</p>
+						<p>{{order}}</p>
 						<p>Porudzbina</p>
 						<p>Dostavljac</p> 
 						<p>Cena</p>
 					</div>
 				</div>
+			</div>
+			<div class="animated fadeIn" v-if="orders === null">
+				<img class="center" style="margin-top: 5%;" src="../images/noOrders.png"/>
 			</div>
 		 </div>
 	`,
@@ -36,15 +39,15 @@ Vue.component('all-orders',{
 	    this.scrolled = window.scrollY > 0;
 	  },
 	  loadAll : function(){
-		  this.items = ['aaaa']
+		  this.orders = ['aaaa']
 		  this.show = false;
 	  },
 	  loadDelivered: function(){
-		  this.items = ['bbb']
+		  this.orders = ['bbb']
 		  this.show = false;
 	  },
 	  loadUndelivered: function(){
-		  this.items = ['cccc']
+		  this.orders = ['cccc']
 		  this.show = true;
 	  }
 	},
