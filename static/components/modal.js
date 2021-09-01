@@ -103,13 +103,16 @@ template: `<div>
 		</div>`
 	,
 	computed : {
-		  isComplete () {
-		    flag = /\S/.test(this.userForRegistration.name) &&
-		    /\S/.test(this.userForRegistration.surname) && 
+		  isComplete () {  
+		    correctName = /\S/.test(this.userForRegistration.name) && /^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,0-9]{1,20}$/.test(this.userForRegistration.name);
+		    correctSurname = /\S/.test(this.userForRegistration.surname) && /^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,0-9]{1,20}$/.test(this.userForRegistration.surname);
+		    
+		    flag = correctName && correctSurname && 
 		    /\S/.test(this.userForRegistration.dateOfBirth) && 
 		    /\S/.test(this.userForRegistration.sex) && 
-		    /\S/.test(this.userForRegistration.username) && 
+		    /^[a-z0-9_-]{3,16}$/.test(this.userForRegistration.username) && 
 		    /\S/.test(this.userForRegistration.password);
+		    
 		    this.backgroundColor = flag ? "#5EAAA8" : "#f8f1f1";
 		    this.cursorStyle = flag ? "pointer" : "default";
 		    return flag;
@@ -126,9 +129,14 @@ template: `<div>
 		registerUser : function(){
 			event.preventDefault();
 			axios.post('/registerUser', this.userForRegistration).
-			then(response =>(
-				this.returnMessage = response.data == "SUCCESS" ? router.push('/welcome-page') : "Postojece korisnicko ime ili nevalidni podaci!"
-			));
+			then(response =>{
+				if(response.data == "SUCCESS"){
+					router.push('/welcome-page');
+				}
+				else{
+					this.returnMessage = "Postojeće korisničko ime/nevalidni podaci!";
+				}
+			});
 		},
 		logInUser : function(){
 			event.preventDefault();
@@ -154,7 +162,7 @@ template: `<div>
 				  this.backgroundColorLogIn =  "#5eaaa8" ;
 				  this.backgroundColor =  "#5eaaa8" ;
 
-			  }
+		 }
 	},
 	created () {
 	  window.addEventListener('scroll', this.handleScroll);
