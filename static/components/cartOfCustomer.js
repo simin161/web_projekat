@@ -51,7 +51,7 @@ Vue.component("customerCart", {
 	}
 	, mounted(){
 	
-		axios.get("/getSelectedRestaurant")
+		axios.get("/getCartArticles")
 		.then(response=> (this.articles = response.data))
 	}
 });

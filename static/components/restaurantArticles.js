@@ -9,9 +9,6 @@ Vue.component("restaurantArticles", {
 	template: `
 		<div>
 		<navigation-header></navigation-header>
-		<ul :class="scrolled ? 'scrollRest' : 'rest'">
-				<li><a @click="isDisabled = false; backgroundColor = '#5eaaa8'; visibility = 'visible'">Pregled korpe</a> </li>
-		</ul>
 		<br/><br/>
 		<br/><br/>
 		<br/><br/>

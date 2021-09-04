@@ -7,13 +7,13 @@ import static spark.Spark.staticFiles;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import beans.Administrator;
 import beans.Article;
-import beans.Cart;
 import beans.Customer;
 import beans.Deliverer;
 import beans.Manager;
@@ -202,6 +202,15 @@ public class SparkAppMain {
 			
 		});
 		
+		get("/getCartArticles", (req, res) ->{
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			Customer loggedCustomer = session.attribute("loggedUser");
+			return gson.toJson(cartService.getAllArticles(loggedCustomer.getId()));
+			
+		});
+		
 		post("/createRestaurant", (req, res) -> {
 			res.type("application/json");
 			Session session = req.session(true);
@@ -233,8 +242,6 @@ public class SparkAppMain {
 			returnValue.add(restaurant);
 			return gson.toJson(returnValue);
 		});
-
-	
 		
 		post("/deleteArticle", (req, res) -> {
 			res.type("application/json");
