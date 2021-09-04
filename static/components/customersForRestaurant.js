@@ -1,18 +1,23 @@
 Vue.component("customers-for-restaurant", {
 	data: function(){
 		return{
-			items: ['Hello Vue!', '123', '456', '789', '101112']
+			customers: null
 		};
 	}
 	,
 	template: `
 		<div>
-			<div class="lists" v-for="item in items">
-				<div>
-					<p>{{item}}</p>
-					<p>Ime prezime kupca </p>
-					<p>Porudzbine??? </p> 
+			<div v-if="customers != null">
+				<div class="lists" v-for="customer in customers">
+					<div>
+						<p>{{customer}}</p>
+						<p>Ime prezime kupca </p>
+						<p>Porudzbine??? </p> 
+					</div>
 				</div>
+			</div>
+			<div class="animated fadeIn" v-if="customers === null">
+				<img class="center" src="../images/noCustomers.png"/>
 			</div>
 		</div>
 		`

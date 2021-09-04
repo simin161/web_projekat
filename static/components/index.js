@@ -21,8 +21,8 @@ template: `<div>
 		<hr>
 			<div>
 				<div class="lists" v-for="item in restaurats">
-					<span style="float: left; margin-top: 15px">
-						<img style="border-radius: 5px;" :src="item.restaurantLogo" height="90px" width="90px">
+					<span style="float: left; margin-top: 2.5px">
+						<img style="border-radius: 5px;" :src="item.restaurantLogo" height="150px" width="150px">
 					</span> 
 					<span>
 						<button class="infoRestaurant"> </button> 
@@ -30,6 +30,8 @@ template: `<div>
 					<p>{{item.name}}</p>
 					<p>{{item.restaurantType}} </p>
 					<p>POSTAVITI LOKACIJU KAD BUDE LOKACIJE</p> 
+					<br/>
+					<br/>
 				</div>
 			</div>
 		</div>`

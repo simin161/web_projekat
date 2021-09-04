@@ -54,7 +54,7 @@ template: `<div>
 											'width': '35%'}"
 							 type="button" v-on:click="logInUser" value="Prijavite se!"> </input>
 
-					<p> {{returnLogInMessage}}</p>
+					<p style="color: red"> {{returnLogInMessage}}</p>
 				</form>
 			  </div>
 			</div>
@@ -96,21 +96,29 @@ template: `<div>
 						</tr>
 					</table>
 					<input :disabled="!isComplete" @mouseover="mouseOver" @mouseleave="mouseLeave" v-bind:style="{'background-color': backgroundColor, 'color': 'white', 'cursor': cursorStyle}" type="submit" v-on:click="registerUser" value="Registrujte se!"> </input>
-					<p> {{returnMessage}}</p>
+					<p style="color: red"> {{returnMessage}}</p>
 				</form>
 			  </div>
 			</div>
 		</div>`
 	,
 	computed : {
-		  isComplete () {
-		    flag = this.userForRegistration.name && this.userForRegistration.surname && this.userForRegistration.dateOfBirth && this.userForRegistration.sex && this.userForRegistration.username && this.userForRegistration.password;
+		  isComplete () {  
+		    correctName = /\S/.test(this.userForRegistration.name) && /^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,0-9]{1,20}$/.test(this.userForRegistration.name);
+		    correctSurname = /\S/.test(this.userForRegistration.surname) && /^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,0-9]{1,20}$/.test(this.userForRegistration.surname);
+		    
+		    flag = correctName && correctSurname && 
+		    /\S/.test(this.userForRegistration.dateOfBirth) && 
+		    /\S/.test(this.userForRegistration.sex) && 
+		    /^[a-z0-9_-]{3,16}$/.test(this.userForRegistration.username) && 
+		    /\S/.test(this.userForRegistration.password);
+		    
 		    this.backgroundColor = flag ? "#5EAAA8" : "#f8f1f1";
 		    this.cursorStyle = flag ? "pointer" : "default";
 		    return flag;
 		  },
 		  isCompleteLogIn () {
-			  flag = this.userForLogIn.username && this.userForLogIn.password;
+			    flag = /\S/.test(this.userForLogIn.username) && /\S/.test(this.userForLogIn.password);
 			    this.backgroundColorLogIn = flag ? "#5EAAA8" : "#f8f1f1";
 			    this.cursorStyleLogIn = flag ? "pointer" : "default";
 			    return flag;
@@ -121,16 +129,27 @@ template: `<div>
 		registerUser : function(){
 			event.preventDefault();
 			axios.post('/registerUser', this.userForRegistration).
-			then(response =>(
-				this.returnMessage = response.data == "SUCCESS" ? router.push('/welcome-page') : "Postojece korisnicko ime ili nevalidni podaci!"
-			));
+			then(response =>{
+				if(response.data == "SUCCESS"){
+					router.push('/welcome-page');
+				}
+				else{
+					this.returnMessage = "Postojeće korisničko ime/nevalidni podaci!";
+				}
+			});
 		},
 		logInUser : function(){
 			event.preventDefault();
 			axios.post('/logInUser', this.userForLogIn).
-			then(response =>(
-					this.returnLogInMessage = response.data == "SUCCESS" ? router.push('/welcome-page') : "Pogresno korisnicko ime ili lozinka!"
-					));
+			then(response =>{
+				if(response.data === "SUCCESS"){
+					router.push('/welcome-page');
+				}
+				else{
+					this.returnLogInMessage = "Pogrešno korisničko ime ili lozinka!";
+				}
+				
+			});
 		},
 		handleScroll () {
 		    this.scrolled = window.scrollY > 0;
@@ -143,7 +162,7 @@ template: `<div>
 				  this.backgroundColorLogIn =  "#5eaaa8" ;
 				  this.backgroundColor =  "#5eaaa8" ;
 
-			  }
+		 }
 	},
 	created () {
 	  window.addEventListener('scroll', this.handleScroll);

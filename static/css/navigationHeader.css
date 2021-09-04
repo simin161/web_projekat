@@ -32,6 +32,15 @@ li a.active {
   background-color: #5EAAA8;  
 }
 
+li a.add {
+	color: white;
+	background-color: #228B22;
+}
+
+li a.add:hover{
+	background-color: #56d656;
+}
+
 .right {
 	float : right;
 	margin-right: 1%;

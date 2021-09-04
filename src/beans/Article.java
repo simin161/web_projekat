@@ -1,6 +1,13 @@
 package beans;
 
+import java.io.File;
+
+import com.google.gson.annotations.Expose;
+
+import dto.ArticleDTO;
+
 public class Article {
+	@Expose
 	private String id;
 	private String name;
 	private double price;
@@ -9,6 +16,31 @@ public class Article {
 	private double quantity;
 	private String description;
 	private String articleImage; //ili BufferedImage?
+	private boolean isDeleted;
+	
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
+	public Article() {}
+	
+	public Article(ArticleDTO dto) {
+		this.id = dto.getId();
+		this.name = dto.getName();
+		if(!dto.getPrice().equals(""))
+			this.price = Double.parseDouble(dto.getPrice());
+		
+		this.articleType = dto.getArticleType();
+		if(!dto.getQuantity().equals(""))
+			this.quantity = Double.parseDouble(dto.getQuantity());
+		
+		this.description = dto.getDescription();
+		this.articleImage = dto.getArticleImage();
+	}
 	
 	public String getId() {
 		return id;

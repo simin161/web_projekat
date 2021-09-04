@@ -10,6 +10,18 @@ input[type=button]:hover{
 	
 }
 
+textarea{
+	background-color: #f8f1f1;
+	border: none;
+	border-bottom: 2px solid black;
+	outline: 0;
+	transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+textarea:focus{
+	border-bottom: 2px solid #5eaaa8;
+}
+
 .aaa:hover{
 	background-color: #79b9b6;
 		transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
@@ -32,6 +44,7 @@ input[type=text]:focus, [type=password]:focus, [type=date]:focus{
 select{
   cursor: pointer;
   border-radius: 0;
+  outline: 0;
   background-color: #f8f1f1;
   color: black;
   border: none;

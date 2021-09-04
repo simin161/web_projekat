@@ -1,18 +1,26 @@
 [
   {
     "id": "1",
-    "name": "da",
-    "restaurantType": "ad",
-    "articles": null,
-    "status": 1,
-    "restaurantLogo": ""
+    "name": "Crystal",
+    "restaurantType": "Tip",
+    "articles": [
+      {
+        "id": "1"
+      },
+      {
+        "id": "2"
+      },
+      {
+        "id": "3"
+      }
+    ],
+    "status": "OPEN",
+    "restaurantLogo": "..\\upload\\r1.jpg"
   },
   {
     "id": "2",
     "name": "da1",
     "restaurantType": "ad",
-    "articles": null,
-    "status": 0,
     "restaurantLogo": "http://placekitten.com/g/200/200"
   }
 ]

@@ -1,5 +1,6 @@
 package dao;
 
+import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 import java.nio.file.Files;
@@ -11,6 +12,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import beans.Article;
 import beans.Restaurant;
 
 public class RestaurantDAO {
@@ -42,8 +44,21 @@ public class RestaurantDAO {
 			e.printStackTrace();
 		}
 	}
+
+	public void save() {
+		try {
+			Writer writer;
+			writer = Files.newBufferedWriter(Paths.get("data/restaurants.json"));
+			Gson gson1 = new GsonBuilder().setDateFormat("yyyy-mm-dd").excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
+			gson1.toJson(allRestaurants, writer);
+			writer.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
-	public ArrayList<Restaurant> getAllRestaurants(){
+	public ArrayList<Restaurant> getAll(){
 		return allRestaurants;
 	}
 	
@@ -78,6 +93,20 @@ public class RestaurantDAO {
 		
 		return returnValue;
 	}
+	
+	public boolean checkIfArticleNameExists(String idRestaurant, String newArticleName) {
+		Restaurant restaurant = RestaurantDAO.getInstance().findById(idRestaurant);
+		restaurant.setArticles(ArticleDAO.getInstance().getArticlesForRestaurant(idRestaurant));
+
+		for (Article article : restaurant.getArticles()) {
+			if (article.getName().toLowerCase().equals(newArticleName.toLowerCase())) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 
 	public List<Restaurant> findRestaurantByName(String name) {
 		

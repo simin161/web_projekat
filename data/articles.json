@@ -1,0 +1,28 @@
+[
+  {
+    "id": "1",
+    "name": "Crystal burger",
+    "price": 800.0,
+    "articleType": "FOOD",
+    "restaurant": {
+      "id": "1"
+    },
+    "quantity": 650.0,
+    "description": "Specijalitet kuće",
+    "articleImage": "..\\upload\\a1.jpg",
+    "isDeleted": false
+  },
+  {
+    "id": "2",
+    "name": "Salata",
+    "price": 250.0,
+    "articleType": "FOOD",
+    "restaurant": {
+      "id": "1"
+    },
+    "quantity": 500.0,
+    "description": "Salata sa avokadom",
+    "articleImage": "..\\upload\\a2.jpg",
+    "isDeleted": false
+  }
+]

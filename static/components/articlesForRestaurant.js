@@ -1,26 +1,50 @@
 Vue.component("articles-for-restaurant", {
 	data: function(){
 		return{
-			items: ['Hello Vue!', '123', '456', '789', '101112']
+			articles: null
 		};
 	}
 	,
 	template: `
 		<div>
-			<div class="lists" v-for="item in items">
-				<div>
-					<span style="float: left; margin-top: 5px">
-						<img style="border-radius: 5px;" src="http://placekitten.com/g/200/200" height="90px" width="90px">
-					</span> 
-					<span>
-						<button class="deleteArticle"></button> 
-						<button class="changeArticle"></button>
-					</span>
-					<p>{{item}}</p>
-					<p>Ime prezime kupca </p>
-					<p>Porudzbine??? </p> 
+			<div v-if="articles != null">
+				<div class="lists" v-for="article in articles">
+					<div>
+						<span style="float: left;">
+							<img style="border-radius: 5px;" :src="article.articleImage" height="90px" width="90px">
+						</span> 
+						<span>
+							<button class="deleteArticle" @click="deleteArticle(article)"></button> 
+							<button class="changeArticle" @click="editArticle(article)"></button>
+						</span>
+						<p>{{article.name}}</p>
+						<p>Cena: {{article.price}} dinara</p>
+						<p>Količina: {{article.quantity}}</p>
+						<p>{{article.description}}</p>
+						<p>{{article.articleType}}</p>
+						 
+					</div>
 				</div>
+			</div>
+			<div class="animated fadeIn" v-if="articles === null">
+				<img class="center" src="../images/noArticles.png"/>
 			</div>
 		</div>
 		`
+	,
+	methods: {
+		deleteArticle : function(article){
+			console.log(article)
+			axios.post("/deleteArticle", article)
+			.then(response => (this.articles = response.data))
+		} ,
+		editArticle : function(article){
+			axios.post("/showArticle", article)
+			.then(respone => (router.push("/show-article")))
+		}
+	}
+	, mounted(){
+		axios.get("/getArticlesForRestaurant")
+			.then(response => (this.articles = response.data))
+	}
 });
