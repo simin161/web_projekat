@@ -231,5 +231,22 @@ public class SparkAppMain {
 			articles.add(session.attribute("article"));
 			return gson.toJson(articles);
 		});
+		
+		post("/saveSelectedRestaurant", (req, res) -> {
+			res.type("application/json");
+			Session session = req.session(true);
+			session.attribute("selectedRestaurant", gson.fromJson(req.body(), Restaurant.class));
+			return "SUCCESS"; 
+		});
+		
+		get("/getSelectedRestaurant", (req, res) -> {
+			res.type("application/json");
+			Session session = req.session(true);
+			Restaurant selectedRestaurant =session.attribute("selectedRestaurant");
+			selectedRestaurant.setArticles(articleService.getArticlesForRestaurant(selectedRestaurant.getId()));
+			ArrayList<Restaurant> retVal = new ArrayList<Restaurant>();
+			retVal.add(selectedRestaurant);
+			return gson.toJson(retVal);
+		});
 	}
 }

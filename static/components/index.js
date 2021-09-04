@@ -25,7 +25,7 @@ template: `<div>
 						<img style="border-radius: 5px;" :src="item.restaurantLogo" height="150px" width="150px">
 					</span> 
 					<span>
-						<button class="infoRestaurant"> </button> 
+						<button class="infoRestaurant" @click="show(item)"> </button> 
 					</span>
 					<p>{{item.name}}</p>
 					<p>{{item.restaurantType}} </p>
@@ -35,6 +35,13 @@ template: `<div>
 				</div>
 			</div>
 		</div>`
+	,
+	methods : {
+		show : function(item){
+			axios.post("/saveSelectedRestaurant", item)
+			.then(respone => (router.push("/restaurant-detail")))
+		}
+	}
 	,
 	mounted(){
 		axios.get("/getAllRestaurants")
