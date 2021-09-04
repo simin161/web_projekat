@@ -17,6 +17,7 @@ public class Article {
 	private String description;
 	private String articleImage; //ili BufferedImage?
 	private boolean isDeleted;
+	private int totalNumberOrdered;
 	
 	public boolean isDeleted() {
 		return isDeleted;
@@ -28,6 +29,7 @@ public class Article {
 
 	public Article() {}
 	
+	@SuppressWarnings("unlikely-arg-type")
 	public Article(ArticleDTO dto) {
 		this.id = dto.getId();
 		this.name = dto.getName();
@@ -40,6 +42,10 @@ public class Article {
 		
 		this.description = dto.getDescription();
 		this.articleImage = dto.getArticleImage();
+		if(!dto.equals(""))
+		{
+			this.totalNumberOrdered = Integer.parseInt(dto.getTotalNumberOrdered());
+		}
 	}
 	
 	public String getId() {
@@ -89,6 +95,14 @@ public class Article {
 	}
 	public void setArticleImage(String articleImage) {
 		this.articleImage = articleImage;
+	}
+
+	public int getTotalNumberOrdered() {
+		return totalNumberOrdered;
+	}
+
+	public void setTotalNumberOrdered(int totalNumberOrdered) {
+		this.totalNumberOrdered = totalNumberOrdered;
 	}
 	
 	

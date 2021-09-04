@@ -2,7 +2,7 @@ Vue.component('restaurants', {
 	data: function(){
 		return{
 			restaurantsToDisplay: null,
-			selectedRestaurant: { type: Object, default: () => ({})}
+			selectedRestaurant: null
 		};
 	},
 template: `<div>
@@ -40,7 +40,7 @@ template: `<div>
 	
 		openArticles : function(item){
 		
-			axios.post("/restaurantArticles", item)
+			axios.post("/selectRestaurant", item)
 			.then(response =>(router.push("restaurantArticles")))
 		
 		}
@@ -50,9 +50,5 @@ template: `<div>
 	mounted(){
 		axios.get("/getAllRestaurants")
 		.then(response => (this.restaurantsToDisplay = response.data))
-		
-		axios.get("/getSelectedRestaurant")
-		.then(response => (this.selectedRestaurant = response.data[0]))
-		
 	}
 });

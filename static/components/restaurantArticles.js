@@ -1,13 +1,15 @@
 Vue.component("restaurantArticles", {
 	data: function(){
 		return{
-			articles: null
+			articles: null,
+			selectedRestaurant: null
 		};
 	}
 	,
 	template: `
 		<div>
 		<navigation-header></navigation-header>
+		<br/><br/>
 			<div v-if="articles != null">
 				<div class="lists" v-for="article in articles">
 					<div>
@@ -15,8 +17,8 @@ Vue.component("restaurantArticles", {
 							<img style="border-radius: 5px;" :src="article.articleImage" height="90px" width="90px">
 						</span> 
 						<span>
-							<button class="deleteArticle" @click="deleteArticle(article)">Dodaj u korpu</button> 
-							<button class="changeArticle" @click="editArticle(article)">Izbaci iz korpe</button>
+							<button class="addToCart" @click="addToCart(article)" title="Dodaj u korpu">+</button> 
+							<input type="number" v-model= "article.totalNumberOrdered" min="1" onKeyDown="return false" class="numberAddToCart"></input>
 						</span>
 						<p>{{article.name}}</p>
 						<p>Cena: {{article.price}} dinara</p>
@@ -35,9 +37,17 @@ Vue.component("restaurantArticles", {
 	,
 	methods: {
 		
+		addToCart : function(item){
+		
+			axios.post("/updateCart", item)
+			.then(response =>(console.log()))
+		
+		}
+		
 	}
 	, mounted(){
-		axios.get("/getRestaurantArticles")
-			.then(response => (this.articles = response.data))
+	
+		axios.get("/getSelectedRestaurant")
+		.then(response=> (this.articles = response.data))
 	}
 });

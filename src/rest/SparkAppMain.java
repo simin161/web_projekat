@@ -13,6 +13,7 @@ import com.google.gson.GsonBuilder;
 
 import beans.Administrator;
 import beans.Article;
+import beans.Cart;
 import beans.Customer;
 import beans.Deliverer;
 import beans.Manager;
@@ -22,6 +23,7 @@ import beans.UserInfo;
 import dto.ArticleDTO;
 import services.AdministratorService;
 import services.ArticleService;
+import services.CartService;
 import services.CustomerService;
 import services.DelivererService;
 import services.ManagerService;
@@ -39,7 +41,9 @@ public class SparkAppMain {
 	private static AdministratorService administratorService = new AdministratorService();
 	private static DelivererService delivererService = new DelivererService();
 	private static ArticleService articleService = new ArticleService();
-
+	private static CartService cartService = new CartService();
+	
+	
 	public static void main(String[] args) throws Exception {
 		port(8080);
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
@@ -189,13 +193,31 @@ public class SparkAppMain {
 			return gson.toJson(articleService.getArticlesForRestaurant(loggedManager.getRestaurant().getId()));
 		});
 		
-		get("/getRestaurantArticles", (req, res)-> {
+		get("/getSelectedRestaurant", (req, res)-> {
+			
+			res.type("application/json");
 			Session session = req.session(true);
 			Restaurant selectedRestaurant = session.attribute("selectedRestaurant");
 			return gson.toJson(articleService.getArticlesForRestaurant(selectedRestaurant.getId()));
+			
 		});
 		
-		
+		post("/addToCart", (req, res)-> {
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			Customer loggedCustomer = session.attribute("loggedUser");
+			String returnValue = "FAILURE";
+			Article articleToAdd = new Article(gson.fromJson(req.body(), ArticleDTO.class));
+			
+			
+			
+			/*if(cartService.addArticle(articleToAdd, loggedCustomer.getId())) {
+				returnValue= "SUCCESS";
+			}*/
+			
+			return returnValue;
+		});
 		
 		post("/createRestaurant", (req, res) -> {
 			res.type("application/json");
@@ -240,16 +262,28 @@ public class SparkAppMain {
 			return gson.toJson(articleService.getArticlesForRestaurant(restaurant.getId()));
 		});
 		
+		post("/selectRestaurant", (req, res) -> {
+			Session session = req.session(true);
+			Restaurant restaurant = gson.fromJson(req.body(), Restaurant.class);
+			restaurant.setArticles(articleService.getArticlesForRestaurant(restaurant.getId()));
+			session.attribute("selectedRestaurant", gson.fromJson(req.body(), Restaurant.class));
+			return "SUCCESS";
+		});
+		
+		post("/updateCart", (req, res) -> {
+			Session session = req.session(true);
+			Article article = new Article(gson.fromJson(req.body(), ArticleDTO.class));
+			Customer loggedCustomer = session.attribute("loggedUser");
+			
+			loggedCustomer.setCart(cartService.addArticle(article, loggedCustomer.getId()));
+			session.attribute("loggedUser", loggedCustomer);
+			return "SUCCESS";
+		});
+		
 		post("/showArticle", (req, res) -> {
 			Session session = req.session(true);
 			session.attribute("article", gson.fromJson(req.body(), Article.class));
 			return "SUCCESS";
-		});
-		
-		post("/restaurantArticles", (req, res) -> {
-			
-			return "SUCCESS";
-			
 		});
 		
 		get("/getChoosenArticle", (req, res) -> {
@@ -270,5 +304,6 @@ public class SparkAppMain {
 			articles.add(session.attribute("article"));
 			return gson.toJson(articles);
 		});
+		
 	}
 }
