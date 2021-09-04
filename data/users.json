@@ -33,5 +33,10 @@
     "username": "da",
     "password": "ad",
     "userType": "CUSTOMER"
+  },
+  {
+    "username": "customer",
+    "password": "customer",
+    "userType": "CUSTOMER"
   }
 ]

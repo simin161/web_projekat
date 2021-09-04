@@ -1,4 +1,4 @@
-Vue.component("articles-for-restaurant", {
+Vue.component("restaurantArticles", {
 	data: function(){
 		return{
 			articles: null
@@ -7,6 +7,7 @@ Vue.component("articles-for-restaurant", {
 	,
 	template: `
 		<div>
+		<navigation-header></navigation-header>
 			<div v-if="articles != null">
 				<div class="lists" v-for="article in articles">
 					<div>
@@ -14,8 +15,8 @@ Vue.component("articles-for-restaurant", {
 							<img style="border-radius: 5px;" :src="article.articleImage" height="90px" width="90px">
 						</span> 
 						<span>
-							<button class="deleteArticle" @click="deleteArticle(article)"></button> 
-							<button class="changeArticle" @click="editArticle(article)"></button>
+							<button class="deleteArticle" @click="deleteArticle(article)">Dodaj u korpu</button> 
+							<button class="changeArticle" @click="editArticle(article)">Izbaci iz korpe</button>
 						</span>
 						<p>{{article.name}}</p>
 						<p>Cena: {{article.price}} dinara</p>
@@ -33,18 +34,10 @@ Vue.component("articles-for-restaurant", {
 		`
 	,
 	methods: {
-		deleteArticle : function(article){
-			console.log(article)
-			axios.post("/deleteArticle", article)
-			.then(response => (this.articles = response.data))
-		} ,
-		editArticle : function(article){
-			axios.post("/showArticle", article)
-			.then(response => (router.push("/show-article")))
-		}
+		
 	}
 	, mounted(){
-		axios.get("/getArticlesForRestaurant")
+		axios.get("/getRestaurantArticles")
 			.then(response => (this.articles = response.data))
 	}
 });

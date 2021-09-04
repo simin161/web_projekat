@@ -8,7 +8,7 @@ Vue.component('navigation-header', {
 	template : `<div>
 						<ul :class="scrolled ? 'scroll' : ''" v-if="loggedUser.userType === 'CUSTOMER'">
 							<li><a class="active" href="#/welcome-page">Početna</a></li>
-							<li><a>Pregled restorana</a></li>
+							<li><a href="#/restaurants">Pregled restorana</a></li>
 							<li><a href="#/edit-profile"> Moj nalog </a></li>
 							<li class="right"><sign-out></sign-out></li>
 						</ul>

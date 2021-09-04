@@ -42,5 +42,16 @@
     "sex": "Žensko",
     "userType": "CUSTOMER",
     "dateOfBirth": "0011-02-11"
+  },
+  {
+    "collectedPoints": 0,
+    "id": "5",
+    "username": "customer",
+    "password": "customer",
+    "name": "customer",
+    "surname": "customercic",
+    "sex": "Muško",
+    "userType": "CUSTOMER",
+    "dateOfBirth": "1981-02-18"
   }
 ]
