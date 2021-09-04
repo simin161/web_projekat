@@ -9,6 +9,11 @@ Vue.component("restaurantArticles", {
 	template: `
 		<div>
 		<navigation-header></navigation-header>
+		<ul :class="scrolled ? 'scrollRest' : 'rest'">
+				<li><a @click="isDisabled = false; backgroundColor = '#5eaaa8'; visibility = 'visible'">Pregled korpe</a> </li>
+		</ul>
+		<br/><br/>
+		<br/><br/>
 		<br/><br/>
 			<div v-if="articles != null">
 				<div class="lists" v-for="article in articles">
@@ -40,7 +45,7 @@ Vue.component("restaurantArticles", {
 		addToCart : function(item){
 		
 			axios.post("/updateCart", item)
-			.then(response =>(console.log()))
+			.then(response =>(alert("Artikal je uspešno dodat u korpu!")))
 		
 		}
 		

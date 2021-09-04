@@ -29,22 +29,15 @@ public class CartService {
 			cart.getArticles().add(newArticle);
 		}
 		else {
-		
-			for(Article a : cart.getArticles()) {
+			
+			if(!checkIfArticleExists(newArticle.getId(), cart.getArticles())){
 				
-				if(!checkIfArticleExists(newArticle.getId(), cart.getArticles()))
-				{
-					cart.getArticles().add(newArticle);
-				}
-				else
-				{
-					cart.getArticles().set(index, newArticle);
-				}
-				index++;
+				cart.getArticles().add(newArticle);
 				
 			}
-			
-			
+			else {
+				cart.getArticles().set(getIndexOfArticle(newArticle.getId(),cart.getArticles()), newArticle);
+			}
 		}
 		
 		
@@ -54,6 +47,22 @@ public class CartService {
 		return cart;
 	}
 	
+	private int getIndexOfArticle(String articleId, List<Article> articles) {
+		
+		int index = 0;
+		
+		for(Article a : articles) {
+			if(a.getId().equals(articleId)) {
+				break;
+			}
+			else {
+				index++;
+			}
+		}
+		
+		return index;
+		
+	}
 	
 	private boolean checkIfArticleExists(String articleId, List<Article> articles) {
 		

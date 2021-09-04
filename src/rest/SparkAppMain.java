@@ -202,23 +202,6 @@ public class SparkAppMain {
 			
 		});
 		
-		post("/addToCart", (req, res)-> {
-			
-			res.type("application/json");
-			Session session = req.session(true);
-			Customer loggedCustomer = session.attribute("loggedUser");
-			String returnValue = "FAILURE";
-			Article articleToAdd = new Article(gson.fromJson(req.body(), ArticleDTO.class));
-			
-			
-			
-			/*if(cartService.addArticle(articleToAdd, loggedCustomer.getId())) {
-				returnValue= "SUCCESS";
-			}*/
-			
-			return returnValue;
-		});
-		
 		post("/createRestaurant", (req, res) -> {
 			res.type("application/json");
 			Session session = req.session(true);
