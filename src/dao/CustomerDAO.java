@@ -79,7 +79,6 @@ public class CustomerDAO {
 	public void removePoints() {
 		
 		
-		
 	}
 	
 }
