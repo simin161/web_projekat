@@ -2,13 +2,18 @@ Vue.component("customerCart", {
 	data: function(){
 		return{
 			articles: null,
-			selectedRestaurant: null
+			selectedRestaurant: null,
+			total : 0
 		};
 	}
 	,
 	template: `
 		<div>
 		<navigation-header></navigation-header>
+		<ul :class="scrolled ? 'scrollRest' : 'rest'">
+				<li><a @click="enable = false; visibility='visible'">Plaćanje</a></li>
+		</ul>
+		
 		<br/><br/>
 		<br/><br/>
 		<br/><br/>
@@ -31,8 +36,17 @@ Vue.component("customerCart", {
 						 
 					</div>
 				</div>
+				
+				<div class="lists">
+				
+					<div>
+						<p>Ukupno za platiti: {{total = totalCost()}} din.</p>
+					</div>
+				
+				</div>
+				
 			</div>
-			<div class="animated fadeIn" v-if="articles === null">
+			<div class="animated fadeIn" v-if="total === 0">
 				<img class="center" src="../images/noArticles.png"/>
 			</div>
 		</div>
@@ -44,6 +58,7 @@ Vue.component("customerCart", {
 		
 			axios.post("/removeFromCart", item)
 			.then(response =>(alert("Artikal je uspešno izbačen iz korpe!")))
+			this.$router.go()
 		
 		},
 		
@@ -52,6 +67,21 @@ Vue.component("customerCart", {
 			axios.post("/updateCart", item)
 			.then(response =>(console.log()))
 		
+		},
+		
+		totalCost : function(){
+			
+			let sum = 0.0;
+			
+			for(let i=0; i < this.articles.length; i++){
+			
+				if(this.articles[i].isDeletedFromCart == false)
+					sum = sum + parseFloat(this.articles[i].price) * parseFloat(this.articles[i].totalNumberOrdered);
+			
+			}
+			
+			return sum;
+		
 		}
 		
 	}
@@ -59,5 +89,6 @@ Vue.component("customerCart", {
 	
 		axios.get("/getCartArticles")
 		.then(response=> (this.articles = response.data))
+		
 	}
 });
