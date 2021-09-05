@@ -1,11 +1,14 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import beans.Article;
 import beans.Comment;
 import beans.CommentStatus;
 import beans.Restaurant;
+import beans.RestaurantStatus;
 import dao.ArticleDAO;
 import dao.CommentDAO;
 import dao.RestaurantDAO;
@@ -42,7 +45,6 @@ public class RestaurantService {
 
 	}
 
-	
 	private void updateRestaurantList(Restaurant updatedRestaurant) {
 		for (Restaurant restaurant : RestaurantDAO.getInstance().getAll()) {
 			if (restaurant.getId().equals(updatedRestaurant.getId())) {
@@ -72,35 +74,75 @@ public class RestaurantService {
 			}
 		}
 	}
-	
-	public ArrayList<Comment> getAcceptedCommentsForRestaurant(String id){
+
+	public ArrayList<Comment> getAcceptedCommentsForRestaurant(String id) {
 		ArrayList<Comment> retVal = new ArrayList<Comment>();
-		
-		for(Comment comment : CommentDAO.getInstance().getAll()) {
-			if(comment.getCommentedRestaurant().getId().equals(id)) {
-				if(comment.getStatus() == CommentStatus.ACCEPTED) {
+
+		for (Comment comment : CommentDAO.getInstance().getAll()) {
+			if (comment.getCommentedRestaurant().getId().equals(id)) {
+				if (comment.getStatus() == CommentStatus.ACCEPTED) {
 					retVal.add(comment);
 				}
 			}
 		}
-		
+
 		return retVal;
 	}
-	
-	public ArrayList<Comment> getAllCommentsForRestaurant(String id){
+
+	public ArrayList<Comment> getAllCommentsForRestaurant(String id) {
 		ArrayList<Comment> retVal = new ArrayList<Comment>();
 
-		for(Comment comment : CommentDAO.getInstance().getAll()) {
-			if(comment.getCommentedRestaurant().getId().equals(id)) {
+		for (Comment comment : CommentDAO.getInstance().getAll()) {
+			if (comment.getCommentedRestaurant().getId().equals(id)) {
 				retVal.add(comment);
 			}
 		}
-		
+
 		return retVal;
 	}
 
 	private boolean checkIfImageChanged(String oldImage, String newImage) {
-		
-		return oldImage != null && (newImage != null && !newImage.equals("")) &&  !oldImage.equals(newImage);
+
+		return oldImage != null && (newImage != null && !newImage.equals("")) && !oldImage.equals(newImage);
+	}
+
+	public ArrayList<Restaurant> getOpenRestaurants() {
+		ArrayList<Restaurant> retVal = new ArrayList<Restaurant>();
+
+		for (Restaurant r : RestaurantDAO.getInstance().getAll()) {
+			if (r.getStatus() == RestaurantStatus.OPEN) {
+				retVal.add(r);
+			}
+		}
+
+		return retVal;
+	}
+
+	public ArrayList<Restaurant> sort() {
+		Collections.sort(RestaurantDAO.getInstance().getAll(), new Comparator<Restaurant>() {
+			@Override
+			public int compare(final Restaurant object1, final Restaurant object2) {
+				return object1.getName().compareTo(object2.getName());
+			}
+		});
+
+		return RestaurantDAO.getInstance().getAll();
+	}
+
+	public void calculateAndSaveAverageMark(String id) {
+		double sum = 0;
+		double avg = 0;
+		ArrayList<Comment> comments = getAcceptedCommentsForRestaurant(id);
+		Restaurant restaurant = RestaurantDAO.getInstance().findById(id);
+		if (comments.size() != 0) {
+			for (Comment comment : comments) {
+				sum += comment.getMark();
+			}
+			
+			avg = sum/comments.size();
+		}
+		restaurant.setAverageMark(avg);
+		RestaurantDAO.getInstance().getAll().set(Integer.parseInt(id) - 1, restaurant);
+		RestaurantDAO.getInstance().save();
 	}
 }

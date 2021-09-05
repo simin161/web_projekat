@@ -19,7 +19,16 @@ public class Restaurant {
 	private Location location;
 	@Expose
 	private String restaurantLogo; //ili BufferedImage
+	@Expose
+	private double averageMark;
 	
+	
+	public double getAverageMark() {
+		return averageMark;
+	}
+	public void setAverageMark(double averageMark) {
+		this.averageMark = averageMark;
+	}
 	public String getId() {
 		return id;
 	}

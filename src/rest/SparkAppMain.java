@@ -274,7 +274,19 @@ public class SparkAppMain {
 			commentService.changeStatus(gson.fromJson(req.body(), String.class), CommentStatus.ACCEPTED);
 			Session session = req.session(true);
 			Manager loggedManager = session.attribute("loggedUser");
+			restaurantService.calculateAndSaveAverageMark(loggedManager.getRestaurant().getId());
 			return gson.toJson(restaurantService.getAllCommentsForRestaurant(loggedManager.getRestaurant().getId()));
+		});
+		
+		get("/getOpened", (req, res)->{
+			res.type("application/json");
+			return gson.toJson(restaurantService.getOpenRestaurants());
+		
+		});
+		
+		get("/sortRestaurantsByName", (req, res) -> {
+			res.type("application/json");
+			return gson.toJson(restaurantService.sort());
 		});
 	}
 }
