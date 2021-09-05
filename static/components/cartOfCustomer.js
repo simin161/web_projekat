@@ -9,9 +9,6 @@ Vue.component("customerCart", {
 	template: `
 		<div>
 		<navigation-header></navigation-header>
-		<ul :class="scrolled ? 'scrollRest' : 'rest'">
-				<li><a @click="isDisabled = false; backgroundColor = '#5eaaa8'; visibility = 'visible'">Pregled korpe</a> </li>
-		</ul>
 		<br/><br/>
 		<br/><br/>
 		<br/><br/>
@@ -26,7 +23,7 @@ Vue.component("customerCart", {
 						</span>
 						<p>{{article.name}}</p>
 						<p>Cena: {{article.price}} dinara</p>
-						<p>Količina: {{article.quantity}}</p>
+						<p>Količina: {{article.totalNumberOrdered}}</p>
 						<p>{{article.description}}</p>
 						<p>{{article.articleType}}</p>
 						 

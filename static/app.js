@@ -12,7 +12,7 @@ const addArticle = {template: '<add-article></add-article>'}
 const editArticle = {template: '<edit-article></edit-article>'}
 const restaurantsToDisplay = {template: '<restaurants></restaurants>'}
 const restaurantArticles = {template: '<restaurantArticles></restaurantArticles>'}
-const customerCart = {template: '<cartOfCustomer><cartOfCustomer/>'}
+const customerCart = {template: '<customerCart><customerCart/>'}
 
 const router = new VueRouter({
 	  mode: 'hash',
