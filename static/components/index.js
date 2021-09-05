@@ -6,19 +6,13 @@ Vue.component('first-page', {
 	},
 template: `<div>
 		<app-modal></app-modal>
+		<search-restaurant></search-restaurant>
+		<br/> 
 		<br/>
-		<form class="searchForm" style="">
-			<input type="text" placeholder="Naziv restorana..."/>
-			<select id="tipRestorana">
-				<option value="">Tip 1</option>
-				<option>Tip 2</option>
-				<option>Tip 3</option>
-			</select>
-			<input type="text" placeholder="Lokacija..."/> 
-			<input type="text" placeholder="Prosečna ocena"/>
-			<input type="button" class="buttonSearch"/>
-		</form>
-		<hr>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
 			<div>
 				<div class="lists" v-for="item in restaurats">
 					<span style="float: left; margin-top: 2.5px">
