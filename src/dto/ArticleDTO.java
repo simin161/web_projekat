@@ -12,6 +12,8 @@ public class ArticleDTO {
 	private String quantity;
 	private String description;
 	private String articleImage;
+	private String totalNumberOrdered;
+	
 	public String getId() {
 		return id;
 	}
@@ -53,6 +55,12 @@ public class ArticleDTO {
 	}
 	public void setArticleImage(String articleImage) {
 		this.articleImage = articleImage;
+	}
+	public String getTotalNumberOrdered() {
+		return totalNumberOrdered;
+	}
+	public void setTotalNumberOrdered(String totalNumberOrdered) {
+		this.totalNumberOrdered = totalNumberOrdered;
 	} 
 	
 	

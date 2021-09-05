@@ -81,6 +81,26 @@ select option{
 	
 }
 
+.addToCart{
+	float: right; 
+	margin-top: 40px; 
+	margin-right: 15px; 
+	height: 24px;
+	width: 24px;
+	vertical-align: middle;
+	
+}
+
+.numberAddToCart{
+	float: right; 
+	margin-top: 40px; 
+	margin-right: 15px; 
+	height: 24px;
+	width: 40px;
+	vertical-align: middle;
+	
+}
+
 .changeArticle{
 	float: right; 
 	margin-top: 40px; 

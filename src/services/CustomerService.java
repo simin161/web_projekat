@@ -41,4 +41,22 @@ public class CustomerService {
 		RegistrationService regService = new RegistrationService();
 		return regService.checkExistanceOfUsername(newUsername);
 	}
+	
+	
+	public void saveCustomerCart(Customer customerForSave) {
+		
+		for(Customer c : CustomerDAO.getInstance().getAllCustomers()) {
+			if(c.getId().equals(customerForSave.getId())){
+			
+				
+				c.setCart(customerForSave.getCart());
+				break;
+				
+			}
+		}
+		
+		CustomerDAO.getInstance().save();
+		
+	}
+	
 }

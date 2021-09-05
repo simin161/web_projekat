@@ -20,6 +20,11 @@ public class Restaurant {
 	@Expose
 	private String restaurantLogo; //ili BufferedImage
 	
+	//proveriti
+	private Manager manager;
+	
+	private ArrayList<Customer> customers;
+	
 	public String getId() {
 		return id;
 	}
@@ -61,5 +66,17 @@ public class Restaurant {
 	}
 	public void setRestaurantLogo(String restaurantLogo) {
 		this.restaurantLogo = restaurantLogo;
+	}
+	public Manager getManager() {
+		return manager;
+	}
+	public void setManager(Manager manager) {
+		this.manager = manager;
+	}
+	public ArrayList<Customer> getCustomers() {
+		return customers;
+	}
+	public void setCustomers(ArrayList<Customer> customers) {
+		this.customers = customers;
 	}
 }

@@ -8,6 +8,12 @@ public class Customer extends User{
 	private int collectedPoints;
 	private CustomerType customerType;
 	
+	public Customer(String customerId) {
+		
+		this.id = customerId;
+		
+	}
+	
 	public ArrayList<Order> getAllOrders() {
 		return allOrders;
 	}

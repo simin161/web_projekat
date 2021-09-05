@@ -1,12 +1,17 @@
-Vue.component("articles-for-restaurant", {
+Vue.component("restaurantArticles", {
 	data: function(){
 		return{
-			articles: null
+			articles: null,
+			selectedRestaurant: null
 		};
 	}
 	,
 	template: `
 		<div>
+		<navigation-header></navigation-header>
+		<br/><br/>
+		<br/><br/>
+		<br/><br/>
 			<div v-if="articles != null">
 				<div class="lists" v-for="article in articles">
 					<div>
@@ -14,8 +19,8 @@ Vue.component("articles-for-restaurant", {
 							<img style="border-radius: 5px;" :src="article.articleImage" height="90px" width="90px">
 						</span> 
 						<span>
-							<button class="deleteArticle" @click="deleteArticle(article)"></button> 
-							<button class="changeArticle" @click="editArticle(article)"></button>
+							<button class="addToCart" @click="addToCart(article)" title="Dodaj u korpu">+</button> 
+							<input type="number" v-model= "article.totalNumberOrdered" min="1" onKeyDown="return false" class="numberAddToCart"></input>
 						</span>
 						<p>{{article.name}}</p>
 						<p>Cena: {{article.price}} dinara</p>
@@ -33,18 +38,18 @@ Vue.component("articles-for-restaurant", {
 		`
 	,
 	methods: {
-		deleteArticle : function(article){
-			console.log(article)
-			axios.post("/deleteArticle", article)
-			.then(response => (this.articles = response.data))
-		} ,
-		editArticle : function(article){
-			axios.post("/showArticle", article)
-			.then(response => (router.push("/show-article")))
+		
+		addToCart : function(item){
+		
+			axios.post("/updateCart", item)
+			.then(response =>(alert("Artikal je uspešno dodat u korpu!")))
+		
 		}
+		
 	}
 	, mounted(){
-		axios.get("/getArticlesForRestaurant")
-			.then(response => (this.articles = response.data))
+	
+		axios.get("/getSelectedRestaurant")
+		.then(response=> (this.articles = response.data))
 	}
 });

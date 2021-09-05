@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -40,9 +41,10 @@ public class RestaurantDAO {
 			reader.close();
 		}catch(Exception e) {
 			allRestaurants = new ArrayList<Restaurant>();
+			e.printStackTrace();
 		}
 	}
-	
+
 	public void save() {
 		try {
 			Writer writer;
@@ -58,6 +60,22 @@ public class RestaurantDAO {
 	
 	public ArrayList<Restaurant> getAll(){
 		return allRestaurants;
+	}
+	
+	public void saveRestaurants() {
+		try {
+			
+			Writer writer;
+			writer = Files.newBufferedWriter(Paths.get("data/restaurants.json"));
+			gson.toJson(allRestaurants, writer);
+			writer.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void addRestaurant(Restaurant newRestaurant) {
+		allRestaurants.add(newRestaurant);
 	}
 	
 	public Restaurant findById(String restaurantId) {
@@ -90,4 +108,19 @@ public class RestaurantDAO {
 	}
 
 
+	public List<Restaurant> findRestaurantByName(String name) {
+		
+		List<Restaurant> restaurants = new ArrayList<Restaurant>();
+		for( Restaurant r : allRestaurants){
+			
+			if(name.equals(r.getName())) {
+				restaurants.add(r);
+			}
+			
+		}
+		
+		return restaurants;
+		
+	}
+	
 }

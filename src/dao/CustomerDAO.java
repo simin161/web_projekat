@@ -71,4 +71,24 @@ public class CustomerDAO {
 		}
 		return customer;
 	}
+	
+	public Customer findCustomerById(String id) {
+		for(Customer c : allCustomers) {
+			if(c.getId().equals(id)) {
+				return c;
+			}
+		}
+		
+		return null;
+	}
+	
+	public void addPoints() {
+		
+	}
+	
+	public void removePoints() {
+		
+		
+	}
+	
 }

@@ -5,13 +5,44 @@ import java.util.ArrayList;
 import beans.Article;
 import beans.Comment;
 import beans.CommentStatus;
+
+import java.util.List;
+
+import beans.Article;
+import beans.Customer;
 import beans.Restaurant;
+import beans.RestaurantStatus;
 import dao.ArticleDAO;
 import dao.CommentDAO;
 import dao.RestaurantDAO;
 
 public class RestaurantService {
 
+	public boolean createRestaurant(Restaurant newRestaurant) {
+		
+		boolean returnValue = false;
+		
+		try {
+			
+			newRestaurant.setId(Integer.toString(RestaurantDAO.getInstance().getAll().size()) + 1);
+			newRestaurant.setStatus(RestaurantStatus.CLOSED);
+			newRestaurant.setArticles(new ArrayList<Article>());
+			RestaurantDAO.getInstance().addRestaurant(newRestaurant);
+			RestaurantDAO.getInstance().saveRestaurants();
+			returnValue = true;
+			
+		}catch(Exception e) {
+			returnValue = false;
+		}
+		
+		return returnValue;
+		
+	}
+	
+	public List<Restaurant> findRestaurantsByName(String name){
+		return RestaurantDAO.getInstance().findRestaurantByName(name);
+	}
+	
 	public ArrayList<Restaurant> getAllRestaurants() {
 		return RestaurantDAO.getInstance().getAll();
 	}
@@ -103,4 +134,70 @@ public class RestaurantService {
 		
 		return oldImage != null && (newImage != null && !newImage.equals("")) &&  !oldImage.equals(newImage);
 	}
+	
+	public Restaurant findRestaurantById(String restaurantId) {
+		
+		Restaurant restaurant = new Restaurant();
+		
+		for(Restaurant r : RestaurantDAO.getInstance().getAll()) {
+			
+			if(r.getId().equals(restaurantId)) {
+				restaurant = r;
+				break;
+			}
+			
+		}
+		
+		
+		return restaurant;
+	}
+	
+	public void addCustomerToRestaurant(String restaurantId, String customerId) {
+		
+		boolean indicator = false;
+		
+		for(Restaurant r : RestaurantDAO.getInstance().getAll()) {
+			
+			if(r.getId().equals(restaurantId)) {
+				
+				if(r.getCustomers()==null) {
+					r.setCustomers(new ArrayList<Customer>());
+				}
+				
+				indicator = checkIfCustomerExists(r.getCustomers(), customerId);
+				
+				if(indicator == false) {
+				
+					r.getCustomers().add(new Customer(customerId));
+					
+				}
+				
+			
+			}
+			
+		}
+		
+		RestaurantDAO.getInstance().saveRestaurants();
+		
+	}
+	
+	private boolean checkIfCustomerExists(List<Customer> customers, String customerId) {
+		
+		boolean indicator = false;
+		
+		for(Customer c : customers) {
+			
+			if(c.getId().equals(customerId)) {
+				indicator = true;
+				break;
+			}else {
+				indicator = false;
+			}
+			
+		}
+		
+		return indicator;
+		
+	}
+	
 }
