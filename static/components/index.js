@@ -2,7 +2,14 @@ Vue.component('first-page', {
 	data: function(){
 		return{
 			restaurants: null,
-			showModal: false
+			showModal: false,
+			searchParams: {
+					name : "",
+					type: "",
+					location: "",
+					averageMark: ""
+					
+			}
 		};
 	},
 template: `<div>
@@ -16,19 +23,19 @@ template: `<div>
 				<span class="close" @click="showModal = false">&times;</span>
 					<table style="text-align: left; margin: auto">
 						<tr>
-							<td><input type="text" placeholder="Naziv restorana..."></input></td>
+							<td><input type="text" v-model="searchParams.name" placeholder="Naziv restorana..."></input></td>
 						</tr>
 						<tr>
-							<td><input type="text" placeholder="Tip..."></input></td>
+							<td><input type="text" v-model="searchParams.type" placeholder="Tip..."></input></td>
 						</tr>
 						<tr>
-							<td><input type="text" placeholder="Lokacija..."></input></td>
+							<td><input type="text" v-model="searchParams.location" placeholder="Lokacija..."></input></td>
 						</tr>
 						<tr>
-							<td><input type="number" placeholder="Prosečna ocena..."></input></td>
+							<td><input type="number" min="0" v-model="searchParams.averageMark" placeholder="Prosečna ocena..."></input></td>
 						</tr>
 						<tr>
-							<td><input type="button" value="Pretraži"></input></td>
+							<td><input type="button" @click="search" value="Pretraži"></input></td>
 						</tr>
 						<tr>
 							<td><input @click="showOpened" type="button" value="Prikaži samo otvorene restorane"></input></td>
@@ -103,6 +110,10 @@ template: `<div>
 		},
 		sortByAverageMark : function(type){
 			axios.post("/sortRestaurantsByAverageMark", type)
+			.then(response => (this.restaurants = response.data))
+		},
+		search : function(){
+			axios.post("/searchRestaurants", this.searchParams)
 			.then(response => (this.restaurants = response.data))
 		}
 	}

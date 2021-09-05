@@ -3,6 +3,8 @@ package services;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import beans.Article;
 import beans.Comment;
@@ -13,6 +15,7 @@ import beans.SortType;
 import dao.ArticleDAO;
 import dao.CommentDAO;
 import dao.RestaurantDAO;
+import dto.SearchRestaurantDTO;
 
 public class RestaurantService {
 
@@ -172,5 +175,28 @@ public class RestaurantService {
 		restaurant.setAverageMark(avg);
 		RestaurantDAO.getInstance().getAll().set(Integer.parseInt(id) - 1, restaurant);
 		RestaurantDAO.getInstance().save();
+	}
+
+	public ArrayList<Restaurant> search(SearchRestaurantDTO searchParams) {
+		ArrayList<Restaurant> retVal = new ArrayList<Restaurant>();
+		
+		Pattern patternName = Pattern.compile(searchParams.getName(), Pattern.CASE_INSENSITIVE);		
+		Pattern patternType = Pattern.compile(searchParams.getType(), Pattern.CASE_INSENSITIVE);
+		Pattern patternLocation = Pattern.compile(searchParams.getLocation(), Pattern.CASE_INSENSITIVE);
+		double borderNumber = 0;
+		if(!searchParams.getAverageMark().equals(""))
+			borderNumber = Double.parseDouble(searchParams.getAverageMark());
+		
+		for(Restaurant r : RestaurantDAO.getInstance().getAll()) {
+		    Matcher matcherName = patternName.matcher(r.getName());
+		    Matcher matcherType = patternType.matcher(r.getRestaurantType());
+		   // Matcher matcherLocation = patternType.matcher(r.getLocation().getAddress());
+		    
+		    if(matcherName.find() && matcherType.find() /*&& matcherLocation.find()*/ && r.getAverageMark() >= borderNumber) {
+		    	retVal.add(r);
+		    }
+		}
+		
+		return retVal;
 	}
 }
