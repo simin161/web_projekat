@@ -286,7 +286,12 @@ public class SparkAppMain {
 		
 		get("/sortRestaurantsByName", (req, res) -> {
 			res.type("application/json");
-			return gson.toJson(restaurantService.sort());
+			return gson.toJson(restaurantService.sortByName());
+		});
+		
+		get("sortRestaurantsByAverageMark", (req, res) -> {
+			res.type("application/json");
+			return gson.toJson(restaurantService.sortByAverageMark());
 		});
 	}
 }

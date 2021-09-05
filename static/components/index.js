@@ -44,7 +44,7 @@ template: `<div>
 							<td><input type="button" value="lokaciji"></input></td>
 						</tr>
 						<tr>
-							<td><input type="button" value="prosečnoj oceni"></input></td>
+							<td><input type="button" @click="sortByAverageMark" value="prosečnoj oceni"></input></td>
 						</tr>
 						<br/>
 						<tr>
@@ -99,6 +99,10 @@ template: `<div>
 		},
 		sortByName : function(){
 			axios.get("/sortRestaurantsByName")
+			.then(response => (this.restaurants = response.data))
+		},
+		sortByAverageMark : function(){
+			axios.get("/sortRestaurantsByAverageMark")
 			.then(response => (this.restaurants = response.data))
 		}
 	}

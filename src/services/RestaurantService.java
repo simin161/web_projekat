@@ -118,11 +118,22 @@ public class RestaurantService {
 		return retVal;
 	}
 
-	public ArrayList<Restaurant> sort() {
+	public ArrayList<Restaurant> sortByName() {
 		Collections.sort(RestaurantDAO.getInstance().getAll(), new Comparator<Restaurant>() {
 			@Override
 			public int compare(final Restaurant object1, final Restaurant object2) {
 				return object1.getName().compareTo(object2.getName());
+			}
+		});
+
+		return RestaurantDAO.getInstance().getAll();
+	}
+	
+	public ArrayList<Restaurant> sortByAverageMark(){
+		Collections.sort(RestaurantDAO.getInstance().getAll(), new Comparator<Restaurant>() {
+			@Override
+			public int compare(final Restaurant object1, final Restaurant object2) {
+				return Double.compare(object1.getAverageMark(), object2.getAverageMark());
 			}
 		});
 
