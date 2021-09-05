@@ -44,6 +44,25 @@
     "dateOfBirth": "0011-02-11"
   },
   {
+    "cart": {
+      "articles": [
+        {
+          "id": "1",
+          "name": "Crystal burger",
+          "price": 800.0,
+          "articleType": "FOOD",
+          "restaurant": {
+            "id": "1"
+          },
+          "quantity": 650.0,
+          "description": "Specijalitet kuće",
+          "articleImage": "..\\upload\\a1.jpg",
+          "isDeleted": false,
+          "totalNumberOrdered": 3
+        }
+      ],
+      "price": 0.0
+    },
     "collectedPoints": 0,
     "id": "5",
     "username": "customer",

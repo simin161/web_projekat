@@ -12,6 +12,8 @@ import dao.CustomerDAO;
 
 public class CartService {
 
+	private CustomerService customerService = new CustomerService();
+	
 	@SuppressWarnings("unused")
 	public Cart addArticle(Article newArticle, String id) {
 		
@@ -44,6 +46,7 @@ public class CartService {
 		
 		
 		CustomerDAO.getInstance().findCustomerById(id).setCart(cart);
+		customerService.saveCustomerCart(CustomerDAO.getInstance().findCustomerById(id));
 		
 		return cart;
 	}
@@ -86,11 +89,21 @@ public class CartService {
 		for(Customer c : CustomerDAO.getInstance().getAllCustomers()) {
 			
 			if(c.getId().equals(userId)) {
-				articles = c.getCart().getArticles();
+				
+				if(c.getCart() != null) {
+					articles = c.getCart().getArticles();
+				}
+				else {
+					
+					return null;
+				}
+				
 				break;
 			}
 			
 		}
+		
+		
 		
 		return articles;
 		
@@ -109,6 +122,41 @@ public class CartService {
 		
 		return totalPrice;
 		
+	}
+	
+	public void removeArticleFromCart(Article article, String userId) {
+		
+		Cart cart = getUserCart(userId);
+		
+		if(cart == null) {
+			cart = new Cart();
+		}
+		
+		for(Article a : cart.getArticles()) {
+			
+			if(a.getId().equals(article.getId())) {
+				cart.getArticles().remove(a);
+				break;
+			}
+			
+		}
+		
+	}
+	
+	public Cart getUserCart(String userId) {
+		
+		Cart cart = new Cart();
+		
+		for(Cart c : CartDAO.getInstance().getAllCarts()) {
+			
+			if(c.getCartId().equals(userId)) {
+				cart = c;
+				break;
+			}
+			
+		}
+		
+		return cart;
 	}
 	
 }

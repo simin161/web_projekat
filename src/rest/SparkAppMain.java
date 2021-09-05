@@ -7,7 +7,6 @@ import static spark.Spark.staticFiles;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -250,6 +249,16 @@ public class SparkAppMain {
 			Manager loggedManager = session.attribute("loggedUser");
 			Restaurant restaurant = managerService.findRestaurantForManager(loggedManager);
 			return gson.toJson(articleService.getArticlesForRestaurant(restaurant.getId()));
+		});
+		
+		post("/removeFromCart", (req, res) -> {
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			Customer loggedCustomer = session.attribute("loggedUser");
+			cartService.removeArticleFromCart(gson.fromJson(req.body(), Article.class), loggedCustomer.getId());
+			return gson.toJson(cartService.getAllArticles(loggedCustomer.getId()));
+			
 		});
 		
 		post("/selectRestaurant", (req, res) -> {
