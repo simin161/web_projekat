@@ -87,11 +87,12 @@ Vue.component("customerCart", {
 		placeOrder: function(item){
 		
 			axios.post("/placeOrder", item)
-			.then(response=>(alert("Vaša porudžbina je uspešno kreirana!")))
-		
+			.then(response=>{alert("Vaša porudžbina je uspešno kreirana!"), this.$router.go()})
+			
+			
 		}
-		
 	}
+		
 	, mounted(){
 	
 		axios.get("/getCartArticles")

@@ -178,7 +178,6 @@ public class SparkAppMain {
 		});
 
 		post("/placeOrder", (req, res)-> {
-			
 			res.type("application/json");
 			Session session = req.session(true);
 			Customer loggedCustomer = session.attribute("loggedUser");
@@ -190,7 +189,6 @@ public class SparkAppMain {
 			return ret ? "Uspešno ste kreirali porudžbinu!" : "Došlo je do greške prilikom kreiranja porudžbine!";
 			
 		});
-		
 		
 		post("/addArticle", (req, res) -> {
 			res.type("application/json");
