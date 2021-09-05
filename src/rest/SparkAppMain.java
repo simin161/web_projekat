@@ -19,6 +19,7 @@ import beans.Customer;
 import beans.Deliverer;
 import beans.Manager;
 import beans.Restaurant;
+import beans.SortType;
 import beans.User;
 import beans.UserInfo;
 import dto.ArticleDTO;
@@ -284,14 +285,16 @@ public class SparkAppMain {
 		
 		});
 		
-		get("/sortRestaurantsByName", (req, res) -> {
+		post("/sortRestaurantsByName", (req, res) -> {
 			res.type("application/json");
-			return gson.toJson(restaurantService.sortByName());
+			SortType type = gson.fromJson(req.body(), SortType.class);
+			return gson.toJson(restaurantService.sortByName(type));
 		});
 		
-		get("sortRestaurantsByAverageMark", (req, res) -> {
+		post("sortRestaurantsByAverageMark", (req, res) -> {
 			res.type("application/json");
-			return gson.toJson(restaurantService.sortByAverageMark());
+			SortType type = gson.fromJson(req.body(), SortType.class);
+			return gson.toJson(restaurantService.sortByAverageMark(type));
 		});
 	}
 }

@@ -38,26 +38,26 @@ template: `<div>
 							<td>Sortiraj po (rastuće):</tr>
 						</tr>
 						<tr>
-							<td><input type="button" @click="sortByName" value="nazivu restorana"></input></td>
+							<td><input type="button" @click="sortByName('ASCENDING')" value="nazivu restorana"></input></td>
 						</tr>
 						<tr>
 							<td><input type="button" value="lokaciji"></input></td>
 						</tr>
 						<tr>
-							<td><input type="button" @click="sortByAverageMark" value="prosečnoj oceni"></input></td>
+							<td><input type="button" @click="sortByAverageMark('ASCENDING')" value="prosečnoj oceni"></input></td>
 						</tr>
 						<br/>
 						<tr>
 							<td>Sortiraj po (opadajuće):</tr>
 						</tr>
 						<tr>
-							<td><input type="button" value="nazivu restorana"></input></td>
+							<td><input type="button" @click="sortByName('DESCENDING')"  value="nazivu restorana"></input></td>
 						</tr>
 						<tr>
 							<td><input type="button" value="lokaciji"></input></td>
 						</tr>
 						<tr>
-							<td><input type="button" value="prosečnoj oceni"></input></td>
+							<td><input type="button" @click="sortByAverageMark('DESCENDING')" value="prosečnoj oceni"></input></td>
 						</tr>
 					</table>
 			  </div>
@@ -97,12 +97,12 @@ template: `<div>
 			axios.get("/getOpened")
 			.then(response => (this.restaurants = response.data))
 		},
-		sortByName : function(){
-			axios.get("/sortRestaurantsByName")
+		sortByName : function(type){
+			axios.post("/sortRestaurantsByName", type)
 			.then(response => (this.restaurants = response.data))
 		},
-		sortByAverageMark : function(){
-			axios.get("/sortRestaurantsByAverageMark")
+		sortByAverageMark : function(type){
+			axios.post("/sortRestaurantsByAverageMark", type)
 			.then(response => (this.restaurants = response.data))
 		}
 	}

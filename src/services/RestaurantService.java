@@ -9,6 +9,7 @@ import beans.Comment;
 import beans.CommentStatus;
 import beans.Restaurant;
 import beans.RestaurantStatus;
+import beans.SortType;
 import dao.ArticleDAO;
 import dao.CommentDAO;
 import dao.RestaurantDAO;
@@ -118,25 +119,41 @@ public class RestaurantService {
 		return retVal;
 	}
 
-	public ArrayList<Restaurant> sortByName() {
-		Collections.sort(RestaurantDAO.getInstance().getAll(), new Comparator<Restaurant>() {
-			@Override
-			public int compare(final Restaurant object1, final Restaurant object2) {
-				return object1.getName().compareTo(object2.getName());
-			}
-		});
-
+	public ArrayList<Restaurant> sortByName(SortType type) {
+		if (type == SortType.ASCENDING) {
+			Collections.sort(RestaurantDAO.getInstance().getAll(), new Comparator<Restaurant>() {
+				@Override
+				public int compare(final Restaurant object1, final Restaurant object2) {
+					return object1.getName().compareTo(object2.getName());
+				}
+			});
+		} else {
+			Collections.sort(RestaurantDAO.getInstance().getAll(), new Comparator<Restaurant>() {
+				@Override
+				public int compare(final Restaurant object1, final Restaurant object2) {
+					return -object1.getName().compareTo(object2.getName());
+				}
+			});
+		}
 		return RestaurantDAO.getInstance().getAll();
 	}
-	
-	public ArrayList<Restaurant> sortByAverageMark(){
-		Collections.sort(RestaurantDAO.getInstance().getAll(), new Comparator<Restaurant>() {
-			@Override
-			public int compare(final Restaurant object1, final Restaurant object2) {
-				return Double.compare(object1.getAverageMark(), object2.getAverageMark());
-			}
-		});
 
+	public ArrayList<Restaurant> sortByAverageMark(SortType type) {
+		if (type == SortType.ASCENDING) {
+			Collections.sort(RestaurantDAO.getInstance().getAll(), new Comparator<Restaurant>() {
+				@Override
+				public int compare(final Restaurant object1, final Restaurant object2) {
+					return Double.compare(object1.getAverageMark(), object2.getAverageMark());
+				}
+			});
+		} else {
+			Collections.sort(RestaurantDAO.getInstance().getAll(), new Comparator<Restaurant>() {
+				@Override
+				public int compare(final Restaurant object1, final Restaurant object2) {
+					return -Double.compare(object1.getAverageMark(), object2.getAverageMark());
+				}
+			});
+		}
 		return RestaurantDAO.getInstance().getAll();
 	}
 
@@ -149,8 +166,8 @@ public class RestaurantService {
 			for (Comment comment : comments) {
 				sum += comment.getMark();
 			}
-			
-			avg = sum/comments.size();
+
+			avg = sum / comments.size();
 		}
 		restaurant.setAverageMark(avg);
 		RestaurantDAO.getInstance().getAll().set(Integer.parseInt(id) - 1, restaurant);
