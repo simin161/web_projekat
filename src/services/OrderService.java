@@ -32,7 +32,7 @@ public class OrderService {
 		Order order = new Order();
 		order.setId(String.valueOf(OrderDAO.getInstance().getAllOrders().size()+1));
 		order.setArticles(cart.getArticles());
-		order.setCustomer(new Customer(cart.getCustomer().getId()));
+		order.setCustomer(new Customer(cart.getCartId()));
 		order.setOrderDate(new Date());
 		order.setOrderTime(Time.valueOf(LocalTime.now()));
 		order.setOrderStatus(OrderStatus.PROCESSING);
