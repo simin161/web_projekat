@@ -46,7 +46,7 @@ public class SparkAppMain {
 
 	
 	public static void main(String[] args) throws Exception {
-		port(8080);
+		port(9000);
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
 
 		post("/registerUser", (req, res) -> {
@@ -389,6 +389,13 @@ public class SparkAppMain {
 			res.type("application/json");
 			SearchRestaurantDTO searchParams = gson.fromJson(req.body(), SearchRestaurantDTO.class);
 			return gson.toJson(restaurantService.search(searchParams));
+		});
+		
+		get("/getCustomersForRestaurant", (req, res) -> {
+			res.type("application/json");
+			Session session = req.session(true);
+			Manager loggedManager = session.attribute("loggedUser");
+			return gson.toJson(restaurantService.getAllCustomersForRestaurant(loggedManager.getRestaurant().getId()));
 		});
 	}
 }
