@@ -19,7 +19,7 @@ Vue.component("customerCart", {
 							<img style="border-radius: 5px;" :src="article.articleImage" height="90px" width="90px">
 						</span> 
 						<span>
-							<button class="delete" @click="removeFromCart(article)" title="Izbaci iz korpe"></button> 
+							<button class="deleteArticle" @click="removeFromCart(article)" title="Izbaci iz korpe"></button> 
 						</span>
 						<p>{{article.name}}</p>
 						<p>Cena: {{article.price}} dinara</p>
