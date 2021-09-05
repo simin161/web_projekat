@@ -6,13 +6,13 @@ public class Comment {
 	private Restaurant commentedRestaurant;
 	private String text;
 	private int mark;
-	private boolean accepted;
+	private CommentStatus status;
 	
-	public boolean isAccepted() {
-		return accepted;
+	public CommentStatus getStatus() {
+		return status;
 	}
-	public void setAccepted(boolean accepted) {
-		this.accepted = accepted;
+	public void setStatus(CommentStatus status) {
+		this.status = status;
 	}
 	public Customer getCustomer() {
 		return customer;

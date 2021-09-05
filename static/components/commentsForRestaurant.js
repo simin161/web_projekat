@@ -9,14 +9,14 @@ Vue.component("comments-for-restaurant", {
 		<div>
 			<div class="lists" v-for="comment in comments">
 				<div>
-					<span style="float: right">
-						<input type="button" class="accept"></input>
-						<input type="button" class="decline"></input>
+					<span style="float: right" v-if="comment.status === 'PENDING'">
+						<input type="button" @click="acceptComment(comment.id)" class="accept"></input>
+						<input type="button" @click="declineComment(comment.id)" class="decline"></input>
 					</span>
-					<p>{{item}}</p>
-					<p>Porudzbina</p>
-					<p>Dostavljac</p> 
-					<p>Cena</p>
+					<p>{{comment.customer.username}}</p>
+					<p>{{comment.text}}</p>
+					<p>Ocena: {{comment.mark}}</p> 
+					<p>Status: {{comment.status}}</p>
 				</div>
 			</div>
 			<div v-if="comments === null" class="animated fadeIn">
@@ -25,4 +25,20 @@ Vue.component("comments-for-restaurant", {
 			</div>
 		</div>
 		`
+		,
+		methods : {
+			declineComment : function(id){
+				axios.post("/declineComment", id)
+				.then(response => (this.comments = response.data))
+			},
+			acceptComment: function(id){
+				axios.post("/acceptComment", id)
+				.then(response => (this.comments = response.data))
+			}
+		}
+		,
+		mounted(){
+			axios.get("/getAllCommentsForRestaurant")
+			.then(response => (this.comments = response.data))
+	}
 });

@@ -1,14 +1,16 @@
 [
   {
-  	"commentedRestaurant": {
-  		"id": "1"
-  	},
-    "customer":{
-    	"id": "1",
-    	"username": "Silfaa"
+    "id": "1",
+    "customer": {
+      "collectedPoints": 0,
+      "id": "1",
+      "username": "Silfaa"
     },
-    "text": "Mnogo dobar restoran! 10/10 would recommend!!! <3",
+    "commentedRestaurant": {
+      "id": "1"
+    },
+    "text": "Mnogo dobar restoran! 10/10 would recommend!!! \u003c3",
     "mark": 5,
-    "accepted" : true
+    "status": "ACCEPTED"
   }
 ]

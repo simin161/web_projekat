@@ -14,6 +14,7 @@ import com.google.gson.GsonBuilder;
 import beans.Administrator;
 import beans.Article;
 import beans.Comment;
+import beans.CommentStatus;
 import beans.Customer;
 import beans.Deliverer;
 import beans.Manager;
@@ -21,13 +22,7 @@ import beans.Restaurant;
 import beans.User;
 import beans.UserInfo;
 import dto.ArticleDTO;
-import services.AdministratorService;
-import services.ArticleService;
-import services.CustomerService;
-import services.DelivererService;
-import services.ManagerService;
-import services.RegistrationService;
-import services.RestaurantService;
+import services.*;
 import spark.Session;
 
 public class SparkAppMain {
@@ -40,6 +35,7 @@ public class SparkAppMain {
 	private static AdministratorService administratorService = new AdministratorService();
 	private static DelivererService delivererService = new DelivererService();
 	private static ArticleService articleService = new ArticleService();
+	private static CommentService commentService = new CommentService();
 	
 	public static void main(String[] args) throws Exception {
 		port(9000);
@@ -256,6 +252,29 @@ public class SparkAppMain {
 			Restaurant selectedRestaurant = session.attribute("selectedRestaurant");
 			ArrayList<Comment> comments = restaurantService.getAcceptedCommentsForRestaurant(selectedRestaurant.getId());
 			return gson.toJson(comments);
+		});
+		
+		get("getAllCommentsForRestaurant", (req, res)->{
+			res.type("application/json");
+			Session session = req.session(true);
+			Manager loggedManager = session.attribute("loggedUser");
+			return gson.toJson(restaurantService.getAllCommentsForRestaurant(loggedManager.getRestaurant().getId()));
+		});
+		
+		post("/declineComment", (req, res)->{
+			res.type("application/json");
+			commentService.changeStatus(gson.fromJson(req.body(), String.class), CommentStatus.DECLINED);
+			Session session = req.session(true);
+			Manager loggedManager = session.attribute("loggedUser");
+			return gson.toJson(restaurantService.getAllCommentsForRestaurant(loggedManager.getRestaurant().getId()));
+		});
+		
+		post("/acceptComment", (req, res)->{
+			res.type("application/json");
+			commentService.changeStatus(gson.fromJson(req.body(), String.class), CommentStatus.ACCEPTED);
+			Session session = req.session(true);
+			Manager loggedManager = session.attribute("loggedUser");
+			return gson.toJson(restaurantService.getAllCommentsForRestaurant(loggedManager.getRestaurant().getId()));
 		});
 	}
 }

@@ -41,7 +41,7 @@ template: `<div>
 					<img class="center" src="../images/noComments.png"/>
 				</div>
 				<div>
-					<div class="lists" v-for="comment in comments">
+					<div class="lists" v-for="comment in comments"">
 						<p>{{comment.customer.username}}</p>
 						<p>{{comment.text}} </p>
 						<p>Ocena: {{comment.mark}}</p>

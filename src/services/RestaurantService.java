@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import beans.Article;
 import beans.Comment;
+import beans.CommentStatus;
 import beans.Restaurant;
 import dao.ArticleDAO;
 import dao.CommentDAO;
@@ -77,9 +78,21 @@ public class RestaurantService {
 		
 		for(Comment comment : CommentDAO.getInstance().getAll()) {
 			if(comment.getCommentedRestaurant().getId().equals(id)) {
-				if(comment.isAccepted()) {
+				if(comment.getStatus() == CommentStatus.ACCEPTED) {
 					retVal.add(comment);
 				}
+			}
+		}
+		
+		return retVal;
+	}
+	
+	public ArrayList<Comment> getAllCommentsForRestaurant(String id){
+		ArrayList<Comment> retVal = new ArrayList<Comment>();
+
+		for(Comment comment : CommentDAO.getInstance().getAll()) {
+			if(comment.getCommentedRestaurant().getId().equals(id)) {
+				retVal.add(comment);
 			}
 		}
 		
