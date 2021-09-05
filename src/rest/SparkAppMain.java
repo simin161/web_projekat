@@ -20,17 +20,12 @@ import beans.Customer;
 import beans.Deliverer;
 import beans.Manager;
 import beans.Restaurant;
+import beans.SortType;
 import beans.User;
 import beans.UserInfo;
 import dto.ArticleDTO;
 import services.*;
-import services.AdministratorService;
-import services.ArticleService;
-import services.CartService;
-import services.CustomerService;
-import services.DelivererService;
-import services.ManagerService;
-import services.OrderService;
+import dto.SearchRestaurantDTO;
 import services.RegistrationService;
 import services.RestaurantService;
 import spark.Session;
@@ -368,7 +363,32 @@ public class SparkAppMain {
 			commentService.changeStatus(gson.fromJson(req.body(), String.class), CommentStatus.ACCEPTED);
 			Session session = req.session(true);
 			Manager loggedManager = session.attribute("loggedUser");
+			restaurantService.calculateAndSaveAverageMark(loggedManager.getRestaurant().getId());
 			return gson.toJson(restaurantService.getAllCommentsForRestaurant(loggedManager.getRestaurant().getId()));
+		});
+		
+		get("/getOpened", (req, res)->{
+			res.type("application/json");
+			return gson.toJson(restaurantService.getOpenRestaurants());
+		
+		});
+		
+		post("/sortRestaurantsByName", (req, res) -> {
+			res.type("application/json");
+			SortType type = gson.fromJson(req.body(), SortType.class);
+			return gson.toJson(restaurantService.sortByName(type));
+		});
+		
+		post("/sortRestaurantsByAverageMark", (req, res) -> {
+			res.type("application/json");
+			SortType type = gson.fromJson(req.body(), SortType.class);
+			return gson.toJson(restaurantService.sortByAverageMark(type));
+		});
+		
+		post("/searchRestaurants", (req, res) -> {
+			res.type("application/json");
+			SearchRestaurantDTO searchParams = gson.fromJson(req.body(), SearchRestaurantDTO.class);
+			return gson.toJson(restaurantService.search(searchParams));
 		});
 	}
 }

@@ -17,6 +17,7 @@ template: `<div>
 		<div style="margin-left: 45%">
 			<p>Naziv restorana: {{restaurant.name}}</p>
 			<p>Tip restorana: {{restaurant.restaurantType}}</p>
+			<p>Prosečna ocena: {{restaurant.averageMark}}</p>
 		</div>
 		<hr/>
 			<div v-if="showComponent === '1'">

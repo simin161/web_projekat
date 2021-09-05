@@ -62,8 +62,12 @@ Vue.component('show-restaurant',{
 							</select>
 						</td>
 					</tr>
+					<tr>
+						<td>Prosečna ocena:</td>
+						<td>{{restaurant.averageMark}}</td>
+					</tr>
 				</table>
-
+				
 				<input type="button" v-bind:style="{'visibility': visibility}" value="Sačuvaj"  v-on:click="save"></input>
 			</div>
 			<hr style="width: 100%">

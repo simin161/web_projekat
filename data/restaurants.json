@@ -32,12 +32,15 @@
         "collectedPoints": 0,
         "id": "6"
       }
-    ]
+    ],
+    "averageMark": 5.0
   },
   {
     "id": "2",
     "name": "da1",
     "restaurantType": "ad",
-    "restaurantLogo": "http://placekitten.com/g/200/200"
+    "status": "CLOSED",
+    "restaurantLogo": "http://placekitten.com/g/200/200",
+    "averageMark": 0.0
   }
 ]
