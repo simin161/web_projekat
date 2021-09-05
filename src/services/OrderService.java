@@ -29,7 +29,7 @@ public class OrderService {
 		boolean returnValue = false;
 		
 		Order order = new Order();
-		order.setId(OrderDAO.getInstance().getAllOrders().toString() + 1);
+		order.setId(String.valueOf(OrderDAO.getInstance().getAllOrders().size()+1));
 		order.setArticles(cart.getArticles());
 		order.setCustomer(cart.getCustomer());
 		order.setOrderDate(new Date());
@@ -38,7 +38,6 @@ public class OrderService {
 		order.setRestaurant(cart.getRestaurant());
 		
 		OrderDAO.getInstance().addOrder(order);
-		
 		
 		return returnValue;
 		

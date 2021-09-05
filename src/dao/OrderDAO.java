@@ -110,6 +110,7 @@ public class OrderDAO {
 	
 	public void addOrder(Order newOrder) {
 		allOrders.add(newOrder);
+		save();
 	}
 	
 	public Order findOrderById(String orderId) {

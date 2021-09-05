@@ -13,6 +13,7 @@ import com.google.gson.GsonBuilder;
 
 import beans.Administrator;
 import beans.Article;
+import beans.Cart;
 import beans.Customer;
 import beans.Deliverer;
 import beans.Manager;
@@ -26,6 +27,7 @@ import services.CartService;
 import services.CustomerService;
 import services.DelivererService;
 import services.ManagerService;
+import services.OrderService;
 import services.RegistrationService;
 import services.RestaurantService;
 import spark.Session;
@@ -41,7 +43,7 @@ public class SparkAppMain {
 	private static DelivererService delivererService = new DelivererService();
 	private static ArticleService articleService = new ArticleService();
 	private static CartService cartService = new CartService();
-	
+	private static OrderService orderService = new OrderService();
 	
 	public static void main(String[] args) throws Exception {
 		port(8080);
@@ -175,7 +177,21 @@ public class SparkAppMain {
 			return gson.toJson(returnValue);
 		});
 
-
+		post("/placeOrder", (req, res)-> {
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			Customer loggedCustomer = session.attribute("loggedUser");
+			Cart cart = loggedCustomer.getCart();
+			boolean ret = orderService.createOrderFromCart(cart);
+			Restaurant restaurant = restaurantService.findRestaurantById(cart.getArticles().get(0).getRestaurant().getId());
+			restaurantService.addCustomerToRestaurant(restaurant.getId(), loggedCustomer.getId());
+			cart.setArticles(new ArrayList<Article>());
+			return ret ? "Uspešno ste kreirali porudžbinu!" : "Došlo je do greške prilikom kreiranja porudžbine!";
+			
+		});
+		
+		
 		post("/addArticle", (req, res) -> {
 			res.type("application/json");
 			Article article = new Article(gson.fromJson(req.body(), ArticleDTO.class));

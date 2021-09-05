@@ -1,22 +1,14 @@
 package services;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import com.google.gson.JsonElement;
 import beans.Article;
+import beans.Customer;
 import beans.Restaurant;
 import beans.RestaurantStatus;
-import javax.imageio.ImageIO;
-import beans.Article;
-import beans.Restaurant;
 import dao.ArticleDAO;
 import dao.RestaurantDAO;
-import javaxt.utils.Base64;
 
 public class RestaurantService {
 
@@ -110,4 +102,70 @@ public class RestaurantService {
 		
 		return oldImage != null && (newImage != null && !newImage.equals("")) &&  !oldImage.equals(newImage);
 	}
+	
+	public Restaurant findRestaurantById(String restaurantId) {
+		
+		Restaurant restaurant = new Restaurant();
+		
+		for(Restaurant r : RestaurantDAO.getInstance().getAll()) {
+			
+			if(r.getId().equals(restaurantId)) {
+				restaurant = r;
+				break;
+			}
+			
+		}
+		
+		
+		return restaurant;
+	}
+	
+	public void addCustomerToRestaurant(String restaurantId, String customerId) {
+		
+		boolean indicator = false;
+		
+		for(Restaurant r : RestaurantDAO.getInstance().getAll()) {
+			
+			if(r.getId().equals(restaurantId)) {
+				
+				if(r.getCustomers()==null) {
+					r.setCustomers(new ArrayList<Customer>());
+				}
+				
+				indicator = checkIfCustomerExists(r.getCustomers(), customerId);
+				
+				if(indicator == false) {
+				
+					r.getCustomers().add(new Customer(customerId));
+					
+				}
+				
+			
+			}
+			
+		}
+		
+		RestaurantDAO.getInstance().saveRestaurants();
+		
+	}
+	
+	private boolean checkIfCustomerExists(List<Customer> customers, String customerId) {
+		
+		boolean indicator = false;
+		
+		for(Customer c : customers) {
+			
+			if(c.getId().equals(customerId)) {
+				indicator = true;
+				break;
+			}else {
+				indicator = false;
+			}
+			
+		}
+		
+		return indicator;
+		
+	}
+	
 }
