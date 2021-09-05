@@ -224,6 +224,16 @@ public class SparkAppMain {
 			
 		});
 		
+		get("/getCustomerOrders", (req, res)-> {
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			Customer loggedCustomer = session.attribute("loggedUser");
+			
+			return gson.toJson(orderService.findAllOrdersFromCustomer(loggedCustomer.getId()));
+			
+		});
+		
 		post("/createRestaurant", (req, res) -> {
 			res.type("application/json");
 			Session session = req.session(true);

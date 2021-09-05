@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import beans.Cart;
+import beans.Customer;
 import beans.Order;
 import beans.OrderStatus;
 import dao.OrderDAO;
@@ -31,7 +32,7 @@ public class OrderService {
 		Order order = new Order();
 		order.setId(String.valueOf(OrderDAO.getInstance().getAllOrders().size()+1));
 		order.setArticles(cart.getArticles());
-		order.setCustomer(cart.getCustomer());
+		order.setCustomer(new Customer(cart.getCustomer().getId()));
 		order.setOrderDate(new Date());
 		order.setOrderTime(Time.valueOf(LocalTime.now()));
 		order.setOrderStatus(OrderStatus.PROCESSING);
