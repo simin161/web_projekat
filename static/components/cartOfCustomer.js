@@ -13,7 +13,7 @@ Vue.component("customerCart", {
 		<br/><br/>
 		<br/><br/>
 			<div v-if="articles != null">
-				<div class="lists" v-for="article in articles">
+				<div class="lists" v-for="article in articles" v-if="article.isDeletedFromCart === false">
 					<div>
 						<span style="float: left;">
 							<img style="border-radius: 5px;" :src="article.articleImage" height="90px" width="90px">

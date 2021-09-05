@@ -22,6 +22,7 @@ public class CartService {
 		
 		Cart cart = CustomerDAO.getInstance().findCustomerById(id).getCart();
 		newArticle.setRestaurant(ArticleDAO.getInstance().findById(newArticle.getId()).getRestaurant());
+		newArticle.setDeletedFromCart(false);
 		
 		if(cart==null) {
 			cart = new Cart();
@@ -135,11 +136,13 @@ public class CartService {
 		for(Article a : cart.getArticles()) {
 			
 			if(a.getId().equals(article.getId())) {
-				cart.getArticles().remove(a);
+				a.setDeletedFromCart(true);
 				break;
 			}
 			
 		}
+		
+		customerService.saveCustomerCart(CustomerDAO.getInstance().findCustomerById(userId));
 		
 	}
 	
@@ -147,15 +150,8 @@ public class CartService {
 		
 		Cart cart = new Cart();
 		
-		for(Cart c : CartDAO.getInstance().getAllCarts()) {
-			
-			if(c.getCartId().equals(userId)) {
-				cart = c;
-				break;
-			}
-			
-		}
-		
+		cart = CustomerDAO.getInstance().findCustomerById(userId).getCart();
+				
 		return cart;
 	}
 	

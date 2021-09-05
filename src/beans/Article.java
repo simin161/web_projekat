@@ -18,6 +18,7 @@ public class Article {
 	private String articleImage; //ili BufferedImage?
 	private boolean isDeleted;
 	private int totalNumberOrdered;
+	private boolean isDeletedFromCart;
 	
 	public boolean isDeleted() {
 		return isDeleted;
@@ -103,6 +104,14 @@ public class Article {
 
 	public void setTotalNumberOrdered(int totalNumberOrdered) {
 		this.totalNumberOrdered = totalNumberOrdered;
+	}
+
+	public boolean isDeletedFromCart() {
+		return isDeletedFromCart;
+	}
+
+	public void setDeletedFromCart(boolean isDeletedFromCart) {
+		this.isDeletedFromCart = isDeletedFromCart;
 	}
 	
 	

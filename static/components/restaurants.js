@@ -40,9 +40,11 @@ template: `<div>
 	
 		openArticles : function(item){
 		
-			axios.post("/selectRestaurant", item)
-			.then(response =>(router.push("restaurantArticles")))
-		
+			if(item.status==="OPEN")
+				axios.post("/selectRestaurant", item)
+				.then(response =>(router.push("restaurantArticles")))
+			else
+				alert("Restoran je trenutno zatvoren!")
 		}
 	
 	}
