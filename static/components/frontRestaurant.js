@@ -11,7 +11,7 @@ template: `<div>
 		<br/>
 		<ul class="rest">
 			<li><a @click="showComponent = '1'">Prikaz artikala</a></li>
-			<li><a @click="showComponent = '2'">Prikaz komentara</a></li>
+			<li><a @click="loadComments">Prikaz komentara</a></li>
 		</ul>
 		<img :src="restaurant.restaurantLogo" height="100%" width="100%"/>
 		<div style="margin-left: 45%">
@@ -40,8 +40,24 @@ template: `<div>
 				<div class="animated fadeIn" v-if="!comments || !comments.length">
 					<img class="center" src="../images/noComments.png"/>
 				</div>
+				<div>
+					<div class="lists" v-for="comment in comments">
+						<p>{{comment.customer.username}}</p>
+						<p>{{comment.text}} </p>
+						<p>Ocena: {{comment.mark}}</p>
+					</div>
+				</div>
 			</div>
 		</div>`
+	,
+	methods:{
+		loadComments : function(){
+			this.showComponent = "2";
+			
+			axios.get("/getCommentsForRestaurant")
+			.then(response =>(this.comments = response.data))
+		}
+	}
 	,
 	mounted(){
 		axios.get("/getSelectedRestaurant")

@@ -13,6 +13,7 @@ import com.google.gson.GsonBuilder;
 
 import beans.Administrator;
 import beans.Article;
+import beans.Comment;
 import beans.Customer;
 import beans.Deliverer;
 import beans.Manager;
@@ -39,7 +40,7 @@ public class SparkAppMain {
 	private static AdministratorService administratorService = new AdministratorService();
 	private static DelivererService delivererService = new DelivererService();
 	private static ArticleService articleService = new ArticleService();
-
+	
 	public static void main(String[] args) throws Exception {
 		port(9000);
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
@@ -247,6 +248,14 @@ public class SparkAppMain {
 			ArrayList<Restaurant> retVal = new ArrayList<Restaurant>();
 			retVal.add(selectedRestaurant);
 			return gson.toJson(retVal);
+		});
+		
+		get("/getCommentsForRestaurant", (req, res) -> {
+			res.type("application/json");
+			Session session = req.session(true);
+			Restaurant selectedRestaurant = session.attribute("selectedRestaurant");
+			ArrayList<Comment> comments = restaurantService.getAcceptedCommentsForRestaurant(selectedRestaurant.getId());
+			return gson.toJson(comments);
 		});
 	}
 }

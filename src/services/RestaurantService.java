@@ -1,17 +1,13 @@
 package services;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
-
 import beans.Article;
+import beans.Comment;
 import beans.Restaurant;
 import dao.ArticleDAO;
+import dao.CommentDAO;
 import dao.RestaurantDAO;
-import javaxt.utils.Base64;
 
 public class RestaurantService {
 
@@ -74,6 +70,20 @@ public class RestaurantService {
 				break;
 			}
 		}
+	}
+	
+	public ArrayList<Comment> getAcceptedCommentsForRestaurant(String id){
+		ArrayList<Comment> retVal = new ArrayList<Comment>();
+		
+		for(Comment comment : CommentDAO.getInstance().getAll()) {
+			if(comment.getCommentedRestaurant().getId().equals(id)) {
+				if(comment.isAccepted()) {
+					retVal.add(comment);
+				}
+			}
+		}
+		
+		return retVal;
 	}
 
 	private boolean checkIfImageChanged(String oldImage, String newImage) {
