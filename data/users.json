@@ -38,5 +38,10 @@
     "username": "customer",
     "password": "customer",
     "userType": "CUSTOMER"
+  },
+  {
+    "username": "customer2",
+    "password": "customer2",
+    "userType": "CUSTOMER"
   }
 ]

@@ -11,7 +11,7 @@ Vue.component("customerCart", {
 		<div>
 		<navigation-header></navigation-header>
 		<ul :class="scrolled ? 'scrollRest' : 'rest'">
-				<li><a @click="enable = false; visibility='visible'">Plaćanje</a></li>
+				<li><a @click="placeOrder(item)">Plaćanje</a></li>
 		</ul>
 		
 		<br/><br/>
@@ -65,7 +65,7 @@ Vue.component("customerCart", {
 		editFromCart : function(item){
 		
 			axios.post("/updateCart", item)
-			.then(response =>(console.log()))
+			.then(response =>(alert("Stanje artikla je uspešno ažurirano!")))
 		
 		},
 		
@@ -81,6 +81,13 @@ Vue.component("customerCart", {
 			}
 			
 			return sum;
+		
+		},
+		
+		placeOrder: function(item){
+		
+			axios.post("/placeOrder", item)
+			.then(response=>(alert("Vaša porudžbina je uspešno kreirana!")))
 		
 		}
 		
