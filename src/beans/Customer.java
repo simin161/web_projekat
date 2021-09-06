@@ -1,9 +1,10 @@
 package beans;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Customer extends User{
-	private ArrayList<Order> allOrders;
+	private List<Order> allOrders;
 	private Cart cart;
 	private int collectedPoints;
 	private CustomerType customerType;
@@ -14,7 +15,7 @@ public class Customer extends User{
 		
 	}
 	
-	public ArrayList<Order> getAllOrders() {
+	public List<Order> getAllOrders() {
 		return allOrders;
 	}
 	public Cart getCart() {
@@ -26,8 +27,8 @@ public class Customer extends User{
 	public CustomerType getCustomerType() {
 		return customerType;
 	}
-	public void setAllOrders(ArrayList<Order> allOrders) {
-		this.allOrders = allOrders;
+	public void setAllOrders(List<Order> list) {
+		this.allOrders = list;
 	}
 	public void setCart(Cart cart) {
 		this.cart = cart;
