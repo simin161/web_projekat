@@ -432,5 +432,13 @@ public class SparkAppMain {
 			Manager loggedManager = session.attribute("loggedUser");
 			return gson.toJson(restaurantService.getAllOrdersForRestaurant(loggedManager.getRestaurant().getId()));
 		});
+		
+		post("/changeOrderStatus", (req, res) -> {
+			res.type("application/json");
+			orderService.changeOrderStatus(gson.fromJson(req.body(), String.class));
+			Session session = req.session(true);
+			Manager loggedManager = session.attribute("loggedUser");
+			return gson.toJson(restaurantService.getAllOrdersForRestaurant(loggedManager.getRestaurant().getId()));
+		});
 	}
 }

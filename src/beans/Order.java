@@ -13,7 +13,14 @@ public class Order {
 	private Customer customer;
 	private OrderStatus orderStatus;
 	private boolean isDeleted;
+	private Deliverer deliverer;
 	
+	public Deliverer getDeliverer() {
+		return deliverer;
+	}
+	public void setDeliverer(Deliverer deliverer) {
+		this.deliverer = deliverer;
+	}
 	public String getId() {
 		return id;
 	}

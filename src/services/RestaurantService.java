@@ -267,7 +267,16 @@ public class RestaurantService {
 		
 		for(Order order : OrderDAO.getInstance().getAllOrders()) {
 			if(order.getRestaurant().getId().equals(id)) {
-				retVal.add(order);
+				Order o = new Order();
+				o.setId(order.getId());
+				o.setArticles(order.getArticles());
+				o.setDeleted(order.isDeleted());
+				o.setOrderDate(order.getOrderDate());
+				o.setOrderTime(order.getOrderTime());
+				o.setRestaurant(order.getRestaurant());
+				o.setOrderStatus(order.getOrderStatus());
+				o.setCustomer(CustomerDAO.getInstance().findCustomerById(order.getCustomer().getId()));
+				retVal.add(o);
 			}
 		}
 		

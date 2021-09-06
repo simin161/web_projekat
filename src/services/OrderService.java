@@ -50,6 +50,16 @@ public class OrderService {
 	public void deleteOrder(Order o) {
 		OrderDAO.getInstance().deleteOrder(o);
 	}
+
+	public void changeOrderStatus(String id) {
+		for(Order order : OrderDAO.getInstance().getAllOrders()) {
+			if(order.getId().equals(id)) {
+				order.setOrderStatus( OrderStatus.values()[order.getOrderStatus().ordinal() + 1]);
+				break;
+			}
+		}
+		OrderDAO.getInstance().save();
+	}
 	
 	
 	
