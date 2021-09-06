@@ -45,6 +45,7 @@
   },
   {
     "cart": {
+      "cartId": "5",
       "articles": [
         {
           "id": "1",
@@ -58,7 +59,7 @@
           "description": "Specijalitet kuće",
           "articleImage": "..\\upload\\a1.jpg",
           "isDeleted": false,
-          "totalNumberOrdered": 2,
+          "totalNumberOrdered": 3,
           "isDeletedFromCart": false
         }
       ],

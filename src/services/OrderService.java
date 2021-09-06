@@ -6,9 +6,12 @@ import java.util.Date;
 import java.util.List;
 
 import beans.Cart;
+import beans.Customer;
 import beans.Order;
 import beans.OrderStatus;
+import beans.Restaurant;
 import dao.OrderDAO;
+import dao.RestaurantDAO;
 
 public class OrderService {
 
@@ -31,20 +34,21 @@ public class OrderService {
 		Order order = new Order();
 		order.setId(String.valueOf(OrderDAO.getInstance().getAllOrders().size()+1));
 		order.setArticles(cart.getArticles());
-		order.setCustomer(cart.getCustomer());
+		order.setCustomer(new Customer(cart.getCartId()));
 		order.setOrderDate(new Date());
 		order.setOrderTime(Time.valueOf(LocalTime.now()));
 		order.setOrderStatus(OrderStatus.PROCESSING);
-		order.setRestaurant(cart.getRestaurant());
-		
+		order.setDeleted(false);
+		order.setRestaurant(new Restaurant(cart.getArticles().get(0).getRestaurant().getId()));
+		order.getRestaurant().setName(RestaurantDAO.getInstance().findById(order.getRestaurant().getId()).getName());
 		OrderDAO.getInstance().addOrder(order);
 		
 		return returnValue;
 		
 	}
 	
-	public void deleteOrder(String id) {
-		OrderDAO.getInstance().deleteOrder(id);
+	public void deleteOrder(Order o) {
+		OrderDAO.getInstance().deleteOrder(o);
 	}
 	
 	

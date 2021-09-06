@@ -32,6 +32,15 @@ public class Restaurant {
 	public void setAverageMark(double averageMark) {
 		this.averageMark = averageMark;
 	}
+	public Restaurant() {
+		
+	}
+	
+	public Restaurant(String id) {
+		this.id = id;
+	}
+	
+	
 	public String getId() {
 		return id;
 	}

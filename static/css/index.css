@@ -51,6 +51,26 @@
     border: 2px solid #b93300;
 }
 
+.listsArticles{
+	
+	margin: auto;
+	margin-bottom: 8px;
+	border-style: solid;
+	border-color: coral;
+	border-width: 1px;
+	border-radius: 8px;
+	background-color: #ffcbb7;
+	width: 30%;
+	transition: transform 0.8s;
+	
+}
+
+.listsArticles:hover{
+	transform: scale(1.3);
+	box-shadow: 2px 20px 18px rgba(0, 0, 0, 0.1);
+    border: 2px solid #b93300;
+}
+
 .infoRestaurant{
 	float: right; 
 	margin-top: 50px; 

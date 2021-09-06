@@ -61,7 +61,10 @@ public class OrderDAO {
 		for(Order o : allOrders) {
 			
 			if(id.equals(o.getCustomer().getId())) {
-				orders.add(o);
+				
+				if(o.isDeleted()==false) {
+					orders.add(o);
+				}
 			}
 			
 		}
@@ -81,7 +84,8 @@ public class OrderDAO {
 				
 				if(o.getOrderStatus() != OrderStatus.DELIVERED) {
 					
-					undeliveredOrders.add(o);
+					if(o.isDeleted()==false)
+						undeliveredOrders.add(o);
 					
 				}
 				
@@ -125,16 +129,15 @@ public class OrderDAO {
 		return order;
 	}
 	
-	public void deleteOrder(String id) {
+	public void deleteOrder(Order order) {
 		
 		for(Order o : allOrders) {
-			if(id.equals(o.getId()))
+			if(o.getId().equals(order.getId()))
 			{
-				if(o.getOrderStatus().equals(OrderStatus.PROCESSING))
-				{
-					allOrders.remove(o);
-					break;
-				}
+				o.setDeleted(true);
+					
+				break;
+				
 				
 			}
 		}
