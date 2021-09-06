@@ -5,11 +5,13 @@ import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
+import beans.Article;
 import beans.Cart;
 import beans.Customer;
 import beans.Order;
 import beans.OrderStatus;
 import beans.Restaurant;
+import dao.CustomerDAO;
 import dao.OrderDAO;
 import dao.RestaurantDAO;
 
@@ -43,7 +45,31 @@ public class OrderService {
 		order.getRestaurant().setName(RestaurantDAO.getInstance().findById(order.getRestaurant().getId()).getName());
 		OrderDAO.getInstance().addOrder(order);
 		
+		calculatePoints(order, cart.getCartId());
+		
 		return returnValue;
+		
+	}
+	
+	private void calculatePoints(Order o, String customerId) {
+		
+		double points = CustomerDAO.getInstance().findCustomerById(customerId).getCollectedPoints();
+		double pointsToAssign = 0;
+		double totalPrice = 0;
+		double articlePrice= 0;
+		
+		
+		for(Article a : o.getArticles()) {
+			
+			articlePrice = a.getPrice() * a.getTotalNumberOrdered();
+			totalPrice += articlePrice;
+		}
+		
+		pointsToAssign = totalPrice / 1000 * 133;
+		
+		points += pointsToAssign;
+		
+		CustomerDAO.getInstance().findCustomerById(customerId).setCollectedPoints((int)points);
 		
 	}
 	

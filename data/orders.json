@@ -150,5 +150,89 @@
     },
     "orderStatus": "PROCESSING",
     "isDeleted": false
+  },
+  {
+    "id": "5",
+    "articles": [
+      {
+        "id": "1",
+        "name": "Crystal burger",
+        "price": 800.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0
+        },
+        "quantity": 650.0,
+        "description": "Specijalitet kuće",
+        "articleImage": "..\\upload\\a1.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 2,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Crystal",
+      "averageMark": 0.0
+    },
+    "orderDate": "2021-11-06",
+    "orderTime": "02:11:20 po podne",
+    "customer": {
+      "collectedPoints": 0,
+      "id": "5"
+    },
+    "orderStatus": "PROCESSING",
+    "isDeleted": false
+  },
+  {
+    "id": "6",
+    "articles": [
+      {
+        "id": "1",
+        "name": "Crystal burger",
+        "price": 800.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0
+        },
+        "quantity": 650.0,
+        "description": "Specijalitet kuće",
+        "articleImage": "..\\upload\\a1.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 3,
+        "isDeletedFromCart": false
+      },
+      {
+        "id": "2",
+        "name": "Salata",
+        "price": 250.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0
+        },
+        "quantity": 500.0,
+        "description": "Salata sa avokadom",
+        "articleImage": "..\\upload\\a2.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 9,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Crystal",
+      "averageMark": 0.0
+    },
+    "orderDate": "2021-12-06",
+    "orderTime": "02:12:19 po podne",
+    "customer": {
+      "collectedPoints": 0,
+      "id": "5"
+    },
+    "orderStatus": "PROCESSING",
+    "isDeleted": false
   }
 ]
