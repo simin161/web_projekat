@@ -14,14 +14,14 @@ template: ` <div>
 					<div>
 						<table style="width: 100%">
 						<tr>
-							<td>{{order}} </td>
-							<td>Korisnik </td>
+							<td>Restoran: {{order.restaurant.name}} </td>
+							<td>Korisnik: {{order.customer.username}} </td>
 							<td></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td>Lokacija restorana</td>
-							<td>Mesto</td>
+							<td></td>
 							<td>
 								<input type="button" value="Pošalji zahtev"></input>
 							 </td>
@@ -52,4 +52,8 @@ template: ` <div>
 			destroyed () {
 			  window.removeEventListener('scroll', this.handleScroll);
 			},
+			mounted(){
+				axios.get("/getOrdersWithoutDeliverer")
+				.then(response => (this.orders = response.data))
+			}
 });

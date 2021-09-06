@@ -2,6 +2,7 @@ package services;
 
 import java.sql.Time;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import beans.Customer;
 import beans.Order;
 import beans.OrderStatus;
 import beans.Restaurant;
+import dao.CustomerDAO;
 import dao.OrderDAO;
 import dao.RestaurantDAO;
 
@@ -59,6 +61,29 @@ public class OrderService {
 			}
 		}
 		OrderDAO.getInstance().save();
+	}
+
+	public ArrayList<Order> getOrdersWithoutDeliverer() {
+		ArrayList<Order> retVal = new ArrayList<Order>();
+		
+		for(Order order : OrderDAO.getInstance().getAllOrders()) {
+			if(order.getOrderStatus() == OrderStatus.WAITING_FOR_DELIVERER) {
+				Order o = new Order();
+				o.setId(String.valueOf(OrderDAO.getInstance().getAllOrders().size()+1));
+				o.setArticles(order.getArticles());
+				o.setCustomer(CustomerDAO.getInstance().findCustomerById(order.getCustomer().getId()));
+				o.setOrderDate(order.getOrderDate());
+				o.setOrderTime(order.getOrderTime());
+				o.setOrderStatus(order.getOrderStatus());
+				o.setDeleted(order.isDeleted());
+				o.setRestaurant(new Restaurant(order.getRestaurant().getId()));
+				o.getRestaurant().setName(RestaurantDAO.getInstance().findById(order.getRestaurant().getId()).getName());
+				
+				retVal.add(o);
+			}
+		}
+		
+		return retVal;
 	}
 	
 	

@@ -461,5 +461,10 @@ public class SparkAppMain {
 			Deliverer loggedDeliverer = session.attribute("loggedUser");
 			return gson.toJson(delivererService.getDeliverersUndeliveredOrders(loggedDeliverer.getId()));
 		});
+		
+		get("/getOrdersWithoutDeliverer", (req, res) -> {
+			res.type("application/json");
+			return gson.toJson(orderService.getOrdersWithoutDeliverer());
+		});
 	}
 }
