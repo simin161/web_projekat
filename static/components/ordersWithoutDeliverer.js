@@ -23,7 +23,7 @@ template: ` <div>
 							<td>Lokacija restorana</td>
 							<td></td>
 							<td>
-								<input type="button" value="Pošalji zahtev"></input>
+								<input type="button" @click="sendRequest(order.id)" value="Pošalji zahtev"></input>
 							 </td>
 							<td></td>
 						</tr>
@@ -44,6 +44,10 @@ template: ` <div>
 			methods:{
 				 handleScroll () {
 			    this.scrolled = window.scrollY > 0;
+			  },
+			  sendRequest : function(id){
+				  axios.post("/sendRequest", id)
+				  .then(response => (this.orders = response.data))
 			  }
 			},
 			created () {

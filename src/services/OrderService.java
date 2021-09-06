@@ -8,6 +8,7 @@ import java.util.List;
 
 import beans.Cart;
 import beans.Customer;
+import beans.Deliverer;
 import beans.Order;
 import beans.OrderStatus;
 import beans.Restaurant;
@@ -69,7 +70,7 @@ public class OrderService {
 		for(Order order : OrderDAO.getInstance().getAllOrders()) {
 			if(order.getOrderStatus() == OrderStatus.WAITING_FOR_DELIVERER) {
 				Order o = new Order();
-				o.setId(String.valueOf(OrderDAO.getInstance().getAllOrders().size()+1));
+				o.setId(order.getId());
 				o.setArticles(order.getArticles());
 				o.setCustomer(CustomerDAO.getInstance().findCustomerById(order.getCustomer().getId()));
 				o.setOrderDate(order.getOrderDate());
@@ -84,6 +85,17 @@ public class OrderService {
 		}
 		
 		return retVal;
+	}
+
+	public void setDelivererForOrder(String idOrder, String idDeliverer) {
+		for(Order order : OrderDAO.getInstance().getAllOrders()) {
+			if(order.getId().equals(idOrder)) {
+				Deliverer deliverer = new Deliverer();
+				deliverer.setId(idDeliverer);
+				order.setDeliverer(deliverer);
+			}
+		}
+		OrderDAO.getInstance().save();
 	}
 	
 	

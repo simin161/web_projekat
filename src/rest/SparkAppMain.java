@@ -466,5 +466,15 @@ public class SparkAppMain {
 			res.type("application/json");
 			return gson.toJson(orderService.getOrdersWithoutDeliverer());
 		});
+		
+		post("/sendRequest", (req, res) -> {
+			res.type("application/json");
+			String id = gson.fromJson(req.body(), String.class);
+			orderService.changeOrderStatus(gson.fromJson(req.body(), String.class));
+			Session session = req.session(true);
+			Deliverer loggedDeliverer = session.attribute("loggedUser");
+			orderService.setDelivererForOrder(id, loggedDeliverer.getId());
+			return gson.toJson(orderService.getOrdersWithoutDeliverer());
+		});
 	}
 }
