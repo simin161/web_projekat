@@ -18,7 +18,7 @@ import beans.OrderStatus;
 public class OrderDAO {
 
 	private ArrayList<Order> allOrders;
-	private Gson gson = new GsonBuilder().setDateFormat("yyyy-mm-dd").setPrettyPrinting().create();
+	private Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").setPrettyPrinting().create();
 	
 	private static OrderDAO instance;
 	public static OrderDAO getInstance() {

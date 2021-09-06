@@ -1,23 +1,24 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.Collections;
-import java.util.Comparator;
-
 
 import beans.Article;
 import beans.Comment;
 import beans.CommentStatus;
 import beans.Customer;
+import beans.Order;
 import beans.Restaurant;
 import beans.RestaurantStatus;
 import beans.SortType;
 import dao.ArticleDAO;
 import dao.CommentDAO;
 import dao.CustomerDAO;
+import dao.OrderDAO;
 import dao.RestaurantDAO;
 import dto.SearchRestaurantDTO;
 
@@ -256,6 +257,18 @@ public class RestaurantService {
 		for(Customer customer : restaurant.getCustomers()) {
 			customer = CustomerDAO.getInstance().findCustomerById(customer.getId());
 			retVal.add(customer);
+		}
+		
+		return retVal;
+	}
+	
+	public ArrayList<Order> getAllOrdersForRestaurant(String id){
+		ArrayList<Order> retVal = new ArrayList<Order>();
+		
+		for(Order order : OrderDAO.getInstance().getAllOrders()) {
+			if(order.getRestaurant().getId().equals(id)) {
+				retVal.add(order);
+			}
 		}
 		
 		return retVal;

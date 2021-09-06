@@ -12,7 +12,7 @@ Vue.component("orders-for-restaurant", {
 					<span>
 						<button class="orderStatus"></button>
 					</span>
-					<p>{{order}}</p>
+					<p>{{order.orderStatus}}</p>
 					<p>Porudzbina</p>
 					<p>Dostavljac</p> 
 					<p>Cena</p>
@@ -23,4 +23,9 @@ Vue.component("orders-for-restaurant", {
 			</div>
 		</div>
 		`
+		,
+		mounted(){
+		axios.get("/getOrdersForRestaurant")
+		.then(response => (this.orders = response.data))
+	}
 });
