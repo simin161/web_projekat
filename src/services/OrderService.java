@@ -11,6 +11,7 @@ import beans.Order;
 import beans.OrderStatus;
 import beans.Restaurant;
 import dao.OrderDAO;
+import dao.RestaurantDAO;
 
 public class OrderService {
 
@@ -37,16 +38,17 @@ public class OrderService {
 		order.setOrderDate(new Date());
 		order.setOrderTime(Time.valueOf(LocalTime.now()));
 		order.setOrderStatus(OrderStatus.PROCESSING);
+		order.setDeleted(false);
 		order.setRestaurant(new Restaurant(cart.getArticles().get(0).getRestaurant().getId()));
-		
+		order.getRestaurant().setName(RestaurantDAO.getInstance().findById(order.getRestaurant().getId()).getName());
 		OrderDAO.getInstance().addOrder(order);
 		
 		return returnValue;
 		
 	}
 	
-	public void deleteOrder(String id) {
-		OrderDAO.getInstance().deleteOrder(id);
+	public void deleteOrder(Order o) {
+		OrderDAO.getInstance().deleteOrder(o);
 	}
 	
 	

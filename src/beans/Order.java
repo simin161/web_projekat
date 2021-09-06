@@ -12,6 +12,7 @@ public class Order {
 	private Time orderTime;
 	private Customer customer;
 	private OrderStatus orderStatus;
+	private boolean isDeleted;
 	
 	public String getId() {
 		return id;
@@ -54,6 +55,12 @@ public class Order {
 	}
 	public void setOrderStatus(OrderStatus orderStatus) {
 		this.orderStatus = orderStatus;
+	}
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 	
 	
