@@ -11,6 +11,7 @@ import java.util.Arrays;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import beans.Article;
 import beans.Customer;
 import beans.Order;
 import beans.OrderStatus;
@@ -131,6 +132,8 @@ public class OrderDAO {
 	
 	public void deleteOrder(Order order) {
 		
+		removePoints(order);
+		
 		for(Order o : allOrders) {
 			if(o.getId().equals(order.getId()))
 			{
@@ -141,7 +144,28 @@ public class OrderDAO {
 				
 			}
 		}
+	}
+	
+	private void removePoints(Order o) {
 		
+		double points = CustomerDAO.getInstance().findCustomerById(o.getCustomer().getId()).getCollectedPoints();
+		double pointsToRemove = 0;
+		double totalPrice = 0;
+		double articlePrice= 0;
+		
+		
+		for(Article a : o.getArticles()) {
+			
+			articlePrice = a.getPrice() * a.getTotalNumberOrdered();
+			totalPrice += articlePrice;
+		}
+		
+		pointsToRemove = totalPrice / 1000 * 133 * 4;
+		
+		points = points - pointsToRemove;
+		
+		CustomerDAO.getInstance().findCustomerById(o.getCustomer().getId()).setCollectedPoints((int)points);
+		CustomerDAO.getInstance().save();
 	}
 	
 }
