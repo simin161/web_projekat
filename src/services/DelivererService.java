@@ -1,6 +1,12 @@
 package services;
 
+import java.util.ArrayList;
+
+import com.google.gson.JsonElement;
+
 import beans.Deliverer;
+import beans.Order;
+import beans.OrderStatus;
 import beans.UserInfo;
 import beans.UserType;
 import dao.DelivererDAO;
@@ -35,9 +41,40 @@ public class DelivererService {
 
 		return returnValue;
 	}
+	
+	public ArrayList<Order> getDeliverersOrders(String id){
+		Deliverer deliverer = DelivererDAO.getInstance().findDelivererById(id);
+		return deliverer.getOrdersForDelivery();
+	}
+	
+	public ArrayList<Order> getDeliverersDeliveredOrders(String id){
+		ArrayList<Order> retVal = new ArrayList<Order>();
+		Deliverer deliverer = DelivererDAO.getInstance().findDelivererById(id);
+		
+		for(Order order : deliverer.getOrdersForDelivery()) {
+			if(order.getOrderStatus() == OrderStatus.DELIVERED) {
+				retVal.add(order);
+			}
+		}
+		
+		return retVal;
+	}
 
 	private boolean checkUsername(String newUsername) {
 		RegistrationService regService = new RegistrationService();
 		return regService.checkExistanceOfUsername(newUsername);
+	}
+
+	public ArrayList<Order> getDeliverersUndeliveredOrders(String id) {
+		ArrayList<Order> retVal = new ArrayList<Order>();
+		Deliverer deliverer = DelivererDAO.getInstance().findDelivererById(id);
+		
+		for(Order order : deliverer.getOrdersForDelivery()) {
+			if(order.getOrderStatus() == OrderStatus.IN_TRANSPORT) {
+				retVal.add(order);
+			}
+		}
+		
+		return retVal;
 	}
 }

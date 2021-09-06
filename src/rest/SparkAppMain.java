@@ -440,5 +440,26 @@ public class SparkAppMain {
 			Manager loggedManager = session.attribute("loggedUser");
 			return gson.toJson(restaurantService.getAllOrdersForRestaurant(loggedManager.getRestaurant().getId()));
 		});
+		
+		get("/getDeliverersOrders", (req, res) -> {
+			res.type("application/json");
+			Session session = req.session(true);
+			Deliverer loggedDeliverer = session.attribute("loggedUser");
+			return gson.toJson(delivererService.getDeliverersOrders(loggedDeliverer.getId()));
+		});
+		
+		get("/getDeliverersDeliveredOrders", (req, res) -> {
+			res.type("application/json");
+			Session session = req.session(true);
+			Deliverer loggedDeliverer = session.attribute("loggedUser");
+			return gson.toJson(delivererService.getDeliverersDeliveredOrders(loggedDeliverer.getId()));
+		});
+		
+		get("/getDeliverersUndeliveredOrders", (req, res) -> {
+			res.type("application/json");
+			Session session = req.session(true);
+			Deliverer loggedDeliverer = session.attribute("loggedUser");
+			return gson.toJson(delivererService.getDeliverersUndeliveredOrders(loggedDeliverer.getId()));
+		});
 	}
 }

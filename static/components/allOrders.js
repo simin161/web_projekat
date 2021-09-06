@@ -2,7 +2,6 @@ Vue.component('all-orders',{
 	data: function(){
 		return{
 			orders: null,
-			show: false,
 			scrolled: false
 		};
 	}
@@ -19,7 +18,7 @@ Vue.component('all-orders',{
 			<div style="margin-top: 6%" v-if="orders != null">
 				<div class="lists" v-for="order in orders">
 					<div>
-						<span v-if="show===true">
+						<span v-if="order.orderStatus === 'IN_TRANSPORT'">
 							<button class="orderStatus"></button>
 						</span>
 						<p>{{order}}</p>
@@ -39,16 +38,16 @@ Vue.component('all-orders',{
 	    this.scrolled = window.scrollY > 0;
 	  },
 	  loadAll : function(){
-		  this.orders = ['aaaa']
-		  this.show = false;
+		  axios.get("/getDeliverersOrders")
+			.then(response => (this.orders = response.data))
 	  },
 	  loadDelivered: function(){
-		  this.orders = ['bbb']
-		  this.show = false;
+		  axios.get("/getDeliverersDeliveredOrders")
+		  .then(response => (this.orders = response.data))
 	  },
 	  loadUndelivered: function(){
-		  this.orders = ['cccc']
-		  this.show = true;
+		  axios.get("/getDeliverersUndeliveredOrders")
+		  .then(response => (this.orders = response.data))
 	  }
 	},
 	created () {
@@ -57,4 +56,8 @@ Vue.component('all-orders',{
 	destroyed () {
 	  window.removeEventListener('scroll', this.handleScroll);
 	},
+	mounted() {
+		axios.get("/getDeliverersOrders")
+		.then(response => (this.orders = response.data))
+	}
 });
