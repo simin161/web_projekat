@@ -317,6 +317,40 @@
       "id": "5"
     },
     "orderStatus": "PROCESSING",
+    "isDeleted": true
+  },
+  {
+    "id": "9",
+    "articles": [
+      {
+        "id": "1",
+        "name": "Crystal burger",
+        "price": 800.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0
+        },
+        "quantity": 650.0,
+        "description": "Specijalitet kuće",
+        "articleImage": "..\\upload\\a1.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 4,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Crystal",
+      "averageMark": 0.0
+    },
+    "orderDate": "2021-41-06",
+    "orderTime": "04:41:36 po podne",
+    "customer": {
+      "collectedPoints": 0,
+      "id": "5"
+    },
+    "orderStatus": "PROCESSING",
     "isDeleted": false
   }
 ]

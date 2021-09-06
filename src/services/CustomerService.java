@@ -36,6 +36,12 @@ public class CustomerService {
 
 		return returnValue;
 	}
+	
+	public int getPoints(String customerId) {
+		
+		return CustomerDAO.getInstance().getPoints(customerId);
+		
+	}
 
 	private boolean checkUsername(String newUsername) {
 		RegistrationService regService = new RegistrationService();

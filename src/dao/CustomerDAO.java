@@ -42,6 +42,24 @@ public class CustomerDAO {
 		}
 	}
 	
+	public int getPoints(String customerId) {
+		
+		int points = 0;
+		
+		for(Customer c : allCustomers) {
+			
+			if(c.getId().equals(customerId)) {
+				
+				points = c.getCollectedPoints();
+				
+			}
+			
+		}
+		
+		return points;
+		
+	}
+	
 	public ArrayList<Customer> getAllCustomers(){	
 		return allCustomers;
 	}

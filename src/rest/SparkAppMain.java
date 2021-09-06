@@ -244,6 +244,16 @@ public class SparkAppMain {
 			
 		});
 		
+		get("/getTotalPoints", (req, res)->{
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			Customer loggedCustomer= session.attribute("loggedUser");
+			
+			return gson.toJson(customerService.getPoints(loggedCustomer.getId()));
+			
+		});
+		
 		post("/cancelOrder", (req, res) -> {
 			res.type("application/json");
 			orderService.deleteOrder(gson.fromJson(req.body(), Order.class));
