@@ -59,8 +59,8 @@
 	border-color: coral;
 	border-width: 1px;
 	border-radius: 8px;
-	background-color: coral;
-	width: 20%;
+	background-color: #ffcbb7;
+	width: 30%;
 	transition: transform 0.8s;
 	
 }

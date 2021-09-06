@@ -17,6 +17,7 @@ import beans.Cart;
 import beans.Customer;
 import beans.Deliverer;
 import beans.Manager;
+import beans.Order;
 import beans.Restaurant;
 import beans.User;
 import beans.UserInfo;
@@ -182,6 +183,7 @@ public class SparkAppMain {
 			Session session = req.session(true);
 			Customer loggedCustomer = session.attribute("loggedUser");
 			Cart cart = loggedCustomer.getCart();
+			cart.setCartId(loggedCustomer.getId());
 			boolean ret = orderService.createOrderFromCart(cart);
 			Restaurant restaurant = restaurantService.findRestaurantById(cart.getArticles().get(0).getRestaurant().getId());
 			restaurantService.addCustomerToRestaurant(restaurant.getId(), loggedCustomer.getId());
@@ -229,9 +231,25 @@ public class SparkAppMain {
 			res.type("application/json");
 			Session session = req.session(true);
 			Customer loggedCustomer = session.attribute("loggedUser");
-			
 			return gson.toJson(orderService.findAllOrdersFromCustomer(loggedCustomer.getId()));
 			
+		});
+		
+		get("/getUndelivered", (req, res)-> {
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			Customer loggedCustomer = session.attribute("loggedUser");
+			return gson.toJson(orderService.findUndeliveredOrdersForCustomer(loggedCustomer.getId()));
+			
+		});
+		
+		post("/cancelOrder", (req, res) -> {
+			res.type("application/json");
+			orderService.deleteOrder(gson.fromJson(req.body(), Order.class));
+			Session session = req.session(true);
+			Customer loggedCustomer = session.attribute("loggedUser");
+			return gson.toJson(orderService.findAllOrdersFromCustomer(loggedCustomer.getId()));
 		});
 		
 		post("/createRestaurant", (req, res) -> {
