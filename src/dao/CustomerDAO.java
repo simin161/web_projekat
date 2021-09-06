@@ -7,11 +7,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import beans.Cart;
 import beans.Customer;
 
 public class CustomerDAO {
@@ -56,6 +56,22 @@ public class CustomerDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void refreshCart(String customerId) {
+		
+		for(Customer c : allCustomers) {
+			
+			if(c.getId().equals(customerId)) {
+				
+				c.setCart(new Cart());
+				
+			}
+			
+		}
+		
+		save();
+		
 	}
 	
 	public void addCustomer(Customer newCustomer) {

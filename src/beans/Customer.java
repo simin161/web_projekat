@@ -9,6 +9,10 @@ public class Customer extends User{
 	private int collectedPoints;
 	private CustomerType customerType;
 	
+	public Customer() {
+		
+	}
+	
 	public Customer(String customerId) {
 		
 		this.id = customerId;

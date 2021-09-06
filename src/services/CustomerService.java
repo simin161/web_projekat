@@ -59,4 +59,10 @@ public class CustomerService {
 		
 	}
 	
+	public void refreshCart(String customerId) {
+		
+		CustomerDAO.getInstance().refreshCart(customerId);
+		
+	}
+	
 }

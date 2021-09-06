@@ -187,7 +187,7 @@ public class SparkAppMain {
 			boolean ret = orderService.createOrderFromCart(cart);
 			Restaurant restaurant = restaurantService.findRestaurantById(cart.getArticles().get(0).getRestaurant().getId());
 			restaurantService.addCustomerToRestaurant(restaurant.getId(), loggedCustomer.getId());
-			cart.setArticles(new ArrayList<Article>());
+			customerService.refreshCart(loggedCustomer.getId());
 			return ret ? "Uspešno ste kreirali porudžbinu!" : "Došlo je do greške prilikom kreiranja porudžbine!";
 			
 		});

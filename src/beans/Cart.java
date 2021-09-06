@@ -9,6 +9,15 @@ public class Cart {
 	private double price;
 	private Restaurant restaurant;
 	
+	public Cart() {
+		
+		this.articles = new ArrayList<Article>();
+		this.customer = new Customer();
+		this.restaurant = new Restaurant();
+		
+	}
+	
+	
 	public Restaurant getRestaurant() {
 		return restaurant;
 	}

@@ -45,25 +45,14 @@
   },
   {
     "cart": {
-      "cartId": "5",
-      "articles": [
-        {
-          "id": "1",
-          "name": "Crystal burger",
-          "price": 800.0,
-          "articleType": "FOOD",
-          "restaurant": {
-            "id": "1"
-          },
-          "quantity": 650.0,
-          "description": "Specijalitet kuće",
-          "articleImage": "..\\upload\\a1.jpg",
-          "isDeleted": false,
-          "totalNumberOrdered": 3,
-          "isDeletedFromCart": false
-        }
-      ],
-      "price": 0.0
+      "articles": [],
+      "customer": {
+        "collectedPoints": 0
+      },
+      "price": 0.0,
+      "restaurant": {
+        "averageMark": 0.0
+      }
     },
     "collectedPoints": 0,
     "id": "5",
@@ -84,7 +73,8 @@
           "price": 800.0,
           "articleType": "FOOD",
           "restaurant": {
-            "id": "1"
+            "id": "1",
+            "averageMark": 0.0
           },
           "quantity": 650.0,
           "description": "Specijalitet kuće",
@@ -99,7 +89,8 @@
           "price": 250.0,
           "articleType": "FOOD",
           "restaurant": {
-            "id": "1"
+            "id": "1",
+            "averageMark": 0.0
           },
           "quantity": 500.0,
           "description": "Salata sa avokadom",
@@ -109,7 +100,13 @@
           "isDeletedFromCart": false
         }
       ],
-      "price": 0.0
+      "customer": {
+        "collectedPoints": 0
+      },
+      "price": 0.0,
+      "restaurant": {
+        "averageMark": 0.0
+      }
     },
     "collectedPoints": 0,
     "id": "6",
