@@ -25,6 +25,15 @@ public class Restaurant {
 	
 	private ArrayList<Customer> customers;
 	
+	public Restaurant() {
+		
+	}
+	
+	public Restaurant(String id) {
+		this.id = id;
+	}
+	
+	
 	public String getId() {
 		return id;
 	}

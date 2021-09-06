@@ -9,6 +9,7 @@ import beans.Cart;
 import beans.Customer;
 import beans.Order;
 import beans.OrderStatus;
+import beans.Restaurant;
 import dao.OrderDAO;
 
 public class OrderService {
@@ -36,7 +37,7 @@ public class OrderService {
 		order.setOrderDate(new Date());
 		order.setOrderTime(Time.valueOf(LocalTime.now()));
 		order.setOrderStatus(OrderStatus.PROCESSING);
-		order.setRestaurant(cart.getRestaurant());
+		order.setRestaurant(new Restaurant(cart.getArticles().get(0).getRestaurant().getId()));
 		
 		OrderDAO.getInstance().addOrder(order);
 		
