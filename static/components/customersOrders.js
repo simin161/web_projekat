@@ -26,7 +26,8 @@ Vue.component('customerOrders', {
 				orderStatus: ""
 			
 			},
-			restaurants: null
+			restaurants: null,
+	
 		};
 	},
 template: `<div>
@@ -167,9 +168,12 @@ template: `<div>
 							<button class="changeArticle" @click="showModalDialog(item)" title="Ostavite komentar" v-if="item.orderStatus === 'DELIVERED'"></button>
 							<button class="deleteArticle" @click="cancelOrder(item)" title="Otkaži porudžbinu" v-if="item.orderStatus === 'PROCESSING'"></button> 
 					</span>
+					
 					<p>Ime restorana: {{item.restaurant.name}}</p>
-					<p>Datum kreiranja porudžbine: {{item.orderDateAndTime}} </p>
-					<p>Stanje porudžbine: {{item.orderStatus}}</p>
+					<p>Datum kreiranja porudžbine: {{item.date}} </p>
+					<p>Vreme kreiranja porudžbine: {{item.time}} </p>
+					<p>Stanje porudžbine: {{item.orderStatus}}</p> 
+
 					<p>Ukupno za platiti: {{item.totalPrice}}</p>
 					<p>Artikli koji su naručeni:</p>
 					
@@ -198,6 +202,7 @@ template: `<div>
 		
 		showUndelivered : function(){
 		
+			event.preventDefault();
 			axios.get("/getUndelivered")
 			.then(response => (this.ordersToDisplay = response.data))
 		
@@ -205,7 +210,7 @@ template: `<div>
 		
 		cancelOrder : function(item){
 		
-			axios.post("/cancelOrder", item)
+			axios.post("/cancelOrder", item.id)
 			.then(response =>{this.ordersToDisplay = response.data, alert("Porudžbina je uspešno otkazana!")})
 		
 		},
@@ -266,6 +271,7 @@ template: `<div>
 			.then(response=>(this.ordersToDisplay = response.data))
 			
 		}
+		
 		
 	},
 	

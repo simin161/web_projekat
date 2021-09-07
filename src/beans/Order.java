@@ -1,19 +1,16 @@
 package beans;
 
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Order {
 	private String id;
 	private ArrayList<Article> articles;
 	private Restaurant restaurant;
-	private Date orderDateAndTime;
-	public Date getOrderDateAndTime() {
-		return orderDateAndTime;
-	}
-	public void setOrderDateAndTime(Date orderDateAndTime) {
-		this.orderDateAndTime = orderDateAndTime;
-	}
+
+	private LocalDateTime orderDateAndTime;
+
 	private Customer customer;
 	private OrderStatus orderStatus;
 	private boolean isDeleted;
@@ -28,7 +25,7 @@ public class Order {
 	public Restaurant getRestaurant() {
 		return restaurant;
 	}
-	
+
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -44,7 +41,7 @@ public class Order {
 	public void setRestaurant(Restaurant restaurant) {
 		this.restaurant = restaurant;
 	}
-	
+
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
@@ -63,6 +60,21 @@ public class Order {
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+	public LocalDateTime getOrderDateAndTime() {
+		return orderDateAndTime;
+	}
+	public void setOrderDateAndTime(LocalDateTime orderDateAndTime) {
+		this.orderDateAndTime = orderDateAndTime;
+	}
 	
+	public String toString(OrderStatus status) {
+		
+		switch(status) {
+		
+			case PROCESSING : return "U obradi";
+			default: return"";
+		}
+		
+	}
 	
 }

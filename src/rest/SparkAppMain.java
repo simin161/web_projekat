@@ -265,7 +265,7 @@ public class SparkAppMain {
 		
 		post("/cancelOrder", (req, res) -> {
 			res.type("application/json");
-			orderService.deleteOrder(gson.fromJson(req.body(), Order.class));
+			orderService.deleteOrder(gson.fromJson(req.body(), String.class));
 			Session session = req.session(true);
 			Customer loggedCustomer = session.attribute("loggedUser");
 			return gson.toJson(orderService.findAllOrdersFromCustomer(loggedCustomer.getId()));

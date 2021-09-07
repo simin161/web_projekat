@@ -15,7 +15,7 @@
         "description": "Specijalitet kuće",
         "articleImage": "..\\upload\\a1.jpg",
         "isDeleted": false,
-        "totalNumberOrdered": 2,
+        "totalNumberOrdered": 4,
         "isDeletedFromCart": false
       }
     ],
@@ -24,14 +24,26 @@
       "name": "Crystal",
       "averageMark": 0.0
     },
-    "orderDateAndTime": "07-09-2025 22:11:08",
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 7
+      },
+      "time": {
+        "hour": 23,
+        "minute": 51,
+        "second": 50,
+        "nano": 450121600
+      }
+    },
     "customer": {
       "collectedPoints": 0,
       "id": "5"
     },
-    "orderStatus": "PROCESSING",
+    "orderStatus": "DELIVERED",
     "isDeleted": false,
-    "totalPrice": 1600.0
+    "totalPrice": 3200.0
   },
   {
     "id": "2",
@@ -49,7 +61,7 @@
         "description": "Specijalitet kuće",
         "articleImage": "..\\upload\\a1.jpg",
         "isDeleted": false,
-        "totalNumberOrdered": 1,
+        "totalNumberOrdered": 3,
         "isDeletedFromCart": false
       }
     ],
@@ -58,47 +70,25 @@
       "name": "Crystal",
       "averageMark": 0.0
     },
-    "orderDateAndTime": "07-12-2020 23:09:28",
-    "customer": {
-      "collectedPoints": 0,
-      "id": "5"
-    },
-    "orderStatus": "PROCESSING",
-    "isDeleted": false,
-    "totalPrice": 800.0
-  },
-  {
-    "id": "3",
-    "articles": [
-      {
-        "id": "1",
-        "name": "Crystal burger",
-        "price": 800.0,
-        "articleType": "FOOD",
-        "restaurant": {
-          "id": "1",
-          "averageMark": 0.0
-        },
-        "quantity": 650.0,
-        "description": "Specijalitet kuće",
-        "articleImage": "..\\upload\\a1.jpg",
-        "isDeleted": false,
-        "totalNumberOrdered": 1,
-        "isDeletedFromCart": false
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 7
+      },
+      "time": {
+        "hour": 23,
+        "minute": 56,
+        "second": 45,
+        "nano": 75350500
       }
-    ],
-    "restaurant": {
-      "id": "1",
-      "name": "Crystal",
-      "averageMark": 0.0
     },
-    "orderDateAndTime": "07-09-2021 23:09:45",
     "customer": {
       "collectedPoints": 0,
       "id": "5"
     },
     "orderStatus": "PROCESSING",
     "isDeleted": false,
-    "totalPrice": 800.0
+    "totalPrice": 2400.0
   }
 ]
