@@ -41,5 +41,19 @@
     "text": "MISLIM DA STE MI ODBILI PRETHODNI KOMENTAR PA SAMO DA KAZEM DA VAM JE RESTORAN JAKO LOS, NEPRIJATNO OSOBLJE ALI EVO 5 ZA MOG KUVARA ZOKIJA\n\nVOLI TE SLAVICA IZ PODUNAVLJA!!!!!",
     "mark": 5,
     "status": "PENDING"
+  },
+  {
+    "id": "4",
+    "customer": {
+      "collectedPoints": 0,
+      "id": "5"
+    },
+    "commentedRestaurant": {
+      "id": "1",
+      "averageMark": 0.0
+    },
+    "text": "JADNO",
+    "mark": 3,
+    "status": "PENDING"
   }
 ]

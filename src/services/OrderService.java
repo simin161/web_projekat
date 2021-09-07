@@ -3,7 +3,14 @@ package services;
 import java.sql.Time;
 import java.time.LocalTime;
 import java.util.ArrayList;
+
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import beans.Article;
 import com.google.gson.JsonElement;
@@ -17,16 +24,17 @@ import dao.CustomerDAO;
 import dao.DelivererDAO;
 import dao.OrderDAO;
 import dao.RestaurantDAO;
+import dto.OrderDTO;
 
 public class OrderService {
 
-	public List<Order> findAllOrdersFromCustomer(String id){
+	public List<OrderDTO> findAllOrdersFromCustomer(String id){
 		
 		return OrderDAO.getInstance().getAllOrdersFromCustomer(id);
 		
 	}
 	
-	public List<Order> findUndeliveredOrdersForCustomer(String id){
+	public List<OrderDTO> findUndeliveredOrdersForCustomer(String id){
 		
 		return OrderDAO.getInstance().getUndeliveredOrdersForCustomer(id);
 		
@@ -40,8 +48,9 @@ public class OrderService {
 		order.setId(String.valueOf(OrderDAO.getInstance().getAllOrders().size()+1));
 		order.setArticles(cart.getArticles());
 		order.setCustomer(new Customer(cart.getCartId()));
-		order.setOrderDate(new Date());
-		order.setOrderTime(Time.valueOf(LocalTime.now()));
+
+		order.setOrderDateAndTime(LocalDateTime.now());
+
 		order.setOrderStatus(OrderStatus.PROCESSING);
 		order.setDeleted(false);
 		order.setTotalPrice(calculateCost(cart.getArticles()));
@@ -91,8 +100,8 @@ public class OrderService {
 		
 	}
 	
-	public void deleteOrder(Order o) {
-		OrderDAO.getInstance().deleteOrder(o);
+	public void deleteOrder(String orderId) {
+		OrderDAO.getInstance().deleteOrder(orderId);
 	}
 
 	public void changeOrderStatus(String id, boolean toIncrement) {

@@ -112,7 +112,8 @@ public class SparkAppMain {
 		
 		get("/getAllRestaurants", (req, res) -> {
 			res.type("application/json");
-			return gson.toJson(restaurantService.getAllRestaurants());
+			String restaurants = gson.toJson(restaurantService.getAllRestaurants());
+			return restaurants;
 		});
 
 		get("/getLoggedUser", (req, res) -> {
@@ -264,7 +265,7 @@ public class SparkAppMain {
 		
 		post("/cancelOrder", (req, res) -> {
 			res.type("application/json");
-			orderService.deleteOrder(gson.fromJson(req.body(), Order.class));
+			orderService.deleteOrder(gson.fromJson(req.body(), String.class));
 			Session session = req.session(true);
 			Customer loggedCustomer = session.attribute("loggedUser");
 			return gson.toJson(orderService.findAllOrdersFromCustomer(loggedCustomer.getId()));
