@@ -11,7 +11,7 @@ Vue.component("orders-for-restaurant", {
 				<div class="lists">
 					<span>
 						<span>Status: {{order.orderStatus}}</span>
-						<input v-if="order.orderStatus !== 'WAITING_FOR_DELIVERER'" type="button" @click="changeOrderStatus(order.id)" value="Promena statusa"></input>
+						<input v-if="order.orderStatus !== 'WAITING_FOR_DELIVERER' && order.orderStatus !== 'IN_TRANSPORT' && order.orderStatus !== 'DELIVERED'" type="button" @click="changeOrderStatus(order.id)" value="Promena statusa"></input>
 					</span>
 					<p>{{order.customer.username}}</p>
 					<!---<p v-if="order.deliverer === null">Nema dostavljača</p>

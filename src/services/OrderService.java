@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.google.gson.JsonElement;
+
 import beans.Cart;
 import beans.Customer;
 import beans.Deliverer;
@@ -13,6 +15,7 @@ import beans.Order;
 import beans.OrderStatus;
 import beans.Restaurant;
 import dao.CustomerDAO;
+import dao.DelivererDAO;
 import dao.OrderDAO;
 import dao.RestaurantDAO;
 
@@ -54,10 +57,15 @@ public class OrderService {
 		OrderDAO.getInstance().deleteOrder(o);
 	}
 
-	public void changeOrderStatus(String id) {
+	public void changeOrderStatus(String id, boolean toIncrement) {
 		for(Order order : OrderDAO.getInstance().getAllOrders()) {
 			if(order.getId().equals(id)) {
-				order.setOrderStatus( OrderStatus.values()[order.getOrderStatus().ordinal() + 1]);
+				if(toIncrement) {
+					order.setOrderStatus( OrderStatus.values()[order.getOrderStatus().ordinal() + 1]);
+				}
+				else {
+					order.setOrderStatus( OrderStatus.values()[order.getOrderStatus().ordinal() - 1]);
+				}
 				break;
 			}
 		}
@@ -98,6 +106,38 @@ public class OrderService {
 		OrderDAO.getInstance().save();
 	}
 	
-	
-	
+	public ArrayList<Order> getAllOrdersForRestaurant(String id){
+		ArrayList<Order> retVal = new ArrayList<Order>();
+		
+		for(Order order : OrderDAO.getInstance().getAllOrders()) {
+			if(order.getRestaurant().getId().equals(id)) {
+				Order o = new Order();
+				o.setId(order.getId());
+				o.setArticles(order.getArticles());
+				o.setDeleted(order.isDeleted());
+				o.setOrderDate(order.getOrderDate());
+				o.setOrderTime(order.getOrderTime());
+				o.setRestaurant(order.getRestaurant());
+				o.setOrderStatus(order.getOrderStatus());
+				o.setDeliverer(order.getDeliverer());
+				o.setCustomer(CustomerDAO.getInstance().findCustomerById(order.getCustomer().getId()));
+				retVal.add(o);
+			}
+		}
+		
+		return retVal;
+	}
+
+	public ArrayList<Order> getOrdersWaitingForResponse(String id) {
+		ArrayList<Order> retVal = new ArrayList<Order>();
+		
+		for(Order order : getAllOrdersForRestaurant(id)) {
+			if(order.getOrderStatus() == OrderStatus.WAITING_FOR_RESPONSE) {
+				order.setDeliverer(DelivererDAO.getInstance().findDelivererById(order.getDeliverer().getId()));
+				retVal.add(order);
+			}
+		}
+		
+		return retVal;
+	}	
 }

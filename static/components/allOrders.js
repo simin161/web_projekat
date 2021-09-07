@@ -18,12 +18,13 @@ Vue.component('all-orders',{
 			<div style="margin-top: 6%" v-if="orders != null">
 				<div class="lists" v-for="order in orders">
 					<div>
+						<span>Status: {{order.orderStatus}}</span>
 						<span v-if="order.orderStatus === 'IN_TRANSPORT'">
-							<button class="orderStatus"></button>
+							<input type="button" value="Promena statusa" @click="changeStatus(order.id)"></input>
 						</span>
-						<p>{{order}}</p>
-						<p>Porudzbina</p>
-						<p>Dostavljac</p> 
+						<p>{{order.customer.username}}</p>
+						<p>Restoran: {{order.restaurant.name}} </p>
+						<p>Porudzbina</p> 
 						<p>Cena</p>
 					</div>
 				</div>
@@ -41,12 +42,16 @@ Vue.component('all-orders',{
 		  axios.get("/getDeliverersOrders")
 			.then(response => (this.orders = response.data))
 	  },
-	  loadDelivered: function(){
+	  loadDelivered : function(){
 		  axios.get("/getDeliverersDeliveredOrders")
 		  .then(response => (this.orders = response.data))
 	  },
-	  loadUndelivered: function(){
+	  loadUndelivered : function(){
 		  axios.get("/getDeliverersUndeliveredOrders")
+		  .then(response => (this.orders = response.data))
+	  },
+	  changeStatus : function(id){
+		  axios.post("/changeOrderStatusDeliverer", id)
 		  .then(response => (this.orders = response.data))
 	  }
 	},

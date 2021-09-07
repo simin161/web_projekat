@@ -46,7 +46,7 @@
       "collectedPoints": 0,
       "id": "5"
     },
-    "orderStatus": "WAITING_FOR_RESPONSE",
+    "orderStatus": "DELIVERED",
     "isDeleted": false,
     "deliverer": {
       "id": "1"
@@ -83,8 +83,11 @@
       "collectedPoints": 0,
       "id": "5"
     },
-    "orderStatus": "PROCESSING",
-    "isDeleted": true
+    "orderStatus": "DELIVERED",
+    "isDeleted": true,
+    "deliverer": {
+      "id": "1"
+    }
   },
   {
     "id": "3",
