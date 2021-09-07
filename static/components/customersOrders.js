@@ -168,8 +168,8 @@ template: `<div>
 							<button class="deleteArticle" @click="cancelOrder(item)" title="Otkaži porudžbinu" v-if="item.orderStatus === 'PROCESSING'"></button> 
 					</span>
 					<p>Ime restorana: {{item.restaurant.name}}</p>
-					<p>Datum kreiranja porudžbine: {{item.orderDate}} </p>
-					<p>Stanje porudžbine: {{item.orderStatus}}</p> 
+					<p>Datum kreiranja porudžbine: {{item.orderDateAndTime}} </p>
+					<p>Stanje porudžbine: {{item.orderStatus}}</p>
 					<p>Ukupno za platiti: {{item.totalPrice}}</p>
 					<p>Artikli koji su naručeni:</p>
 					

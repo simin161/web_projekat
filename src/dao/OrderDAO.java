@@ -12,14 +12,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import beans.Article;
-import beans.Customer;
 import beans.Order;
 import beans.OrderStatus;
 
 public class OrderDAO {
 
 	private ArrayList<Order> allOrders;
-	private Gson gson = new GsonBuilder().setDateFormat("yyyy-mm-dd").setPrettyPrinting().create();
+	private Gson gson = new GsonBuilder().setDateFormat("dd-MM-yyyy HH:mm:ss").setPrettyPrinting().create();
 	
 	private static OrderDAO instance;
 	public static OrderDAO getInstance() {

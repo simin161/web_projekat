@@ -1,7 +1,9 @@
 package services;
 
-import java.sql.Time;
-import java.time.LocalTime;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -37,8 +39,17 @@ public class OrderService {
 		order.setId(String.valueOf(OrderDAO.getInstance().getAllOrders().size()+1));
 		order.setArticles(cart.getArticles());
 		order.setCustomer(new Customer(cart.getCartId()));
-		order.setOrderDate(new Date());
-		order.setOrderTime(Time.valueOf(LocalTime.now()));
+		LocalDateTime date = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+		String plsDate = formatter.format(date);
+		Date dateFinal = new Date();
+		try {
+			dateFinal = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").parse(plsDate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		order.setOrderDateAndTime(dateFinal);
 		order.setOrderStatus(OrderStatus.PROCESSING);
 		order.setDeleted(false);
 		order.setTotalPrice(calculateCost(cart.getArticles()));

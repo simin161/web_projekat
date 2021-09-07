@@ -1,6 +1,5 @@
 package beans;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -8,8 +7,13 @@ public class Order {
 	private String id;
 	private ArrayList<Article> articles;
 	private Restaurant restaurant;
-	private Date orderDate;
-	private Time orderTime;
+	private Date orderDateAndTime;
+	public Date getOrderDateAndTime() {
+		return orderDateAndTime;
+	}
+	public void setOrderDateAndTime(Date orderDateAndTime) {
+		this.orderDateAndTime = orderDateAndTime;
+	}
 	private Customer customer;
 	private OrderStatus orderStatus;
 	private boolean isDeleted;
@@ -24,12 +28,7 @@ public class Order {
 	public Restaurant getRestaurant() {
 		return restaurant;
 	}
-	public Date getOrderDate() {
-		return orderDate;
-	}
-	public Time getOrderTime() {
-		return orderTime;
-	}
+	
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -45,12 +44,7 @@ public class Order {
 	public void setRestaurant(Restaurant restaurant) {
 		this.restaurant = restaurant;
 	}
-	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
-	}
-	public void setOrderTime(Time orderTime) {
-		this.orderTime = orderTime;
-	}
+	
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
