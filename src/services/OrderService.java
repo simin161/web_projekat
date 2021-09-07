@@ -158,6 +158,7 @@ public class OrderService {
 				o.setRestaurant(order.getRestaurant());
 				o.setOrderStatus(order.getOrderStatus());
 				o.setDeliverer(order.getDeliverer());
+				o.setTotalPrice(order.getTotalPrice());
 				o.setCustomer(CustomerDAO.getInstance().findCustomerById(order.getCustomer().getId()));
 				retVal.add(o);
 			}

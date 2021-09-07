@@ -14,9 +14,7 @@ Vue.component("orders-for-restaurant", {
 						<input v-if="order.orderStatus !== 'WAITING_FOR_DELIVERER' && order.orderStatus !== 'IN_TRANSPORT' && order.orderStatus !== 'DELIVERED'" type="button" @click="changeOrderStatus(order.id)" value="Promena statusa"></input>
 					</span>
 					<p>{{order.customer.username}}</p>
-					<!---<p v-if="order.deliverer === null">Nema dostavljača</p>
-					<p v-if="order.deliverer !== null">{{order.deliverer.name}} {{order.deliverer.surname}}</p>--->
-					<p>Cena</p>
+					<p>Cena: {{order.totalPrice}} dinara</p>
 					<p>Poručeni artikli:</p>
 				</div>
 				<div class="listsArticles" v-for="article in order.articles">			
