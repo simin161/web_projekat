@@ -33,6 +33,14 @@
 	vertical-align: middle;
 }
 
+.commentSection{
+	
+	width: 50vh;
+	height: 20vh;
+	
+	
+}
+
 .lists{
 	margin: auto;
 	margin-bottom: 10px;

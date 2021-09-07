@@ -13,9 +13,9 @@ import com.google.gson.GsonBuilder;
 
 import beans.Administrator;
 import beans.Article;
+import beans.Cart;
 import beans.Comment;
 import beans.CommentStatus;
-import beans.Cart;
 import beans.Customer;
 import beans.Deliverer;
 import beans.Manager;
@@ -25,8 +25,16 @@ import beans.SortType;
 import beans.User;
 import beans.UserInfo;
 import dto.ArticleDTO;
-import services.*;
+import dto.CommentDTO;
 import dto.SearchRestaurantDTO;
+import services.AdministratorService;
+import services.ArticleService;
+import services.CartService;
+import services.CommentService;
+import services.CustomerService;
+import services.DelivererService;
+import services.ManagerService;
+import services.OrderService;
 import services.RegistrationService;
 import services.RestaurantService;
 import spark.Session;
@@ -403,6 +411,18 @@ public class SparkAppMain {
 			Manager loggedManager = session.attribute("loggedUser");
 			restaurantService.calculateAndSaveAverageMark(loggedManager.getRestaurant().getId());
 			return gson.toJson(restaurantService.getAllCommentsForRestaurant(loggedManager.getRestaurant().getId()));
+		});
+		
+		post("/postComment", (req, res)->{
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			Customer loggedCustomer = session.attribute("loggedUser");
+			boolean ret= commentService.fillComment(loggedCustomer.getId(), gson.fromJson(req.body(), CommentDTO.class));
+			
+			
+			return ret ? "Komentar uspešno zabeležen" : "Greška prilikom ostavljanja komentara";
+			
 		});
 		
 		get("/getOpened", (req, res)->{

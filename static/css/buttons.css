@@ -101,6 +101,16 @@ select option{
 	
 }
 
+.commentMarkCustomer{
+	float: right; 
+	margin-top: 60px; 
+	margin-right: 10px; 
+	height: 24px;
+	width: 100px;
+	vertical-align: middle;
+	
+}
+
 .changeArticle{
 	float: right; 
 	margin-top: 40px; 
