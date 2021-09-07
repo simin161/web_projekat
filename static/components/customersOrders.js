@@ -95,26 +95,26 @@ template: `<div>
 						<td align="center" colSpan="2">Sortiraj opadajuće po: </td>
 					</tr>
 					<tr>
-						<td align="center" colSpan="2"><input type="button" value="Ime restorana" class="buttonSearchInModal"></input></td>
+						<td align="center" colSpan="2"><input type="button" value="Ime restorana" class="buttonSearchInModal" @click="sortByRestaurantName('DESCENDING')"></input></td>
 					</tr>
 					<tr>
-						<td align="center" colSpan="2"><input type="button" value="Cena" class="buttonSearchInModal"></input></td>
+						<td align="center" colSpan="2"><input type="button" value="Cena" class="buttonSearchInModal" @click="sortByPrice('DESCENDING')"></input></td>
 					</tr>
 					<tr>
-						<td align="center" colSpan="2"><input type="button" class="buttonSearchInModal" value="Datum"></input></td>
+						<td align="center" colSpan="2"><input type="button" class="buttonSearchInModal" value="Datum" @click="sortByDate('DESCENDING')"></input></td>
 					</tr>
 					</br>
 					<tr>
 						<td align="center" colSpan="2">Sortiraj rastuće po: </td>
 					</tr>
 					<tr>
-						<td align="center" colSpan="2"><input type="button" value="Ime restorana" class="buttonSearchInModal"></input></td>
+						<td align="center" colSpan="2"><input type="button" value="Ime restorana" class="buttonSearchInModal" @click="sortByRestaurantName('ASCENDING')"></input></td>
 					</tr>
 					<tr>
-						<td align="center" colSpan="2"><input type="button" value="Cena" class="buttonSearchInModal"></input></td>
+						<td align="center" colSpan="2"><input type="button" value="Cena" class="buttonSearchInModal" @click="sortByPrice('ASCENDING')"></input></td>
 					</tr>
 					<tr>
-						<td align="center" colSpan="2"><input type="button" class="buttonSearchInModal" value="Datum"></input></td>
+						<td align="center" colSpan="2"><input type="button" class="buttonSearchInModal" value="Datum" @click="sortByDate('ASCENDING')"></input></td>
 					</tr>
 					
 					</br>
@@ -220,7 +220,7 @@ template: `<div>
 		postComment : function(){
 		
 			axios.post("/postComment", this.commentToPost)
-			.then(response=> {router.push("/customerOrders"), alert("Vaš komentar je uspešno zabeležen i čeka odobrenje!"), this.showModal = false})
+			.then(alert(("Vaš komentar je uspešno zabeležen i čeka odobrenje!"), this.showModal = false))
 			
 		},
 		
@@ -244,6 +244,27 @@ template: `<div>
 			axios.post("/filterCustomerOrders", this.filterParams)
 			.then(response=>(this.ordersToDisplay = response.data))
 		
+		},
+		
+		sortByRestaurantName : function(type){
+		
+			axios.post("/sortByRestaurantName", type)
+			.then(response=>(this.ordersToDisplay = response.data))
+		
+		},
+		
+		sortByPrice : function(type){
+		
+			axios.post("/sortByPrice", type)
+			.then(response=>(this.ordersToDisplay = response.data))
+		
+		},
+		
+		sortByDate : function(type){
+		
+			axios.post("/sortByDate", type)
+			.then(response=>(this.ordersToDisplay = response.data))
+			
 		}
 		
 	},
