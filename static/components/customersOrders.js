@@ -13,7 +13,17 @@ Vue.component('customerOrders', {
 			searchParams: {
 			
 				restaurant: "",
+				priceBottom: "",
+				priceTop: "",
+				dateBottom: "",
+				dateTop: ""
 				
+			},
+			
+			filterParams: {
+			
+				restaurantType: "",
+				orderStatus: ""
 			
 			},
 			restaurants: null
@@ -48,15 +58,97 @@ template: `<div>
 				<table style="text-align: left; margin: auto">
 				
 					<tr>
+						<td align="center" colSpan="2">Pretraga</td>
+					</tr>
+					<tr>
 						<td>Izaberite restoran:</td>
 						<td><select class="selectSearch" id="select" name="select" v-model="searchParams.restaurant">
 								<option value="restaurant.id" v-for="restaurant in restaurants">{{restaurant.name}}</option>
 							</select>
 						
 						</td>
-						
 					</tr>
+					<tr>
+						<td>Cena od: </td>
+						<td><input class="selectSearch" type="number" v-model="searchParams.priceBottom"></input></td>
+					</tr>
+					<tr>
+						<td>Cena do: </td>
+						<td><input class="selectSearch" type="number" v-model="searchParams.priceTop"></input></td>
+					</tr>
+					<tr>
+						<td>Datum od: </td>
+						<td><input class="selectSearch" type="date" v-model="searchParams.dateBottom"></input></td>
+					</tr>
+					<tr>
+						<td>Datum do: </td>
+						<td><input class="selectSearch" type="date" v-model="searchParams.dateTop"></input></td>
+					</tr>
+					
+					<tr>
+						<td align="center" colSpan="2"><input type="button" class="buttonSearchInModal" value="Pretraži" @click="search"></input></td>
+					</tr>
+					
+					</br>
+					
+					<tr>
+						<td align="center" colSpan="2">Sortiraj opadajuće po: </td>
+					</tr>
+					<tr>
+						<td align="center" colSpan="2"><input type="button" value="Ime restorana" class="buttonSearchInModal"></input></td>
+					</tr>
+					<tr>
+						<td align="center" colSpan="2"><input type="button" value="Cena" class="buttonSearchInModal"></input></td>
+					</tr>
+					<tr>
+						<td align="center" colSpan="2"><input type="button" class="buttonSearchInModal" value="Datum"></input></td>
+					</tr>
+					</br>
+					<tr>
+						<td align="center" colSpan="2">Sortiraj rastuće po: </td>
+					</tr>
+					<tr>
+						<td align="center" colSpan="2"><input type="button" value="Ime restorana" class="buttonSearchInModal"></input></td>
+					</tr>
+					<tr>
+						<td align="center" colSpan="2"><input type="button" value="Cena" class="buttonSearchInModal"></input></td>
+					</tr>
+					<tr>
+						<td align="center" colSpan="2"><input type="button" class="buttonSearchInModal" value="Datum"></input></td>
+					</tr>
+					
+					</br>
 				
+					<tr>
+						<td align="center" colSpan="2">Filtriranje</td>
+					</tr>
+					<tr>
+						<td>Tip restorana: </td>
+						<td>
+							<select class="selectSearch" id="selectType" name="selectType" v-model="filterParams.restaurantType">
+								<option value="restaurant.restaurantType" v-for="restaurant in restaurants">{{restaurant.restaurantType}}</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						</td>Status porudžbine:</td>
+						<td>
+							<select class="selectSearch" id="selectStatus" name="selectStatus" v-model="filterParams.orderStatus">
+								<option value="PROCESSING">U obradi</option>
+								<option value="IN_PREPARATION">U pripremi</option>
+								<option value="WAITING_FOR_DELIVERER">Čeka na dostavljača</option>
+								<option value="IN_TRANSPORT">U transportu</option>
+								<option value="DELIVERED">Dostavljena</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" colSpan="2"><input type="button" class="buttonSearchInModal" value="Filtriraj" @click="filter"></input></td>
+					</tr>
+					
+					</br>
+		
+					
 				</table>
 			</div>
 		</div>
@@ -145,6 +237,13 @@ template: `<div>
 			axios.get("/getAllRestaurants")
 			.then(response=>{this.restaurants = response.data, this.showModalSearch = true;})
 			
+		},
+		
+		filter : function(){
+		
+			axios.post("/filterCustomerOrders", this.filterParams)
+			.then(response=>(this.ordersToDisplay = response.data))
+		
 		}
 		
 	},
