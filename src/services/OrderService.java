@@ -41,6 +41,7 @@ public class OrderService {
 		order.setOrderTime(Time.valueOf(LocalTime.now()));
 		order.setOrderStatus(OrderStatus.PROCESSING);
 		order.setDeleted(false);
+		order.setTotalPrice(calculateCost(cart.getArticles()));
 		order.setRestaurant(new Restaurant(cart.getArticles().get(0).getRestaurant().getId()));
 		order.getRestaurant().setName(RestaurantDAO.getInstance().findById(order.getRestaurant().getId()).getName());
 		OrderDAO.getInstance().addOrder(order);
@@ -48,6 +49,20 @@ public class OrderService {
 		calculatePoints(order, cart.getCartId());
 		
 		return returnValue;
+		
+	}
+	
+	private double calculateCost(List<Article> articles) {
+		
+		double price = 0;
+		
+		for(Article a : articles) {
+			
+			price += (a.getPrice() * a.getTotalNumberOrdered());
+			
+		}
+		
+		return price;
 		
 	}
 	

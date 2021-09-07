@@ -13,6 +13,7 @@ public class Order {
 	private Customer customer;
 	private OrderStatus orderStatus;
 	private boolean isDeleted;
+	private double totalPrice;
 	
 	public String getId() {
 		return id;
@@ -61,6 +62,12 @@ public class Order {
 	}
 	public void setDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
+	}
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 	
 	
