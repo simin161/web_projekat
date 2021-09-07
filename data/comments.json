@@ -13,5 +13,33 @@
     "text": "Mnogo dobar restoran! 10/10 would recommend!!! \u003c3",
     "mark": 5,
     "status": "ACCEPTED"
+  },
+  {
+    "id": "2",
+    "customer": {
+      "collectedPoints": 0,
+      "id": "5"
+    },
+    "commentedRestaurant": {
+      "id": "1",
+      "averageMark": 0.0
+    },
+    "text": "Mega mi se svideo obrok iz ovog restorana sve desetke svaka cast za osoblje a najvise za kuvara Zorana iz Sumadije zemlje Srbije pozz od Slavice!!!",
+    "mark": 10,
+    "status": "DECLINED"
+  },
+  {
+    "id": "3",
+    "customer": {
+      "collectedPoints": 0,
+      "id": "5"
+    },
+    "commentedRestaurant": {
+      "id": "1",
+      "averageMark": 0.0
+    },
+    "text": "MISLIM DA STE MI ODBILI PRETHODNI KOMENTAR PA SAMO DA KAZEM DA VAM JE RESTORAN JAKO LOS, NEPRIJATNO OSOBLJE ALI EVO 5 ZA MOG KUVARA ZOKIJA\n\nVOLI TE SLAVICA IZ PODUNAVLJA!!!!!",
+    "mark": 5,
+    "status": "PENDING"
   }
 ]

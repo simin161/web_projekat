@@ -23,7 +23,7 @@ template: `<div>
 		
 						<tr>
 							<td><p class="commentMarkCustomer">Unesite ocenu:</p></td>
-							<td><input type="number" v-model="commentToPost.mark" min="1" max="10" onKeyDown="return false" class="numberAddToCart"></input></td>
+							<td><input type="number" v-model="commentToPost.mark" min="1" max="5" onKeyDown="return false" class="numberAddToCart"></input></td>
 						</tr>
 					</table>
 						<p style="white-space: pre-line">Vaš komentar</p>
@@ -43,7 +43,7 @@ template: `<div>
 			<div v-for="item in ordersToDisplay">
 				<div class="lists">
 					<span>
-							<button class="changeArticle" @click="showModal(item)" title="Ostavite komentar" v-if="item.orderStatus === 'DELIVERED'"></button>
+							<button class="changeArticle" @click="showModalDialog(item)" title="Ostavite komentar" v-if="item.orderStatus === 'DELIVERED'"></button>
 							<button class="deleteArticle" @click="cancelOrder(item)" title="Otkaži porudžbinu" v-if="item.orderStatus === 'PROCESSING'"></button> 
 					</span>
 					<p>Ime restorana: {{item.restaurant.name}}</p>
@@ -89,7 +89,7 @@ template: `<div>
 		
 		},
 		
-		showModal : function(item){
+		showModalDialog : function(item){
 		
 			this.commentToPost.commentedRestaurant = item.restaurant.id;
 			this.showModal = true;
