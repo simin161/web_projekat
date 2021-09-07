@@ -174,7 +174,7 @@ template: `<div>
 					<p>Vreme kreiranja porudžbine: {{item.time}} </p>
 					<p>Stanje porudžbine: {{item.orderStatus}}</p> 
 
-					<p>Ukupno za platiti: {{item.totalPrice}}</p>
+					<p>Ukupno za platiti: {{item.totalPrice}} din.</p>
 					<p>Artikli koji su naručeni:</p>
 					
 				</div>
