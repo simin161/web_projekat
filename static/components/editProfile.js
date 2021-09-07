@@ -53,6 +53,11 @@ template: `<div>
 						<td>Lozinka: </td>
 						<td><input type="password" v-model="loggedUser.password" :disabled="isDisabled"></input></td>
 					</tr>
+					<br v-if="loggedUser.userType === 'CUSTOMER'"/>
+					<tr v-if="loggedUser.userType === 'CUSTOMER'">
+						<td>Osvojeni poeni: </td>
+						<td><p>{{loggedUser.collectedPoints}}</p></td>
+					</tr>
 					<br/>
 				</table>
 				<input @mouseover="mouseOver" @mouseleave="mouseLeave" type="button" v-bind:style="{'background-color': backgroundColor, 'color': 'white', 'visibility': visibility, 'width':'37%'}" value="Sačuvaj"  v-on:click="save"></input>

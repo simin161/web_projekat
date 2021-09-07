@@ -2,15 +2,11 @@ Vue.component('customerOrders', {
 	data: function(){
 		return{
 			ordersToDisplay: null,
-			showUndeliveredOnly: false,
-			pointsTotal: 0
+			showUndeliveredOnly: false
 		};
 	},
 template: `<div>
 		<navigation-header></navigation-header>
-		<form class="searchForm" style="">
-			<p>Vaši bodovi: {{pointsTotal=getAllPoints()}}</p>
-		</form>
 		
 		<form class="searchForm" style="">
 			<button class="aaa" @click="showUndelivered()">Prikaži nedostavljene porudžbine</button>
@@ -61,13 +57,6 @@ template: `<div>
 		
 			axios.post("/cancelOrder", item)
 			.then(response =>{this.ordersToDisplay = response.data, alert("Porudžbina je uspešno otkazana!")})
-		
-		},
-		
-		getAllPoints : function() {
-		
-			axios.get("/getTotalPoints")
-			.then(response =>(this.pointsTotal = response.data))
 		
 		}
 	
