@@ -11,6 +11,18 @@
 	border-width: 1px;
 }
 
+.buttonSearchDelivery:hover{
+	background-color: #79b9b6;
+		transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
+	
+}
+
+.selectSearch{
+	
+	width: 200px;
+	
+}
+
 .buttonAccept{
 	width: 23px;
 	heigth: 20px;

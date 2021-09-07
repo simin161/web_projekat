@@ -8,7 +8,15 @@ Vue.component('customerOrders', {
 								comment: "",
 								commentedRestaurant: ""			
 			},
-			showModal: false
+			showModal: false,
+			showModalSearch: false,
+			searchParams: {
+			
+				restaurant: "",
+				
+			
+			},
+			restaurants: null
 		};
 	},
 template: `<div>
@@ -33,11 +41,32 @@ template: `<div>
 			</div>
 		</div>
 
+		<div class= "modal" v-show="showModalSearch">
+			<div class="modal-content">
+			
+				<span class="close" @click="showModalSearch = false">&times;</span>
+				<table style="text-align: left; margin: auto">
+				
+					<tr>
+						<td>Izaberite restoran:</td>
+						<td><select class="selectSearch" id="select" name="select" v-model="searchParams.restaurant">
+								<option value="restaurant.id" v-for="restaurant in restaurants">{{restaurant.name}}</option>
+							</select>
+						
+						</td>
+						
+					</tr>
+				
+				</table>
+			</div>
+		</div>
+
 		<navigation-header></navigation-header>
 		
 		<form class="searchForm" style="">
 			<button class="aaa" @click="showUndelivered()">Prikaži nedostavljene porudžbine</button>
 			<button class="aaa" @click="showAll()">Prikaži sve porudžbine</button>
+			<button class="buttonSearchDelivery" @click="showModalSearchFunction()">Pretraži porudžbine</button>
 		</form>
 		<hr>
 			<div v-for="item in ordersToDisplay">
@@ -101,10 +130,25 @@ template: `<div>
 			axios.post("/postComment", this.commentToPost)
 			.then(response=> {router.push("/customerOrders"), alert("Vaš komentar je uspešno zabeležen i čeka odobrenje!"), this.showModal = false})
 			
+		},
+		
+		search : function(){
+		
+			axios.post("/searchCustomerOrders", this.searchParams)
+			.then(response=>(this.ordersToDisplay = response.data))
+		
+		},
+		
+		showModalSearchFunction : function(){
+		
+			event.preventDefault();
+			axios.get("/getAllRestaurants")
+			.then(response=>{this.restaurants = response.data, this.showModalSearch = true;})
+			
 		}
+		
+	},
 	
-	}
-	,
 	mounted(){
 		axios.get("/getCustomerOrders")
 		.then(response => (this.ordersToDisplay = response.data))
