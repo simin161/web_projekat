@@ -1,8 +1,9 @@
 [
   {
-  	"restaurant": {
-  		"id": "1"
-  	},
+    "restaurant": {
+      "id": "1",
+      "averageMark": 0.0
+    },
     "id": "1",
     "username": "manager",
     "password": "manager",
@@ -10,6 +11,6 @@
     "surname": "Managerkic",
     "sex": "Muško",
     "userType": "MANAGER",
-    "dateOfBirth": "1111-11-11"
+    "dateOfBirth": "1980-11-06"
   }
 ]

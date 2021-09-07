@@ -14,16 +14,16 @@ template: ` <div>
 					<div>
 						<table style="width: 100%">
 						<tr>
-							<td>{{order}} </td>
-							<td>Korisnik </td>
+							<td>Restoran: {{order.restaurant.name}} </td>
+							<td>Korisnik: {{order.customer.username}} </td>
 							<td></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td>Lokacija restorana</td>
-							<td>Mesto</td>
+							<td></td>
 							<td>
-								<input type="button" value="Pošalji zahtev"></input>
+								<input type="button" @click="sendRequest(order.id)" value="Pošalji zahtev"></input>
 							 </td>
 							<td></td>
 						</tr>
@@ -44,6 +44,10 @@ template: ` <div>
 			methods:{
 				 handleScroll () {
 			    this.scrolled = window.scrollY > 0;
+			  },
+			  sendRequest : function(id){
+				  axios.post("/sendRequest", id)
+				  .then(response => (this.orders = response.data))
 			  }
 			},
 			created () {
@@ -52,4 +56,8 @@ template: ` <div>
 			destroyed () {
 			  window.removeEventListener('scroll', this.handleScroll);
 			},
+			mounted(){
+				axios.get("/getOrdersWithoutDeliverer")
+				.then(response => (this.orders = response.data))
+			}
 });

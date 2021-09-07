@@ -2,7 +2,6 @@ Vue.component('all-orders',{
 	data: function(){
 		return{
 			orders: null,
-			show: false,
 			scrolled: false
 		};
 	}
@@ -19,12 +18,13 @@ Vue.component('all-orders',{
 			<div style="margin-top: 6%" v-if="orders != null">
 				<div class="lists" v-for="order in orders">
 					<div>
-						<span v-if="show===true">
-							<button class="orderStatus"></button>
+						<span>Status: {{order.orderStatus}}</span>
+						<span v-if="order.orderStatus === 'IN_TRANSPORT'">
+							<input type="button" value="Promena statusa" @click="changeStatus(order.id)"></input>
 						</span>
-						<p>{{order}}</p>
-						<p>Porudzbina</p>
-						<p>Dostavljac</p> 
+						<p>{{order.customer.username}}</p>
+						<p>Restoran: {{order.restaurant.name}} </p>
+						<p>Porudzbina</p> 
 						<p>Cena</p>
 					</div>
 				</div>
@@ -39,16 +39,20 @@ Vue.component('all-orders',{
 	    this.scrolled = window.scrollY > 0;
 	  },
 	  loadAll : function(){
-		  this.orders = ['aaaa']
-		  this.show = false;
+		  axios.get("/getDeliverersOrders")
+			.then(response => (this.orders = response.data))
 	  },
-	  loadDelivered: function(){
-		  this.orders = ['bbb']
-		  this.show = false;
+	  loadDelivered : function(){
+		  axios.get("/getDeliverersDeliveredOrders")
+		  .then(response => (this.orders = response.data))
 	  },
-	  loadUndelivered: function(){
-		  this.orders = ['cccc']
-		  this.show = true;
+	  loadUndelivered : function(){
+		  axios.get("/getDeliverersUndeliveredOrders")
+		  .then(response => (this.orders = response.data))
+	  },
+	  changeStatus : function(id){
+		  axios.post("/changeOrderStatusDeliverer", id)
+		  .then(response => (this.orders = response.data))
 	  }
 	},
 	created () {
@@ -57,4 +61,8 @@ Vue.component('all-orders',{
 	destroyed () {
 	  window.removeEventListener('scroll', this.handleScroll);
 	},
+	mounted() {
+		axios.get("/getDeliverersOrders")
+		.then(response => (this.orders = response.data))
+	}
 });

@@ -41,14 +41,18 @@
       "averageMark": 0.0
     },
     "orderDate": "2021-05-06",
-    "orderTime": "01:05:44 po podne",
+    "orderTime": "01:05:44 PM",
     "customer": {
       "collectedPoints": 0,
       "id": "5"
     },
     "orderStatus": "PROCESSING",
-    "isDeleted": true,
-    "totalPrice": 0.0
+    "totalPrice": 0.0,
+    "orderStatus": "DELIVERED",
+    "isDeleted": false,
+    "deliverer": {
+      "id": "1"
+    }
   },
   {
     "id": "2",
@@ -76,14 +80,18 @@
       "averageMark": 0.0
     },
     "orderDate": "2021-12-06",
-    "orderTime": "01:12:21 po podne",
+    "orderTime": "01:12:21 PM",
     "customer": {
       "collectedPoints": 0,
       "id": "5"
     },
-    "orderStatus": "PROCESSING",
     "isDeleted": true,
-    "totalPrice": 0.0
+    "totalPrice": 0.0,
+    "orderStatus": "DELIVERED",
+    "isDeleted": true,
+    "deliverer": {
+      "id": "1"
+    }
   },
   {
     "id": "3",
@@ -110,8 +118,8 @@
       "name": "Crystal",
       "averageMark": 0.0
     },
-    "orderDate": "2021-15-06",
-    "orderTime": "01:15:39 po podne",
+    "orderDate": "2022-03-06",
+    "orderTime": "01:15:39 PM",
     "customer": {
       "collectedPoints": 0,
       "id": "5"
