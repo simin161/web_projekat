@@ -59,11 +59,25 @@ public class DelivererDAO {
 		}
 	}
 	
+	public Deliverer findDelivererById(String id) {
+		Deliverer deliverer = null;
+		
+		for(Deliverer d : allDeliverers) {
+			if(d.getId().equals(id)) {
+				deliverer = d;
+				break;
+			}
+		}
+		
+		return deliverer;
+	}
+	
 	public Deliverer findDelivererByUsername(String username) {
 		Deliverer deliverer = null;
 		for(Deliverer d : allDeliverers) {
 			if(username.equals(d.getUsername())) {
 				deliverer = d;
+				break;
 			}
 		}
 		return deliverer;

@@ -10,9 +10,8 @@ Vue.component("customers-for-restaurant", {
 			<div v-if="customers != null">
 				<div class="lists" v-for="customer in customers">
 					<div>
-						<p>{{customer}}</p>
-						<p>Ime prezime kupca </p>
-						<p>Porudzbine??? </p> 
+						<p>{{customer.username}}</p>
+						<p>{{customer.name}} {{customer.surname}}</p> 
 					</div>
 				</div>
 			</div>
@@ -21,4 +20,9 @@ Vue.component("customers-for-restaurant", {
 			</div>
 		</div>
 		`
+		,
+		mounted(){
+			axios.get("/getCustomersForRestaurant")
+			.then(response => (this.customers = response.data))
+	}
 });

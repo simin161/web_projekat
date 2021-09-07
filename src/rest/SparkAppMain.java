@@ -55,7 +55,7 @@ public class SparkAppMain {
 
 	
 	public static void main(String[] args) throws Exception {
-		port(8080);
+		port(9000);
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
 
 		post("/registerUser", (req, res) -> {
@@ -447,6 +447,96 @@ public class SparkAppMain {
 			res.type("application/json");
 			SearchRestaurantDTO searchParams = gson.fromJson(req.body(), SearchRestaurantDTO.class);
 			return gson.toJson(restaurantService.search(searchParams));
+		});
+		
+		get("/getCustomersForRestaurant", (req, res) -> {
+			res.type("application/json");
+			Session session = req.session(true);
+			Manager loggedManager = session.attribute("loggedUser");
+			return gson.toJson(restaurantService.getAllCustomersForRestaurant(loggedManager.getRestaurant().getId()));
+		});
+		
+		get("/getOrdersForRestaurant", (req, res) -> {
+			res.type("application/json");
+			Session session = req.session(true);
+			Manager loggedManager = session.attribute("loggedUser");
+			return gson.toJson(orderService.getAllOrdersForRestaurant(loggedManager.getRestaurant().getId()));
+		});
+		
+		post("/changeOrderStatus", (req, res) -> {
+			res.type("application/json");
+			orderService.changeOrderStatus(gson.fromJson(req.body(), String.class), true);
+			Session session = req.session(true);
+			Manager loggedManager = session.attribute("loggedUser");
+			return gson.toJson(orderService.getAllOrdersForRestaurant(loggedManager.getRestaurant().getId()));
+		});
+		
+		get("/getDeliverersOrders", (req, res) -> {
+			res.type("application/json");
+			Session session = req.session(true);
+			Deliverer loggedDeliverer = session.attribute("loggedUser");
+			return gson.toJson(delivererService.getDeliverersOrders(loggedDeliverer.getId()));
+		});
+		
+		get("/getDeliverersDeliveredOrders", (req, res) -> {
+			res.type("application/json");
+			Session session = req.session(true);
+			Deliverer loggedDeliverer = session.attribute("loggedUser");
+			return gson.toJson(delivererService.getDeliverersDeliveredOrders(loggedDeliverer.getId()));
+		});
+		
+		get("/getDeliverersUndeliveredOrders", (req, res) -> {
+			res.type("application/json");
+			Session session = req.session(true);
+			Deliverer loggedDeliverer = session.attribute("loggedUser");
+			return gson.toJson(delivererService.getDeliverersUndeliveredOrders(loggedDeliverer.getId()));
+		});
+		
+		get("/getOrdersWithoutDeliverer", (req, res) -> {
+			res.type("application/json");
+			return gson.toJson(orderService.getOrdersWithoutDeliverer());
+		});
+		
+		post("/sendRequest", (req, res) -> {
+			res.type("application/json");
+			String id = gson.fromJson(req.body(), String.class);
+			orderService.changeOrderStatus(gson.fromJson(req.body(), String.class), true);
+			Session session = req.session(true);
+			Deliverer loggedDeliverer = session.attribute("loggedUser");
+			orderService.setDelivererForOrder(id, loggedDeliverer.getId());
+			return gson.toJson(orderService.getOrdersWithoutDeliverer());
+		});
+		
+		get("/getRequests", (req, res) -> {
+			res.type("application/json");
+			Session session = req.session(true);
+			Manager loggedManager = session.attribute("loggedUser");
+			return gson.toJson(orderService.getOrdersWaitingForResponse(loggedManager.getRestaurant().getId()));
+		});
+		
+		post("/acceptRequest", (req, res) -> {
+			res.type("application/json");
+			orderService.changeOrderStatus(gson.fromJson(req.body(), String.class), true);
+			delivererService.addOrderToDeliverer(gson.fromJson(req.body(), String.class));
+			Session session = req.session(true);
+			Manager loggedManager = session.attribute("loggedUser");
+			return gson.toJson(orderService.getOrdersWaitingForResponse(loggedManager.getRestaurant().getId()));
+		});
+		
+		post("/declineRequest", (req, res) -> {
+			res.type("application/json");
+			orderService.changeOrderStatus(gson.fromJson(req.body(), String.class), false);
+			Session session = req.session(true);
+			Manager loggedManager = session.attribute("loggedUser");
+			return gson.toJson(orderService.getOrdersWaitingForResponse(loggedManager.getRestaurant().getId()));
+		});
+		
+		post("/changeOrderStatusDeliverer", (req, res) -> {
+			res.type("application/json");
+			orderService.changeOrderStatus(gson.fromJson(req.body(), String.class), true);
+			Session session = req.session(true);
+			Deliverer loggedDeliverer = session.attribute("loggedUser");
+			return gson.toJson(delivererService.getDeliverersOrders(loggedDeliverer.getId()));
 		});
 	}
 }
