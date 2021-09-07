@@ -42,7 +42,7 @@ template: `<div>
 						</tr>
 						<br/>
 						<tr>
-							<td>Sortiraj po (rastuće):</tr>
+							<td>Sortiraj po (rastuće):</td>
 						</tr>
 						<tr>
 							<td><input type="button" @click="sortByName('ASCENDING')" value="nazivu restorana"></input></td>

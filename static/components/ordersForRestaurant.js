@@ -1,12 +1,77 @@
 Vue.component("orders-for-restaurant", {
 	data: function(){
 		return{
-			orders: null
+			orders: null,
+			showModal: false
 		};
 	}
 	,
 	template: `
 		<div>
+		<ul style="margin-top: 6%">
+			<li><a @click="showModal = true">Pretraži</a></li>
+		</ul>
+			<div class="modal" v-show="showModal">
+			  <div class="modal-content">
+				<span class="close" @click="showModal = false">&times;</span>
+				<table>
+					<tr>
+						<td>Cena porudžbine</td>
+						<td><input type="number" min="0" placeholder="od..."></input> </td>
+						<td><input type="number" min="0" placeholder="do..."></input></td>
+					</tr>
+					<tr>
+						<td>Datum porudžbine</td>
+						<td><input type="date" placeholder="od..."></input> do </td>
+						<td><input type="date" placeholder="do..."></input></td>
+					</tr>
+					<tr>
+						<td>Status porudžbine</td>
+						<td>
+							<select>
+								<option value="PROCESSING">U obradi</option>
+								<option value="IN_PREPARATION">U pripremi</option>
+								<option value="WAITING_FOR_DELIVERER">Čeka na dostavljača</option>
+								<!---<option value="WAITING_FOR_RESPONSE">Dostavljač čeka odgovor</option>--->
+								<option value="IN_TRANSPORT">U transportu</option>
+								<option value="DELIVERED">Dostavljena</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="button" value="Pretraži"></input></td>
+					</tr>
+					<br/>
+					<tr>
+						<td></td>
+						<td>Sortiraj po: (rastuće)</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="button" value="ceni porudžbine"></input></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="button" value="datumu porudžbine"></input></td>
+					</tr>
+					<br/>
+					<tr>
+						<td></td>
+						<td>Sortiraj po: (opadajuće)</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="button" value="ceni porudžbine"></input></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="button" value="datumu porudžbine"></input></td>
+					</tr>
+				</table>
+			  </div>
+			</div>
+		
 			<div  v-for="order in orders">
 				<div class="lists">
 					<span>
