@@ -64,7 +64,8 @@ template: `<div>
 					<tr>
 						<td>Izaberite restoran:</td>
 						<td><select class="selectSearch" id="select" name="select" v-model="searchParams.restaurant">
-								<option value="restaurant.id" v-for="restaurant in restaurants">{{restaurant.name}}</option>
+								<option value="">Izaberite restoran...</option>
+								<option v-for="restaurant in restaurants">{{restaurant.name}}</option>
 							</select>
 						
 						</td>
