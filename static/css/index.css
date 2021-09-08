@@ -105,6 +105,21 @@
 	
 }
 
+.commentRestaurant{
+	float: right; 
+	margin-top: 50px; 
+	margin-right: 15px; 
+	width: 23px; 
+	height: 23px;
+	background-image: url(../images/commentRest.png);
+	background-color: white;
+	background-repeat: no-repeat;
+	vertical-align: middle;
+	border-width: 1px;
+	cursor: pointer;
+	
+}
+
 .welcome{
 	margin-top: 150px;
 	margin-left: 80px;

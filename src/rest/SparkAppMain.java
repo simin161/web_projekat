@@ -286,6 +286,15 @@ public class SparkAppMain {
 			
 		});
 		
+		post("/getCommentsForRestaurantCustomer", (req, res)->{
+			
+			res.type("application/json");
+			Restaurant selectedRestaurant = gson.fromJson(req.body(), Restaurant.class);
+			ArrayList<Comment> comments = restaurantService.getAcceptedCommentsForRestaurant(selectedRestaurant.getId());
+			return gson.toJson(comments);
+			
+		});
+		
 		post("/cancelOrder", (req, res) -> {
 			res.type("application/json");
 			orderService.deleteOrder(gson.fromJson(req.body(), String.class));
