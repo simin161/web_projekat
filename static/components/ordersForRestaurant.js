@@ -26,21 +26,8 @@ Vue.component("orders-for-restaurant", {
 						<td><input type="date" placeholder="do..."></input></td>
 					</tr>
 					<tr>
-						<td>Status porudžbine</td>
-						<td>
-							<select>
-								<option value="PROCESSING">U obradi</option>
-								<option value="IN_PREPARATION">U pripremi</option>
-								<option value="WAITING_FOR_DELIVERER">Čeka na dostavljača</option>
-								<!---<option value="WAITING_FOR_RESPONSE">Dostavljač čeka odgovor</option>--->
-								<option value="IN_TRANSPORT">U transportu</option>
-								<option value="DELIVERED">Dostavljena</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
 						<td></td>
-						<td><input type="button" value="Pretraži"></input></td>
+						<td><input type="button" value="Pretraži/Filtriraj"></input></td>
 					</tr>
 					<br/>
 					<tr>
@@ -80,6 +67,7 @@ Vue.component("orders-for-restaurant", {
 					</span>
 					<p>{{order.customer.username}}</p>
 					<p>Cena: {{order.totalPrice}} dinara</p>
+					<p>Datum i vreme porudžbine: {{order.date}} {{order.time}}</p>
 					<p>Poručeni artikli:</p>
 				</div>
 				<div class="listsArticles" v-for="article in order.articles">			
