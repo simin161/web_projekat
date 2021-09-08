@@ -28,6 +28,7 @@ import dto.CommentDTO;
 import dto.FilterCustomerOrdersDTO;
 import dto.SearchCustomerOrdersDTO;
 import dto.SearchRestaurantDTO;
+import dto.SortDTO;
 import services.AdministratorService;
 import services.ArticleService;
 import services.CartService;
@@ -286,6 +287,15 @@ public class SparkAppMain {
 			
 		});
 		
+		post("/getCommentsForRestaurantCustomer", (req, res)->{
+			
+			res.type("application/json");
+			Restaurant selectedRestaurant = gson.fromJson(req.body(), Restaurant.class);
+			ArrayList<Comment> comments = restaurantService.getAcceptedCommentsForRestaurant(selectedRestaurant.getId());
+			return gson.toJson(comments);
+			
+		});
+		
 		post("/cancelOrder", (req, res) -> {
 			res.type("application/json");
 			orderService.deleteOrder(gson.fromJson(req.body(), String.class));
@@ -467,13 +477,33 @@ public class SparkAppMain {
 			return gson.toJson(restaurantService.sortByAverageMark(type));
 		});
 		
-		post("/sortByRestaurantName", (req, res)->{
+		post("/sortOrdersByRestaurantName", (req, res)->{
 			
 			res.type("application/json");
-			SortType type = gson.fromJson(req.body(), SortType.class);
+			SortDTO sortData = gson.fromJson(req.body(), SortDTO.class);
 			Session session = req.session(true);
 			Customer loggedCustomer = session.attribute("loggedUser");
-			return gson.toJson(orderService.sortByRestaurantName(type, loggedCustomer.getId()));
+			return gson.toJson(orderService.sortByRestaurantName(sortData, loggedCustomer.getId()));
+			
+		});
+		
+		post("/sortByPrice", (req, res)->{
+			
+			res.type("application/json");
+			SortDTO sortData = gson.fromJson(req.body(), SortDTO.class);
+			Session session = req.session(true);
+			Customer loggedCustomer = session.attribute("loggedUser");
+			return gson.toJson(orderService.sortByOrderPrice(sortData, loggedCustomer.getId()));
+			
+		});
+		
+		post("/sortByDate", (req, res)->{
+			
+			res.type("application/json");
+			SortDTO sortData = gson.fromJson(req.body(), SortDTO.class);
+			Session session = req.session(true);
+			Customer loggedCustomer = session.attribute("loggedUser");
+			return gson.toJson(orderService.sortByDate(sortData, loggedCustomer.getId()));
 			
 		});
 		

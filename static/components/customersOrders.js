@@ -27,6 +27,12 @@ Vue.component('customerOrders', {
 			
 			},
 			restaurants: null,
+			sortDTO: {
+				
+				type: null,
+				ordersToDisplay: null
+			
+			}
 	
 		};
 	},
@@ -235,7 +241,7 @@ template: `<div>
 		search : function(){
 		
 			axios.post("/searchCustomerOrders", this.searchParams)
-			.then(response=>(this.ordersToDisplay = response.data))
+			.then(response=>{this.ordersToDisplay = response.data, this.sortDTO.ordersToDisplay = this.ordersToDisplay})
 		
 		},
 		
@@ -250,27 +256,30 @@ template: `<div>
 		filter : function(){
 		
 			axios.post("/filterCustomerOrders", this.filterParams)
-			.then(response=>(this.ordersToDisplay = response.data))
+			.then(response=>{this.ordersToDisplay = response.data, this.sortDTO.ordersToDisplay = this.ordersToDisplay})
 		
 		},
 		
 		sortByRestaurantName : function(type){
 		
-			axios.post("/sortByRestaurantName", type)
+			this.sortDTO.type = type;
+			axios.post("/sortOrdersByRestaurantName", this.sortDTO)
 			.then(response=>(this.ordersToDisplay = response.data))
 		
 		},
 		
 		sortByPrice : function(type){
 		
-			axios.post("/sortByPrice", type)
+			this.sortDTO.type = type;
+			axios.post("/sortByPrice", this.sortDTO)
 			.then(response=>(this.ordersToDisplay = response.data))
 		
 		},
 		
 		sortByDate : function(type){
 		
-			axios.post("/sortByDate", type)
+			this.sortDTO.type = type;
+			axios.post("/sortByDate", this.sortDTO)
 			.then(response=>(this.ordersToDisplay = response.data))
 			
 		}
@@ -280,6 +289,8 @@ template: `<div>
 	
 	mounted(){
 		axios.get("/getCustomerOrders")
-		.then(response => (this.ordersToDisplay = response.data))
+		.then(response => {this.ordersToDisplay = response.data, this.sortDTO.ordersToDisplay = this.ordersToDisplay})
+		
+		
 	}
 });
