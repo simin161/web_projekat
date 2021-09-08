@@ -1,33 +1,24 @@
 package services;
 
 
-import java.sql.Time;
-import java.time.LocalTime;
-import java.util.ArrayList;
-
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 import java.time.LocalDate;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import beans.Article;
-import com.google.gson.JsonElement;
 import beans.Cart;
 import beans.Customer;
 import beans.Deliverer;
 import beans.Order;
 import beans.OrderStatus;
 import beans.Restaurant;
+import beans.SortType;
 import dao.CustomerDAO;
 import dao.DelivererDAO;
 import dao.OrderDAO;
@@ -354,5 +345,28 @@ public class OrderService {
 		return filteredOrders;
 	}
 
+	public List<OrderDTO> sortByRestaurantName(SortType type, String customerId){
+		
+		if(type==SortType.ASCENDING) {
+			
+			Collections.sort(OrderDAO.getInstance().getAllOrdersFromCustomer(customerId), new Comparator<OrderDTO>() {
+				@Override
+				public int compare(final OrderDTO object1, final OrderDTO object2) {
+					return object1.getRestaurant().getName().compareTo(object2.getRestaurant().getName());
+				}
+			});
+		} else {
+			Collections.sort(OrderDAO.getInstance().getAllOrdersFromCustomer(customerId), new Comparator<OrderDTO>() {
+				@Override
+				public int compare(final OrderDTO object1, final OrderDTO object2) {
+					return -object1.getRestaurant().getName().compareTo(object2.getRestaurant().getName());
+				}
+			});
+		}
+		
+		return OrderDAO.getInstance().getAllOrdersFromCustomer(customerId);
+		
+	}
+	
 
 }
