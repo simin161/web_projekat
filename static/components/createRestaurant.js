@@ -35,7 +35,8 @@ Vue.component('create-restaurant', {
 				dateOfBirth: "",
 				userType: "MANAGER"
 			
-			}
+			},
+			showOther: true
 			
 		};
 	
@@ -133,10 +134,13 @@ Vue.component('create-restaurant', {
 			   			</br>
 			   			<tr>
 			   				<td>Menadžer: </td>
-			   				<td><select class="selectRestaurant" v-model="restaurantForCreate.manager.id">
+			   				<td><select class="selectRestaurant" v-if="showOther === true" v-model="restaurantForCreate.manager.id">
 			   						<option value="">Izaberite</option>
 			   						<option :value="manager.id" v-for="manager in managers">{{manager.name}} {{manager.surname}}</option>
 			   					</select>	
+			   					<select autocomplete="off" class="selectRestaurant" v-if="showOther === false" v-model="restaurantForCreate.manager.id">
+			   						<option :value="manager.id" v-for="manager in managers" selected="selected">{{manager.name}} {{manager.surname}}</option>
+			   					</select>
 			   				</td>
 			   				
 			   				<td><input title="Dodaj menadžera" class="buttonAddManager" type="button" @click="showModalCreateManager()" value= "+"></input></td>
@@ -169,7 +173,7 @@ Vue.component('create-restaurant', {
 			registerUser : function(){
 			
 				axios.post("/registerManagerFromRestaurant", this.newManager)
-			.then(response => {alert("Menadžer je uspešno kreiran!"), this.managers = response.data})
+			.then(response => {alert("Menadžer je uspešno kreiran!"), this.managers = response.data, this.showOther = false})
 			
 			},
 		
