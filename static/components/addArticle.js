@@ -69,7 +69,7 @@ Vue.component("add-article",{
 	methods : {
 		save : function(){
 			if( /\S/.test(this.article.name) && /\S/.test(this.article.articleType) 
-					&& /\S/.test(this.article.description) && /\S/.test(this.article.price) && this.imagePath){
+					 && /\S/.test(this.article.price) && this.imagePath){
 				axios.post("/addArticle", this.article)
 				.then(response=>(this.message = response.data))
 			}
