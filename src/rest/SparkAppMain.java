@@ -27,6 +27,8 @@ import beans.UserInfo;
 import beans.UserType;
 import dto.ArticleDTO;
 import dto.CommentDTO;
+import dto.EditedArticleDTO;
+import dto.EditedRestaurantDTO;
 import dto.FilterOrdersDTO;
 import dto.PasswordDTO;
 import dto.SearchCustomerOrdersDTO;
@@ -382,14 +384,13 @@ public class SparkAppMain {
 		post("/editRestaurant", (req, res) -> {
 
 			res.type("application/json");
-			restaurantService.editRestaurant(gson.fromJson(req.body(), Restaurant.class));
+			boolean ret = restaurantService.editRestaurant(gson.fromJson(req.body(), Restaurant.class));
 			
 			Session session = req.session(true);
 			Manager loggedManager = session.attribute("loggedUser");
 			Restaurant restaurant = managerService.findRestaurantForManager(loggedManager);
-			ArrayList<Restaurant> returnValue = new ArrayList<Restaurant>();
-			returnValue.add(restaurant);
-			return gson.toJson(returnValue);
+			EditedRestaurantDTO retVal = new EditedRestaurantDTO(restaurant, ret);
+			return gson.toJson(retVal);
 		});
 		
 		post("/deleteArticle", (req, res) -> {
@@ -446,12 +447,12 @@ public class SparkAppMain {
 		post("/editArticle", (req, res) -> {
 			res.type("application/json");
 			Article editedArticle = new Article(gson.fromJson(req.body(), ArticleDTO.class));
-			articleService.editArticle(editedArticle);
+			boolean edited = articleService.editArticle(editedArticle);
 			Session session = req.session(true);
 			session.attribute("article", articleService.findById(editedArticle.getId()));
-			ArrayList<Article> articles = new ArrayList<Article>();
-			articles.add(session.attribute("article"));
-			return gson.toJson(articles);
+			Article article = session.attribute("article");
+			EditedArticleDTO dto = new EditedArticleDTO(article, edited);
+			return gson.toJson(dto);
 		});
 		
 		post("/saveSelectedRestaurant", (req, res) -> {

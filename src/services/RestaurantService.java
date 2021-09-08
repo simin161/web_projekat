@@ -55,7 +55,17 @@ public class RestaurantService {
 	}
 	
 	public ArrayList<Restaurant> getAllRestaurants() {
+		sortRestaurantsByWorkingStatus();
 		return RestaurantDAO.getInstance().getAll();
+	}
+	
+	private void sortRestaurantsByWorkingStatus() {
+		Collections.sort(RestaurantDAO.getInstance().getAll(), new Comparator<Restaurant>() {
+			@Override
+			public int compare(final Restaurant object1, final Restaurant object2) {
+				return object1.getStatus().compareTo(object2.getStatus());
+			}
+		});
 	}
 
 	public boolean addArticleToRestaurant(String idRestaurant, Article newArticle) {
@@ -87,15 +97,15 @@ public class RestaurantService {
 	private void updateRestaurantList(Restaurant updatedRestaurant) {
 		for (Restaurant restaurant : RestaurantDAO.getInstance().getAll()) {
 			if (restaurant.getId().equals(updatedRestaurant.getId())) {
-				RestaurantDAO.getInstance().getAll().set(Integer.parseInt((updatedRestaurant.getId())) - 1,
-						updatedRestaurant);
+				restaurant.setArticles(updatedRestaurant.getArticles());
 				RestaurantDAO.getInstance().save();
 				break;
 			}
 		}
 	}
 
-	public void editRestaurant(Restaurant editedRestaurant) {
+	public boolean editRestaurant(Restaurant editedRestaurant) {
+		boolean retVal = true;
 		for (Restaurant restaurant : RestaurantDAO.getInstance().getAll()) {
 			if (restaurant.getId().equals(editedRestaurant.getId())) {
 				if (checkIfImageChanged(restaurant.getRestaurantLogo(), editedRestaurant.getRestaurantLogo())) {
@@ -104,14 +114,18 @@ public class RestaurantService {
 								.saveImage(editedRestaurant.getRestaurantLogo(), "r" + editedRestaurant.getId()));
 					} catch (Exception e) {
 						e.printStackTrace();
+						retVal = false;
 					}
 				}
-
+				editedRestaurant.setCustomers(restaurant.getCustomers());
+				editedRestaurant.setArticles(restaurant.getArticles());
+				editedRestaurant.setAverageMark(restaurant.getAverageMark());
 				RestaurantDAO.getInstance().getAll().set(Integer.parseInt(restaurant.getId()) - 1, editedRestaurant);
 				RestaurantDAO.getInstance().save();
 				break;
 			}
 		}
+		return retVal;
 	}
 
 	public ArrayList<Comment> getAcceptedCommentsForRestaurant(String id) {
