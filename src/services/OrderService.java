@@ -25,6 +25,7 @@ import dao.RestaurantDAO;
 import dto.FilterCustomerOrdersDTO;
 import dto.OrderDTO;
 import dto.SearchCustomerOrdersDTO;
+import dto.SortDTO;
 
 public class OrderService {
 
@@ -339,11 +340,11 @@ public class OrderService {
 		return filteredOrders;
 	}
 
-	public ArrayList<OrderDTO> sortByRestaurantName(SortType type, String customerId) {
+	public ArrayList<OrderDTO> sortByRestaurantName(SortDTO sortData, String customerId) {
 
-		ArrayList<OrderDTO> sortedOrders = OrderDAO.getInstance().getAllOrdersFromCustomer(customerId);
+		ArrayList<OrderDTO> sortedOrders = sortData.getOrdersToDisplay();
 		
-		if (type == SortType.ASCENDING) {
+		if ( sortData.getType() == SortType.ASCENDING) {
 
 			Collections.sort(sortedOrders, new Comparator<OrderDTO>() {
 				@Override
@@ -364,11 +365,11 @@ public class OrderService {
 
 	}
 
-	public ArrayList<OrderDTO> sortByOrderPrice(SortType type, String customerId) {
+	public ArrayList<OrderDTO> sortByOrderPrice(SortDTO sortData, String customerId) {
 
-		ArrayList<OrderDTO> sortedOrders = OrderDAO.getInstance().getAllOrdersFromCustomer(customerId);
+		ArrayList<OrderDTO> sortedOrders = sortData.getOrdersToDisplay();
 		
-		if (type == SortType.ASCENDING) {
+		if (sortData.getType() == SortType.ASCENDING) {
 			
 			Collections.sort(sortedOrders, new Comparator<OrderDTO>() {
 
@@ -400,11 +401,11 @@ public class OrderService {
 
 	}
 	
-	public ArrayList<OrderDTO> sortByDate(SortType type, String customerId){
+	public ArrayList<OrderDTO> sortByDate(SortDTO sortData, String customerId){
 		
-		ArrayList<OrderDTO> sortedOrders = OrderDAO.getInstance().getAllOrdersFromCustomer(customerId);
+		ArrayList<OrderDTO> sortedOrders = sortData.getOrdersToDisplay();
 		
-		if(type == SortType.ASCENDING) {
+		if(sortData.getType() == SortType.ASCENDING) {
 			
 			Collections.sort(sortedOrders, new Comparator<OrderDTO>() {
 

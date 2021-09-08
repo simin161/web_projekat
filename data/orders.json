@@ -168,5 +168,113 @@
     "orderStatus": "PROCESSING",
     "isDeleted": false,
     "totalPrice": 5000.0
+  },
+  {
+    "id": "4",
+    "articles": [
+      {
+        "id": "1",
+        "name": "Crystal burger",
+        "price": 800.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0
+        },
+        "quantity": 650.0,
+        "description": "Specijalitet kuće",
+        "articleImage": "..\\upload\\a1.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 5,
+        "isDeletedFromCart": false
+      },
+      {
+        "id": "2",
+        "name": "Salata",
+        "price": 250.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0
+        },
+        "quantity": 500.0,
+        "description": "Salata sa avokadom",
+        "articleImage": "..\\upload\\a2.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 5,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Crystal",
+      "averageMark": 0.0
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 8
+      },
+      "time": {
+        "hour": 13,
+        "minute": 40,
+        "second": 46,
+        "nano": 983058800
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "5"
+    },
+    "orderStatus": "PROCESSING",
+    "isDeleted": false,
+    "totalPrice": 5250.0
+  },
+  {
+    "id": "5",
+    "articles": [
+      {
+        "id": "1",
+        "name": "Crystal burger",
+        "price": 800.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0
+        },
+        "quantity": 650.0,
+        "description": "Specijalitet kuće",
+        "articleImage": "..\\upload\\a1.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 4,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Crystal",
+      "averageMark": 0.0
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 8
+      },
+      "time": {
+        "hour": 13,
+        "minute": 40,
+        "second": 53,
+        "nano": 320289700
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "5"
+    },
+    "orderStatus": "PROCESSING",
+    "isDeleted": false,
+    "totalPrice": 3200.0
   }
 ]
