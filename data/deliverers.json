@@ -1,22 +1,5 @@
 [
   {
-    "ordersForDelivery": [
-      {
-        "id": "1",
-        "isDeleted": false,
-        "totalPrice": 0.0
-      },
-      {
-        "id": "2",
-        "isDeleted": false,
-        "totalPrice": 0.0
-      },
-      {
-        "id": "3",
-        "isDeleted": false,
-        "totalPrice": 0.0
-      }
-    ],
     "id": "1",
     "username": "deliverer",
     "password": "deliverer",

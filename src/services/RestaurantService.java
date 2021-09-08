@@ -92,8 +92,7 @@ public class RestaurantService {
 	private void updateRestaurantList(Restaurant updatedRestaurant) {
 		for (Restaurant restaurant : RestaurantDAO.getInstance().getAll()) {
 			if (restaurant.getId().equals(updatedRestaurant.getId())) {
-				RestaurantDAO.getInstance().getAll().set(Integer.parseInt((updatedRestaurant.getId())) - 1,
-						updatedRestaurant);
+				restaurant.setArticles(updatedRestaurant.getArticles());
 				RestaurantDAO.getInstance().save();
 				break;
 			}
@@ -111,7 +110,9 @@ public class RestaurantService {
 						e.printStackTrace();
 					}
 				}
-
+				editedRestaurant.setCustomers(restaurant.getCustomers());
+				editedRestaurant.setArticles(restaurant.getArticles());
+				editedRestaurant.setAverageMark(restaurant.getAverageMark());
 				RestaurantDAO.getInstance().getAll().set(Integer.parseInt(restaurant.getId()) - 1, editedRestaurant);
 				RestaurantDAO.getInstance().save();
 				break;

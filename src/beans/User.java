@@ -2,7 +2,10 @@ package beans;
 
 import java.util.Date;
 
+import com.google.gson.annotations.Expose;
+
 public class User {
+	@Expose
 	protected String id;
 	protected String username;
 	protected String password;

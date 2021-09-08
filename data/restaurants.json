@@ -15,13 +15,21 @@
       },
       {
         "id": "4"
+      },
+      {
+        "id": "5"
+      },
+      {
+        "id": "6"
       }
     ],
     "status": "OPEN",
     "restaurantLogo": "..\\upload\\r1.jpg",
     "averageMark": 5.0,
     "customers": [
-      {}
+      {
+        "id": "5"
+      }
     ]
   },
   {

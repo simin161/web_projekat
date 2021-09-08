@@ -86,8 +86,8 @@ template: `<div>
 					<p>{{item.name}}</p>
 					<p>{{item.restaurantType}} </p>
 					<p>Prosečna ocena: {{item.averageMark}}</p>
-					<p v-if="item.status === 'OPEN'">OTVORENO</p>
-					<p v-if="item.status === 'CLOSED'">ZATVORENO</p>
+					<p v-if="item.status === 'OPEN'" style="color: green">OTVORENO</p>
+					<p v-if="item.status === 'CLOSED'" style="color: red">ZATVORENO</p>
 					<p>POSTAVITI LOKACIJU KAD BUDE LOKACIJE</p> 
 					<br/>
 					<br/>
