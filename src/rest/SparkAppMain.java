@@ -26,6 +26,7 @@ import beans.UserInfo;
 import beans.UserType;
 import dto.ArticleDTO;
 import dto.CommentDTO;
+import dto.EditedRestaurantDTO;
 import dto.FilterOrdersDTO;
 import dto.PasswordDTO;
 import dto.SearchCustomerOrdersDTO;
@@ -360,14 +361,13 @@ public class SparkAppMain {
 		post("/editRestaurant", (req, res) -> {
 
 			res.type("application/json");
-			restaurantService.editRestaurant(gson.fromJson(req.body(), Restaurant.class));
+			boolean ret = restaurantService.editRestaurant(gson.fromJson(req.body(), Restaurant.class));
 			
 			Session session = req.session(true);
 			Manager loggedManager = session.attribute("loggedUser");
 			Restaurant restaurant = managerService.findRestaurantForManager(loggedManager);
-			ArrayList<Restaurant> returnValue = new ArrayList<Restaurant>();
-			returnValue.add(restaurant);
-			return gson.toJson(returnValue);
+			EditedRestaurantDTO retVal = new EditedRestaurantDTO(restaurant, ret);
+			return gson.toJson(retVal);
 		});
 		
 		post("/deleteArticle", (req, res) -> {

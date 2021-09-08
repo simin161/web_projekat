@@ -5,7 +5,12 @@ Vue.component('show-restaurant',{
 			showComponent : '1',
 			scrolled: false,
 			enable : true,
-			visibility: "hidden"
+			visibility: "hidden",
+			message: "",
+			dto: {
+				restaurant: null,
+				edited: null
+			}
 			};
 	}
 	,
@@ -69,6 +74,7 @@ Vue.component('show-restaurant',{
 				</table>
 				
 				<input type="button" v-bind:style="{'visibility': visibility}" value="Sačuvaj"  v-on:click="save"></input>
+				<p>{{message}}</p>
 			</div>
 			<hr style="width: 100%">
 			</br>
@@ -96,7 +102,11 @@ Vue.component('show-restaurant',{
 	  },
 	  save : function(){
 			axios.post("/editRestaurant", this.restaurant)
-			.then(response=>(this.restaurant = response.data[0]))
+			.then(response=>{
+				this.dto = response.data, 
+				this.restaurant = this.dto.restaurant, 
+				this.message = this.dto.edited ? "Uspešno izmenjeni podaci!" : "Došlo je do greške prilikom izmene slike!",
+				this.visibility = "hidden"})
 		},
 		imageSelected(event){
 			const file = document.querySelector('input[type=file]').files[0]

@@ -99,7 +99,8 @@ public class RestaurantService {
 		}
 	}
 
-	public void editRestaurant(Restaurant editedRestaurant) {
+	public boolean editRestaurant(Restaurant editedRestaurant) {
+		boolean retVal = true;
 		for (Restaurant restaurant : RestaurantDAO.getInstance().getAll()) {
 			if (restaurant.getId().equals(editedRestaurant.getId())) {
 				if (checkIfImageChanged(restaurant.getRestaurantLogo(), editedRestaurant.getRestaurantLogo())) {
@@ -108,6 +109,7 @@ public class RestaurantService {
 								.saveImage(editedRestaurant.getRestaurantLogo(), "r" + editedRestaurant.getId()));
 					} catch (Exception e) {
 						e.printStackTrace();
+						retVal = false;
 					}
 				}
 				editedRestaurant.setCustomers(restaurant.getCustomers());
@@ -118,6 +120,7 @@ public class RestaurantService {
 				break;
 			}
 		}
+		return retVal;
 	}
 
 	public ArrayList<Comment> getAcceptedCommentsForRestaurant(String id) {
