@@ -57,9 +57,12 @@
       "collectedPoints": 0,
       "id": "5"
     },
-    "orderStatus": "IN_PREPARATION",
+    "orderStatus": "IN_TRANSPORT",
     "isDeleted": false,
-    "totalPrice": 2350.0
+    "totalPrice": 2350.0,
+    "deliverer": {
+      "id": "1"
+    }
   },
   {
     "id": "2",
@@ -119,9 +122,12 @@
       "collectedPoints": 0,
       "id": "5"
     },
-    "orderStatus": "PROCESSING",
+    "orderStatus": "DELIVERED",
     "isDeleted": false,
-    "totalPrice": 8250.0
+    "totalPrice": 8250.0,
+    "deliverer": {
+      "id": "1"
+    }
   },
   {
     "id": "3",
@@ -181,9 +187,12 @@
       "collectedPoints": 0,
       "id": "5"
     },
-    "orderStatus": "PROCESSING",
+    "orderStatus": "IN_TRANSPORT",
     "isDeleted": false,
-    "totalPrice": 29000.0
+    "totalPrice": 29000.0,
+    "deliverer": {
+      "id": "1"
+    }
   },
   {
     "id": "4",

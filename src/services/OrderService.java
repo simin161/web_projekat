@@ -125,7 +125,7 @@ public class OrderService {
 
 		for (Order order : OrderDAO.getInstance().getAllOrders()) {
 			if (order.getOrderStatus() == OrderStatus.WAITING_FOR_DELIVERER) {
-				OrderDTO o = new OrderDTO(order);
+				retVal.add(new OrderDTO(order));
 			}
 		}
 

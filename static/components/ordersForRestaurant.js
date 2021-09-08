@@ -140,7 +140,7 @@ Vue.component("orders-for-restaurant", {
 				axios.post("/sortByDate", this.sortDTO)
 				.then(response => {this.orders = response.data})
 			},
-			filterOrders: function(type){
+			filterOrders: function(){
 				axios.post("/filterCustomerOrders", this.filterDTO)
 				.then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders})
 			},
