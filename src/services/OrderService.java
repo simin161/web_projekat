@@ -118,32 +118,12 @@ public class OrderService {
 		OrderDAO.getInstance().save();
 	}
 
-<<<<<<< HEAD
 	public ArrayList<OrderDTO> getOrdersWithoutDeliverer() {
 		ArrayList<OrderDTO> retVal = new ArrayList<OrderDTO>();
 		
 		for(Order order : OrderDAO.getInstance().getAllOrders()) {
 			if(order.getOrderStatus() == OrderStatus.WAITING_FOR_DELIVERER) {
 				OrderDTO o = new OrderDTO(order);
-=======
-	public ArrayList<Order> getOrdersWithoutDeliverer() {
-		ArrayList<Order> retVal = new ArrayList<Order>();
-
-		for (Order order : OrderDAO.getInstance().getAllOrders()) {
-			if (order.getOrderStatus() == OrderStatus.WAITING_FOR_DELIVERER) {
-				Order o = new Order();
-				o.setId(order.getId());
-				o.setArticles(order.getArticles());
-				o.setCustomer(CustomerDAO.getInstance().findCustomerById(order.getCustomer().getId()));
-				o.setOrderDateAndTime(order.getOrderDateAndTime());
-				o.setOrderStatus(order.getOrderStatus());
-				o.setDeleted(order.isDeleted());
-				o.setRestaurant(new Restaurant(order.getRestaurant().getId()));
-				o.getRestaurant()
-						.setName(RestaurantDAO.getInstance().findById(order.getRestaurant().getId()).getName());
-
->>>>>>> implementacija
-				retVal.add(o);
 			}
 		}
 
@@ -160,7 +140,6 @@ public class OrderService {
 		}
 		OrderDAO.getInstance().save();
 	}
-<<<<<<< HEAD
 	
 	public ArrayList<OrderDTO> getAllOrdersForRestaurant(String id){
 		ArrayList<OrderDTO> retVal = new ArrayList<OrderDTO>();
@@ -168,23 +147,6 @@ public class OrderService {
 		for(Order order : OrderDAO.getInstance().getAllOrders()) {
 			if(order.getRestaurant().getId().equals(id)) {
 				OrderDTO o = new OrderDTO(order);
-=======
-
-	public ArrayList<Order> getAllOrdersForRestaurant(String id) {
-		ArrayList<Order> retVal = new ArrayList<Order>();
-
-		for (Order order : OrderDAO.getInstance().getAllOrders()) {
-			if (order.getRestaurant().getId().equals(id)) {
-				Order o = new Order();
-				o.setId(order.getId());
-				o.setArticles(order.getArticles());
-				o.setDeleted(order.isDeleted());
-				o.setOrderDateAndTime(o.getOrderDateAndTime());
-				o.setRestaurant(order.getRestaurant());
-				o.setOrderStatus(order.getOrderStatus());
-				o.setDeliverer(order.getDeliverer());
-				o.setCustomer(CustomerDAO.getInstance().findCustomerById(order.getCustomer().getId()));
->>>>>>> implementacija
 				retVal.add(o);
 			}
 		}
@@ -192,19 +154,11 @@ public class OrderService {
 		return retVal;
 	}
 
-<<<<<<< HEAD
 	public ArrayList<OrderDTO> getOrdersWaitingForResponse(String id) {
 		ArrayList<OrderDTO> retVal = new ArrayList<OrderDTO>();
 		
 		for(OrderDTO order : getAllOrdersForRestaurant(id)) {
 			if(order.getOrderStatus() == OrderStatus.WAITING_FOR_RESPONSE) {
-=======
-	public ArrayList<Order> getOrdersWaitingForResponse(String id) {
-		ArrayList<Order> retVal = new ArrayList<Order>();
-
-		for (Order order : getAllOrdersForRestaurant(id)) {
-			if (order.getOrderStatus() == OrderStatus.WAITING_FOR_RESPONSE) {
->>>>>>> implementacija
 				order.setDeliverer(DelivererDAO.getInstance().findDelivererById(order.getDeliverer().getId()));
 				retVal.add(order);
 			}
