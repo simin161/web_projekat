@@ -477,6 +477,26 @@ public class SparkAppMain {
 			
 		});
 		
+		post("/sortByPrice", (req, res)->{
+			
+			res.type("application/json");
+			SortType type = gson.fromJson(req.body(), SortType.class);
+			Session session = req.session(true);
+			Customer loggedCustomer = session.attribute("loggedUser");
+			return gson.toJson(orderService.sortByOrderPrice(type, loggedCustomer.getId()));
+			
+		});
+		
+		post("/sortByDate", (req, res)->{
+			
+			res.type("application/json");
+			SortType type = gson.fromJson(req.body(), SortType.class);
+			Session session = req.session(true);
+			Customer loggedCustomer = session.attribute("loggedUser");
+			return gson.toJson(orderService.sortByDate(type, loggedCustomer.getId()));
+			
+		});
+		
 		post("/searchRestaurants", (req, res) -> {
 			res.type("application/json");
 			SearchRestaurantDTO searchParams = gson.fromJson(req.body(), SearchRestaurantDTO.class);

@@ -1,6 +1,5 @@
 package services;
 
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -104,15 +103,13 @@ public class OrderService {
 		OrderDAO.getInstance().deleteOrder(orderId);
 	}
 
-
 	public void changeOrderStatus(String id, boolean toIncrement) {
-		for(Order order : OrderDAO.getInstance().getAllOrders()) {
-			if(order.getId().equals(id)) {
-				if(toIncrement) {
-					order.setOrderStatus( OrderStatus.values()[order.getOrderStatus().ordinal() + 1]);
-				}
-				else {
-					order.setOrderStatus( OrderStatus.values()[order.getOrderStatus().ordinal() - 1]);
+		for (Order order : OrderDAO.getInstance().getAllOrders()) {
+			if (order.getId().equals(id)) {
+				if (toIncrement) {
+					order.setOrderStatus(OrderStatus.values()[order.getOrderStatus().ordinal() + 1]);
+				} else {
+					order.setOrderStatus(OrderStatus.values()[order.getOrderStatus().ordinal() - 1]);
 				}
 				break;
 			}
@@ -122,9 +119,9 @@ public class OrderService {
 
 	public ArrayList<Order> getOrdersWithoutDeliverer() {
 		ArrayList<Order> retVal = new ArrayList<Order>();
-		
-		for(Order order : OrderDAO.getInstance().getAllOrders()) {
-			if(order.getOrderStatus() == OrderStatus.WAITING_FOR_DELIVERER) {
+
+		for (Order order : OrderDAO.getInstance().getAllOrders()) {
+			if (order.getOrderStatus() == OrderStatus.WAITING_FOR_DELIVERER) {
 				Order o = new Order();
 				o.setId(order.getId());
 				o.setArticles(order.getArticles());
@@ -133,18 +130,19 @@ public class OrderService {
 				o.setOrderStatus(order.getOrderStatus());
 				o.setDeleted(order.isDeleted());
 				o.setRestaurant(new Restaurant(order.getRestaurant().getId()));
-				o.getRestaurant().setName(RestaurantDAO.getInstance().findById(order.getRestaurant().getId()).getName());
-				
+				o.getRestaurant()
+						.setName(RestaurantDAO.getInstance().findById(order.getRestaurant().getId()).getName());
+
 				retVal.add(o);
 			}
 		}
-		
+
 		return retVal;
 	}
 
 	public void setDelivererForOrder(String idOrder, String idDeliverer) {
-		for(Order order : OrderDAO.getInstance().getAllOrders()) {
-			if(order.getId().equals(idOrder)) {
+		for (Order order : OrderDAO.getInstance().getAllOrders()) {
+			if (order.getId().equals(idOrder)) {
 				Deliverer deliverer = new Deliverer();
 				deliverer.setId(idDeliverer);
 				order.setDeliverer(deliverer);
@@ -152,12 +150,12 @@ public class OrderService {
 		}
 		OrderDAO.getInstance().save();
 	}
-	
-	public ArrayList<Order> getAllOrdersForRestaurant(String id){
+
+	public ArrayList<Order> getAllOrdersForRestaurant(String id) {
 		ArrayList<Order> retVal = new ArrayList<Order>();
-		
-		for(Order order : OrderDAO.getInstance().getAllOrders()) {
-			if(order.getRestaurant().getId().equals(id)) {
+
+		for (Order order : OrderDAO.getInstance().getAllOrders()) {
+			if (order.getRestaurant().getId().equals(id)) {
 				Order o = new Order();
 				o.setId(order.getId());
 				o.setArticles(order.getArticles());
@@ -170,22 +168,22 @@ public class OrderService {
 				retVal.add(o);
 			}
 		}
-		
+
 		return retVal;
 	}
 
 	public ArrayList<Order> getOrdersWaitingForResponse(String id) {
 		ArrayList<Order> retVal = new ArrayList<Order>();
-		
-		for(Order order : getAllOrdersForRestaurant(id)) {
-			if(order.getOrderStatus() == OrderStatus.WAITING_FOR_RESPONSE) {
+
+		for (Order order : getAllOrdersForRestaurant(id)) {
+			if (order.getOrderStatus() == OrderStatus.WAITING_FOR_RESPONSE) {
 				order.setDeliverer(DelivererDAO.getInstance().findDelivererById(order.getDeliverer().getId()));
 				retVal.add(order);
 			}
 		}
-		
+
 		return retVal;
-	}	
+	}
 
 	public List<OrderDTO> searchCustomerOrders(String customerId, SearchCustomerOrdersDTO searchParams) {
 
@@ -291,8 +289,7 @@ public class OrderService {
 
 				}
 
-			}
-			else if(matcherName.find()) {
+			} else if (matcherName.find()) {
 				searchedOrders.add(o);
 			}
 
@@ -301,54 +298,51 @@ public class OrderService {
 		return searchedOrders;
 
 	}
-	
-	public List<OrderDTO> filterCustomerOrders(String customerId, FilterCustomerOrdersDTO filterParams){
-		
+
+	public List<OrderDTO> filterCustomerOrders(String customerId, FilterCustomerOrdersDTO filterParams) {
+
 		List<OrderDTO> filteredOrders = new ArrayList<OrderDTO>();
-		
+
 		boolean checkType = filterParams.getRestaurantType().isEmpty() ? false : true;
-		if(filterParams.getOrderStatus() == null) {
+		if (filterParams.getOrderStatus() == null) {
 			filterParams.setOrderStatus(OrderStatus.ERROR);
 		}
 		boolean checkStatus = filterParams.getOrderStatus() == OrderStatus.ERROR ? false : true;
-		
-		for(OrderDTO o : OrderDAO.getInstance().getAllOrdersFromCustomer(customerId)) {
-			
-			if(checkType && checkStatus) {
-				
-				if(o.getRestaurant().getRestaurantType().equals(filterParams.getRestaurantType())){
-					
-					if(o.getOrderStatus().equals(filterParams.getOrderStatus())) {
-						
+
+		for (OrderDTO o : OrderDAO.getInstance().getAllOrdersFromCustomer(customerId)) {
+
+			if (checkType && checkStatus) {
+
+				if (o.getRestaurant().getRestaurantType().equals(filterParams.getRestaurantType())) {
+
+					if (o.getOrderStatus().equals(filterParams.getOrderStatus())) {
+
 						filteredOrders.add(o);
-						
+
 					}
-					
+
 				}
-				
-			}
-			else if(checkType) {
-				
-				if(o.getRestaurant().getRestaurantType().equals(filterParams.getRestaurantType()))
+
+			} else if (checkType) {
+
+				if (o.getRestaurant().getRestaurantType().equals(filterParams.getRestaurantType()))
 					filteredOrders.add(o);
-				
-			}
-			else if(checkStatus) {
-				if(o.getOrderStatus().equals(filterParams.getOrderStatus()))
+
+			} else if (checkStatus) {
+				if (o.getOrderStatus().equals(filterParams.getOrderStatus()))
 					filteredOrders.add(o);
-			}
-			else
+			} else
 				filteredOrders.add(o);
-			
+
 		}
-		
+
 		return filteredOrders;
 	}
 
-	public List<OrderDTO> sortByRestaurantName(SortType type, String customerId){
-		
-		if(type==SortType.ASCENDING) {
-			
+	public ArrayList<OrderDTO> sortByRestaurantName(SortType type, String customerId) {
+
+		if (type == SortType.ASCENDING) {
+
 			Collections.sort(OrderDAO.getInstance().getAllOrdersFromCustomer(customerId), new Comparator<OrderDTO>() {
 				@Override
 				public int compare(final OrderDTO object1, final OrderDTO object2) {
@@ -363,10 +357,92 @@ public class OrderService {
 				}
 			});
 		}
+
+		return OrderDAO.getInstance().getAllOrdersFromCustomer(customerId);
+
+	}
+
+	public ArrayList<OrderDTO> sortByOrderPrice(SortType type, String customerId) {
+
+		if (type == SortType.ASCENDING) {
+
+			System.out.print("Rastuce pre:");
+			for(OrderDTO o : OrderDAO.getInstance().getAllOrdersFromCustomer(customerId)) {
+				System.out.println(o.getTotalPrice());
+			}
+			
+			Collections.sort(OrderDAO.getInstance().getAllOrdersFromCustomer(customerId), new Comparator<OrderDTO>() {
+
+				@Override
+				public int compare(OrderDTO o1, OrderDTO o2) {
+
+					return Double.compare(o1.getTotalPrice(), o2.getTotalPrice());
+
+				}
+
+			});
+
+		} else {
+			
+			System.out.print("Opadajuce pre:");
+			for(OrderDTO o : OrderDAO.getInstance().getAllOrdersFromCustomer(customerId)) {
+				System.out.println(o.getTotalPrice());
+			}
+
+			Collections.sort(OrderDAO.getInstance().getAllOrdersFromCustomer(customerId), new Comparator<OrderDTO>() {
+
+				@Override
+				public int compare(OrderDTO o1, OrderDTO o2) {
+
+					return -Double.compare(o1.getTotalPrice(), o2.getTotalPrice());
+				}
+
+			});
+
+		}
+		
+		System.out.print("Nakon sortiranja:");
+		
+		for(OrderDTO o : OrderDAO.getInstance().getAllOrdersFromCustomer(customerId)) {
+			System.out.println(o.getTotalPrice());
+		}
+
+		return OrderDAO.getInstance().getAllOrdersFromCustomer(customerId);
+
+	}
+	
+	public ArrayList<OrderDTO> sortByDate(SortType type, String customerId){
+		
+		if(type == SortType.ASCENDING) {
+			
+			Collections.sort(OrderDAO.getInstance().getAllOrdersFromCustomer(customerId), new Comparator<OrderDTO>() {
+
+				@Override
+				public int compare(OrderDTO o1, OrderDTO o2) {
+
+					return o1.getDate().compareTo(o2.getDate());
+
+				}
+
+			});
+			
+		} else {
+			
+			Collections.sort(OrderDAO.getInstance().getAllOrdersFromCustomer(customerId), new Comparator<OrderDTO>() {
+
+				@Override
+				public int compare(OrderDTO o1, OrderDTO o2) {
+
+					return -o1.getDate().compareTo(o2.getDate());
+
+				}
+
+			});
+			
+		}
 		
 		return OrderDAO.getInstance().getAllOrdersFromCustomer(customerId);
 		
 	}
-	
 
 }
