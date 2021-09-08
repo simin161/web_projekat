@@ -58,7 +58,7 @@ li a.add:hover{
   border-top-color: coral;
   background-color: #eb5e0b;
   position: fixed;
-  margin-top: 3.1%;
+  margin-top: 5.6vh;
   width: 100%;
  }
  .scrollRest{
@@ -68,7 +68,7 @@ li a.add:hover{
   border-top-color: coral;
   background-color: #eb5e0b;
   position: fixed;
-  margin-top: 3.1%;
+  margin-top: 5.6vh;
   width: 100%;
    box-shadow: 1px 2px 18px rgba(0, 0, 0, 0.1);
     border-bottom: 2px solid #257942;

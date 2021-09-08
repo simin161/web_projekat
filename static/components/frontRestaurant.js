@@ -61,7 +61,7 @@ template: `<div>
 	}
 	,
 	mounted(){
-		axios.get("/getSelectedRestaurant")
+		axios.get("/getSelectedRestaurantFront")
 		.then(response => (this.restaurant = response.data[0]))
 	}
 	

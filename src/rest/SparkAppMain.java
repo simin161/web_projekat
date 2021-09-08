@@ -13,20 +13,29 @@ import com.google.gson.GsonBuilder;
 
 import beans.Administrator;
 import beans.Article;
+import beans.Cart;
 import beans.Comment;
 import beans.CommentStatus;
-import beans.Cart;
 import beans.Customer;
 import beans.Deliverer;
 import beans.Manager;
-import beans.Order;
 import beans.Restaurant;
 import beans.SortType;
 import beans.User;
 import beans.UserInfo;
 import dto.ArticleDTO;
-import services.*;
+import dto.CommentDTO;
+import dto.FilterCustomerOrdersDTO;
+import dto.SearchCustomerOrdersDTO;
 import dto.SearchRestaurantDTO;
+import services.AdministratorService;
+import services.ArticleService;
+import services.CartService;
+import services.CommentService;
+import services.CustomerService;
+import services.DelivererService;
+import services.ManagerService;
+import services.OrderService;
 import services.RegistrationService;
 import services.RestaurantService;
 import spark.Session;
@@ -47,7 +56,7 @@ public class SparkAppMain {
 
 	
 	public static void main(String[] args) throws Exception {
-		port(9000);
+		port(8080);
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
 
 		post("/registerUser", (req, res) -> {
@@ -104,7 +113,8 @@ public class SparkAppMain {
 		
 		get("/getAllRestaurants", (req, res) -> {
 			res.type("application/json");
-			return gson.toJson(restaurantService.getAllRestaurants());
+			String restaurants = gson.toJson(restaurantService.getAllRestaurants());
+			return restaurants;
 		});
 
 		get("/getLoggedUser", (req, res) -> {
@@ -254,9 +264,31 @@ public class SparkAppMain {
 			
 		});
 		
+		post("/searchCustomerOrders",(req, res)->{
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			Customer loggedCustomer = session.attribute("loggedUser");
+			SearchCustomerOrdersDTO searchParams = gson.fromJson(req.body(), SearchCustomerOrdersDTO.class);
+			return gson.toJson(orderService.searchCustomerOrders(loggedCustomer.getId(), searchParams));
+			
+		});
+		
+		post("/filterCustomerOrders", (req, res)->{
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			Customer loggedCustomer = session.attribute("loggedUser");
+			FilterCustomerOrdersDTO filterParams = gson.fromJson(req.body(), FilterCustomerOrdersDTO.class);
+			
+			return gson.toJson(orderService.filterCustomerOrders(loggedCustomer.getId(), filterParams));
+			
+			
+		});
+		
 		post("/cancelOrder", (req, res) -> {
 			res.type("application/json");
-			orderService.deleteOrder(gson.fromJson(req.body(), Order.class));
+			orderService.deleteOrder(gson.fromJson(req.body(), String.class));
 			Session session = req.session(true);
 			Customer loggedCustomer = session.attribute("loggedUser");
 			return gson.toJson(orderService.findAllOrdersFromCustomer(loggedCustomer.getId()));
@@ -363,7 +395,7 @@ public class SparkAppMain {
 			return "SUCCESS"; 
 		});
 		
-		get("/getSelectedRestaurant", (req, res) -> {
+		get("/getSelectedRestaurantFront", (req, res) -> {
 			res.type("application/json");
 			Session session = req.session(true);
 			Restaurant selectedRestaurant =session.attribute("selectedRestaurant");
@@ -405,6 +437,18 @@ public class SparkAppMain {
 			return gson.toJson(restaurantService.getAllCommentsForRestaurant(loggedManager.getRestaurant().getId()));
 		});
 		
+		post("/postComment", (req, res)->{
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			Customer loggedCustomer = session.attribute("loggedUser");
+			boolean ret= commentService.fillComment(loggedCustomer.getId(), gson.fromJson(req.body(), CommentDTO.class));
+			
+			
+			return ret ? "Komentar uspešno zabeležen" : "Greška prilikom ostavljanja komentara";
+			
+		});
+		
 		get("/getOpened", (req, res)->{
 			res.type("application/json");
 			return gson.toJson(restaurantService.getOpenRestaurants());
@@ -421,6 +465,16 @@ public class SparkAppMain {
 			res.type("application/json");
 			SortType type = gson.fromJson(req.body(), SortType.class);
 			return gson.toJson(restaurantService.sortByAverageMark(type));
+		});
+		
+		post("/sortByRestaurantName", (req, res)->{
+			
+			res.type("application/json");
+			SortType type = gson.fromJson(req.body(), SortType.class);
+			Session session = req.session(true);
+			Customer loggedCustomer = session.attribute("loggedUser");
+			return gson.toJson(orderService.sortByRestaurantName(type, loggedCustomer.getId()));
+			
 		});
 		
 		post("/searchRestaurants", (req, res) -> {

@@ -26,6 +26,8 @@ public class Restaurant {
 	@Expose
 	private ArrayList<Customer> customers;
 	
+	
+	
 	public double getAverageMark() {
 		return averageMark;
 	}

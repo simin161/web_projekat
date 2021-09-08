@@ -5,6 +5,7 @@ import java.io.Reader;
 import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -12,14 +13,17 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import beans.Article;
-import beans.Customer;
 import beans.Order;
 import beans.OrderStatus;
+import dto.OrderDTO;
 
 public class OrderDAO {
 
 	private ArrayList<Order> allOrders;
-	private Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").setPrettyPrinting().create();
+
+
+	private Gson gson = new GsonBuilder().setDateFormat("dd-MM-yyyy HH:mm:ss").setPrettyPrinting().create();
+
 	
 	private static OrderDAO instance;
 	public static OrderDAO getInstance() {
@@ -55,16 +59,20 @@ public class OrderDAO {
 		
 	}
 	
-	public ArrayList<Order> getAllOrdersFromCustomer(String id){
+	public ArrayList<OrderDTO> getAllOrdersFromCustomer(String id){
 		
-		ArrayList<Order> orders = new ArrayList<Order>();
+		ArrayList<OrderDTO> orders = new ArrayList<OrderDTO>();
 	
 		for(Order o : allOrders) {
 			
 			if(id.equals(o.getCustomer().getId())) {
 				
-				if(o.isDeleted()==false) {
-					orders.add(o);
+				if(o.isDeleted()==false || o.getOrderStatus() != OrderStatus.CANCELED) {
+				
+					OrderDTO newOrder = new OrderDTO(o);
+					
+					orders.add(newOrder);
+					
 				}
 			}
 			
@@ -74,18 +82,18 @@ public class OrderDAO {
 		
 	}
 	
-	public ArrayList<Order> getUndeliveredOrdersForCustomer(String id){
+	public ArrayList<OrderDTO> getUndeliveredOrdersForCustomer(String id){
 		
-		ArrayList<Order> orders = getAllOrdersFromCustomer(id);
-		ArrayList<Order> undeliveredOrders = new ArrayList<Order>();
+		ArrayList<OrderDTO> orders = getAllOrdersFromCustomer(id);
+		ArrayList<OrderDTO> undeliveredOrders = new ArrayList<OrderDTO>();
 		
-		for(Order o : orders) {
+		for(OrderDTO o : orders) {
 			
 			if(o.getOrderStatus()!= OrderStatus.CANCELED) {
 				
 				if(o.getOrderStatus() != OrderStatus.DELIVERED) {
 					
-					if(o.isDeleted()==false)
+					if(o.isDeleted()==false)		//od viska glava ne boli radjeno u 00:00
 						undeliveredOrders.add(o);
 					
 				}
@@ -130,15 +138,16 @@ public class OrderDAO {
 		return order;
 	}
 	
-	public void deleteOrder(Order order) {
+	public void deleteOrder(String orderId) {
 		
-		removePoints(order);
+		
 		
 		for(Order o : allOrders) {
-			if(o.getId().equals(order.getId()))
+			if(o.getId().equals(orderId))
 			{
 				o.setDeleted(true);
-					
+				o.setOrderStatus(OrderStatus.CANCELED);
+				removePoints(o);
 				break;
 				
 				

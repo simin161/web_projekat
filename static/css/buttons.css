@@ -28,6 +28,15 @@ textarea:focus{
 	
 }
 
+.buttonSearchInModal{
+	
+	width: 200px;
+	background-color: #79b9b6;
+		transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
+	
+	
+}
+
 input[type=text], [type=password], [type=date]{
 	outline: 0;
 	border: none;
@@ -97,6 +106,16 @@ select option{
 	margin-right: 15px; 
 	height: 24px;
 	width: 40px;
+	vertical-align: middle;
+	
+}
+
+.commentMarkCustomer{
+	float: right; 
+	margin-top: 60px; 
+	margin-right: 10px; 
+	height: 24px;
+	width: 100px;
 	vertical-align: middle;
 	
 }
