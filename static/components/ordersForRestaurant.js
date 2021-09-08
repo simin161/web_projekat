@@ -2,7 +2,11 @@ Vue.component("orders-for-restaurant", {
 	data: function(){
 		return{
 			orders: null,
-			showModal: false
+			showModal: false,
+			sortDTO: {
+				ordersToDisplay: null,
+				sortType: null
+			}
 		};
 	}
 	,
@@ -36,11 +40,11 @@ Vue.component("orders-for-restaurant", {
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="button" value="ceni porudžbine"></input></td>
+						<td><input type="button" @click="sortByPrice('ASCENDING')" value="ceni porudžbine"></input></td>
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="button" value="datumu porudžbine"></input></td>
+						<td><input type="button" @click="sortByDate('ASCENDING')" value="datumu porudžbine"></input></td>
 					</tr>
 					<br/>
 					<tr>
@@ -49,11 +53,11 @@ Vue.component("orders-for-restaurant", {
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="button" value="ceni porudžbine"></input></td>
+						<td><input type="button" @click="sortByPrice('DESCENDING')" value="ceni porudžbine"></input></td>
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="button" value="datumu porudžbine"></input></td>
+						<td><input type="button" @click="sortByDate('DESCENDING')" value="datumu porudžbine"></input></td>
 					</tr>
 				</table>
 			  </div>
@@ -89,12 +93,22 @@ Vue.component("orders-for-restaurant", {
 		methods : {
 			changeOrderStatus : function(orderId){
 				axios.post("/changeOrderStatus", orderId)
-				.then(response => (this.orders = response.data))
+				.then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders})
+			},
+			sortByPrice: function(type){
+				this.sortDTO.type = type;
+				axios.post("/sortByPrice", this.sortDTO)
+				.then(response => {this.orders = response.data})
+			},
+			sortByDate: function(type){
+				this.sortDTO.type = type;
+				axios.post("/sortByDate", this.sortDTO)
+				.then(response => {this.orders = response.data})
 			}
 		}
 		,
 		mounted(){
 		axios.get("/getOrdersForRestaurant")
-		.then(response => (this.orders = response.data))
+		.then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders})
 	}
 });

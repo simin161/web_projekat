@@ -321,7 +321,7 @@ public class OrderService {
 		return filteredOrders;
 	}
 
-	public ArrayList<OrderDTO> sortByRestaurantName(SortDTO sortData, String customerId) {
+	public ArrayList<OrderDTO> sortByRestaurantName(SortDTO sortData) {
 
 		ArrayList<OrderDTO> sortedOrders = sortData.getOrdersToDisplay();
 		
@@ -346,7 +346,7 @@ public class OrderService {
 
 	}
 
-	public ArrayList<OrderDTO> sortByOrderPrice(SortDTO sortData, String customerId) {
+	public ArrayList<OrderDTO> sortByOrderPrice(SortDTO sortData) {
 
 		ArrayList<OrderDTO> sortedOrders = sortData.getOrdersToDisplay();
 		
@@ -382,7 +382,7 @@ public class OrderService {
 
 	}
 	
-	public ArrayList<OrderDTO> sortByDate(SortDTO sortData, String customerId){
+	public ArrayList<OrderDTO> sortByDate(SortDTO sortData){
 		
 		ArrayList<OrderDTO> sortedOrders = sortData.getOrdersToDisplay();
 		

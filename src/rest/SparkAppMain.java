@@ -481,9 +481,7 @@ public class SparkAppMain {
 			
 			res.type("application/json");
 			SortDTO sortData = gson.fromJson(req.body(), SortDTO.class);
-			Session session = req.session(true);
-			Customer loggedCustomer = session.attribute("loggedUser");
-			return gson.toJson(orderService.sortByRestaurantName(sortData, loggedCustomer.getId()));
+			return gson.toJson(orderService.sortByRestaurantName(sortData));
 			
 		});
 		
@@ -491,9 +489,7 @@ public class SparkAppMain {
 			
 			res.type("application/json");
 			SortDTO sortData = gson.fromJson(req.body(), SortDTO.class);
-			Session session = req.session(true);
-			Customer loggedCustomer = session.attribute("loggedUser");
-			return gson.toJson(orderService.sortByOrderPrice(sortData, loggedCustomer.getId()));
+			return gson.toJson(orderService.sortByOrderPrice(sortData));
 			
 		});
 		
@@ -501,9 +497,7 @@ public class SparkAppMain {
 			
 			res.type("application/json");
 			SortDTO sortData = gson.fromJson(req.body(), SortDTO.class);
-			Session session = req.session(true);
-			Customer loggedCustomer = session.attribute("loggedUser");
-			return gson.toJson(orderService.sortByDate(sortData, loggedCustomer.getId()));
+			return gson.toJson(orderService.sortByDate(sortData));
 			
 		});
 		
