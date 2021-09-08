@@ -8,7 +8,6 @@
         "id": "1"
       },
       {
-
         "id": "2"
       },
       {
@@ -47,16 +46,9 @@
     "restaurantType": "Restoran kuhinje za smrtni odred",
     "articles": [],
     "status": "CLOSED",
-    "location": {
-      "longitude": 0.0,
-      "latitude": 0.0,
-      "address": "Kec Klisa Zatvor"
-    },
+    "location": {},
     "restaurantLogo": "..\\upload\\r3.png",
-    "averageMark": 0.0,
-    "manager": {
-      "id": "2"
-    }
+    "averageMark": 0.0
   },
   {
     "id": "4",
@@ -64,16 +56,9 @@
     "restaurantType": "Restoran japanske kuhinje",
     "articles": [],
     "status": "CLOSED",
-    "location": {
-      "longitude": 0.0,
-      "latitude": 0.0,
-      "address": "Yukihira Soume 23, Novi Jandrixland"
-    },
+    "location": {},
     "restaurantLogo": "..\\upload\\r4.jpg",
-    "averageMark": 0.0,
-    "manager": {
-      "id": "3"
-    }
+    "averageMark": 0.0
   },
   {
     "id": "5",
@@ -81,15 +66,8 @@
     "restaurantType": "ss",
     "articles": [],
     "status": "CLOSED",
-    "location": {
-      "longitude": 0.0,
-      "latitude": 0.0,
-      "address": "ss"
-    },
+    "location": {},
     "restaurantLogo": "..\\upload\\r5.jpg",
-    "averageMark": 0.0,
-    "manager": {
-      "id": "4"
-    }
+    "averageMark": 0.0
   }
 ]

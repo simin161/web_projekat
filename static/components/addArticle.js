@@ -11,7 +11,8 @@ Vue.component("add-article",{
 						description: "",
 						articleImage: null
 				},
-				message: ""
+				message: "",
+				imagePath: false
 			}
 	},
 	
@@ -67,19 +68,31 @@ Vue.component("add-article",{
 	,
 	methods : {
 		save : function(){
-			axios.post("/addArticle", this.article)
-			.then(response=>(this.message = response.data))
+			console.log(this.imagePath)
+			if( /\S/.test(this.article.name) && /\S/.test(this.article.articleType) 
+					&& /\S/.test(this.article.description) && /\S/.test(this.article.price) && this.imagePath){
+				axios.post("/addArticle", this.article)
+				.then(response=>(this.message = response.data))
+			}
+			else{
+				this.message = "Naziv, tip, cena, opis i slika su obavezni!"
+			}
 		},
 		imageSelected(event){
 			const file = document.querySelector('input[type=file]').files[0]
 			const reader = new FileReader()
 
-			let rawImg;
-			reader.onloadend = () => {
-			   this.article.articleImage = reader.result;
+			if(file != null){
+				let rawImg;
+				this.imagePath = true;
+				reader.onloadend = () => {
+				   this.article.articleImage = reader.result;
+				}
+				reader.readAsDataURL(file);
 			}
-			reader.readAsDataURL(file);
-			
+			else{
+				this.imagePath = false
+			}
 		}
 	}
 });

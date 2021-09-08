@@ -9,7 +9,7 @@
       "averageMark": 0.0
     },
     "quantity": 700.0,
-    "description": "Specijalitet kuće!\nMnogo sočno, mnogo masno",
+    "description": "Specijalitet kuÄ‡e!\nMnogo soÄ�no, mnogo masno",
     "articleImage": "..\\upload\\a1.jpg",
     "isDeleted": false,
     "totalNumberOrdered": 0,
@@ -33,7 +33,7 @@
   },
   {
     "id": "3",
-    "name": "Karađorđeva šnicla",
+    "name": "KaraÄ‘orÄ‘eva Å¡nicla",
     "price": 450.0,
     "articleType": "FOOD",
     "restaurant": {
@@ -41,7 +41,7 @@
       "averageMark": 0.0
     },
     "quantity": 1000.0,
-    "description": "Bolja šnicla od šnicle vašeg muža! Namyg, namyg\nNe samo bolja nego i veća!!! Namyg namyg",
+    "description": "Bolja Å¡nicla od Å¡nicle vaÅ¡eg muÅ¾a! Namyg, namyg\nNe samo bolja nego i veÄ‡a!!! Namyg namyg",
     "articleImage": "..\\upload\\a3.jpg",
     "isDeleted": false,
     "totalNumberOrdered": 0,
