@@ -46,5 +46,21 @@
     "isDeleted": false,
     "totalNumberOrdered": 0,
     "isDeletedFromCart": false
+  },
+  {
+    "id": "4",
+    "name": "Studentske nudle",
+    "price": 60.0,
+    "articleType": "FOOD",
+    "restaurant": {
+      "id": "1",
+      "averageMark": 0.0
+    },
+    "quantity": 500.0,
+    "description": "Hrana za sirotiLJu. Skoro pa besplatno!\nPS spremate sami dobijete kljucalu vodu mozda",
+    "articleImage": "..\\upload\\a4.jpg",
+    "isDeleted": false,
+    "totalNumberOrdered": 0,
+    "isDeletedFromCart": false
   }
 ]
