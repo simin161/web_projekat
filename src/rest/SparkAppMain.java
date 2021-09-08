@@ -467,7 +467,7 @@ public class SparkAppMain {
 			return gson.toJson(restaurantService.sortByAverageMark(type));
 		});
 		
-		post("/sortByRestaurantName", (req, res)->{
+		post("/sortOrdersByRestaurantName", (req, res)->{
 			
 			res.type("application/json");
 			SortType type = gson.fromJson(req.body(), SortType.class);

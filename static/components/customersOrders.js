@@ -256,7 +256,7 @@ template: `<div>
 		
 		sortByRestaurantName : function(type){
 		
-			axios.post("/sortByRestaurantName", type)
+			axios.post("/sortOrdersByRestaurantName", {type})
 			.then(response=>(this.ordersToDisplay = response.data))
 		
 		},
