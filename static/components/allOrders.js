@@ -19,7 +19,8 @@ Vue.component('all-orders',{
 				priceBottom: "",
 				priceTop: "",
 				dateBottom: "",
-				dateTop: ""
+				dateTop: "",
+				orders: null
 			},
 			showModalSearch : false
 			
@@ -71,7 +72,7 @@ Vue.component('all-orders',{
 							</tr>
 							
 							<tr>
-								<td align="center" colSpan="2"><input type="button" class="buttonSearchInModal" value="Pretraži"></input></td>
+								<td align="center" colSpan="2"><input type="button" class="buttonSearchInModal" @click="search" value="Pretraži"></input></td>
 							</tr>
 							
 							</br>
@@ -161,19 +162,23 @@ Vue.component('all-orders',{
 	  },
 	  loadAll : function(){
 		  axios.get("/getDeliverersOrders")
-			.then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders, this.filterParams.orders = this.orders})
+			.then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders, this.filterParams.orders = this.orders, this.searchParams.orders = this.orders})
 	  },
 	  loadDelivered : function(){
 		  axios.get("/getDeliverersDeliveredOrders")
-		  .then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders, this.filterParams.orders = this.orders})
+		  .then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders, this.filterParams.orders = this.orders, this.searchParams.orders = this.orders})
 	  },
 	  loadUndelivered : function(){
 		  axios.get("/getDeliverersUndeliveredOrders")
-		  .then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders, this.filterParams.orders = this.orders})
+		  .then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders, this.filterParams.orders = this.orders, this.searchParams.orders = this.orders})
 	  },
 	  changeStatus : function(id){
 		  axios.post("/changeOrderStatusDeliverer", id)
 		  .then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders, this.filterParams.orders = this.orders})
+	  },
+	  search: function(){
+		 axios.post("/searchCustomerOrdersDeliverer", this.searchParams)
+		 .then(response=>{this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders, this.filterParams.orders = this.orders})
 	  },
 	  filter : function(){
 			axios.post("/filterCustomerOrders", this.filterParams)
@@ -212,6 +217,6 @@ Vue.component('all-orders',{
 	},
 	mounted() {
 		axios.get("/getDeliverersOrders")
-		.then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders, this.filterParams.orders = this.orders})
+		.then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders, this.filterParams.orders = this.orders, this.searchParams.orders = this.orders})
 	}
 });

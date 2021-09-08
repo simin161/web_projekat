@@ -493,4 +493,121 @@ public class OrderService {
 		return searchedOrders;
 	}
 
+	public ArrayList<OrderDTO> searchOrdersForRestaurantDeliverer(String id, SearchCustomerOrdersDTO searchParams) {
+		ArrayList<OrderDTO> searchedOrders = new ArrayList<OrderDTO>();
+
+		Pattern patternName = Pattern.compile(searchParams.getRestaurantName(), Pattern.CASE_INSENSITIVE);
+
+		LocalDate dateBottom = null;
+		LocalDate dateTop = null;
+		double priceBottom = -1;
+		double priceTop = -1;
+
+		try {
+
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+			if (!searchParams.getDateBottom().isEmpty()) {
+				dateBottom = LocalDate.parse(searchParams.getDateBottom(), formatter);
+			}
+			if (!searchParams.getDateTop().isEmpty()) {
+				dateTop = LocalDate.parse(searchParams.getDateTop(), formatter);
+			}
+
+			if (!searchParams.getPriceBottom().isEmpty())
+				priceBottom = Double.valueOf(searchParams.getPriceBottom());
+			if (!searchParams.getPriceTop().isEmpty())
+				priceTop = Double.valueOf(searchParams.getPriceTop());
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+		boolean priceBottomCheck = priceBottom != -1 ? true : false;
+		boolean priceTopCheck = priceTop != -1 ? true : false;
+
+		if(searchParams.getOrders() == null) {
+			return null;
+		}
+		
+		for (OrderDTO o : searchParams.getOrders()) {
+
+			Matcher matcherName = patternName.matcher(o.getRestaurant().getName());
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+			LocalDate orderDate = LocalDate.parse(o.getDate(), formatter);
+
+			if (priceBottomCheck && priceTopCheck) {
+
+				if (dateBottom != null && dateTop != null) {
+
+					if (dateBottom.isBefore(orderDate)) {
+
+						if (dateTop.isAfter(orderDate)) {
+
+							if (o.getTotalPrice() >= priceBottom) {
+
+								if (o.getTotalPrice() <= priceTop) {
+
+									if (matcherName.find()) {
+
+										searchedOrders.add(o);
+
+									}
+
+								}
+
+							}
+
+						}
+
+					}
+
+				} else {
+
+					if (o.getTotalPrice() >= priceBottom) {
+
+						if (o.getTotalPrice() <= priceTop) {
+
+							if (matcherName.find()) {
+
+								searchedOrders.add(o);
+
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
+			else if (dateBottom != null && dateTop != null) {
+
+				if (dateBottom.isBefore(orderDate)) {
+
+					if (dateTop.isAfter(orderDate)) {
+
+						if (matcherName.find()) {
+
+							searchedOrders.add(o);
+
+						}
+
+					}
+
+				}
+
+			} else if (matcherName.find()) {
+				searchedOrders.add(o);
+			}
+
+		}
+
+		return searchedOrders;
+
+	}
+
 }
