@@ -26,14 +26,13 @@
           "name": "Crystal",
           "averageMark": 0.0
         },
-        "orderDate": "2021-00-06",
-        "orderTime": "01:12:21 PM",
         "customer": {
           "collectedPoints": 0,
           "id": "5"
         },
         "orderStatus": "IN_TRANSPORT",
         "isDeleted": true,
+        "totalPrice": 0.0,
         "deliverer": {
           "id": "1"
         }
@@ -79,14 +78,13 @@
           "name": "Crystal",
           "averageMark": 0.0
         },
-        "orderDate": "2021-00-06",
-        "orderTime": "01:05:44 PM",
         "customer": {
           "collectedPoints": 0,
           "id": "5"
         },
         "orderStatus": "IN_TRANSPORT",
         "isDeleted": false,
+        "totalPrice": 0.0,
         "deliverer": {
           "id": "1"
         }
@@ -100,5 +98,15 @@
     "sex": "Muško",
     "userType": "DELIVERER",
     "dateOfBirth": "1985-02-03"
+  },
+  {
+    "id": "2",
+    "username": "vendi",
+    "password": "vendi",
+    "name": "Vesna",
+    "surname": "Vukelic",
+    "sex": "Žensko",
+    "userType": "DELIVERER",
+    "dateOfBirth": "2021-08-30"
   }
 ]

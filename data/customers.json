@@ -117,5 +117,16 @@
     "sex": "Muško",
     "userType": "CUSTOMER",
     "dateOfBirth": "2000-09-05"
+  },
+  {
+    "collectedPoints": 0,
+    "id": "7",
+    "username": "22sas",
+    "password": "1sdad",
+    "name": "sss",
+    "surname": "asd",
+    "sex": "Muško",
+    "userType": "CUSTOMER",
+    "dateOfBirth": "2021-08-29"
   }
 ]

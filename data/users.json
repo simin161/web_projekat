@@ -43,5 +43,15 @@
     "username": "customer2",
     "password": "customer2",
     "userType": "CUSTOMER"
+  },
+  {
+    "username": "22sas",
+    "password": "1sdad",
+    "userType": "CUSTOMER"
+  },
+  {
+    "username": "vendi",
+    "password": "vendi",
+    "userType": "DELIVERER"
   }
 ]

@@ -17,7 +17,7 @@ Vue.component('navigation-header', {
 							<ul :class="scrolled ? 'scroll' : ''" v-if="loggedUser.userType === 'ADMINISTRATOR'" >
 								<li><a class="active" href="#/welcome-page">Početna</a></li>
 								<li><a>Dodavanje restorana </a></li>
-								<li><a>Dodavanje korisnika</a></li>
+								<li><a href="#/createUser">Dodavanje korisnika</a></li>
 								<li><a>Pregled restorana </a></li>
 								<li><a>Pregled korisnika </a></li>
 								<li><a href="#/edit-profile"> Moj nalog </a></li>

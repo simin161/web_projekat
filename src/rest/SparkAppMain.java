@@ -23,6 +23,7 @@ import beans.Restaurant;
 import beans.SortType;
 import beans.User;
 import beans.UserInfo;
+import beans.UserType;
 import dto.ArticleDTO;
 import dto.CommentDTO;
 import dto.FilterCustomerOrdersDTO;
@@ -74,6 +75,33 @@ public class SparkAppMain {
 			}
 
 			return returnValue;
+		});
+		
+		post("/registerUserFromAdmin", (req, res)->{
+			
+			res.type("application/json");
+			String returnValue= "Greška prilikom kreiranja korisnika!";
+			
+			User userToCreate = gson.fromJson(req.body(), User.class);
+			
+			if(userToCreate.getUserType()==UserType.DELIVERER) {
+				
+				if(registrationService.registerDeliverer(gson.fromJson(req.body(), Deliverer.class))) {
+					
+					returnValue="Dostavljač je uspešno kreiran!";
+					
+				}
+				
+			}
+			else {
+				
+				
+				
+			}
+			
+			
+			return returnValue;
+			
 		});
 
 		post("/logInUser", (req, res) -> {

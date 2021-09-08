@@ -4,6 +4,7 @@ import beans.Administrator;
 import beans.Customer;
 import beans.Deliverer;
 import beans.Manager;
+import beans.User;
 import beans.UserInfo;
 import beans.UserType;
 import dao.AdministratorDAO;
@@ -26,6 +27,24 @@ public class RegistrationService {
 			returnValue = true;
 		}
 		return returnValue;
+	}
+	
+	public boolean registerDeliverer(Deliverer newDeliverer) {
+		
+		boolean retVal = false;
+		
+		if(!checkExistanceOfUsername(newDeliverer.getUsername())) {
+			
+			newDeliverer.setId(Integer.toString(DelivererDAO.getInstance().getAllDeliverers().size() + 1));
+			DelivererDAO.getInstance().addDeliverer(newDeliverer);
+			DelivererDAO.getInstance().save();
+			UserInfoDAO.getInstance().addUser(new UserInfo(newDeliverer.getUsername(), newDeliverer.getPassword(), UserType.DELIVERER));
+			UserInfoDAO.getInstance().save();
+			retVal = true;
+		}
+		
+		return retVal;
+		
 	}
 	
 	public UserType logInUser(UserInfo userForLogIn) {

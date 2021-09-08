@@ -47,6 +47,12 @@ public class DelivererDAO {
 		return allDeliverers;
 	}
 	
+	public void addDeliverer(Deliverer newDeliverer) {
+		
+		allDeliverers.add(newDeliverer);
+		
+	}
+	
 	public void save() {
 		try {
 			Writer writer;
