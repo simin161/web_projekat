@@ -25,6 +25,7 @@ import dao.RestaurantDAO;
 import dto.FilterCustomerOrdersDTO;
 import dto.OrderDTO;
 import dto.SearchCustomerOrdersDTO;
+import dto.SortDTO;
 
 public class OrderService {
 
@@ -339,18 +340,20 @@ public class OrderService {
 		return filteredOrders;
 	}
 
-	public ArrayList<OrderDTO> sortByRestaurantName(SortType type, String customerId) {
+	public ArrayList<OrderDTO> sortByRestaurantName(SortDTO sortData, String customerId) {
 
-		if (type == SortType.ASCENDING) {
+		ArrayList<OrderDTO> sortedOrders = sortData.getOrdersToDisplay();
+		
+		if ( sortData.getType() == SortType.ASCENDING) {
 
-			Collections.sort(OrderDAO.getInstance().getAllOrdersFromCustomer(customerId), new Comparator<OrderDTO>() {
+			Collections.sort(sortedOrders, new Comparator<OrderDTO>() {
 				@Override
 				public int compare(final OrderDTO object1, final OrderDTO object2) {
 					return object1.getRestaurant().getName().compareTo(object2.getRestaurant().getName());
 				}
 			});
 		} else {
-			Collections.sort(OrderDAO.getInstance().getAllOrdersFromCustomer(customerId), new Comparator<OrderDTO>() {
+			Collections.sort(sortedOrders, new Comparator<OrderDTO>() {
 				@Override
 				public int compare(final OrderDTO object1, final OrderDTO object2) {
 					return -object1.getRestaurant().getName().compareTo(object2.getRestaurant().getName());
@@ -358,20 +361,17 @@ public class OrderService {
 			});
 		}
 
-		return OrderDAO.getInstance().getAllOrdersFromCustomer(customerId);
+		return sortedOrders;
 
 	}
 
-	public ArrayList<OrderDTO> sortByOrderPrice(SortType type, String customerId) {
+	public ArrayList<OrderDTO> sortByOrderPrice(SortDTO sortData, String customerId) {
 
-		if (type == SortType.ASCENDING) {
-
-			System.out.print("Rastuce pre:");
-			for(OrderDTO o : OrderDAO.getInstance().getAllOrdersFromCustomer(customerId)) {
-				System.out.println(o.getTotalPrice());
-			}
+		ArrayList<OrderDTO> sortedOrders = sortData.getOrdersToDisplay();
+		
+		if (sortData.getType() == SortType.ASCENDING) {
 			
-			Collections.sort(OrderDAO.getInstance().getAllOrdersFromCustomer(customerId), new Comparator<OrderDTO>() {
+			Collections.sort(sortedOrders, new Comparator<OrderDTO>() {
 
 				@Override
 				public int compare(OrderDTO o1, OrderDTO o2) {
@@ -384,12 +384,8 @@ public class OrderService {
 
 		} else {
 			
-			System.out.print("Opadajuce pre:");
-			for(OrderDTO o : OrderDAO.getInstance().getAllOrdersFromCustomer(customerId)) {
-				System.out.println(o.getTotalPrice());
-			}
 
-			Collections.sort(OrderDAO.getInstance().getAllOrdersFromCustomer(customerId), new Comparator<OrderDTO>() {
+			Collections.sort(sortedOrders, new Comparator<OrderDTO>() {
 
 				@Override
 				public int compare(OrderDTO o1, OrderDTO o2) {
@@ -401,21 +397,17 @@ public class OrderService {
 
 		}
 		
-		System.out.print("Nakon sortiranja:");
-		
-		for(OrderDTO o : OrderDAO.getInstance().getAllOrdersFromCustomer(customerId)) {
-			System.out.println(o.getTotalPrice());
-		}
-
-		return OrderDAO.getInstance().getAllOrdersFromCustomer(customerId);
+		return sortedOrders;
 
 	}
 	
-	public ArrayList<OrderDTO> sortByDate(SortType type, String customerId){
+	public ArrayList<OrderDTO> sortByDate(SortDTO sortData, String customerId){
 		
-		if(type == SortType.ASCENDING) {
+		ArrayList<OrderDTO> sortedOrders = sortData.getOrdersToDisplay();
+		
+		if(sortData.getType() == SortType.ASCENDING) {
 			
-			Collections.sort(OrderDAO.getInstance().getAllOrdersFromCustomer(customerId), new Comparator<OrderDTO>() {
+			Collections.sort(sortedOrders, new Comparator<OrderDTO>() {
 
 				@Override
 				public int compare(OrderDTO o1, OrderDTO o2) {
@@ -428,7 +420,7 @@ public class OrderService {
 			
 		} else {
 			
-			Collections.sort(OrderDAO.getInstance().getAllOrdersFromCustomer(customerId), new Comparator<OrderDTO>() {
+			Collections.sort(sortedOrders, new Comparator<OrderDTO>() {
 
 				@Override
 				public int compare(OrderDTO o1, OrderDTO o2) {
@@ -441,7 +433,7 @@ public class OrderService {
 			
 		}
 		
-		return OrderDAO.getInstance().getAllOrdersFromCustomer(customerId);
+		return sortedOrders;
 		
 	}
 
