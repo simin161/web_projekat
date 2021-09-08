@@ -27,6 +27,7 @@ import beans.UserType;
 import dto.ArticleDTO;
 import dto.CommentDTO;
 import dto.FilterOrdersDTO;
+import dto.PasswordDTO;
 import dto.SearchCustomerOrdersDTO;
 import dto.SearchRestaurantDTO;
 import dto.SortDTO;
@@ -658,6 +659,14 @@ public class SparkAppMain {
 			SearchCustomerOrdersDTO searchParams = gson.fromJson(req.body(), SearchCustomerOrdersDTO.class);
 			return gson.toJson(orderService.searchOrdersForRestaurantDeliverer(loggedDeliverer.getId(), searchParams));
 			
+		});
+		
+		post("/changePassword", (req, res) -> {
+			res.type("application/json");
+			Session session = req.session(true);
+			User loggedUser = session.attribute("loggedUser");
+			boolean retVal = registrationService.changePassword(loggedUser, gson.fromJson(req.body(), PasswordDTO.class));
+			return retVal ? "SUCCESS" : "FAILURE";
 		});
 	}
 }

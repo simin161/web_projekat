@@ -13,6 +13,7 @@ import dao.CustomerDAO;
 import dao.DelivererDAO;
 import dao.ManagerDAO;
 import dao.UserInfoDAO;
+import dto.PasswordDTO;
 
 public class RegistrationService {	
 	public boolean registerCustomer(Customer newCustomer) {
@@ -108,6 +109,47 @@ public class RegistrationService {
 	
 	public Deliverer findDelivererForLogIn(String username) {
 		return DelivererDAO.getInstance().findDelivererByUsername(username);
+	}
+
+	public boolean changePassword(User loggedUser, PasswordDTO dto) {
+		
+		boolean returnValue = true;
+		
+		switch(loggedUser.getUserType()) {
+		case CUSTOMER:
+			CustomerService cS = new CustomerService();
+			Customer customer = CustomerDAO.getInstance().findCustomerById(loggedUser.getId());
+			customer.setPassword(dto.getNewPassword());
+			cS.editCustomer(customer);
+			break;
+		case DELIVERER:
+			DelivererService dS = new DelivererService();
+			Deliverer delivrer = DelivererDAO.getInstance().findDelivererById(loggedUser.getId());
+			delivrer.setPassword(dto.getNewPassword());
+			dS.editDeliverer(delivrer);
+			break;
+		case MANAGER:
+			ManagerService mS = new ManagerService();
+			Manager manager = ManagerDAO.getInstance().findManagerByUsername(loggedUser.getUsername());
+			manager.setPassword(dto.getNewPassword());
+			mS.editManager(manager);
+			break;
+		case ADMINISTRATOR:
+			AdministratorService aS = new AdministratorService();
+			Administrator admin = AdministratorDAO.getInstance().findAdministratorByUsername(loggedUser.getUsername());
+			admin.setPassword(dto.getNewPassword());
+			aS.editAdministrator(admin);
+			break;
+		default:
+			returnValue = false;
+		}
+		
+		if(returnValue) {
+			UserInfoService uIS = new UserInfoService();
+			returnValue = uIS.editPassword(loggedUser.getUsername(), dto.getNewPassword());
+		}
+		
+		return returnValue;
 	}
 	 
 }

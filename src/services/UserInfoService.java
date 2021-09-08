@@ -21,4 +21,19 @@ public class UserInfoService {
 		
 		return returnValue;
 	}
+	
+	public boolean editPassword(String username, String password) {
+		boolean returnValue = false;
+		
+		for(UserInfo user : UserInfoDAO.getInstance().getAllUsers()) {
+			if(user.getUsername().equals(username)) {
+				user.setPassword(password);
+				UserInfoDAO.getInstance().save();
+				returnValue = true;
+				break;
+			}
+		}
+		
+		return returnValue;
+	}
 }

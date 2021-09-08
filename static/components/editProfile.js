@@ -6,7 +6,13 @@ Vue.component('edit-profile', {
 			isDisabled: true,
 			visibility: "hidden",
 			backgroundColor: "#f8f1f1",
-			message : ""
+			message : "",
+			dto: {
+				oldPassword: "",
+				newPassword: "",
+				newPasswordAgain: ""
+			},
+			showPasswordChange : false
 		};
 	},
 template: `<div>
@@ -50,8 +56,12 @@ template: `<div>
 					</tr>
 					<br/>
 					<tr>
-						<td>Lozinka: </td>
-						<td><input type="password" v-model="loggedUser.password" :disabled="isDisabled"></input></td>
+						<td><input type="button" @click="showPasswordChange = true" value="Promeni lozinku"></input></td>
+					</tr>
+					<tr v-if="showPasswordChange === true">
+						<td>Nova lozinka: <input type="password" v-model="dto.newPassword"></input></td>
+						<td>Potvrda nove lozinke: <input type="password" v-model="dto.newPasswordAgain"></input></td>
+						<td><input type="button" value="Sačuvaj lozinku" @click="changePassword"></input></td>
 					</tr>
 					<br v-if="loggedUser.userType === 'CUSTOMER'"/>
 					<tr v-if="loggedUser.userType === 'CUSTOMER'">
@@ -71,6 +81,26 @@ template: `<div>
 			axios.post("/editProfile", this.loggedUser)
 			.then(response => (this.message = response.data))
 		},
+		changePassword : function(){
+			if(/\S/.test(this.dto.newPassword) && /\S/.test(this.dto.newPasswordAgain)){
+				if(this.dto.newPassword === this.dto.newPasswordAgain){
+					if(this.dto.newPassword != this.dto.oldPassword){
+						axios.post("/changePassword", this.dto)
+						.then(response => (this.message = response.data == "SUCCESS" ? "Uspešno promenjena lozinka!" : "Greška prilikom izmene lozinke!"));
+					}
+					else{
+						this.message="Nova lozinka ne može biti ista kao stara!"
+					}
+				}
+				else{
+					this.message = "Pogrešna lozinka!"
+				}
+			}
+			else{
+				this.message = "Nisu popunjeni svi podaci za izmenu lozinke!";
+			}
+		}
+		,
 		  mouseOver : function(){
 			  this.backgroundColor =  "#79b9b6";
 		  },
@@ -81,6 +111,6 @@ template: `<div>
 	,
 	mounted(){
 	axios.get("/getLoggedUser")
-	.then(response => (this.loggedUser = response.data[0] ))
+	.then(response => {this.loggedUser = response.data[0], this.dto.oldPassword = this.loggedUser.password })
 }
 });
