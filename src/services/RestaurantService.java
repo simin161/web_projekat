@@ -50,7 +50,17 @@ public class RestaurantService {
 	}
 	
 	public ArrayList<Restaurant> getAllRestaurants() {
+		sortRestaurantsByWorkingStatus();
 		return RestaurantDAO.getInstance().getAll();
+	}
+	
+	private void sortRestaurantsByWorkingStatus() {
+		Collections.sort(RestaurantDAO.getInstance().getAll(), new Comparator<Restaurant>() {
+			@Override
+			public int compare(final Restaurant object1, final Restaurant object2) {
+				return object1.getStatus().compareTo(object2.getStatus());
+			}
+		});
 	}
 
 	public boolean addArticleToRestaurant(String idRestaurant, Article newArticle) {
