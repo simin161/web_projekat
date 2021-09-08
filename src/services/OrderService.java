@@ -138,8 +138,7 @@ public class OrderService {
 				o.setId(order.getId());
 				o.setArticles(order.getArticles());
 				o.setCustomer(CustomerDAO.getInstance().findCustomerById(order.getCustomer().getId()));
-				o.setOrderDate(order.getOrderDate());
-				o.setOrderTime(order.getOrderTime());
+				o.setOrderDateAndTime(order.getOrderDateAndTime());
 				o.setOrderStatus(order.getOrderStatus());
 				o.setDeleted(order.isDeleted());
 				o.setRestaurant(new Restaurant(order.getRestaurant().getId()));
@@ -172,8 +171,7 @@ public class OrderService {
 				o.setId(order.getId());
 				o.setArticles(order.getArticles());
 				o.setDeleted(order.isDeleted());
-				o.setOrderDate(order.getOrderDate());
-				o.setOrderTime(order.getOrderTime());
+				o.setOrderDateAndTime(o.getOrderDateAndTime());
 				o.setRestaurant(order.getRestaurant());
 				o.setOrderStatus(order.getOrderStatus());
 				o.setDeliverer(order.getDeliverer());
