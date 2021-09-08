@@ -2,8 +2,6 @@ package services;
 
 import java.util.ArrayList;
 
-import com.google.gson.JsonElement;
-
 import beans.Deliverer;
 import beans.Order;
 import beans.OrderStatus;
@@ -11,6 +9,7 @@ import beans.UserInfo;
 import beans.UserType;
 import dao.DelivererDAO;
 import dao.OrderDAO;
+import dto.OrderDTO;
 
 public class DelivererService {
 	public boolean editDeliverer(Deliverer editedDeliverer) {
@@ -43,28 +42,28 @@ public class DelivererService {
 		return returnValue;
 	}
 	
-	public ArrayList<Order> getDeliverersOrders(String id){
+	public ArrayList<OrderDTO> getDeliverersOrders(String id){
 		Deliverer deliverer = DelivererDAO.getInstance().findDelivererById(id);
-		ArrayList<Order> orders = new ArrayList<Order>();
+		ArrayList<OrderDTO> orders = new ArrayList<OrderDTO>();
 		if(deliverer.getOrdersForDelivery() == null)
 			return null;
 		
 		for(Order order : deliverer.getOrdersForDelivery()) {
-			orders.add(OrderDAO.getInstance().findOrderById(order.getId()));
+			orders.add(new OrderDTO(OrderDAO.getInstance().findOrderById(order.getId())));
 		}
 		
 		return orders;
 	}
 	
-	public ArrayList<Order> getDeliverersDeliveredOrders(String id){
-		ArrayList<Order> retVal = new ArrayList<Order>();
+	public ArrayList<OrderDTO> getDeliverersDeliveredOrders(String id){
+		ArrayList<OrderDTO> retVal = new ArrayList<OrderDTO>();
 		Deliverer deliverer = DelivererDAO.getInstance().findDelivererById(id);
 		if(deliverer.getOrdersForDelivery() == null)
 			return retVal;
 		
 		for(Order order : deliverer.getOrdersForDelivery()) {
-			if(order.getOrderStatus() == OrderStatus.DELIVERED) {
-				retVal.add(OrderDAO.getInstance().findOrderById(order.getId()));
+			if(OrderDAO.getInstance().findOrderById(order.getId()).getOrderStatus() == OrderStatus.DELIVERED) {
+				retVal.add(new OrderDTO(OrderDAO.getInstance().findOrderById(order.getId())));
 			}
 		}
 		
@@ -76,15 +75,15 @@ public class DelivererService {
 		return regService.checkExistanceOfUsername(newUsername);
 	}
 
-	public ArrayList<Order> getDeliverersUndeliveredOrders(String id) {
-		ArrayList<Order> retVal = new ArrayList<Order>();
+	public ArrayList<OrderDTO> getDeliverersUndeliveredOrders(String id) {
+		ArrayList<OrderDTO> retVal = new ArrayList<OrderDTO>();
 		Deliverer deliverer = DelivererDAO.getInstance().findDelivererById(id);
 		if(deliverer.getOrdersForDelivery() == null)
 			return retVal;
 		
 		for(Order order : deliverer.getOrdersForDelivery()) {
-			if(order.getOrderStatus() == OrderStatus.IN_TRANSPORT) {
-				retVal.add(OrderDAO.getInstance().findOrderById(order.getId()));
+			if(OrderDAO.getInstance().findOrderById(order.getId()).getOrderStatus() == OrderStatus.IN_TRANSPORT) {
+				retVal.add(new OrderDTO(OrderDAO.getInstance().findOrderById(order.getId())));
 			}
 		}
 		
@@ -97,8 +96,9 @@ public class DelivererService {
 			if(deliverer.getId().equals(order.getDeliverer().getId())) {
 				if(deliverer.getOrdersForDelivery() == null)
 					deliverer.setOrdersForDelivery(new ArrayList<Order>());
-				
-				deliverer.getOrdersForDelivery().add(OrderDAO.getInstance().findOrderById(orderId));
+				Order newOrder = new Order();
+				newOrder.setId(orderId);
+				deliverer.getOrdersForDelivery().add(newOrder);
 			}
 		}
 		

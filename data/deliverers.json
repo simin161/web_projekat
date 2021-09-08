@@ -2,94 +2,14 @@
   {
     "ordersForDelivery": [
       {
-        "id": "2",
-        "articles": [
-          {
-            "id": "1",
-            "name": "Crystal burger",
-            "price": 800.0,
-            "articleType": "FOOD",
-            "restaurant": {
-              "id": "1",
-              "averageMark": 0.0
-            },
-            "quantity": 650.0,
-            "description": "Specijalitet kuće",
-            "articleImage": "..\\upload\\a1.jpg",
-            "isDeleted": false,
-            "totalNumberOrdered": 3,
-            "isDeletedFromCart": false
-          }
-        ],
-        "restaurant": {
-          "id": "1",
-          "name": "Crystal",
-          "averageMark": 0.0
-        },
-        "orderDate": "2021-00-06",
-        "orderTime": "01:12:21 PM",
-        "customer": {
-          "collectedPoints": 0,
-          "id": "5"
-        },
-        "orderStatus": "IN_TRANSPORT",
-        "isDeleted": true,
-        "deliverer": {
-          "id": "1"
-        }
+        "id": "1",
+        "isDeleted": false,
+        "totalPrice": 0.0
       },
       {
-        "id": "1",
-        "articles": [
-          {
-            "id": "1",
-            "name": "Crystal burger",
-            "price": 800.0,
-            "articleType": "FOOD",
-            "restaurant": {
-              "id": "1",
-              "averageMark": 0.0
-            },
-            "quantity": 650.0,
-            "description": "Specijalitet kuće",
-            "articleImage": "..\\upload\\a1.jpg",
-            "isDeleted": false,
-            "totalNumberOrdered": 3,
-            "isDeletedFromCart": false
-          },
-          {
-            "id": "2",
-            "name": "Salata",
-            "price": 250.0,
-            "articleType": "FOOD",
-            "restaurant": {
-              "id": "1",
-              "averageMark": 0.0
-            },
-            "quantity": 500.0,
-            "description": "Salata sa avokadom",
-            "articleImage": "..\\upload\\a2.jpg",
-            "isDeleted": false,
-            "totalNumberOrdered": 6,
-            "isDeletedFromCart": false
-          }
-        ],
-        "restaurant": {
-          "id": "1",
-          "name": "Crystal",
-          "averageMark": 0.0
-        },
-        "orderDate": "2021-00-06",
-        "orderTime": "01:05:44 PM",
-        "customer": {
-          "collectedPoints": 0,
-          "id": "5"
-        },
-        "orderStatus": "IN_TRANSPORT",
+        "id": "2",
         "isDeleted": false,
-        "deliverer": {
-          "id": "1"
-        }
+        "totalPrice": 0.0
       }
     ],
     "id": "1",
