@@ -29,9 +29,24 @@ public class OrderDTO {
 		this.id = o.getId();
 		this.articles = o.getArticles();
 		this.restaurant = RestaurantDAO.getInstance().findById(o.getRestaurant().getId());
-		this.date = String.valueOf(o.getOrderDateAndTime().getDayOfMonth()) + "-" 
-		+ String.valueOf(o.getOrderDateAndTime().getMonthValue() + "-" 
-		+ String.valueOf(o.getOrderDateAndTime().getYear()));
+		
+		String month = "";
+		if(o.getOrderDateAndTime().getMonthValue()<10) {
+			month = "0" + String.valueOf(o.getOrderDateAndTime().getMonthValue());
+		}
+		else
+			month = String.valueOf(o.getOrderDateAndTime().getMonthValue());
+		
+		String day = "";
+		if(o.getOrderDateAndTime().getDayOfMonth() < 10) {
+			day = "0" + String.valueOf(o.getOrderDateAndTime().getDayOfMonth());
+		}
+		else
+			day = String.valueOf(o.getOrderDateAndTime().getDayOfMonth());
+		
+		this.date = day + "-" 
+		+ month + "-" 
+		+ String.valueOf(o.getOrderDateAndTime().getYear());
 		
 		this.time = String.valueOf(o.getOrderDateAndTime().getHour()) + ":" +
 		String.valueOf(o.getOrderDateAndTime().getMinute()) + ":" +

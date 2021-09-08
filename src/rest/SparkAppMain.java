@@ -19,13 +19,14 @@ import beans.CommentStatus;
 import beans.Customer;
 import beans.Deliverer;
 import beans.Manager;
-import beans.Order;
 import beans.Restaurant;
 import beans.SortType;
 import beans.User;
 import beans.UserInfo;
 import dto.ArticleDTO;
 import dto.CommentDTO;
+import dto.FilterCustomerOrdersDTO;
+import dto.SearchCustomerOrdersDTO;
 import dto.SearchRestaurantDTO;
 import services.AdministratorService;
 import services.ArticleService;
@@ -260,6 +261,28 @@ public class SparkAppMain {
 			Customer loggedCustomer= session.attribute("loggedUser");
 			
 			return gson.toJson(customerService.getPoints(loggedCustomer.getId()));
+			
+		});
+		
+		post("/searchCustomerOrders",(req, res)->{
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			Customer loggedCustomer = session.attribute("loggedUser");
+			SearchCustomerOrdersDTO searchParams = gson.fromJson(req.body(), SearchCustomerOrdersDTO.class);
+			return gson.toJson(orderService.searchCustomerOrders(loggedCustomer.getId(), searchParams));
+			
+		});
+		
+		post("/filterCustomerOrders", (req, res)->{
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			Customer loggedCustomer = session.attribute("loggedUser");
+			FilterCustomerOrdersDTO filterParams = gson.fromJson(req.body(), FilterCustomerOrdersDTO.class);
+			
+			return gson.toJson(orderService.filterCustomerOrders(loggedCustomer.getId(), filterParams));
+			
 			
 		});
 		
