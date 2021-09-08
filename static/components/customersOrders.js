@@ -23,7 +23,8 @@ Vue.component('customerOrders', {
 			filterParams: {
 			
 				restaurantType: "",
-				orderStatus: ""
+				orderStatus: "",
+				orders: null
 			
 			},
 			restaurants: null,
@@ -241,7 +242,7 @@ template: `<div>
 		search : function(){
 		
 			axios.post("/searchCustomerOrders", this.searchParams)
-			.then(response=>{this.ordersToDisplay = response.data, this.sortDTO.ordersToDisplay = this.ordersToDisplay})
+			.then(response=>{this.ordersToDisplay = response.data, this.sortDTO.ordersToDisplay = this.ordersToDisplay, this.filterParams.orders = this.ordersToDisplay})
 		
 		},
 		
@@ -289,7 +290,7 @@ template: `<div>
 	
 	mounted(){
 		axios.get("/getCustomerOrders")
-		.then(response => {this.ordersToDisplay = response.data, this.sortDTO.ordersToDisplay = this.ordersToDisplay})
+		.then(response => {this.ordersToDisplay = response.data, this.sortDTO.ordersToDisplay = this.ordersToDisplay, this.filterParams.orders = this.ordersToDisplay})
 		
 		
 	}

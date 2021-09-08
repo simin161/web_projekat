@@ -26,7 +26,7 @@ import beans.UserInfo;
 import beans.UserType;
 import dto.ArticleDTO;
 import dto.CommentDTO;
-import dto.FilterCustomerOrdersDTO;
+import dto.FilterOrdersDTO;
 import dto.SearchCustomerOrdersDTO;
 import dto.SearchRestaurantDTO;
 import dto.SortDTO;
@@ -58,7 +58,7 @@ public class SparkAppMain {
 
 	
 	public static void main(String[] args) throws Exception {
-		port(8080);
+		port(9000);
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
 
 		post("/registerUser", (req, res) -> {
@@ -312,11 +312,10 @@ public class SparkAppMain {
 		post("/filterCustomerOrders", (req, res)->{
 			
 			res.type("application/json");
-			Session session = req.session(true);
-			Customer loggedCustomer = session.attribute("loggedUser");
-			FilterCustomerOrdersDTO filterParams = gson.fromJson(req.body(), FilterCustomerOrdersDTO.class);
+
+			FilterOrdersDTO filterParams = gson.fromJson(req.body(), FilterOrdersDTO.class);
 			
-			return gson.toJson(orderService.filterCustomerOrders(loggedCustomer.getId(), filterParams));
+			return gson.toJson(orderService.filterOrders(filterParams));
 			
 			
 		});
@@ -525,9 +524,7 @@ public class SparkAppMain {
 			
 			res.type("application/json");
 			SortDTO sortData = gson.fromJson(req.body(), SortDTO.class);
-			Session session = req.session(true);
-			Customer loggedCustomer = session.attribute("loggedUser");
-			return gson.toJson(orderService.sortByRestaurantName(sortData, loggedCustomer.getId()));
+			return gson.toJson(orderService.sortByRestaurantName(sortData));
 			
 		});
 		
@@ -535,9 +532,7 @@ public class SparkAppMain {
 			
 			res.type("application/json");
 			SortDTO sortData = gson.fromJson(req.body(), SortDTO.class);
-			Session session = req.session(true);
-			Customer loggedCustomer = session.attribute("loggedUser");
-			return gson.toJson(orderService.sortByOrderPrice(sortData, loggedCustomer.getId()));
+			return gson.toJson(orderService.sortByOrderPrice(sortData));
 			
 		});
 		
@@ -545,9 +540,7 @@ public class SparkAppMain {
 			
 			res.type("application/json");
 			SortDTO sortData = gson.fromJson(req.body(), SortDTO.class);
-			Session session = req.session(true);
-			Customer loggedCustomer = session.attribute("loggedUser");
-			return gson.toJson(orderService.sortByDate(sortData, loggedCustomer.getId()));
+			return gson.toJson(orderService.sortByDate(sortData));
 			
 		});
 		
@@ -645,6 +638,26 @@ public class SparkAppMain {
 			Session session = req.session(true);
 			Deliverer loggedDeliverer = session.attribute("loggedUser");
 			return gson.toJson(delivererService.getDeliverersOrders(loggedDeliverer.getId()));
+		});
+		
+		post("/searchOrdersForRestaurantManager",(req, res)->{
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			Manager loggedManager = session.attribute("loggedUser");
+			SearchCustomerOrdersDTO searchParams = gson.fromJson(req.body(), SearchCustomerOrdersDTO.class);
+			return gson.toJson(orderService.searchOrdersForRestaurantManager(loggedManager.getRestaurant().getId(), searchParams));
+			
+		});
+		
+		post("/searchCustomerOrdersDeliverer",(req, res)->{
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			Deliverer loggedDeliverer = session.attribute("loggedUser");
+			SearchCustomerOrdersDTO searchParams = gson.fromJson(req.body(), SearchCustomerOrdersDTO.class);
+			return gson.toJson(orderService.searchOrdersForRestaurantDeliverer(loggedDeliverer.getId(), searchParams));
+			
 		});
 	}
 }

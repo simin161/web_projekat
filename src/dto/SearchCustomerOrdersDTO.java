@@ -1,5 +1,7 @@
 package dto;
 
+import java.util.ArrayList;
+
 public class SearchCustomerOrdersDTO {
 
 	private String restaurant;
@@ -7,7 +9,14 @@ public class SearchCustomerOrdersDTO {
 	private String priceTop;
 	private String dateBottom;
 	private String dateTop;
+	private ArrayList<OrderDTO> orders;
 	
+	public ArrayList<OrderDTO> getOrders() {
+		return orders;
+	}
+	public void setOrders(ArrayList<OrderDTO> orders) {
+		this.orders = orders;
+	}
 	public String getRestaurantName() {
 		return restaurant;
 	}

@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.google.gson.JsonElement;
+
 import beans.Article;
 import beans.Cart;
 import beans.Customer;
@@ -22,7 +24,7 @@ import dao.CustomerDAO;
 import dao.DelivererDAO;
 import dao.OrderDAO;
 import dao.RestaurantDAO;
-import dto.FilterCustomerOrdersDTO;
+import dto.FilterOrdersDTO;
 import dto.OrderDTO;
 import dto.SearchCustomerOrdersDTO;
 import dto.SortDTO;
@@ -118,23 +120,12 @@ public class OrderService {
 		OrderDAO.getInstance().save();
 	}
 
-	public ArrayList<Order> getOrdersWithoutDeliverer() {
-		ArrayList<Order> retVal = new ArrayList<Order>();
+	public ArrayList<OrderDTO> getOrdersWithoutDeliverer() {
+		ArrayList<OrderDTO> retVal = new ArrayList<OrderDTO>();
 
 		for (Order order : OrderDAO.getInstance().getAllOrders()) {
 			if (order.getOrderStatus() == OrderStatus.WAITING_FOR_DELIVERER) {
-				Order o = new Order();
-				o.setId(order.getId());
-				o.setArticles(order.getArticles());
-				o.setCustomer(CustomerDAO.getInstance().findCustomerById(order.getCustomer().getId()));
-				o.setOrderDateAndTime(order.getOrderDateAndTime());
-				o.setOrderStatus(order.getOrderStatus());
-				o.setDeleted(order.isDeleted());
-				o.setRestaurant(new Restaurant(order.getRestaurant().getId()));
-				o.getRestaurant()
-						.setName(RestaurantDAO.getInstance().findById(order.getRestaurant().getId()).getName());
-
-				retVal.add(o);
+				retVal.add(new OrderDTO(order));
 			}
 		}
 
@@ -152,20 +143,12 @@ public class OrderService {
 		OrderDAO.getInstance().save();
 	}
 
-	public ArrayList<Order> getAllOrdersForRestaurant(String id) {
-		ArrayList<Order> retVal = new ArrayList<Order>();
+	public ArrayList<OrderDTO> getAllOrdersForRestaurant(String id) {
+		ArrayList<OrderDTO> retVal = new ArrayList<OrderDTO>();
 
 		for (Order order : OrderDAO.getInstance().getAllOrders()) {
 			if (order.getRestaurant().getId().equals(id)) {
-				Order o = new Order();
-				o.setId(order.getId());
-				o.setArticles(order.getArticles());
-				o.setDeleted(order.isDeleted());
-				o.setOrderDateAndTime(o.getOrderDateAndTime());
-				o.setRestaurant(order.getRestaurant());
-				o.setOrderStatus(order.getOrderStatus());
-				o.setDeliverer(order.getDeliverer());
-				o.setCustomer(CustomerDAO.getInstance().findCustomerById(order.getCustomer().getId()));
+				OrderDTO o = new OrderDTO(order);
 				retVal.add(o);
 			}
 		}
@@ -173,10 +156,10 @@ public class OrderService {
 		return retVal;
 	}
 
-	public ArrayList<Order> getOrdersWaitingForResponse(String id) {
-		ArrayList<Order> retVal = new ArrayList<Order>();
+	public ArrayList<OrderDTO> getOrdersWaitingForResponse(String id) {
+		ArrayList<OrderDTO> retVal = new ArrayList<OrderDTO>();
 
-		for (Order order : getAllOrdersForRestaurant(id)) {
+		for (OrderDTO order : getAllOrdersForRestaurant(id)) {
 			if (order.getOrderStatus() == OrderStatus.WAITING_FOR_RESPONSE) {
 				order.setDeliverer(DelivererDAO.getInstance().findDelivererById(order.getDeliverer().getId()));
 				retVal.add(order);
@@ -300,7 +283,7 @@ public class OrderService {
 
 	}
 
-	public List<OrderDTO> filterCustomerOrders(String customerId, FilterCustomerOrdersDTO filterParams) {
+	public List<OrderDTO> filterOrders(FilterOrdersDTO filterParams) {
 
 		List<OrderDTO> filteredOrders = new ArrayList<OrderDTO>();
 
@@ -310,7 +293,7 @@ public class OrderService {
 		}
 		boolean checkStatus = filterParams.getOrderStatus() == OrderStatus.ERROR ? false : true;
 
-		for (OrderDTO o : OrderDAO.getInstance().getAllOrdersFromCustomer(customerId)) {
+		for (OrderDTO o : filterParams.getOrders()) {
 
 			if (checkType && checkStatus) {
 
@@ -340,11 +323,11 @@ public class OrderService {
 		return filteredOrders;
 	}
 
-	public ArrayList<OrderDTO> sortByRestaurantName(SortDTO sortData, String customerId) {
+	public ArrayList<OrderDTO> sortByRestaurantName(SortDTO sortData) {
 
 		ArrayList<OrderDTO> sortedOrders = sortData.getOrdersToDisplay();
-		
-		if ( sortData.getType() == SortType.ASCENDING) {
+
+		if (sortData.getType() == SortType.ASCENDING) {
 
 			Collections.sort(sortedOrders, new Comparator<OrderDTO>() {
 				@Override
@@ -365,12 +348,12 @@ public class OrderService {
 
 	}
 
-	public ArrayList<OrderDTO> sortByOrderPrice(SortDTO sortData, String customerId) {
+	public ArrayList<OrderDTO> sortByOrderPrice(SortDTO sortData) {
 
 		ArrayList<OrderDTO> sortedOrders = sortData.getOrdersToDisplay();
-		
+
 		if (sortData.getType() == SortType.ASCENDING) {
-			
+
 			Collections.sort(sortedOrders, new Comparator<OrderDTO>() {
 
 				@Override
@@ -383,7 +366,6 @@ public class OrderService {
 			});
 
 		} else {
-			
 
 			Collections.sort(sortedOrders, new Comparator<OrderDTO>() {
 
@@ -396,17 +378,17 @@ public class OrderService {
 			});
 
 		}
-		
+
 		return sortedOrders;
 
 	}
-	
-	public ArrayList<OrderDTO> sortByDate(SortDTO sortData, String customerId){
-		
+
+	public ArrayList<OrderDTO> sortByDate(SortDTO sortData) {
+
 		ArrayList<OrderDTO> sortedOrders = sortData.getOrdersToDisplay();
-		
-		if(sortData.getType() == SortType.ASCENDING) {
-			
+
+		if (sortData.getType() == SortType.ASCENDING) {
+
 			Collections.sort(sortedOrders, new Comparator<OrderDTO>() {
 
 				@Override
@@ -417,9 +399,9 @@ public class OrderService {
 				}
 
 			});
-			
+
 		} else {
-			
+
 			Collections.sort(sortedOrders, new Comparator<OrderDTO>() {
 
 				@Override
@@ -430,11 +412,202 @@ public class OrderService {
 				}
 
 			});
-			
+
+		}
+
+		return sortedOrders;
+
+	}
+
+	public ArrayList<OrderDTO> searchOrdersForRestaurantManager(String id, SearchCustomerOrdersDTO searchParams) {
+		ArrayList<OrderDTO> searchedOrders = new ArrayList<OrderDTO>();
+
+		LocalDate dateBottom = null;
+		LocalDate dateTop = null;
+		double priceBottom = -1;
+		double priceTop = -1;
+
+		try {
+
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+			if (!searchParams.getDateBottom().isEmpty()) {
+				dateBottom = LocalDate.parse(searchParams.getDateBottom(), formatter);
+			}
+			if (!searchParams.getDateTop().isEmpty()) {
+				dateTop = LocalDate.parse(searchParams.getDateTop(), formatter);
+			}
+
+			if (!searchParams.getPriceBottom().isEmpty())
+				priceBottom = Double.valueOf(searchParams.getPriceBottom());
+			if (!searchParams.getPriceTop().isEmpty())
+				priceTop = Double.valueOf(searchParams.getPriceTop());
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+		boolean priceBottomCheck = priceBottom != -1 ? true : false;
+		boolean priceTopCheck = priceTop != -1 ? true : false;
+
+		for (OrderDTO o : getAllOrdersForRestaurant(id)) {
+
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+			LocalDate orderDate = LocalDate.parse(o.getDate(), formatter);
+
+			if (priceBottomCheck && priceTopCheck) {
+
+				if (dateBottom != null && dateTop != null) {
+
+					if (dateBottom.isBefore(orderDate) && dateTop.isAfter(orderDate)) {
+
+						if (o.getTotalPrice() >= priceBottom && o.getTotalPrice() <= priceTop) {
+							searchedOrders.add(o);
+						}
+
+					}
+
+				} else {
+
+					if (o.getTotalPrice() >= priceBottom && o.getTotalPrice() <= priceTop) {
+						searchedOrders.add(o);
+					}
+
+				}
+
+			}
+
+			else if (dateBottom != null && dateTop != null) {
+
+				if (dateBottom.isBefore(orderDate) && dateTop.isAfter(orderDate)) {
+
+					searchedOrders.add(o);
+
+				}
+
+			}
+		}
+
+		return searchedOrders;
+	}
+
+	public ArrayList<OrderDTO> searchOrdersForRestaurantDeliverer(String id, SearchCustomerOrdersDTO searchParams) {
+		ArrayList<OrderDTO> searchedOrders = new ArrayList<OrderDTO>();
+
+		Pattern patternName = Pattern.compile(searchParams.getRestaurantName(), Pattern.CASE_INSENSITIVE);
+
+		LocalDate dateBottom = null;
+		LocalDate dateTop = null;
+		double priceBottom = -1;
+		double priceTop = -1;
+
+		try {
+
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+			if (!searchParams.getDateBottom().isEmpty()) {
+				dateBottom = LocalDate.parse(searchParams.getDateBottom(), formatter);
+			}
+			if (!searchParams.getDateTop().isEmpty()) {
+				dateTop = LocalDate.parse(searchParams.getDateTop(), formatter);
+			}
+
+			if (!searchParams.getPriceBottom().isEmpty())
+				priceBottom = Double.valueOf(searchParams.getPriceBottom());
+			if (!searchParams.getPriceTop().isEmpty())
+				priceTop = Double.valueOf(searchParams.getPriceTop());
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+		boolean priceBottomCheck = priceBottom != -1 ? true : false;
+		boolean priceTopCheck = priceTop != -1 ? true : false;
+
+		if(searchParams.getOrders() == null) {
+			return null;
 		}
 		
-		return sortedOrders;
-		
+		for (OrderDTO o : searchParams.getOrders()) {
+
+			Matcher matcherName = patternName.matcher(o.getRestaurant().getName());
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+			LocalDate orderDate = LocalDate.parse(o.getDate(), formatter);
+
+			if (priceBottomCheck && priceTopCheck) {
+
+				if (dateBottom != null && dateTop != null) {
+
+					if (dateBottom.isBefore(orderDate)) {
+
+						if (dateTop.isAfter(orderDate)) {
+
+							if (o.getTotalPrice() >= priceBottom) {
+
+								if (o.getTotalPrice() <= priceTop) {
+
+									if (matcherName.find()) {
+
+										searchedOrders.add(o);
+
+									}
+
+								}
+
+							}
+
+						}
+
+					}
+
+				} else {
+
+					if (o.getTotalPrice() >= priceBottom) {
+
+						if (o.getTotalPrice() <= priceTop) {
+
+							if (matcherName.find()) {
+
+								searchedOrders.add(o);
+
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
+			else if (dateBottom != null && dateTop != null) {
+
+				if (dateBottom.isBefore(orderDate)) {
+
+					if (dateTop.isAfter(orderDate)) {
+
+						if (matcherName.find()) {
+
+							searchedOrders.add(o);
+
+						}
+
+					}
+
+				}
+
+			} else if (matcherName.find()) {
+				searchedOrders.add(o);
+			}
+
+		}
+
+		return searchedOrders;
+
 	}
 
 }

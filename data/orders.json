@@ -57,9 +57,12 @@
       "collectedPoints": 0,
       "id": "5"
     },
-    "orderStatus": "PROCESSING",
+    "orderStatus": "IN_TRANSPORT",
     "isDeleted": false,
-    "totalPrice": 2350.0
+    "totalPrice": 2350.0,
+    "deliverer": {
+      "id": "1"
+    }
   },
   {
     "id": "2",
@@ -93,7 +96,7 @@
         "description": "Specijalitet kuće",
         "articleImage": "..\\upload\\a1.jpg",
         "isDeleted": false,
-        "totalNumberOrdered": 1,
+        "totalNumberOrdered": 10,
         "isDeletedFromCart": false
       }
     ],
@@ -109,23 +112,42 @@
         "day": 8
       },
       "time": {
-        "hour": 10,
-        "minute": 43,
-        "second": 31,
-        "nano": 254377400
+        "hour": 14,
+        "minute": 26,
+        "second": 29,
+        "nano": 320347700
       }
     },
     "customer": {
       "collectedPoints": 0,
       "id": "5"
     },
-    "orderStatus": "PROCESSING",
+    "orderStatus": "DELIVERED",
     "isDeleted": false,
-    "totalPrice": 1050.0
+    "totalPrice": 8250.0,
+    "deliverer": {
+      "id": "1"
+    }
   },
   {
     "id": "3",
     "articles": [
+      {
+        "id": "1",
+        "name": "Crystal burger",
+        "price": 800.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0
+        },
+        "quantity": 650.0,
+        "description": "Specijalitet kuće",
+        "articleImage": "..\\upload\\a1.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 30,
+        "isDeletedFromCart": false
+      },
       {
         "id": "2",
         "name": "Salata",
@@ -144,8 +166,8 @@
       }
     ],
     "restaurant": {
-      "id": "2",
-      "name": "da1",
+      "id": "1",
+      "name": "Crystal",
       "averageMark": 0.0
     },
     "orderDateAndTime": {
@@ -155,19 +177,22 @@
         "day": 8
       },
       "time": {
-        "hour": 10,
-        "minute": 43,
-        "second": 45,
-        "nano": 332419200
+        "hour": 14,
+        "minute": 26,
+        "second": 52,
+        "nano": 661524500
       }
     },
     "customer": {
       "collectedPoints": 0,
       "id": "5"
     },
-    "orderStatus": "PROCESSING",
+    "orderStatus": "IN_TRANSPORT",
     "isDeleted": false,
-    "totalPrice": 5000.0
+    "totalPrice": 29000.0,
+    "deliverer": {
+      "id": "1"
+    }
   },
   {
     "id": "4",
@@ -185,23 +210,7 @@
         "description": "Specijalitet kuće",
         "articleImage": "..\\upload\\a1.jpg",
         "isDeleted": false,
-        "totalNumberOrdered": 5,
-        "isDeletedFromCart": false
-      },
-      {
-        "id": "2",
-        "name": "Salata",
-        "price": 250.0,
-        "articleType": "FOOD",
-        "restaurant": {
-          "id": "1",
-          "averageMark": 0.0
-        },
-        "quantity": 500.0,
-        "description": "Salata sa avokadom",
-        "articleImage": "..\\upload\\a2.jpg",
-        "isDeleted": false,
-        "totalNumberOrdered": 5,
+        "totalNumberOrdered": 1,
         "isDeletedFromCart": false
       }
     ],
@@ -217,10 +226,10 @@
         "day": 8
       },
       "time": {
-        "hour": 13,
-        "minute": 40,
-        "second": 46,
-        "nano": 983058800
+        "hour": 14,
+        "minute": 28,
+        "second": 23,
+        "nano": 205234400
       }
     },
     "customer": {
@@ -229,160 +238,6 @@
     },
     "orderStatus": "PROCESSING",
     "isDeleted": false,
-    "totalPrice": 5250.0
-  },
-  {
-    "id": "5",
-    "articles": [
-      {
-        "id": "1",
-        "name": "Crystal burger",
-        "price": 800.0,
-        "articleType": "FOOD",
-        "restaurant": {
-          "id": "1",
-          "averageMark": 0.0
-        },
-        "quantity": 650.0,
-        "description": "Specijalitet kuće",
-        "articleImage": "..\\upload\\a1.jpg",
-        "isDeleted": false,
-        "totalNumberOrdered": 4,
-        "isDeletedFromCart": false
-      }
-    ],
-    "restaurant": {
-      "id": "1",
-      "name": "Crystal",
-      "averageMark": 0.0
-    },
-    "orderDateAndTime": {
-      "date": {
-        "year": 2021,
-        "month": 9,
-        "day": 8
-      },
-      "time": {
-        "hour": 13,
-        "minute": 40,
-        "second": 53,
-        "nano": 320289700
-      }
-    },
-    "customer": {
-      "collectedPoints": 0,
-      "id": "5"
-    },
-    "orderStatus": "PROCESSING",
-    "isDeleted": false,
-    "totalPrice": 3200.0
-  },
-  {
-    "id": "6",
-    "articles": [
-      {
-        "id": "2",
-        "name": "Salata",
-        "price": 250.0,
-        "articleType": "FOOD",
-        "restaurant": {
-          "id": "1",
-          "averageMark": 0.0
-        },
-        "quantity": 500.0,
-        "description": "Salata sa avokadom",
-        "articleImage": "..\\upload\\a2.jpg",
-        "isDeleted": false,
-        "totalNumberOrdered": 0,
-        "isDeletedFromCart": true
-      },
-      {
-        "id": "1",
-        "name": "Crystal burger",
-        "price": 800.0,
-        "articleType": "FOOD",
-        "restaurant": {
-          "id": "1",
-          "averageMark": 0.0
-        },
-        "quantity": 650.0,
-        "description": "Specijalitet kuće",
-        "articleImage": "..\\upload\\a1.jpg",
-        "isDeleted": false,
-        "totalNumberOrdered": 2,
-        "isDeletedFromCart": false
-      }
-    ],
-    "restaurant": {
-      "id": "1",
-      "name": "Crystal",
-      "averageMark": 0.0
-    },
-    "orderDateAndTime": {
-      "date": {
-        "year": 2021,
-        "month": 9,
-        "day": 8
-      },
-      "time": {
-        "hour": 15,
-        "minute": 6,
-        "second": 43,
-        "nano": 622567900
-      }
-    },
-    "customer": {
-      "collectedPoints": 0,
-      "id": "5"
-    },
-    "orderStatus": "PROCESSING",
-    "isDeleted": false,
-    "totalPrice": 1600.0
-  },
-  {
-    "id": "7",
-    "articles": [
-      {
-        "id": "1",
-        "name": "Crystal burger",
-        "price": 800.0,
-        "articleType": "FOOD",
-        "restaurant": {
-          "id": "1",
-          "averageMark": 0.0
-        },
-        "quantity": 650.0,
-        "description": "Specijalitet kuće",
-        "articleImage": "..\\upload\\a1.jpg",
-        "isDeleted": false,
-        "totalNumberOrdered": 2,
-        "isDeletedFromCart": false
-      }
-    ],
-    "restaurant": {
-      "id": "1",
-      "name": "Crystal",
-      "averageMark": 0.0
-    },
-    "orderDateAndTime": {
-      "date": {
-        "year": 2021,
-        "month": 9,
-        "day": 8
-      },
-      "time": {
-        "hour": 15,
-        "minute": 7,
-        "second": 18,
-        "nano": 784358300
-      }
-    },
-    "customer": {
-      "collectedPoints": 0,
-      "id": "5"
-    },
-    "orderStatus": "PROCESSING",
-    "isDeleted": false,
-    "totalPrice": 1600.0
+    "totalPrice": 800.0
   }
 ]

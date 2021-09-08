@@ -4,10 +4,12 @@ import java.util.ArrayList;
 
 import beans.Article;
 import beans.Customer;
+import beans.Deliverer;
 import beans.Order;
 import beans.OrderStatus;
 import beans.Restaurant;
 import dao.CustomerDAO;
+import dao.DelivererDAO;
 import dao.RestaurantDAO;
 
 public class OrderDTO {
@@ -23,6 +25,7 @@ public class OrderDTO {
 	private OrderStatus orderStatus;
 	private boolean isDeleted;
 	private double totalPrice;
+	private Deliverer deliverer;
 	
 	public OrderDTO(Order o) {
 		
@@ -55,8 +58,23 @@ public class OrderDTO {
 		this.orderStatus = o.getOrderStatus();
 		this.isDeleted = o.isDeleted();
 		this.totalPrice = o.getTotalPrice();
-	
+		
+		if(o.getDeliverer() != null)
+			this.deliverer = DelivererDAO.getInstance().findDelivererById(o.getDeliverer().getId());
+		else
+			this.deliverer = null;
 	}
+
+	
+	public Deliverer getDeliverer() {
+		return deliverer;
+	}
+
+	public void setDeliverer(Deliverer deliverer) {
+		this.deliverer = deliverer;
+	}
+
+
 
 	public String getId() {
 		return id;
