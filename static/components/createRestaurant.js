@@ -23,52 +23,72 @@ Vue.component('create-restaurant', {
 			managers: null,
 			isDisabled: true,
 			backgroundColor: "#808080",
-			message: ""
+			message: "",
+			showModal: false
 			
 		};
 	
 	},
 	
 	template: `<div>
-			   <navigation-header></navigation-header>
+	
+				<app-modal></app-modal>
+				<div class="modal" v-show="showModal">
+					<div class="modal-content">
+					
+						
+					
+					</div>
+				</div>
+	
+	
+			   	<navigation-header></navigation-header>
 				<br/>
 			   
-			   <div style="margin-top: 100px; margin-left: 42%; margin-bottom:23%">
-			   	<form>
-			   		<table style="text-align: left, margin: auto">
+			   <div style="margin-top: 100px; margin-bottom:23%">
+			   	<form class="formBackground">
+			   		<table class="tableCreateRestaurant">
+			   		<tr>
+			   			<th colSpan="3" text-align="center" class="header">Unesite podatke za novi restoran</th>
+			   		</tr>
 			   		<br/>
 			   			<tr>
 			   				<td>Naziv restorana: </td>
-			   				<td><input type="text" id="restaurantName" v-model="restaurantForCreate.name"></input></td>
+			   				<td><input class="selectRestaurant" type="text" id="restaurantName" v-model="restaurantForCreate.name"></input></td>
 			   			</tr>
+			   			</br>
 			   			<tr>
 			   				<td>Tip restorana: </td>
-			   				<td><input type="text" v-model="restaurantForCreate.restaurantType"></input>
+			   				<td><input class="selectRestaurant" type="text" v-model="restaurantForCreate.restaurantType"></input>
 			   				</td>
 			   			</tr>
+			   			</br>
 			   			<tr>
 			   				<td>Lokacija: </td>
-			   				<td><input type="text" v-model="restaurantForCreate.location.address"></input></td>
+			   				<td><input class="selectRestaurant" type="text" v-model="restaurantForCreate.location.address"></input></td>
 			   			</tr>
+			   			</br>
 			   			<tr>
 			   				<td>Logo: </td>
-			   				<td><input type="file" @change="imageSelected"/>
+			   				<td><input class="selectRestaurant" type="file" @change="imageSelected"/>
 			   					
 			   			
 			   				</td>
 			   			</tr>
+			   			</br>
 			   			<tr>
 			   				<td>Menadžer: </td>
-			   				<td><select v-model="restaurantForCreate.manager.id">
+			   				<td><select class="selectRestaurant" v-model="restaurantForCreate.manager.id">
 			   						<option value="">Izaberite</option>
 			   						<option :value="manager.id" v-for="manager in managers">{{manager.name}} {{manager.surname}}</option>
 			   					</select>	
 			   				</td>
 			   				
-			   				<td><input type="button" style="background-color: #597EAA; color: white" value= "+"></input></td>
+			   				<td><input title="Dodaj menadžera" class="buttonAddManager" type="button" @click="showModalCreateManager()" value= "+"></input></td>
 			   			</tr>
+			   			</br>
 			   			<tr>
-			   				<td><input type="button" value="Kreiraj restoran"  v-on:click="createRestaurant"></input></input></td>
+			   				<td colSpan="3" align="center"><input class="buttonCreateRestaurant" type="button" value="Kreiraj restoran"  v-on:click="createRestaurant"></input></input></td>
 			   			</tr>
 			   		</table>
 			   		<p>{{message}}</p>
@@ -77,6 +97,12 @@ Vue.component('create-restaurant', {
 		</div>`
 		,
 		methods: {
+		
+			showModalCreateManager : function(){
+			
+				this.showModal = true;
+			
+			},
 		
 			createRestaurant : function(){
 			
