@@ -595,5 +595,15 @@ public class SparkAppMain {
 			Deliverer loggedDeliverer = session.attribute("loggedUser");
 			return gson.toJson(delivererService.getDeliverersOrders(loggedDeliverer.getId()));
 		});
+		
+		post("/searchOrdersForRestaurantManager",(req, res)->{
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			Manager loggedManager = session.attribute("loggedUser");
+			SearchCustomerOrdersDTO searchParams = gson.fromJson(req.body(), SearchCustomerOrdersDTO.class);
+			return gson.toJson(orderService.searchOrdersForRestaurantManager(loggedManager.getRestaurant().getId(), searchParams));
+			
+		});
 	}
 }

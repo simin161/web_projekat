@@ -11,7 +11,15 @@ Vue.component("orders-for-restaurant", {
 				 restaurantType: "",
 			     orderStatus: null,
 				 orders: null
-			}
+			},
+			searchParams: {
+				
+				restaurant: "",
+				priceBottom: "",
+				priceTop: "",
+				dateBottom: "",
+				dateTop: ""
+			},
 		};
 	}
 	,
@@ -26,17 +34,17 @@ Vue.component("orders-for-restaurant", {
 				<table>
 					<tr>
 						<td>Cena porudžbine</td>
-						<td><input type="number" min="0" placeholder="od..."></input> </td>
-						<td><input type="number" min="0" placeholder="do..."></input></td>
+						<td><input type="number" v-model="searchParams.priceBottom" min="0" placeholder="od..."></input> </td>
+						<td><input type="number" v-model="searchParams.priceTop" min="0" placeholder="do..."></input></td>
 					</tr>
 					<tr>
 						<td>Datum porudžbine</td>
-						<td><input type="date" placeholder="od..."></input> do </td>
-						<td><input type="date" placeholder="do..."></input></td>
+						<td><input type="date" v-model="searchParams.dateBottom"></input> do </td>
+						<td><input type="date" v-model="searchParams.dateTop"></input></td>
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="button" value="Pretraži"></input></td>
+						<td><input type="button" @click="search" value="Pretraži"></input></td>
 					</tr>
 					<br/>
 					<tr>
@@ -135,6 +143,10 @@ Vue.component("orders-for-restaurant", {
 			filterOrders: function(type){
 				axios.post("/filterCustomerOrders", this.filterDTO)
 				.then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders})
+			},
+			search: function(){
+				axios.post("/searchOrdersForRestaurantManager", this.searchParams)
+				.then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders, this.filterDTO.orders = this.orders})
 			}
 		}
 		,
