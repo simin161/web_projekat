@@ -1,5 +1,7 @@
 package services;
 
+import java.util.List;
+
 import beans.Manager;
 import beans.Restaurant;
 import beans.UserInfo;
@@ -53,4 +55,11 @@ public class ManagerService {
 		RegistrationService regService = new RegistrationService();
 		return regService.checkExistanceOfUsername(newUsername);
 	}
+	
+	public List<Manager> getAllManagersWithoutRestaurants(){
+		
+		return ManagerDAO.getInstance().getAllManagersWithoutRestaurants();
+		
+	}
+	
 }

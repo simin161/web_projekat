@@ -6,18 +6,24 @@ Vue.component('create-restaurant', {
 			showCreate: false,
 			returnMessage : "",
 			returnCreateMessage: "",
-			restaurantForCreate: { restaurantName: "",
+			restaurantForCreate: { name: "",
 								   restaurantType: "",
-								   restaurantLocation: "",
-								   restaurantLogo: "",
-								   restaurantManager: ""
+								   location:{
+								   
+								   		address: ""
+								   	
+								   },
+								   manager: {
+								   
+								   	id: ""
+								   
+								   },
+								   restaurantLogo: null
 								 },
-			managerForCreate: {
-								
-			
-							  },
+			managers: null,
 			isDisabled: true,
-			backgroundColor: "#808080"
+			backgroundColor: "#808080",
+			message: ""
 			
 		};
 	
@@ -33,7 +39,7 @@ Vue.component('create-restaurant', {
 			   		<br/>
 			   			<tr>
 			   				<td>Naziv restorana: </td>
-			   				<td><input id="restaurantName" v-model="restaurantForCreate.restaurantName"></input></td>
+			   				<td><input type="text" id="restaurantName" v-model="restaurantForCreate.name"></input></td>
 			   			</tr>
 			   			<tr>
 			   				<td>Tip restorana: </td>
@@ -42,27 +48,30 @@ Vue.component('create-restaurant', {
 			   			</tr>
 			   			<tr>
 			   				<td>Lokacija: </td>
-			   				<td></td>
+			   				<td><input type="text" v-model="restaurantForCreate.location.address"></input></td>
 			   			</tr>
 			   			<tr>
 			   				<td>Logo: </td>
-			   				<td><input type="file" name="imageFile" id="imgFile"/>
-			   				
+			   				<td><input type="file" @change="imageSelected"/>
+			   					
 			   			
 			   				</td>
 			   			</tr>
 			   			<tr>
 			   				<td>Menadžer: </td>
-			   				<td><select name="managers" id="managerSelect">
+			   				<td><select v-model="restaurantForCreate.manager.id">
 			   						<option value="">Izaberite</option>
+			   						<option :value="manager.id" v-for="manager in managers">{{manager.name}} {{manager.surname}}</option>
 			   					</select>	
 			   				</td>
-			   				<td><input type="button" style="background-color: #597EAA; color: white" value= "+" on-click="location.href='/#/createManager.js'"></input></td>
+			   				
+			   				<td><input type="button" style="background-color: #597EAA; color: white" value= "+"></input></td>
 			   			</tr>
 			   			<tr>
-			   				<td><input type="button" style="background-color: #597EAA; color: white" value="Kreiraj restoran" @click="isDisabled = false; backgroundColor = '#597EAA'" on-click = "createRestaurant()"></input></td>
+			   				<td><input type="button" value="Kreiraj restoran"  v-on:click="createRestaurant"></input></input></td>
 			   			</tr>
 			   		</table>
+			   		<p>{{message}}</p>
 			   	</form>
 			</div>
 		</div>`
@@ -71,13 +80,29 @@ Vue.component('create-restaurant', {
 		
 			createRestaurant : function(){
 			
-				event.preventDefault();
-				axios.post('/createRestaurant', this.restaurantForCreate).
-				then(response =>(this.returnMessage = response.data == "SUCCESS" 
-				 ? router.push('/welcome-page') : "Nevalidni podaci!"));
-				
+				axios.post("/createRestaurant", this.restaurantForCreate)
+				.then(response=>(this.message= response.data))
+			},
 			
+			imageSelected(event){
+			const file = document.querySelector('input[type=file]').files[0]
+			const reader = new FileReader()
+
+			let rawImg;
+			reader.onloadend = () => {
+			   this.restaurantForCreate.restaurantLogo = reader.result;
+			   console.log(this.restaurantForCreate.restaurantLogo);
 			}
+			reader.readAsDataURL(file);
+			
+		}
+		
+		},
+		mounted() {
+		
+			axios.get("/getManagersWithoutRestaurants")
+		.then(response => (this.managers = response.data))
+		
 		
 		}
 });

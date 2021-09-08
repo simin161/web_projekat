@@ -43,10 +43,7 @@ public class Article {
 		
 		this.description = dto.getDescription();
 		this.articleImage = dto.getArticleImage();
-		if(!dto.equals(""))
-		{
-			this.totalNumberOrdered = Integer.parseInt(dto.getTotalNumberOrdered());
-		}
+		
 	}
 	
 	public String getId() {
