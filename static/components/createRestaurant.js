@@ -25,9 +25,6 @@ Vue.component('create-restaurant', {
 	
 	template: `<div>
 			   <navigation-header></navigation-header>
-				<ul :class="scrolled ? 'scrollRest' : 'rest'">
-					<li><a @click="isDisabled = false; backgroundColor = '#5eaaa8'; visibility = 'visible'">Izmeni nalog</a> </li>
-				</ul>
 				<br/>
 			   
 			   <div style="margin-top: 100px; margin-left: 42%; margin-bottom:23%">
@@ -36,17 +33,11 @@ Vue.component('create-restaurant', {
 			   		<br/>
 			   			<tr>
 			   				<td>Naziv restorana: </td>
-			   				<td><input id="restaurantName" v-model="restaurantForCreate.restaurantName"/></td>
+			   				<td><input id="restaurantName" v-model="restaurantForCreate.restaurantName"></input></td>
 			   			</tr>
 			   			<tr>
 			   				<td>Tip restorana: </td>
-			   				<td><select name="types" id="type-select">
-			   						<option value="">Izaberite</option>
-			   						<option value="">Tip 1</option>
-			   						<option value="">Tip 2</option>
-			   						<option value="">Tip 3</option>
-			   						<option value="">Tip 4</option>
-			   					</select>
+			   				<td><input type="text" v-model="restaurantForCreate.restaurantType"></input>
 			   				</td>
 			   			</tr>
 			   			<tr>
