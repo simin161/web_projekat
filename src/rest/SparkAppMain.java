@@ -56,7 +56,7 @@ public class SparkAppMain {
 
 	
 	public static void main(String[] args) throws Exception {
-		port(9000);
+		port(8080);
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
 
 		post("/registerUser", (req, res) -> {
@@ -395,7 +395,7 @@ public class SparkAppMain {
 			return "SUCCESS"; 
 		});
 		
-		get("/getSelectedRestaurant", (req, res) -> {
+		get("/getSelectedRestaurantFront", (req, res) -> {
 			res.type("application/json");
 			Session session = req.session(true);
 			Restaurant selectedRestaurant =session.attribute("selectedRestaurant");
