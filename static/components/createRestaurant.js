@@ -24,7 +24,18 @@ Vue.component('create-restaurant', {
 			isDisabled: true,
 			backgroundColor: "#808080",
 			message: "",
-			showModal: false
+			showModal: false,
+			newManager: {
+			
+				name: "",
+				username: "",
+				password: "",
+				surname: "",
+				sex: "",
+				dateOfBirth: "",
+				userType: "MANAGER"
+			
+			}
 			
 		};
 	
@@ -36,7 +47,51 @@ Vue.component('create-restaurant', {
 				<div class="modal" v-show="showModal">
 					<div class="modal-content">
 					
+						<span class="close" @click="showModal = false">&times;</span>
+						<table style="text-align: left; margin: auto">
 						
+							<tr >
+								<td>Ime: </td>
+								<td> <input class="selectSearch" type="text" v-model="newManager.name"> </input> </td>
+							</tr>
+							<br/>
+							<tr>
+								<td>Prezime: </td>
+								<td><input class="selectSearch" type="text" v-model="newManager.surname"></input></td>
+							</tr>
+							<br/>
+							<tr>
+								<td>Datum rođenja:</td>
+								<td><input class="selectSearch" type="date" v-model="newManager.dateOfBirth"></input> </td>
+							</tr>
+							<br/>
+							<tr>
+								<td>Pol:</td>
+								<td>
+									<select class="selectSearch" v-model="newManager.sex" >
+										<option>Muško</option>
+										<option>Žensko</option>
+									</select>
+								</td>
+							</tr>
+							<br/>
+							<tr>
+								<td>Korisničko ime: </td>
+								<td><input class="selectSearch" type="text" v-model="newManager.username"></input></td>
+							</tr>
+							<br/>
+							<tr>
+								<td>Lozinka: </td>
+								<td><input class="selectSearch" type="password" v-model="newManager.password"></input></td>
+							</tr>
+							</br>
+							</br>
+							<tr>
+								<td></td>
+								<td><input type="button" class="buttonSearchInModal" value="Registruj korisnika" @click="registerUser()"></input></td>
+							</tr>
+						
+						</table>
 					
 					</div>
 				</div>
@@ -78,10 +133,13 @@ Vue.component('create-restaurant', {
 			   			</br>
 			   			<tr>
 			   				<td>Menadžer: </td>
-			   				<td><select class="selectRestaurant" v-model="restaurantForCreate.manager.id">
+			   				<td><select class="selectRestaurant" v-if="restaurantForCreate.manager.id === ''" v-model="restaurantForCreate.manager.id">
 			   						<option value="">Izaberite</option>
 			   						<option :value="manager.id" v-for="manager in managers">{{manager.name}} {{manager.surname}}</option>
 			   					</select>	
+			   					<select class="selectRestaurant" v-if="restaurantForCreate.manager.id != ''" v-model="restaurantForCreate.manager.id">
+			   						<option :value="manager.id" v-if="restaurantForCreate.manager.id === manager.id" v-for="manager in managers">{{manager.name}} {{manager.surname}}</option>
+			   					</select>
 			   				</td>
 			   				
 			   				<td><input title="Dodaj menadžera" class="buttonAddManager" type="button" @click="showModalCreateManager()" value= "+"></input></td>
@@ -101,6 +159,13 @@ Vue.component('create-restaurant', {
 			showModalCreateManager : function(){
 			
 				this.showModal = true;
+			
+			},
+			
+			registerUser : function(){
+			
+				axios.post("/registerManagerFromRestaurant", this.newManager)
+			.then(response => {alert("Menadžer je uspešno kreiran!"), this.restaurantForCreate.manager.id = response.data, mounted()})
 			
 			},
 		
