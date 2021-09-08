@@ -30,23 +30,19 @@ public class Article {
 
 	public Article() {}
 	
-	@SuppressWarnings("unlikely-arg-type")
 	public Article(ArticleDTO dto) {
 		this.id = dto.getId();
 		this.name = dto.getName();
-		if(!dto.getPrice().equals(""))
+		if(dto.getPrice() != null && !dto.getPrice().equals(""))
 			this.price = Double.parseDouble(dto.getPrice());
 		
 		this.articleType = dto.getArticleType();
-		if(!dto.getQuantity().equals(""))
+		if(dto.getQuantity() != null && !dto.getQuantity().equals(""))
 			this.quantity = Double.parseDouble(dto.getQuantity());
 		
 		this.description = dto.getDescription();
 		this.articleImage = dto.getArticleImage();
-		if(!dto.equals(""))
-		{
-			this.totalNumberOrdered = Integer.parseInt(dto.getTotalNumberOrdered());
-		}
+
 	}
 	
 	public String getId() {

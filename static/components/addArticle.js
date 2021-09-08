@@ -4,10 +4,10 @@ Vue.component("add-article",{
 				article:{
 						id: "",
 						name: "",
-						price: null,
+						price: "",
 						articleType: "",
 						restaurant: "",
-						quantity: null,
+						quantity: "",
 						description: "",
 						articleImage: null
 				},
