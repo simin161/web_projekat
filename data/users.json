@@ -58,5 +58,15 @@
     "username": "zoricabre",
     "password": "zoricabre",
     "userType": "MANAGER"
+  },
+  {
+    "username": "wolfboy",
+    "password": "wolfboy",
+    "userType": "MANAGER"
+  },
+  {
+    "username": "yuki",
+    "password": "yuki",
+    "userType": "MANAGER"
   }
 ]

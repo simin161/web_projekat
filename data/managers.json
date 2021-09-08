@@ -15,7 +15,21 @@
   },
   {
     "restaurant": {
-      "averageMark": 0.0
+      "id": "3",
+      "name": "PANORAMA FINAL",
+      "restaurantType": "Restoran kuhinje za smrtni odred",
+      "articles": [],
+      "status": "CLOSED",
+      "location": {
+        "longitude": 0.0,
+        "latitude": 0.0,
+        "address": "Kec Klisa Zatvor"
+      },
+      "restaurantLogo": "..\\upload\\r3.png",
+      "averageMark": 0.0,
+      "manager": {
+        "id": "2"
+      }
     },
     "id": "2",
     "username": "zoricabre",
@@ -25,5 +39,59 @@
     "sex": "Žensko",
     "userType": "MANAGER",
     "dateOfBirth": "2021-08-30"
+  },
+  {
+    "restaurant": {
+      "id": "4",
+      "name": "Yukimura\u0027s Hideout",
+      "restaurantType": "Restoran japanske kuhinje",
+      "articles": [],
+      "status": "CLOSED",
+      "location": {
+        "longitude": 0.0,
+        "latitude": 0.0,
+        "address": "Yukihira Soume 23, Novi Jandrixland"
+      },
+      "restaurantLogo": "..\\upload\\r4.jpg",
+      "averageMark": 0.0,
+      "manager": {
+        "id": "3"
+      }
+    },
+    "id": "3",
+    "username": "wolfboy",
+    "password": "wolfboy",
+    "name": "Yoichi",
+    "surname": "Yukimura",
+    "sex": "Muško",
+    "userType": "MANAGER",
+    "dateOfBirth": "2000-01-21"
+  },
+  {
+    "restaurant": {
+      "id": "5",
+      "name": "ss",
+      "restaurantType": "ss",
+      "articles": [],
+      "status": "CLOSED",
+      "location": {
+        "longitude": 0.0,
+        "latitude": 0.0,
+        "address": "ss"
+      },
+      "restaurantLogo": "..\\upload\\r5.jpg",
+      "averageMark": 0.0,
+      "manager": {
+        "id": "4"
+      }
+    },
+    "id": "4",
+    "username": "yuki",
+    "password": "yuki",
+    "name": "Soma",
+    "surname": "Yukihira",
+    "sex": "Muško",
+    "userType": "MANAGER",
+    "dateOfBirth": "2021-08-29"
   }
 ]

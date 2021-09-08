@@ -7,12 +7,13 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import beans.Customer;
 import beans.Manager;
+import beans.Restaurant;
 
 public class ManagerDAO {
 
@@ -75,4 +76,43 @@ public class ManagerDAO {
 		allManagers.add(newManager);
 		
 	}
+	
+	public List<Manager> getAllManagersWithoutRestaurants(){
+		
+		List<Manager> managers = new ArrayList<Manager>();
+		
+		for(Manager m : allManagers) {
+			
+			if(m.getRestaurant() == null) {
+				
+				m.setRestaurant(new Restaurant());
+				managers.add(m);
+				
+			}
+			else if(m.getRestaurant().getId().equals("")) {
+				
+				managers.add(m);
+				
+			}
+			
+		}
+		
+		return managers;
+		
+	}
+	
+	public Manager findManagerById(String managerId) {
+		
+		for(Manager m : allManagers) {
+			if(m.getId().equals(managerId)) {
+				
+				return m;
+				
+			}
+		}
+		
+		return new Manager();
+		
+	}
+	
 }

@@ -36,6 +36,8 @@ public class Restaurant {
 	}
 	public Restaurant() {
 		
+		this.id = "";
+		
 	}
 	
 	public Restaurant(String id) {

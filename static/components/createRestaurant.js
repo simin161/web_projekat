@@ -6,87 +6,202 @@ Vue.component('create-restaurant', {
 			showCreate: false,
 			returnMessage : "",
 			returnCreateMessage: "",
-			restaurantForCreate: { restaurantName: "",
+			restaurantForCreate: { name: "",
 								   restaurantType: "",
-								   restaurantLocation: "",
-								   restaurantLogo: "",
-								   restaurantManager: ""
+								   location:{
+								   
+								   		address: ""
+								   	
+								   },
+								   manager: {
+								   
+								   	id: ""
+								   
+								   },
+								   restaurantLogo: null
 								 },
-			managerForCreate: {
-								
-			
-							  },
+			managers: null,
 			isDisabled: true,
-			backgroundColor: "#808080"
+			backgroundColor: "#808080",
+			message: "",
+			showModal: false,
+			newManager: {
+			
+				name: "",
+				username: "",
+				password: "",
+				surname: "",
+				sex: "",
+				dateOfBirth: "",
+				userType: "MANAGER"
+			
+			},
+			showOther: true
 			
 		};
 	
 	},
 	
 	template: `<div>
-			   <navigation-header></navigation-header>
-				<ul :class="scrolled ? 'scrollRest' : 'rest'">
-					<li><a @click="isDisabled = false; backgroundColor = '#5eaaa8'; visibility = 'visible'">Izmeni nalog</a> </li>
-				</ul>
+	
+				<app-modal></app-modal>
+				<div class="modal" v-show="showModal">
+					<div class="modal-content">
+					
+						<span class="close" @click="showModal = false">&times;</span>
+						<table style="text-align: left; margin: auto">
+						
+							<tr >
+								<td>Ime: </td>
+								<td> <input class="selectSearch" type="text" v-model="newManager.name"> </input> </td>
+							</tr>
+							<br/>
+							<tr>
+								<td>Prezime: </td>
+								<td><input class="selectSearch" type="text" v-model="newManager.surname"></input></td>
+							</tr>
+							<br/>
+							<tr>
+								<td>Datum rođenja:</td>
+								<td><input class="selectSearch" type="date" v-model="newManager.dateOfBirth"></input> </td>
+							</tr>
+							<br/>
+							<tr>
+								<td>Pol:</td>
+								<td>
+									<select class="selectSearch" v-model="newManager.sex" >
+										<option>Muško</option>
+										<option>Žensko</option>
+									</select>
+								</td>
+							</tr>
+							<br/>
+							<tr>
+								<td>Korisničko ime: </td>
+								<td><input class="selectSearch" type="text" v-model="newManager.username"></input></td>
+							</tr>
+							<br/>
+							<tr>
+								<td>Lozinka: </td>
+								<td><input class="selectSearch" type="password" v-model="newManager.password"></input></td>
+							</tr>
+							</br>
+							</br>
+							<tr>
+								<td></td>
+								<td><input type="button" class="buttonSearchInModal" value="Registruj korisnika" @click="registerUser()"></input></td>
+							</tr>
+						
+						</table>
+					
+					</div>
+				</div>
+	
+	
+			   	<navigation-header></navigation-header>
 				<br/>
 			   
-			   <div style="margin-top: 100px; margin-left: 42%; margin-bottom:23%">
-			   	<form>
-			   		<table style="text-align: left, margin: auto">
+			   <div style="margin-top: 100px; margin-bottom:23%">
+			   	<form class="formBackground">
+			   		<table class="tableCreateRestaurant">
+			   		<tr>
+			   			<th colSpan="3" text-align="center" class="header">Unesite podatke za novi restoran</th>
+			   		</tr>
 			   		<br/>
 			   			<tr>
 			   				<td>Naziv restorana: </td>
-			   				<td><input id="restaurantName" v-model="restaurantForCreate.restaurantName"/></td>
+			   				<td><input class="selectRestaurant" type="text" id="restaurantName" v-model="restaurantForCreate.name"></input></td>
 			   			</tr>
+			   			</br>
 			   			<tr>
 			   				<td>Tip restorana: </td>
-			   				<td><select name="types" id="type-select">
-			   						<option value="">Izaberite</option>
-			   						<option value="">Tip 1</option>
-			   						<option value="">Tip 2</option>
-			   						<option value="">Tip 3</option>
-			   						<option value="">Tip 4</option>
-			   					</select>
+			   				<td><input class="selectRestaurant" type="text" v-model="restaurantForCreate.restaurantType"></input>
 			   				</td>
 			   			</tr>
+			   			</br>
 			   			<tr>
 			   				<td>Lokacija: </td>
-			   				<td></td>
+			   				<td><input class="selectRestaurant" type="text" v-model="restaurantForCreate.location.address"></input></td>
 			   			</tr>
+			   			</br>
 			   			<tr>
 			   				<td>Logo: </td>
-			   				<td><input type="file" name="imageFile" id="imgFile"/>
-			   				
+			   				<td><input class="selectRestaurant" type="file" @change="imageSelected"/>
+			   					
 			   			
 			   				</td>
 			   			</tr>
+			   			</br>
 			   			<tr>
 			   				<td>Menadžer: </td>
-			   				<td><select name="managers" id="managerSelect">
+			   				<td><select class="selectRestaurant" v-if="showOther === true" v-model="restaurantForCreate.manager.id">
 			   						<option value="">Izaberite</option>
+			   						<option :value="manager.id" v-for="manager in managers">{{manager.name}} {{manager.surname}}</option>
 			   					</select>	
+			   					<select autocomplete="off" class="selectRestaurant" v-if="showOther === false" v-model="restaurantForCreate.manager.id">
+			   						<option :value="manager.id" v-for="manager in managers" selected="selected">{{manager.name}} {{manager.surname}}</option>
+			   					</select>
 			   				</td>
-			   				<td><input type="button" style="background-color: #597EAA; color: white" value= "+" on-click="location.href='/#/createManager.js'"></input></td>
+			   				
+			   				<td><input title="Dodaj menadžera" class="buttonAddManager" type="button" @click="showModalCreateManager()" value= "+"></input></td>
 			   			</tr>
+			   			</br>
 			   			<tr>
-			   				<td><input type="button" style="background-color: #597EAA; color: white" value="Kreiraj restoran" @click="isDisabled = false; backgroundColor = '#597EAA'" on-click = "createRestaurant()"></input></td>
+			   				<td colSpan="3" align="center"><input class="buttonCreateRestaurant" type="button" value="Kreiraj restoran"  v-on:click="createRestaurant"></input></input></td>
 			   			</tr>
 			   		</table>
+			   		<p>{{message}}</p>
 			   	</form>
 			</div>
 		</div>`
 		,
 		methods: {
 		
+			showModalCreateManager : function(){
+			
+				this.showModal = true;
+			
+			},
+			
+			reloadManagers : function() {
+			
+				axios.get("/getManagersWithoutRestaurants")
+				.then(response => (this.managers = response.data))
+			
+			},
+			
+			registerUser : function(){
+			
+				axios.post("/registerManagerFromRestaurant", this.newManager)
+			.then(response => {alert("Menadžer je uspešno kreiran!"), this.managers = response.data, this.showOther = false})
+			
+			},
+		
 			createRestaurant : function(){
 			
-				event.preventDefault();
-				axios.post('/createRestaurant', this.restaurantForCreate).
-				then(response =>(this.returnMessage = response.data == "SUCCESS" 
-				 ? router.push('/welcome-page') : "Nevalidni podaci!"));
-				
+				axios.post("/createRestaurant", this.restaurantForCreate)
+				.then(response=>(this.message= response.data))
+			},
 			
+			imageSelected(event){
+			const file = document.querySelector('input[type=file]').files[0]
+			const reader = new FileReader()
+
+			let rawImg;
+			reader.onloadend = () => {
+			   this.restaurantForCreate.restaurantLogo = reader.result;
+			   console.log(this.restaurantForCreate.restaurantLogo);
 			}
+			reader.readAsDataURL(file);
+			
+		}
+		
+		},
+		mounted() {
+		
+			axios.get("/getManagersWithoutRestaurants")
+		.then(response => (this.managers = response.data))
+		
 		
 		}
 });

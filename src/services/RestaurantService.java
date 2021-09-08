@@ -18,21 +18,26 @@ import beans.SortType;
 import dao.ArticleDAO;
 import dao.CommentDAO;
 import dao.CustomerDAO;
+import dao.ManagerDAO;
 import dao.OrderDAO;
 import dao.RestaurantDAO;
 import dto.SearchRestaurantDTO;
 
 public class RestaurantService {
-
+	
 	public boolean createRestaurant(Restaurant newRestaurant) {
 		
 		boolean returnValue = false;
 		
 		try {
 			
-			newRestaurant.setId(Integer.toString(RestaurantDAO.getInstance().getAll().size()) + 1);
+			newRestaurant.setId(Integer.toString(RestaurantDAO.getInstance().getAll().size() + 1));
 			newRestaurant.setStatus(RestaurantStatus.CLOSED);
 			newRestaurant.setArticles(new ArrayList<Article>());
+			newRestaurant.setRestaurantLogo(ImageService.getInstance().saveImage(newRestaurant.getRestaurantLogo(), "r" + newRestaurant.getId()));
+			ManagerDAO.getInstance().findManagerById(newRestaurant.getManager().getId()).setRestaurant(newRestaurant);
+			ManagerDAO.getInstance().save();
+			
 			RestaurantDAO.getInstance().addRestaurant(newRestaurant);
 			RestaurantDAO.getInstance().saveRestaurants();
 			returnValue = true;

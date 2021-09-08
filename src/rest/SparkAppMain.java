@@ -7,6 +7,7 @@ import static spark.Spark.staticFiles;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -109,6 +110,20 @@ public class SparkAppMain {
 			
 		});
 
+		post("/registerManagerFromRestaurant", (req, res)->{
+			
+			List<Manager> retVal = new ArrayList<Manager>();
+			
+			Manager managerToCreate = gson.fromJson(req.body(), Manager.class);
+			
+			registrationService.registerManagerFromRestaurant(managerToCreate);
+			
+			retVal = managerService.getAllManagersWithoutRestaurants();
+			
+			return gson.toJson(retVal);
+			
+		});
+		
 		post("/logInUser", (req, res) -> {
 			res.type("application/json");
 			String returnValue = "SUCCESS";
@@ -340,12 +355,11 @@ public class SparkAppMain {
 		
 		post("/createRestaurant", (req, res) -> {
 			res.type("application/json");
-			Session session = req.session(true);
 			
-			String returnValue = "FAILURE";
+			String returnValue = "Greška prilikom kreiranja restorana!";
 
 			if(restaurantService.createRestaurant((Restaurant) gson.fromJson(req.body(), Restaurant.class))){
-				returnValue = "SUCCESS";
+				returnValue = "Restoran je uspešno kreiran!";
 			}
 
 			return returnValue;
@@ -357,6 +371,14 @@ public class SparkAppMain {
 		
 		});
 
+		get("/getManagersWithoutRestaurants", (req, res)->{
+			
+			res.type("application/json");
+			
+			return gson.toJson(managerService.getAllManagersWithoutRestaurants());
+			
+		});
+		
 		post("/editRestaurant", (req, res) -> {
 
 			res.type("application/json");

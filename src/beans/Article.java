@@ -42,7 +42,6 @@ public class Article {
 		
 		this.description = dto.getDescription();
 		this.articleImage = dto.getArticleImage();
-
 	}
 	
 	public String getId() {
