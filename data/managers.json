@@ -12,5 +12,18 @@
     "sex": "Muško",
     "userType": "MANAGER",
     "dateOfBirth": "1980-11-06"
+  },
+  {
+    "restaurant": {
+      "averageMark": 0.0
+    },
+    "id": "2",
+    "username": "zoricabre",
+    "password": "zoricabre",
+    "name": "zorica",
+    "surname": "markovic",
+    "sex": "Žensko",
+    "userType": "MANAGER",
+    "dateOfBirth": "2021-08-30"
   }
 ]

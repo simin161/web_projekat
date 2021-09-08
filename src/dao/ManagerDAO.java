@@ -69,4 +69,10 @@ public class ManagerDAO {
 		}
 		return manager;
 	}
+	
+	public void addManager(Manager newManager) {
+		
+		allManagers.add(newManager);
+		
+	}
 }

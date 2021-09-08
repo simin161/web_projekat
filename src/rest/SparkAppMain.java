@@ -95,7 +95,11 @@ public class SparkAppMain {
 			}
 			else {
 				
-				
+				if(registrationService.registerManager(gson.fromJson(req.body(), Manager.class))) {
+					
+					returnValue= "Menadžer je uspešno kreiran!";
+					
+				}
 				
 			}
 			

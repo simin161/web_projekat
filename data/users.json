@@ -53,5 +53,10 @@
     "username": "vendi",
     "password": "vendi",
     "userType": "DELIVERER"
+  },
+  {
+    "username": "zoricabre",
+    "password": "zoricabre",
+    "userType": "MANAGER"
   }
 ]

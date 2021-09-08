@@ -4,6 +4,7 @@ import beans.Administrator;
 import beans.Customer;
 import beans.Deliverer;
 import beans.Manager;
+import beans.Restaurant;
 import beans.User;
 import beans.UserInfo;
 import beans.UserType;
@@ -41,6 +42,26 @@ public class RegistrationService {
 			UserInfoDAO.getInstance().addUser(new UserInfo(newDeliverer.getUsername(), newDeliverer.getPassword(), UserType.DELIVERER));
 			UserInfoDAO.getInstance().save();
 			retVal = true;
+		}
+		
+		return retVal;
+		
+	}
+	
+	public boolean registerManager(Manager newManager) {
+		
+		boolean retVal = false;
+		
+		if(!checkExistanceOfUsername(newManager.getUsername())) {
+			
+			newManager.setId(Integer.toString(ManagerDAO.getInstance().getAllManagers().size() + 1));
+			newManager.setRestaurant(new Restaurant());
+			ManagerDAO.getInstance().addManager(newManager);
+			ManagerDAO.getInstance().save();
+			UserInfoDAO.getInstance().addUser(new UserInfo(newManager.getUsername(), newManager.getPassword(), UserType.MANAGER));
+			UserInfoDAO.getInstance().save();
+			retVal = true;
+			
 		}
 		
 		return retVal;
