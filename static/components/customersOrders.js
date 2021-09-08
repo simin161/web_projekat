@@ -128,7 +128,8 @@ template: `<div>
 						<td>Tip restorana: </td>
 						<td>
 							<select class="selectSearch" id="selectType" name="selectType" v-model="filterParams.restaurantType">
-								<option value="restaurant.restaurantType" v-for="restaurant in restaurants">{{restaurant.restaurantType}}</option>
+								<option value="">Izaberite...</option>
+								<option v-for="restaurant in restaurants">{{restaurant.restaurantType}}</option>
 							</select>
 						</td>
 					</tr>
@@ -136,6 +137,7 @@ template: `<div>
 						</td>Status porudžbine:</td>
 						<td>
 							<select class="selectSearch" id="selectStatus" name="selectStatus" v-model="filterParams.orderStatus">
+								<option value="">Izaberite...</option>
 								<option value="PROCESSING">U obradi</option>
 								<option value="IN_PREPARATION">U pripremi</option>
 								<option value="WAITING_FOR_DELIVERER">Čeka na dostavljača</option>

@@ -17,6 +17,7 @@ import beans.Restaurant;
 import dao.CustomerDAO;
 import dao.OrderDAO;
 import dao.RestaurantDAO;
+import dto.FilterCustomerOrdersDTO;
 import dto.OrderDTO;
 import dto.SearchCustomerOrdersDTO;
 
@@ -102,14 +103,6 @@ public class OrderService {
 		List<OrderDTO> searchedOrders = new ArrayList<OrderDTO>();
 
 		Pattern patternName = Pattern.compile(searchParams.getRestaurantName(), Pattern.CASE_INSENSITIVE);
-		// Pattern patternDateBottom = Pattern.compile(searchParams.getDateBottom(),
-		// Pattern.CASE_INSENSITIVE);
-		// Pattern patternDateTop = Pattern.compile(searchParams.getDateTop(),
-		// Pattern.CASE_INSENSITIVE);
-		// Pattern patternPriceBottom = Pattern.compile(searchParams.getPriceBottom(),
-		// Pattern.CASE_INSENSITIVE);
-		// Pattern patternPriceTop = Pattern.compile(searchParams.getPriceTop(),
-		// Pattern.CASE_INSENSITIVE);
 
 		LocalDate dateBottom = null;
 		LocalDate dateTop = null;
@@ -218,6 +211,49 @@ public class OrderService {
 
 		return searchedOrders;
 
+	}
+	
+	public List<OrderDTO> filterCustomerOrders(String customerId, FilterCustomerOrdersDTO filterParams){
+		
+		List<OrderDTO> filteredOrders = new ArrayList<OrderDTO>();
+		
+		boolean checkType = filterParams.getRestaurantType().isEmpty() ? false : true;
+		if(filterParams.getOrderStatus() == null) {
+			filterParams.setOrderStatus(OrderStatus.ERROR);
+		}
+		boolean checkStatus = filterParams.getOrderStatus() == OrderStatus.ERROR ? false : true;
+		
+		for(OrderDTO o : OrderDAO.getInstance().getAllOrdersFromCustomer(customerId)) {
+			
+			if(checkType && checkStatus) {
+				
+				if(o.getRestaurant().getRestaurantType().equals(filterParams.getRestaurantType())){
+					
+					if(o.getOrderStatus().equals(filterParams.getOrderStatus())) {
+						
+						filteredOrders.add(o);
+						
+					}
+					
+				}
+				
+			}
+			else if(checkType) {
+				
+				if(o.getRestaurant().getRestaurantType().equals(filterParams.getRestaurantType()))
+					filteredOrders.add(o);
+				
+			}
+			else if(checkStatus) {
+				if(o.getOrderStatus().equals(filterParams.getOrderStatus()))
+					filteredOrders.add(o);
+			}
+			else
+				filteredOrders.add(o);
+			
+		}
+		
+		return filteredOrders;
 	}
 
 }

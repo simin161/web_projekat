@@ -25,6 +25,7 @@ import beans.User;
 import beans.UserInfo;
 import dto.ArticleDTO;
 import dto.CommentDTO;
+import dto.FilterCustomerOrdersDTO;
 import dto.SearchCustomerOrdersDTO;
 import dto.SearchRestaurantDTO;
 import services.AdministratorService;
@@ -270,6 +271,18 @@ public class SparkAppMain {
 			Customer loggedCustomer = session.attribute("loggedUser");
 			SearchCustomerOrdersDTO searchParams = gson.fromJson(req.body(), SearchCustomerOrdersDTO.class);
 			return gson.toJson(orderService.searchCustomerOrders(loggedCustomer.getId(), searchParams));
+			
+		});
+		
+		post("/filterCustomerOrders", (req, res)->{
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			Customer loggedCustomer = session.attribute("loggedUser");
+			FilterCustomerOrdersDTO filterParams = gson.fromJson(req.body(), FilterCustomerOrdersDTO.class);
+			
+			return gson.toJson(orderService.filterCustomerOrders(loggedCustomer.getId(), filterParams));
+			
 			
 		});
 		
