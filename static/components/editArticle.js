@@ -4,7 +4,12 @@ Vue.component('edit-article', {
 			article: null,
 			scrolled: false,
 			visibility: 'hidden',
-			isDisabled: true
+			isDisabled: true,
+			message : "",
+			dto: {
+				article: null,
+				edited: null
+			}
 		}
 },
 template: `
@@ -56,6 +61,7 @@ template: `
 						</tr>
 					</table>
 					<input type="button" v-bind:style="{'visibility': visibility}" value="Sačuvaj"  v-on:click="save"></input>
+					<p>{{message}}</p>
 				</div>
 			</div>
 
@@ -79,7 +85,11 @@ template: `
 			  },
 		save : function(){
 				axios.post("/editArticle", this.article)
-				.then(response => (this.article = response.data[0]))
+				.then(response => {
+					this.dto = response.data,
+					this.article = this.dto.article,
+					this.message = this.dto.edited ? "Uspešno je izmenjen artikal!" : "Došlo je do greške prilikom promene slike!"
+					this.visibility = 'hidden'})
 			}
 		},
 		created () {

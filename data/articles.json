@@ -2,14 +2,14 @@
   {
     "id": "1",
     "name": "Crystal burger",
-    "price": 800.0,
+    "price": 500.0,
     "articleType": "FOOD",
     "restaurant": {
       "id": "1",
       "averageMark": 0.0
     },
-    "quantity": 650.0,
-    "description": "Specijalitet kuće",
+    "quantity": 700.0,
+    "description": "Specijalitet kuće!\nMnogo sočno, mnogo masno",
     "articleImage": "..\\upload\\a1.jpg",
     "isDeleted": false,
     "totalNumberOrdered": 0,

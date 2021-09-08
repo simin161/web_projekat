@@ -19,7 +19,8 @@ public class ArticleService {
 		ArticleDAO.getInstance().save();
 	}
 
-	public void editArticle(Article editedArticle) {
+	public boolean editArticle(Article editedArticle) {
+		boolean retVal = true;
 		for (Article article : ArticleDAO.getInstance().getAll()) {
 			if (article.getId().equals(editedArticle.getId())) {
 				if (checkIfImageChanged(article.getArticleImage(), editedArticle.getArticleImage())) {
@@ -29,6 +30,7 @@ public class ArticleService {
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
+						retVal = false;
 					}
 				}
 				editedArticle.setRestaurant(article.getRestaurant());
@@ -37,6 +39,7 @@ public class ArticleService {
 				break;
 			}
 		}
+		return retVal;
 	}
 	
 	public Article findById(String id) {
