@@ -45,12 +45,30 @@
   },
   {
     "cart": {
-      "articles": [],
+      "articles": [
+        {
+          "id": "1",
+          "name": "Crystal burger",
+          "price": 800.0,
+          "articleType": "FOOD",
+          "restaurant": {
+            "id": "1",
+            "averageMark": 0.0
+          },
+          "quantity": 650.0,
+          "description": "Specijalitet kuće",
+          "articleImage": "..\\upload\\a1.jpg",
+          "isDeleted": false,
+          "totalNumberOrdered": 0,
+          "isDeletedFromCart": false
+        }
+      ],
       "customer": {
         "collectedPoints": 0
       },
       "price": 0.0,
       "restaurant": {
+        "id": "",
         "averageMark": 0.0
       }
     },
@@ -105,6 +123,7 @@
       },
       "price": 0.0,
       "restaurant": {
+        "id": "",
         "averageMark": 0.0
       }
     },

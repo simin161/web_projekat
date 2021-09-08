@@ -58,5 +58,10 @@
     "username": "zoricabre",
     "password": "zoricabre",
     "userType": "MANAGER"
+  },
+  {
+    "username": "wolfboy",
+    "password": "wolfboy",
+    "userType": "MANAGER"
   }
 ]

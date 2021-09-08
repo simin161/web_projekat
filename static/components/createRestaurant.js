@@ -133,13 +133,10 @@ Vue.component('create-restaurant', {
 			   			</br>
 			   			<tr>
 			   				<td>Menadžer: </td>
-			   				<td><select class="selectRestaurant" v-if="restaurantForCreate.manager.id === ''" v-model="restaurantForCreate.manager.id">
+			   				<td><select class="selectRestaurant" v-model="restaurantForCreate.manager.id">
 			   						<option value="">Izaberite</option>
 			   						<option :value="manager.id" v-for="manager in managers">{{manager.name}} {{manager.surname}}</option>
 			   					</select>	
-			   					<select class="selectRestaurant" v-if="restaurantForCreate.manager.id != ''" v-model="restaurantForCreate.manager.id">
-			   						<option :value="manager.id" v-if="restaurantForCreate.manager.id === manager.id" v-for="manager in managers">{{manager.name}} {{manager.surname}}</option>
-			   					</select>
 			   				</td>
 			   				
 			   				<td><input title="Dodaj menadžera" class="buttonAddManager" type="button" @click="showModalCreateManager()" value= "+"></input></td>
@@ -162,10 +159,17 @@ Vue.component('create-restaurant', {
 			
 			},
 			
+			reloadManagers : function() {
+			
+				axios.get("/getManagersWithoutRestaurants")
+				.then(response => (this.managers = response.data))
+			
+			},
+			
 			registerUser : function(){
 			
 				axios.post("/registerManagerFromRestaurant", this.newManager)
-			.then(response => {alert("Menadžer je uspešno kreiran!"), this.restaurantForCreate.manager.id = response.data, mounted()})
+			.then(response => {alert("Menadžer je uspešno kreiran!"), this.managers = response.data})
 			
 			},
 		

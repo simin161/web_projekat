@@ -7,6 +7,7 @@ import static spark.Spark.staticFiles;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -108,6 +109,20 @@ public class SparkAppMain {
 			
 		});
 
+		post("/registerManagerFromRestaurant", (req, res)->{
+			
+			List<Manager> retVal = new ArrayList<Manager>();
+			
+			Manager managerToCreate = gson.fromJson(req.body(), Manager.class);
+			
+			registrationService.registerManagerFromRestaurant(managerToCreate);
+			
+			retVal = managerService.getAllManagersWithoutRestaurants();
+			
+			return gson.toJson(retVal);
+			
+		});
+		
 		post("/logInUser", (req, res) -> {
 			res.type("application/json");
 			String returnValue = "SUCCESS";

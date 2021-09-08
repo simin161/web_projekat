@@ -68,6 +68,26 @@ public class RegistrationService {
 		
 	}
 	
+	public void registerManagerFromRestaurant(Manager newManager) {
+		
+	
+		
+		if(!checkExistanceOfUsername(newManager.getUsername())) {
+			
+			newManager.setId(Integer.toString(ManagerDAO.getInstance().getAllManagers().size() + 1));
+			newManager.setRestaurant(new Restaurant());
+			ManagerDAO.getInstance().addManager(newManager);
+			ManagerDAO.getInstance().save();
+			UserInfoDAO.getInstance().addUser(new UserInfo(newManager.getUsername(), newManager.getPassword(), UserType.MANAGER));
+			UserInfoDAO.getInstance().save();
+			
+			
+		}
+		
+		
+		
+	}
+	
 	public UserType logInUser(UserInfo userForLogIn) {
 		UserType returnValue = UserType.ERROR;
 		for(UserInfo user : UserInfoDAO.getInstance().getAllUsers()) {
