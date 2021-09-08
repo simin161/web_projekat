@@ -28,8 +28,7 @@ template: `<div>
 							<img style="border-radius: 5px;" :src="item.restaurantLogo" height="150px" width="150px">
 						</span> 
 						<span>
-							<button title="Poruči hranu" class="infoRestaurant" @click="openArticles(item)"> </button> 
-							<button title="Prikaži komentare" class="commentRestaurant" @click="showComments(item)"></button>
+							<button title="Prikaži detaljnije..." class="infoRestaurant" @click="openRestaurant(item)"> </button> 
 						</span>
 						<p>{{item.name}}</p>
 						<p>{{item.restaurantType}} </p>
@@ -39,47 +38,18 @@ template: `<div>
 						<br/>
 					
 					</div>
-					
-					<div class="listsArticles" v-if="comment.commentedRestaurant.id === item.id" v-for="comment in comments">
-					
-						<p>{{comment.customer.username}}</p>
-						<p>{{comment.text}}</p>
-						<p>Ocena: {{comment.mark}}</p>
-					</div>	
-					
 				</div>
 			</div>
 		</div>`
 	,
 	methods: {
 	
-		openArticles : function(item){
+		openRestaurant : function(item){
 		
-			if(item.status==="OPEN")
 				axios.post("/selectRestaurant", item)
-				.then(response =>(router.push("restaurantArticles")))
-			else
-				alert("Restoran je trenutno zatvoren!")
-		},
-		
-		showComments : function(item){
-		
-			axios.post("/getCommentsForRestaurantCustomer", item)
-			.then(response=> {
-									this.comments = response.data;
-									showComment = true;
-									console.log(this.comments)
-									if(this.comments.length==0)
-										alert("Za izabrani restoran ne postoje komentari za prikaz.");
-									
-									
-						})	
-			
-			
-			
-		
+				.then(response =>(router.push("showRestaurantForCustomer")))
+				
 		}
-	
 	}
 	,
 	mounted(){

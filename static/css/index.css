@@ -53,6 +53,15 @@
 	
 }
 
+.background{
+	
+	background-image: url(../images/pozadinaa.jpg);
+	background-repeat: no-repeat;
+	background-size: auto;
+	width: 100%;
+	height: 100%;
+}
+
 .lists{
 	margin: auto;
 	margin-bottom: 10px;

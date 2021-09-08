@@ -219,6 +219,8 @@ public class SparkAppMain {
 			return gson.toJson(articleService.getArticlesForRestaurant(loggedManager.getRestaurant().getId()));
 		});
 		
+		
+		
 		get("/getSelectedRestaurant", (req, res)-> {
 			
 			res.type("application/json");
@@ -406,6 +408,16 @@ public class SparkAppMain {
 		});
 		
 		get("/getSelectedRestaurantFront", (req, res) -> {
+			res.type("application/json");
+			Session session = req.session(true);
+			Restaurant selectedRestaurant =session.attribute("selectedRestaurant");
+			selectedRestaurant.setArticles(articleService.getArticlesForRestaurant(selectedRestaurant.getId()));
+			ArrayList<Restaurant> retVal = new ArrayList<Restaurant>();
+			retVal.add(selectedRestaurant);
+			return gson.toJson(retVal);
+		});
+		
+		get("/getSelectedRestaurantFrontCustomer", (req, res) -> {
 			res.type("application/json");
 			Session session = req.session(true);
 			Restaurant selectedRestaurant =session.attribute("selectedRestaurant");
