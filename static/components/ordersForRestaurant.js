@@ -6,6 +6,11 @@ Vue.component("orders-for-restaurant", {
 			sortDTO: {
 				ordersToDisplay: null,
 				sortType: null
+			},
+			filterDTO:{
+				 restaurantType: "",
+			     orderStatus: null,
+				 orders: null
 			}
 		};
 	}
@@ -31,7 +36,7 @@ Vue.component("orders-for-restaurant", {
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="button" value="Pretraži/Filtriraj"></input></td>
+						<td><input type="button" value="Pretraži"></input></td>
 					</tr>
 					<br/>
 					<tr>
@@ -58,6 +63,28 @@ Vue.component("orders-for-restaurant", {
 					<tr>
 						<td></td>
 						<td><input type="button" @click="sortByDate('DESCENDING')" value="datumu porudžbine"></input></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Filtriraj</td>
+					</tr>
+					<tr>
+						<td>Status porudžbine</td>
+						<td>
+							<select class="selectSearch" id="selectStatus" name="selectStatus" v-model="filterDTO.orderStatus">
+								<option value="">Izaberite...</option>
+								<option value="PROCESSING">U obradi</option>
+								<option value="IN_PREPARATION">U pripremi</option>
+								<option value="WAITING_FOR_DELIVERER">Čeka na dostavljača</option>
+								<!---<option value="WAITING_FOR_RESPONSE">Dostavljač čeka odgovor</option>--->
+								<option value="IN_TRANSPORT">U transportu</option>
+								<option value="DELIVERED">Dostavljena</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="button" @click="filterOrders" value="Filtriraj"></input></td>
 					</tr>
 				</table>
 			  </div>
@@ -104,11 +131,15 @@ Vue.component("orders-for-restaurant", {
 				this.sortDTO.type = type;
 				axios.post("/sortByDate", this.sortDTO)
 				.then(response => {this.orders = response.data})
+			},
+			filterOrders: function(type){
+				axios.post("/filterCustomerOrders", this.filterDTO)
+				.then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders})
 			}
 		}
 		,
 		mounted(){
 		axios.get("/getOrdersForRestaurant")
-		.then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders})
+		.then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders, this.filterDTO.orders = this.orders})
 	}
 });

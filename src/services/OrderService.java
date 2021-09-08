@@ -22,7 +22,7 @@ import dao.CustomerDAO;
 import dao.DelivererDAO;
 import dao.OrderDAO;
 import dao.RestaurantDAO;
-import dto.FilterCustomerOrdersDTO;
+import dto.FilterOrdersDTO;
 import dto.OrderDTO;
 import dto.SearchCustomerOrdersDTO;
 import dto.SortDTO;
@@ -281,7 +281,7 @@ public class OrderService {
 
 	}
 
-	public List<OrderDTO> filterCustomerOrders(String customerId, FilterCustomerOrdersDTO filterParams) {
+	public List<OrderDTO> filterOrders(FilterOrdersDTO filterParams) {
 
 		List<OrderDTO> filteredOrders = new ArrayList<OrderDTO>();
 
@@ -291,7 +291,7 @@ public class OrderService {
 		}
 		boolean checkStatus = filterParams.getOrderStatus() == OrderStatus.ERROR ? false : true;
 
-		for (OrderDTO o : OrderDAO.getInstance().getAllOrdersFromCustomer(customerId)) {
+		for (OrderDTO o : filterParams.getOrders()) {
 
 			if (checkType && checkStatus) {
 

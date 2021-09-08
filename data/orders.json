@@ -57,7 +57,7 @@
       "collectedPoints": 0,
       "id": "5"
     },
-    "orderStatus": "PROCESSING",
+    "orderStatus": "IN_PREPARATION",
     "isDeleted": false,
     "totalPrice": 2350.0
   },

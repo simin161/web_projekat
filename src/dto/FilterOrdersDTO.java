@@ -1,12 +1,21 @@
 package dto;
 
+import java.util.ArrayList;
+
 import beans.OrderStatus;
 
-public class FilterCustomerOrdersDTO {
+public class FilterOrdersDTO {
 
 	private String restaurantType;
 	private OrderStatus orderStatus;
+	private ArrayList<OrderDTO> orders;
 	
+	public ArrayList<OrderDTO> getOrders() {
+		return orders;
+	}
+	public void setOrders(ArrayList<OrderDTO> orders) {
+		this.orders = orders;
+	}
 	public String getRestaurantType() {
 		return restaurantType;
 	}
