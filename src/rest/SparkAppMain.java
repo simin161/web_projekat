@@ -60,7 +60,7 @@ public class SparkAppMain {
 
 	
 	public static void main(String[] args) throws Exception {
-		port(9000);
+		port(8080);
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
 
 		post("/registerUser", (req, res) -> {
@@ -494,6 +494,16 @@ public class SparkAppMain {
 			Session session = req.session(true);
 			Manager loggedManager = session.attribute("loggedUser");
 			return gson.toJson(restaurantService.getAllCommentsForRestaurant(loggedManager.getRestaurant().getId()));
+		});
+		
+		get("/getAllCommentsForRestaurantAdmin", (req, res)->{
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			Restaurant selectedRestaurant = session.attribute("selectedRestaurant");
+			ArrayList<Comment> comments = restaurantService.getAllCommentsForRestaurant(selectedRestaurant.getId());
+			return gson.toJson(comments);
+			
 		});
 		
 		post("/declineComment", (req, res)->{

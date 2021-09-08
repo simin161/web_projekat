@@ -16,6 +16,8 @@ const customerCart = {template: '<customerCart></customerCart>'}
 const customerOrders = {template: '<customerOrders></customerOrders>'}
 const restaurantPageCustomer = {template: '<showRestaurantForCustomer></showRestaurantForCustomer>'}
 const createUser = {template: '<create-User></create-User>'}
+const restaurantsAdmin = {template: '<restaurantsAdmin></restaurantsAdmin>'}
+const restaurantPageAdmin = {template: '<restaurantPageAdmin></restaurantPageAdmin>'}
 
 const router = new VueRouter({
 	  mode: 'hash',
@@ -37,7 +39,9 @@ const router = new VueRouter({
 	    { path: '/customerCart', component: customerCart},
 	    { path: '/customerOrders', component: customerOrders},
 	    { path: '/showRestaurantForCustomer', component: restaurantPageCustomer},
-	    { path: '/createUser', component: createUser}
+	    { path: '/createUser', component: createUser},
+	    { path: '/restaurantsAdmin', component: restaurantsAdmin},
+	    { path: '/restaurantPageAdmin', component: restaurantPageAdmin}
 	  ]
 });
 
