@@ -182,7 +182,7 @@ Vue.component('users', {
 		
 		sortByUserName : function(type){
 		
-			this.sortDTO.type = type;
+			this.sortUsersDTO.type = type;
 			axios.post("/sortUsersByName", this.sortUsersDTO)
 			.then(response=>(this.usersToDisplay = response.data))
 		
@@ -191,7 +191,7 @@ Vue.component('users', {
 		
 		sortByUserSurname : function(type){
 		
-			this.sortDTO.type = type;
+			this.sortUsersDTO.type = type;
 			axios.post("/sortUsersBySurname", this.sortUsersDTO)
 			.then(response=>(this.usersToDisplay = response.data))
 		
@@ -200,7 +200,7 @@ Vue.component('users', {
 		
 		sortByUserUsername : function(type){
 		
-			this.sortDTO.type = type;
+			this.sortUsersDTO.type = type;
 			axios.post("/sortUsersByUsername", this.sortUsersDTO)
 			.then(response=>(this.usersToDisplay = response.data))
 		
@@ -209,8 +209,8 @@ Vue.component('users', {
 		
 		sortByPointsCollected : function(type){
 		
-			this.sortDTO.type = type;
-			axios.post("/sortUsersByPoints", this.sortDTO)
+			this.sortUsersDTO.type = type;
+			axios.post("/sortUsersByPoints", this.sortUsersDTO)
 			.then(response=>(this.usersToDisplay = response.data))
 		
 		
