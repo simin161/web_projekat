@@ -21,6 +21,7 @@
 
 .backgroundCreateRestaurant{
 	
+	height: 100vh;
 	background-image: url(../images/pozadinaKreiranjeRestorana.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;

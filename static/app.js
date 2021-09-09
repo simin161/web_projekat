@@ -16,7 +16,13 @@ const customerCart = {template: '<customerCart></customerCart>'}
 const customerOrders = {template: '<customerOrders></customerOrders>'}
 const restaurantPageCustomer = {template: '<showRestaurantForCustomer></showRestaurantForCustomer>'}
 const createUser = {template: '<create-User></create-User>'}
+<<<<<<< HEAD
 const deliverersRequests = {template: '<deliverers-requests></deliverers-requests>'}
+=======
+const restaurantsAdmin = {template: '<restaurantsAdmin></restaurantsAdmin>'}
+const restaurantPageAdmin = {template: '<restaurantPageAdmin></restaurantPageAdmin>'}
+const users = {template: '<users></users>'}
+>>>>>>> pretragaKorisnika
 
 const router = new VueRouter({
 	  mode: 'hash',
@@ -40,6 +46,9 @@ const router = new VueRouter({
 	    { path: '/showRestaurantForCustomer', component: restaurantPageCustomer},
 	    { path: '/createUser', component: createUser},
 	    { path: '/deliverers-requests', component: deliverersRequests}
+	    { path: '/restaurantsAdmin', component: restaurantsAdmin},
+	    { path: '/restaurantPageAdmin', component: restaurantPageAdmin},
+	    { path: '/users', component: users}
 	  ]
 });
 

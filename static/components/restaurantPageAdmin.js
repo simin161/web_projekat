@@ -1,4 +1,4 @@
-Vue.component("showRestaurantForCustomer", {
+Vue.component("restaurantPageAdmin", {
 	data: function(){
 		return{
 			restaurant: null,
@@ -15,7 +15,7 @@ template: `<div>
 			<p>Naziv restorana: {{restaurant.name}}</p>
 			<p>Tip restorana: {{restaurant.restaurantType}}</p>
 			<p>Prosečna ocena: {{restaurant.averageMark}}</p>
-			<p>Lokacija: TO BE CONTINUED </p>
+			<p>Lokacija: {{restaurant.location.address}} </p>
 			<p>Status: {{restaurant.status}}</p>
 		</div>
 		<hr/>
@@ -23,7 +23,6 @@ template: `<div>
 		<form class="searchForm">
 			<button class="aaa" @click="showArticles()">Prikaži artikle</button>
 			<button class="aaa" @click="showComments()">Prikaži komentare</button>
-			<button class="aaa" @click="placeAnOrder(restaurant)">Poruči hranu!</button>
 		</form>
 		
 		</br>
@@ -35,6 +34,9 @@ template: `<div>
 						<span style="float: left;">
 							<img style="border-radius: 5px;" :src="article.articleImage" height="90px" width="90px">
 						</span> 
+						<span>
+							<button class="deleteArticle" @click="deleteArticle(item)" title="Obriši artikal"></button>
+						</span>
 						<p>{{article.name}}</p>
 						<p>Cena: {{article.price}} dinara</p>
 						<p>Količina: {{article.quantity}}</p>
@@ -52,9 +54,13 @@ template: `<div>
 				</div>
 				<div>
 					<div class="lists" v-for="comment in comments"">
+						<span>
+							<button class="deleteArticle" @click="deleteComment(item)" title="Obriši komentar"></button>
+						</span>
 						<p>{{comment.customer.username}}</p>
 						<p>{{comment.text}} </p>
 						<p>Ocena: {{comment.mark}}</p>
+						<p>Status komentara: {{comment.status}}</p>
 					</div>
 				</div>
 			</div>
@@ -84,19 +90,8 @@ template: `<div>
 		showComments : function(){
 			this.showComponent = "2";
 			event.preventDefault();
-			axios.get("/getCommentsForRestaurant")
+			axios.get("/getAllCommentsForRestaurantAdmin")
 			.then(response =>(this.comments = response.data))
-		},
-		
-		placeAnOrder : function(item){
-		
-			event.preventDefault();
-			if(item.status==="OPEN")
-				axios.post("/selectRestaurant", item)
-				.then(response =>(router.push("restaurantArticles")))
-			else
-				alert("Restoran je trenutno zatvoren!")
-		
 		}
 		
 	}

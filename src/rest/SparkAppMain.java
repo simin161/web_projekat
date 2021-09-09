@@ -33,8 +33,10 @@ import dto.FilterRestaurantDTO;
 import dto.PasswordDTO;
 import dto.SearchCustomerOrdersDTO;
 import dto.SearchRestaurantDTO;
+import dto.SearchUsersDTO;
 import dto.SortDTO;
 import dto.SortRestaurantDTO;
+import dto.SortUsersDTO;
 import services.AdministratorService;
 import services.ArticleService;
 import services.CartService;
@@ -45,6 +47,7 @@ import services.ManagerService;
 import services.OrderService;
 import services.RegistrationService;
 import services.RestaurantService;
+import services.UserService;
 import spark.Session;
 
 public class SparkAppMain {
@@ -60,7 +63,7 @@ public class SparkAppMain {
 	private static CommentService commentService = new CommentService();
 	private static CartService cartService = new CartService();
 	private static OrderService orderService = new OrderService();
-
+	private static UserService userService = new UserService();
 	
 	public static void main(String[] args) throws Exception {
 		port(9000);
@@ -438,6 +441,14 @@ public class SparkAppMain {
 			return "SUCCESS";
 		});
 		
+		get("/getAllUsers", (req, res)->{
+			
+			res.type("application/json");
+			String users = gson.toJson(userService.getAllUsersExceptAdmins());
+			return users;
+			
+		});
+		
 		get("/getChoosenArticle", (req, res) -> {
 			res.type("application/json");
 			Session session = req.session(true);
@@ -497,6 +508,16 @@ public class SparkAppMain {
 			Session session = req.session(true);
 			Manager loggedManager = session.attribute("loggedUser");
 			return gson.toJson(restaurantService.getAllCommentsForRestaurant(loggedManager.getRestaurant().getId()));
+		});
+		
+		get("/getAllCommentsForRestaurantAdmin", (req, res)->{
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			Restaurant selectedRestaurant = session.attribute("selectedRestaurant");
+			ArrayList<Comment> comments = restaurantService.getAllCommentsForRestaurant(selectedRestaurant.getId());
+			return gson.toJson(comments);
+			
 		});
 		
 		post("/declineComment", (req, res)->{
@@ -694,6 +715,7 @@ public class SparkAppMain {
 			return retVal ? "SUCCESS" : "FAILURE";
 		});
 		
+
 		get("/getDeliverersRequests", (req, res) -> {
 			res.type("application/json");
 			Session session = req.session(true);
@@ -705,6 +727,38 @@ public class SparkAppMain {
 			res.type("application/json");
 			FilterRestaurantDTO dto = gson.fromJson(req.body(), FilterRestaurantDTO.class);
 			return gson.toJson(restaurantService.filterRestaurants(dto));
+		});
+		
+		post("/searchUsers", (req, res)->{
+			
+			res.type("application/json");
+			SearchUsersDTO searchParams = gson.fromJson(req.body(), SearchUsersDTO.class);
+			return gson.toJson(userService.search(searchParams));
+			
+		});
+		
+		post("/sortUsersByName", (req, res) -> {
+			res.type("application/json");
+			SortUsersDTO type = gson.fromJson(req.body(), SortUsersDTO.class);
+			return gson.toJson(userService.sortUsersByName(type));
+		});
+		
+		post("/sortUsersBySurname", (req, res) -> {
+			res.type("application/json");
+			SortUsersDTO type = gson.fromJson(req.body(), SortUsersDTO.class);
+			return gson.toJson(userService.sortUsersBySurname(type));
+		});
+		
+		post("/sortUsersByUsername", (req, res) -> {
+			res.type("application/json");
+			SortUsersDTO type = gson.fromJson(req.body(), SortUsersDTO.class);
+			return gson.toJson(userService.sortUsersByUsername(type));
+		});
+		
+		post("/sortUsersByPoints", (req, res) -> {
+			res.type("application/json");
+			SortUsersDTO type = gson.fromJson(req.body(), SortUsersDTO.class);
+			return gson.toJson(userService.sortUsersByPoints(type));
 		});
 	}
 }
