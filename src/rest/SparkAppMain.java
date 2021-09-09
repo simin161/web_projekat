@@ -760,5 +760,11 @@ public class SparkAppMain {
 			SortUsersDTO type = gson.fromJson(req.body(), SortUsersDTO.class);
 			return gson.toJson(userService.sortUsersByPoints(type));
 		});
+		
+		post("/sortRestaurantsByLocation", (req, res) ->{
+			res.type("application/json");
+			SortRestaurantDTO dto = gson.fromJson(req.body(), SortRestaurantDTO.class);
+			return gson.toJson(restaurantService.sortByLocation(dto));
+		});
 	}
 }

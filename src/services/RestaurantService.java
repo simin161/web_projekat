@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.google.gson.JsonElement;
+
 import beans.Article;
 import beans.Comment;
 import beans.CommentStatus;
@@ -339,6 +341,25 @@ public class RestaurantService {
 		
 		return indicator;
 		
+	}
+
+	public ArrayList<Restaurant> sortByLocation(SortRestaurantDTO dto) {
+		if (dto.getSortType() == SortType.ASCENDING) {
+			Collections.sort(dto.getRestaurants(), new Comparator<Restaurant>() {
+				@Override
+				public int compare(final Restaurant object1, final Restaurant object2) {
+					return object1.getLocation().getAddress().compareTo(object2.getLocation().getAddress());
+				}
+			});
+		} else {
+			Collections.sort(dto.getRestaurants(), new Comparator<Restaurant>() {
+				@Override
+				public int compare(final Restaurant object1, final Restaurant object2) {
+					return -object1.getLocation().getAddress().compareTo(object2.getLocation().getAddress());
+				}
+			});
+		}
+		return dto.getRestaurants();
 	}
 	
 }
