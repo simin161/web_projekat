@@ -35,7 +35,7 @@ public class UserDTO {
 		this.username= username;
 		this.name= name;
 		this.surname = surname;
-		this.userType = UserType.CUSTOMER;
+		this.userType = userType;
 		
 	}
 	

@@ -15,7 +15,7 @@ template: `<div>
 				<div v-for="item in usersToDisplay">
 					<div class="lists">
 						<span style="float: left; margin-top: 2.5px">
-							<img style="border-radius: 5px;" :src="item.restaurantLogo" height="150px" width="150px">
+							<img style="border-radius: 5px;" src="../images/user.png" height="150px" width="150px">
 						</span> 
 						<span>
 							<button title="Obriši korisnika" class="deleteArticle" @click="deleteUser(item)"> </button> 
@@ -24,6 +24,8 @@ template: `<div>
 						<p>Ime: 			{{item.name}} </p>
 						<p>Prezime:			{{item.surname}} </p> 
 						<p>Tip korisnika: 	{{item.userType}}</p>
+						<p v-if="item.userType === 'CUSTOMER'">Broj osvojenih bodova: {{item.collectedPoints}}</p>
+						<p v-if="item.userType === 'CUSTOMER'">Tip kupca: {{item.customerType}}</p>
 						<br/>
 						<br/>
 					
