@@ -11,7 +11,8 @@
     "surname": "Managerkic",
     "sex": "Muško",
     "userType": "MANAGER",
-    "dateOfBirth": "1980-11-06"
+    "dateOfBirth": "1980-11-06",
+    "isDeleted": false
   },
   {
     "restaurant": {
@@ -28,7 +29,8 @@
       "restaurantLogo": "..\\upload\\r3.png",
       "averageMark": 0.0,
       "manager": {
-        "id": "2"
+        "id": "2",
+        "isDeleted": false
       }
     },
     "id": "2",
@@ -38,7 +40,8 @@
     "surname": "markovic",
     "sex": "Žensko",
     "userType": "MANAGER",
-    "dateOfBirth": "2021-08-30"
+    "dateOfBirth": "2021-08-30",
+    "isDeleted": false
   },
   {
     "restaurant": {
@@ -55,7 +58,8 @@
       "restaurantLogo": "..\\upload\\r4.jpg",
       "averageMark": 0.0,
       "manager": {
-        "id": "3"
+        "id": "3",
+        "isDeleted": false
       }
     },
     "id": "3",
@@ -65,7 +69,8 @@
     "surname": "Yukimura",
     "sex": "Muško",
     "userType": "MANAGER",
-    "dateOfBirth": "2000-01-21"
+    "dateOfBirth": "2000-01-21",
+    "isDeleted": false
   },
   {
     "restaurant": {
@@ -82,7 +87,8 @@
       "restaurantLogo": "..\\upload\\r5.jpg",
       "averageMark": 0.0,
       "manager": {
-        "id": "4"
+        "id": "4",
+        "isDeleted": false
       }
     },
     "id": "4",
@@ -92,7 +98,8 @@
     "surname": "Yukihira",
     "sex": "Muško",
     "userType": "MANAGER",
-    "dateOfBirth": "2021-08-29"
+    "dateOfBirth": "2021-08-29",
+    "isDeleted": false
   },
   {
     "restaurant": {
@@ -109,7 +116,8 @@
       "restaurantLogo": "..\\upload\\r6.png",
       "averageMark": 0.0,
       "manager": {
-        "id": "5"
+        "id": "5",
+        "isDeleted": false
       }
     },
     "id": "5",
@@ -119,6 +127,36 @@
     "surname": "ssss",
     "sex": "Žensko",
     "userType": "MANAGER",
-    "dateOfBirth": "2021-08-30"
+    "dateOfBirth": "2021-08-30",
+    "isDeleted": false
+  },
+  {
+    "restaurant": {
+      "id": "7",
+      "name": "test",
+      "restaurantType": "test",
+      "articles": [],
+      "status": "CLOSED",
+      "location": {
+        "longitude": 0.0,
+        "latitude": 0.0,
+        "address": "test"
+      },
+      "restaurantLogo": "..\\upload\\r7.jpg",
+      "averageMark": 0.0,
+      "manager": {
+        "id": "6",
+        "isDeleted": false
+      }
+    },
+    "id": "6",
+    "username": "brismena",
+    "password": "brismena",
+    "name": "test brisanja menadzera",
+    "surname": "test brisanja",
+    "sex": "Muško",
+    "userType": "MANAGER",
+    "dateOfBirth": "2021-08-30",
+    "isDeleted": true
   }
 ]

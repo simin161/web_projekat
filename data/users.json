@@ -83,5 +83,10 @@
     "username": "jojbre",
     "password": "jojbre",
     "userType": "CUSTOMER"
+  },
+  {
+    "username": "brismena",
+    "password": "brismena",
+    "userType": "MANAGER"
   }
 ]

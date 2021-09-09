@@ -13,6 +13,7 @@ import beans.Manager;
 import beans.Order;
 import beans.OrderStatus;
 import beans.Restaurant;
+import beans.RestaurantStatus;
 import beans.SortType;
 import beans.UserType;
 import dao.CommentDAO;
@@ -235,6 +236,39 @@ public class UserService {
 			deleteCustomer(userId);
 			
 		}
+		else if(type == UserType.MANAGER) {
+			
+			deleteManager(userId);
+			
+		}
+		
+	}
+	
+	private void deleteManager(String userId) {
+		
+		for(Manager m : ManagerDAO.getInstance().getAllManagers()) {
+			
+			if(m.getId().equals(userId)) {
+				
+				m.setDeleted(true);
+				break;
+			}
+			
+		}
+		
+		ManagerDAO.getInstance().save();
+		
+		for(Restaurant r : RestaurantDAO.getInstance().getAll()) {
+			
+			if(r.getId().equals(ManagerDAO.getInstance().findManagerById(userId).getRestaurant().getId())) {
+				
+				r.setStatus(RestaurantStatus.CLOSED);
+				
+			}
+			
+		}
+		
+		RestaurantDAO.getInstance().save();
 		
 	}
 	

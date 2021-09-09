@@ -40,6 +40,16 @@
     ]
   },
   {
+    "id": "7",
+    "name": "test",
+    "restaurantType": "test",
+    "articles": [],
+    "status": "CLOSED",
+    "location": {},
+    "restaurantLogo": "..\\upload\\r7.jpg",
+    "averageMark": 0.0
+  },
+  {
     "id": "2",
     "name": "da1",
     "restaurantType": "ad",
