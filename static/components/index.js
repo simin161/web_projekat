@@ -32,65 +32,65 @@ template: `<div>
 				<span class="close" @click="showModal = false">&times;</span>
 					<table style="text-align: left; margin: auto">
 						<tr>
-							<td><input type="text" v-model="searchParams.name" placeholder="Naziv restorana..."></input></td>
+							<td align="center" colSpan="2">Pretraga</td>
+						</tr>
+						<tr>
+							<td><input type="text" class="selectSearch" v-model="searchParams.name" placeholder="Naziv restorana..."></input></td>
 						</tr>
 						<tr>
 							<td>
-								<select v-model="searchParams.type">
+								<select class="selectSearch" v-model="searchParams.type">
 									<option value="">Izaberite tip...</option>
 									<option v-for="restaurant in restaurants" :value="restaurant.restaurantType">{{restaurant.restaurantType}}</option>
 								</select>
 							</td>
 						</tr>
 						<tr>
-							<td><input type="text" v-model="searchParams.location" placeholder="Lokacija..."></input></td>
+							<td><input class="selectSearch" type="text" v-model="searchParams.location" placeholder="Lokacija..."></input></td>
 						</tr>
 						<tr>
-							<td><input type="number" min="0" v-model="searchParams.averageMark" placeholder="Prosečna ocena..."></input></td>
+							<td><input class="selectSearch" type="number" min="0" v-model="searchParams.averageMark" placeholder="Prosečna ocena..."></input></td>
 						</tr>
 						<tr>
-							<td><input type="button" @click="search" value="Pretraži"></input></td>
-						</tr>
-						<tr>
-							<td><input @click="showOpened" type="button" value="Prikaži samo otvorene restorane"></input></td>
+							<td align="center" colSpan="2"><input class="buttonSearchInModal" type="button" @click="search" value="Pretraži"></input></td>
 						</tr>
 						<br/>
 						<tr>
-							<td>Sortiraj po (rastuće):</td>
+							<td align="center" colSpan="2">Sortiraj po (rastuće):</td>
 						</tr>
 						<tr>
-							<td><input type="button" @click="sortByName('ASCENDING')" value="nazivu restorana"></input></td>
+							<td align="center" colSpan="2"><input class="buttonSearchInModal" type="button" @click="sortByName('ASCENDING')" value="nazivu restorana"></input></td>
 						</tr>
 						<tr>
-							<td><input type="button" @click="sortByLocation('ASCENDING')" value="lokaciji"></input></td>
+							<td align="center" colSpan="2"><input class="buttonSearchInModal" type="button" @click="sortByLocation('ASCENDING')" value="lokaciji"></input></td>
 						</tr>
 						<tr>
-							<td><input type="button" @click="sortByAverageMark('ASCENDING')" value="prosečnoj oceni"></input></td>
+							<td align="center" colSpan="2"><input class="buttonSearchInModal" type="button" @click="sortByAverageMark('ASCENDING')" value="prosečnoj oceni"></input></td>
 						</tr>
 						<br/>
 						<tr>
-							<td>Sortiraj po (opadajuće):</td>
+							<td align="center" colSpan="2">Sortiraj po (opadajuće):</td>
 						</tr>
 						<tr>
-							<td><input type="button" @click="sortByName('DESCENDING')"  value="nazivu restorana"></input></td>
+							<td><input class="buttonSearchInModal" type="button" @click="sortByName('DESCENDING')"  value="nazivu restorana"></input></td>
 						</tr>
 						<tr>
-							<td><input type="button" @click="sortByLocation('DESCENDING')" value="lokaciji"></input></td>
+							<td><input class="buttonSearchInModal" type="button" @click="sortByLocation('DESCENDING')" value="lokaciji"></input></td>
 						</tr>
 						<tr>
-							<td><input type="button" @click="sortByAverageMark('DESCENDING')" value="prosečnoj oceni"></input></td>
+							<td><input class="buttonSearchInModal" type="button" @click="sortByAverageMark('DESCENDING')" value="prosečnoj oceni"></input></td>
 						</tr>
 						<tr>
-							<td>Filtriranje</td>
+							<td align="center" colSpan="2">Filtriranje</td>
 						</tr>
 						<tr>
-							<select v-model="filterDTO.restaurantType">
+							<select class="selectSearch" v-model="filterDTO.restaurantType">
 								<option value="">Izaberite tip...</option>
 								<option v-for="restaurant in restaurants" :value="restaurant.restaurantType">{{restaurant.restaurantType}}</option>
 							</select>
 						</tr>
 						<tr>
-							<input type="button" value="Filtriraj" @click="filter"></input>
+							<input class="buttonSearchInModal" type="button" value="Filtriraj" @click="filter"></input>
 						</tr>
 					</table>
 			  </div>
