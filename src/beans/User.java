@@ -14,6 +14,18 @@ public class User {
 	protected String sex;
 	protected UserType userType;
 	protected Date dateOfBirth;
+	protected boolean isDeleted;
+	
+	public boolean getDeleted() {
+		
+		return isDeleted;
+		
+	}
+	public void setDeleted(boolean deleted) {
+		
+		this.isDeleted = deleted;
+		
+	}
 	
 	public String getId() {
 		return id;

@@ -8,7 +8,8 @@
     "surname": "Sasic",
     "sex": "Muško",
     "userType": "CUSTOMER",
-    "dateOfBirth": "0001-01-01"
+    "dateOfBirth": "0001-01-01",
+    "isDeleted": false
   },
   {
     "collectedPoints": 0,
@@ -19,7 +20,8 @@
     "surname": "Majovic",
     "sex": "Žensko",
     "userType": "CUSTOMER",
-    "dateOfBirth": "1998-06-08"
+    "dateOfBirth": "1998-06-08",
+    "isDeleted": false
   },
   {
     "collectedPoints": 0,
@@ -30,7 +32,8 @@
     "surname": "Miskovic",
     "sex": "Muško",
     "userType": "CUSTOMER",
-    "dateOfBirth": "1965-05-26"
+    "dateOfBirth": "1965-05-26",
+    "isDeleted": false
   },
   {
     "collectedPoints": 0,
@@ -41,13 +44,15 @@
     "surname": "sa",
     "sex": "Žensko",
     "userType": "CUSTOMER",
-    "dateOfBirth": "0011-02-11"
+    "dateOfBirth": "0011-02-11",
+    "isDeleted": false
   },
   {
     "cart": {
       "articles": [],
       "customer": {
-        "collectedPoints": 0
+        "collectedPoints": 0,
+        "isDeleted": false
       },
       "price": 0.0,
       "restaurant": {
@@ -63,7 +68,8 @@
     "surname": "customercic",
     "sex": "Muško",
     "userType": "CUSTOMER",
-    "dateOfBirth": "1981-02-18"
+    "dateOfBirth": "1981-02-18",
+    "isDeleted": false
   },
   {
     "cart": {
@@ -102,7 +108,8 @@
         }
       ],
       "customer": {
-        "collectedPoints": 0
+        "collectedPoints": 0,
+        "isDeleted": false
       },
       "price": 0.0,
       "restaurant": {
@@ -118,7 +125,8 @@
     "surname": "Customer",
     "sex": "Muško",
     "userType": "CUSTOMER",
-    "dateOfBirth": "2000-09-05"
+    "dateOfBirth": "2000-09-05",
+    "isDeleted": false
   },
   {
     "collectedPoints": 0,
@@ -129,6 +137,55 @@
     "surname": "asd",
     "sex": "Muško",
     "userType": "CUSTOMER",
-    "dateOfBirth": "2021-08-29"
+    "dateOfBirth": "2021-08-29",
+    "isDeleted": false
+  },
+  {
+    "cart": {
+      "articles": [],
+      "customer": {
+        "collectedPoints": 0,
+        "isDeleted": false
+      },
+      "price": 0.0,
+      "restaurant": {
+        "id": "",
+        "averageMark": 0.0
+      }
+    },
+    "collectedPoints": 133000243,
+    "id": "8",
+    "username": "brisime",
+    "password": "brisime",
+    "name": "izbrisan lik",
+    "surname": "izbrisace me",
+    "sex": "Muško",
+    "userType": "CUSTOMER",
+    "dateOfBirth": "2021-08-31",
+    "isDeleted": true
+  },
+  {
+    "cart": {
+      "articles": [],
+      "customer": {
+        "collectedPoints": 0,
+        "isDeleted": false
+      },
+      "price": 0.0,
+      "restaurant": {
+        "id": "",
+        "averageMark": 0.0
+      }
+    },
+    "collectedPoints": 166,
+    "id": "9",
+    "username": "jojbre",
+    "password": "jojbre",
+    "name": "test user",
+    "surname": "test brisanja kupca",
+    "sex": "Muško",
+    "userType": "CUSTOMER",
+    "dateOfBirth": "2021-08-31",
+    "isDeleted": true
   }
 ]

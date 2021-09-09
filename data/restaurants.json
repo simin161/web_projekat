@@ -5,66 +5,37 @@
     "restaurantType": "Tip",
     "articles": [
       {
-        "id": "1",
-        "price": 0.0,
-        "quantity": 0.0,
-        "isDeleted": false,
-        "totalNumberOrdered": 0,
-        "isDeletedFromCart": false
+        "id": "1"
       },
       {
-        "id": "2",
-        "price": 0.0,
-        "quantity": 0.0,
-        "isDeleted": false,
-        "totalNumberOrdered": 0,
-        "isDeletedFromCart": false
+        "id": "2"
       },
       {
-        "id": "3",
-        "price": 0.0,
-        "quantity": 0.0,
-        "isDeleted": false,
-        "totalNumberOrdered": 0,
-        "isDeletedFromCart": false
+        "id": "3"
       },
       {
-        "id": "4",
-        "price": 0.0,
-        "quantity": 0.0,
-        "isDeleted": false,
-        "totalNumberOrdered": 0,
-        "isDeletedFromCart": false
+        "id": "4"
       },
       {
-        "id": "5",
-        "price": 0.0,
-        "quantity": 0.0,
-        "isDeleted": false,
-        "totalNumberOrdered": 0,
-        "isDeletedFromCart": false
+        "id": "5"
       },
       {
-        "id": "6",
-        "price": 0.0,
-        "quantity": 0.0,
-        "isDeleted": false,
-        "totalNumberOrdered": 0,
-        "isDeletedFromCart": false
+        "id": "6"
       }
     ],
     "status": "OPEN",
-    "location": {
-      "longitude": 0.0,
-      "latitude": 0.0,
-      "address": "Negde iznad duge"
-    },
+    "location": {},
     "restaurantLogo": "..\\upload\\r1.jpg",
     "averageMark": 5.0,
     "customers": [
       {
-        "collectedPoints": 0,
         "id": "5"
+      },
+      {
+        "id": "8"
+      },
+      {
+        "id": "9"
       }
     ]
   },
@@ -73,11 +44,7 @@
     "name": "da1",
     "restaurantType": "ad",
     "status": "CLOSED",
-    "location": {
-      "longitude": 0.0,
-      "latitude": 0.0,
-      "address": "Teksas"
-    },
+    "location": {},
     "restaurantLogo": "http://placekitten.com/g/200/200",
     "averageMark": 0.0
   },
@@ -87,10 +54,7 @@
     "restaurantType": "Restoran kuhinje za smrtni odred",
     "articles": [],
     "status": "CLOSED",
-    "location": {
-      "longitude": 0.0,
-      "latitude": 0.0
-    },
+    "location": {},
     "restaurantLogo": "..\\upload\\r3.png",
     "averageMark": 0.0
   },
@@ -100,10 +64,7 @@
     "restaurantType": "Restoran japanske kuhinje",
     "articles": [],
     "status": "CLOSED",
-    "location": {
-      "longitude": 0.0,
-      "latitude": 0.0
-    },
+    "location": {},
     "restaurantLogo": "..\\upload\\r4.jpg",
     "averageMark": 0.0
   },
@@ -113,10 +74,7 @@
     "restaurantType": "ss",
     "articles": [],
     "status": "CLOSED",
-    "location": {
-      "longitude": 0.0,
-      "latitude": 0.0
-    },
+    "location": {},
     "restaurantLogo": "..\\upload\\r5.jpg",
     "averageMark": 0.0
   },
@@ -126,15 +84,8 @@
     "restaurantType": "proba",
     "articles": [],
     "status": "CLOSED",
-    "location": {
-      "longitude": 0.0,
-      "latitude": 0.0,
-      "address": "lokacijaaaa"
-    },
+    "location": {},
     "restaurantLogo": "..\\upload\\r6.png",
-    "averageMark": 0.0,
-    "manager": {
-      "id": "5"
-    }
+    "averageMark": 0.0
   }
 ]

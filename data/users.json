@@ -73,5 +73,15 @@
     "username": "asa",
     "password": "asa",
     "userType": "MANAGER"
+  },
+  {
+    "username": "brisime",
+    "password": "brisime",
+    "userType": "CUSTOMER"
+  },
+  {
+    "username": "jojbre",
+    "password": "jojbre",
+    "userType": "CUSTOMER"
   }
 ]

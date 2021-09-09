@@ -39,13 +39,15 @@
     },
     "customer": {
       "collectedPoints": 0,
-      "id": "5"
+      "id": "5",
+      "isDeleted": false
     },
     "orderStatus": "DELIVERED",
     "isDeleted": false,
     "totalPrice": 800.0,
     "deliverer": {
-      "id": "1"
+      "id": "1",
+      "isDeleted": false
     }
   },
   {
@@ -88,13 +90,208 @@
     },
     "customer": {
       "collectedPoints": 0,
-      "id": "5"
+      "id": "5",
+      "isDeleted": false
     },
     "orderStatus": "IN_TRANSPORT",
     "isDeleted": false,
     "totalPrice": 1000.0,
     "deliverer": {
-      "id": "1"
+      "id": "1",
+      "isDeleted": false
+    }
+  },
+  {
+    "id": "3",
+    "articles": [
+      {
+        "id": "5",
+        "name": "Mleko od kokosa",
+        "price": 1.0E9,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0
+        },
+        "quantity": 500.0,
+        "description": "\"Plave noci u satenu i mleko od kokosa\"\nMleko od kokosa iz Cecine pesme \"Nevaljala\"",
+        "articleImage": "..\\upload\\a5.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 1,
+        "isDeletedFromCart": false
+      },
+      {
+        "id": "4",
+        "name": "Studentske nudle",
+        "price": 60.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0
+        },
+        "quantity": 500.0,
+        "description": "Hrana za sirotiLJu. Skoro pa besplatno!\nPS spremate sami dobijete kljucalu vodu mozda",
+        "articleImage": "..\\upload\\a4.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 2,
+        "isDeletedFromCart": false
+      },
+      {
+        "id": "6",
+        "name": "Studentske suze",
+        "price": 420.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0
+        },
+        "quantity": 500.0,
+        "description": "Uzivajte stoko",
+        "articleImage": "..\\upload\\a6.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 3,
+        "isDeletedFromCart": false
+      },
+      {
+        "id": "3",
+        "name": "KaraÄ‘orÄ‘eva Å¡nicla",
+        "price": 450.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0
+        },
+        "quantity": 1000.0,
+        "description": "Bolja Å¡nicla od Å¡nicle vaÅ¡eg muÅ¾a! Namyg, namyg\nNe samo bolja nego i veÄ‡a!!! Namyg namyg",
+        "articleImage": "..\\upload\\a3.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 1,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Crystal",
+      "averageMark": 0.0
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 9
+      },
+      "time": {
+        "hour": 19,
+        "minute": 28,
+        "second": 54,
+        "nano": 791397700
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "8",
+      "isDeleted": true
+    },
+    "orderStatus": "CANCELED",
+    "isDeleted": false,
+    "totalPrice": 1.00000183E9
+  },
+  {
+    "id": "4",
+    "articles": [
+      {
+        "id": "1",
+        "name": "Crystal burger",
+        "price": 500.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0
+        },
+        "quantity": 700.0,
+        "description": "Specijalitet kuÄ‡e!\nMnogo soÄ�no, mnogo masno",
+        "articleImage": "..\\upload\\a1.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 2,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Crystal",
+      "averageMark": 0.0
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 9
+      },
+      "time": {
+        "hour": 19,
+        "minute": 47,
+        "second": 36,
+        "nano": 237155900
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "9",
+      "isDeleted": true
+    },
+    "orderStatus": "CANCELED",
+    "isDeleted": false,
+    "totalPrice": 1000.0
+  },
+  {
+    "id": "5",
+    "articles": [
+      {
+        "id": "2",
+        "name": "Salata",
+        "price": 250.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0
+        },
+        "quantity": 500.0,
+        "description": "Salata sa avokadom",
+        "articleImage": "..\\upload\\a2.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 1,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Crystal",
+      "averageMark": 0.0
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 9
+      },
+      "time": {
+        "hour": 19,
+        "minute": 47,
+        "second": 53,
+        "nano": 363221200
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "9",
+      "isDeleted": true
+    },
+    "orderStatus": "DELIVERED",
+    "isDeleted": false,
+    "totalPrice": 250.0,
+    "deliverer": {
+      "id": "1",
+      "isDeleted": false
     }
   }
 ]
