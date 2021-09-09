@@ -10,8 +10,8 @@ Vue.component("customers-for-restaurant", {
 			<div v-if="customers != null">
 				<div class="lists" v-for="customer in customers">
 					<div>
-						<p>{{customer.username}}</p>
-						<p>{{customer.name}} {{customer.surname}}</p> 
+						<p>Korisničko ime: {{customer.username}}</p>
+						<p>Ime i prezime: {{customer.name}} {{customer.surname}}</p> 
 					</div>
 				</div>
 			</div>
