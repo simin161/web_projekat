@@ -2,55 +2,25 @@
   {
     "id": "1",
     "name": "Crystal",
-    "restaurantType": "Tip",
+    "restaurantType": "Tradicionalna kuhinja u novom ruhu",
     "articles": [
       {
-        "id": "1",
-        "price": 0.0,
-        "quantity": 0.0,
-        "isDeleted": false,
-        "totalNumberOrdered": 0,
-        "isDeletedFromCart": false
+        "id": "1"
       },
       {
-        "id": "2",
-        "price": 0.0,
-        "quantity": 0.0,
-        "isDeleted": false,
-        "totalNumberOrdered": 0,
-        "isDeletedFromCart": false
+        "id": "2"
       },
       {
-        "id": "3",
-        "price": 0.0,
-        "quantity": 0.0,
-        "isDeleted": false,
-        "totalNumberOrdered": 0,
-        "isDeletedFromCart": false
+        "id": "3"
       },
       {
-        "id": "4",
-        "price": 0.0,
-        "quantity": 0.0,
-        "isDeleted": false,
-        "totalNumberOrdered": 0,
-        "isDeletedFromCart": false
+        "id": "4"
       },
       {
-        "id": "5",
-        "price": 0.0,
-        "quantity": 0.0,
-        "isDeleted": false,
-        "totalNumberOrdered": 0,
-        "isDeletedFromCart": false
+        "id": "5"
       },
       {
-        "id": "6",
-        "price": 0.0,
-        "quantity": 0.0,
-        "isDeleted": false,
-        "totalNumberOrdered": 0,
-        "isDeletedFromCart": false
+        "id": "6"
       }
     ],
     "status": "OPEN",
@@ -63,19 +33,13 @@
     "averageMark": 5.0,
     "customers": [
       {
-        "collectedPoints": 0,
-        "id": "5",
-        "isDeleted": false
+        "id": "5"
       },
       {
-        "collectedPoints": 0,
-        "id": "8",
-        "isDeleted": false
+        "id": "8"
       },
       {
-        "collectedPoints": 0,
-        "id": "9",
-        "isDeleted": false
+        "id": "9"
       }
     ],
     "isDeleted": false

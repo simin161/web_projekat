@@ -52,10 +52,6 @@ Vue.component('show-restaurant',{
 						<td> <input :disabled="enable" type="text" v-model="restaurant.location.address"></input></td>
 					</tr>
 					</br>
-					<tr v-bind:style="{'visibility': visibility}">
-						<td>Slika: </td>
-						<td><input type="file" @change="imageSelected"></input></td>
-					</tr>
 					<tr>
 						<td>Status:</td>
 						<td>
@@ -67,7 +63,11 @@ Vue.component('show-restaurant',{
 					</tr>
 					<tr>
 						<td>Prosečna ocena:</td>
-						<td>{{restaurant.averageMark}}</td>
+						<td><input type="text" v-model="restaurant.averageMark" :disabled="true"></input></td>
+					</tr>
+					<tr v-bind:style="{'visibility': visibility}">
+						<td>Slika: </td>
+						<td><input type="file" @change="imageSelected"></input></td>
 					</tr>
 				</table>
 				
@@ -99,12 +99,20 @@ Vue.component('show-restaurant',{
 	    this.scrolled = window.scrollY > 0;
 	  },
 	  save : function(){
-			axios.post("/editRestaurant", this.restaurant)
-			.then(response=>{
-				this.dto = response.data, 
-				this.restaurant = this.dto.restaurant, 
-				this.message = this.dto.edited ? "Uspešno izmenjeni podaci!" : "Došlo je do greške prilikom izmene slike!",
-				this.visibility = "hidden"})
+		correctType = /\S/.test(this.restaurant.restaurantType) && /^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,0-9]{1,}$/.test(this.restaurant.restaurantType);
+		  if(/\S/.test(this.restaurant.name) && correctType
+					&& /\S/.test(this.restaurant.location.address)){			
+			  axios.post("/editRestaurant", this.restaurant)
+			  .then(response=>{
+				  this.dto = response.data, 
+				  this.restaurant = this.dto.restaurant, 
+				  this.message = this.dto.edited ? "Uspešno izmenjeni podaci!" : "Došlo je do greške prilikom izmene slike!",
+						  this.visibility = "hidden",
+						  this.enable = true})
+		  }
+		  else{
+			  this.message="Nisu popunjena sva polja/nevalidni podaci!"
+		  }
 		},
 		imageSelected(event){
 			const file = document.querySelector('input[type=file]').files[0]
