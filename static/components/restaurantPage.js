@@ -43,9 +43,7 @@ Vue.component('show-restaurant',{
 					<tr>
 						<td>Tip restorana: </td>
 						<td> 
-							<select :disabled="enable" v-model="restaurant.restaurantType">
-								<option>Tip</option>
-							</select>
+							<input type="text" :disabled="enable" v-model="restaurant.restaurantType"></input>
 						</td>
 					</tr>
 					</br>

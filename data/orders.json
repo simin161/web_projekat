@@ -9,7 +9,8 @@
         "articleType": "FOOD",
         "restaurant": {
           "id": "1",
-          "averageMark": 0.0
+          "averageMark": 0.0,
+          "isDeleted": false
         },
         "quantity": 650.0,
         "description": "Specijalitet kuće",
@@ -22,7 +23,8 @@
     "restaurant": {
       "id": "1",
       "name": "Crystal",
-      "averageMark": 0.0
+      "averageMark": 0.0,
+      "isDeleted": false
     },
     "orderDateAndTime": {
       "date": {
@@ -60,7 +62,8 @@
         "articleType": "FOOD",
         "restaurant": {
           "id": "1",
-          "averageMark": 0.0
+          "averageMark": 0.0,
+          "isDeleted": false
         },
         "quantity": 700.0,
         "description": "Specijalitet kuÄ‡e!\nMnogo soÄ�no, mnogo masno",
@@ -73,7 +76,8 @@
     "restaurant": {
       "id": "1",
       "name": "Crystal",
-      "averageMark": 0.0
+      "averageMark": 0.0,
+      "isDeleted": false
     },
     "orderDateAndTime": {
       "date": {
@@ -111,7 +115,8 @@
         "articleType": "DRINK",
         "restaurant": {
           "id": "1",
-          "averageMark": 0.0
+          "averageMark": 0.0,
+          "isDeleted": false
         },
         "quantity": 500.0,
         "description": "\"Plave noci u satenu i mleko od kokosa\"\nMleko od kokosa iz Cecine pesme \"Nevaljala\"",
@@ -127,7 +132,8 @@
         "articleType": "FOOD",
         "restaurant": {
           "id": "1",
-          "averageMark": 0.0
+          "averageMark": 0.0,
+          "isDeleted": false
         },
         "quantity": 500.0,
         "description": "Hrana za sirotiLJu. Skoro pa besplatno!\nPS spremate sami dobijete kljucalu vodu mozda",
@@ -143,7 +149,8 @@
         "articleType": "DRINK",
         "restaurant": {
           "id": "1",
-          "averageMark": 0.0
+          "averageMark": 0.0,
+          "isDeleted": false
         },
         "quantity": 500.0,
         "description": "Uzivajte stoko",
@@ -159,7 +166,8 @@
         "articleType": "FOOD",
         "restaurant": {
           "id": "1",
-          "averageMark": 0.0
+          "averageMark": 0.0,
+          "isDeleted": false
         },
         "quantity": 1000.0,
         "description": "Bolja Å¡nicla od Å¡nicle vaÅ¡eg muÅ¾a! Namyg, namyg\nNe samo bolja nego i veÄ‡a!!! Namyg namyg",
@@ -172,7 +180,8 @@
     "restaurant": {
       "id": "1",
       "name": "Crystal",
-      "averageMark": 0.0
+      "averageMark": 0.0,
+      "isDeleted": false
     },
     "orderDateAndTime": {
       "date": {
@@ -206,7 +215,8 @@
         "articleType": "FOOD",
         "restaurant": {
           "id": "1",
-          "averageMark": 0.0
+          "averageMark": 0.0,
+          "isDeleted": false
         },
         "quantity": 700.0,
         "description": "Specijalitet kuÄ‡e!\nMnogo soÄ�no, mnogo masno",
@@ -219,7 +229,8 @@
     "restaurant": {
       "id": "1",
       "name": "Crystal",
-      "averageMark": 0.0
+      "averageMark": 0.0,
+      "isDeleted": false
     },
     "orderDateAndTime": {
       "date": {
@@ -253,7 +264,8 @@
         "articleType": "FOOD",
         "restaurant": {
           "id": "1",
-          "averageMark": 0.0
+          "averageMark": 0.0,
+          "isDeleted": false
         },
         "quantity": 500.0,
         "description": "Salata sa avokadom",
@@ -266,7 +278,8 @@
     "restaurant": {
       "id": "1",
       "name": "Crystal",
-      "averageMark": 0.0
+      "averageMark": 0.0,
+      "isDeleted": false
     },
     "orderDateAndTime": {
       "date": {
@@ -304,7 +317,8 @@
         "articleType": "DRINK",
         "restaurant": {
           "id": "1",
-          "averageMark": 0.0
+          "averageMark": 0.0,
+          "isDeleted": false
         },
         "quantity": 500.0,
         "description": "Uzivajte stoko",
@@ -317,7 +331,8 @@
     "restaurant": {
       "id": "1",
       "name": "Crystal",
-      "averageMark": 0.0
+      "averageMark": 0.0,
+      "isDeleted": false
     },
     "orderDateAndTime": {
       "date": {
@@ -343,6 +358,59 @@
     "deliverer": {
       "id": "3",
       "isDeleted": true
+    }
+  },
+  {
+    "id": "7",
+    "articles": [
+      {
+        "id": "1",
+        "name": "Crystal burger",
+        "price": 500.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 700.0,
+        "description": "Specijalitet kuÄ‡e!\nMnogo soÄ�no, mnogo masno",
+        "articleImage": "..\\upload\\a1.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 1,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Crystal",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 9
+      },
+      "time": {
+        "hour": 22,
+        "minute": 49,
+        "second": 10,
+        "nano": 655202500
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "5",
+      "isDeleted": false
+    },
+    "orderStatus": "IN_TRANSPORT",
+    "isDeleted": false,
+    "totalPrice": 500.0,
+    "deliverer": {
+      "id": "1",
+      "isDeleted": false
     }
   }
 ]
