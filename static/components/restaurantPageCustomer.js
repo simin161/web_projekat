@@ -90,6 +90,7 @@ template: `<div>
 		
 		placeAnOrder : function(item){
 		
+			event.preventDefault();
 			if(item.status==="OPEN")
 				axios.post("/selectRestaurant", item)
 				.then(response =>(router.push("restaurantArticles")))

@@ -45,7 +45,15 @@
   },
   {
     "cart": {
-      
+      "articles": [],
+      "customer": {
+        "collectedPoints": 0
+      },
+      "price": 0.0,
+      "restaurant": {
+        "id": "",
+        "averageMark": 0.0
+      }
     },
     "collectedPoints": 3224,
     "id": "5",

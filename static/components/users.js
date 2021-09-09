@@ -1,17 +1,133 @@
 Vue.component('users', {
-	data: function(){
-		return{
+	data: function() {
+		return {
 			usersToDisplay: null,
 			selectedUser: null,
+			searchParams: {
+
+				name: "",
+				surname: "",
+				username: "",
+				userType: null,
+				customerType: null
+			},
+			showModalSearch: false
 		};
 	},
-template: `<div>
+	template: `<div>
+
+		<app-modal></app-modal>
+
+		<div class ="modal" v-show="showModalSearch">
+			
+			<div class="modal-content">
+			
+				<span class="close" @click="showModalSearch = false">&times;</span>
+				
+				<table style="text-align: right; margin: auto">
+					<tr>
+						<td align="center" colSpan="2">Pretraga</td>
+					</tr>
+					<tr>
+						<td>Unesite ime:</td>
+						<td>
+							<input class="selectSearch" type="text" v-model="searchParams.name"></input>
+						</td>
+					</tr>
+					<tr>
+						<td>Unesite prezime: </td>
+						<td><input class="selectSearch" type="text" v-model="searchParams.surname"></input></td>
+					</tr>
+					<tr>
+						<td>Unesite korisničko ime: </td>
+						<td><input class="selectSearch" type="text" v-model="searchParams.username"></input></td>
+					</tr>
+					<tr>
+						<td align="center" colSpan="2"><input type="button" class="buttonSearchInModal" value="Pretraži" @click="search"></input></td>
+					</tr>
+					
+					</br>
+					
+					<tr>
+						<td align="center" colSpan="2">Sortiraj opadajuće po: </td>
+					</tr>
+					<tr>
+						<td align="center" colSpan="2"><input type="button" value="Ime korisnika" class="buttonSearchInModal" @click="sortByUserName('DESCENDING')"></input></td>
+					</tr>
+					<tr>
+						<td align="center" colSpan="2"><input type="button" value="Prezime korisnika" class="buttonSearchInModal" @click="sortByUserSurname('DESCENDING')"></input></td>
+					</tr>
+					<tr>
+						<td align="center" colSpan="2"><input type="button" class="buttonSearchInModal" value="Korisničko ime" @click="sortByUserUsername('DESCENDING')"></input></td>
+					</tr>
+					<tr>
+						<td align="center" colSpan="2"><input type="button" class="buttonSearchInModal" value="Broj bodova" @click="sortByPointsCollected('DESCENDING')"></input></td>
+					</tr>
+					
+					</br>
+					
+					<tr>
+						<td align="center" colSpan="2">Sortiraj rastuće po: </td>
+					</tr>
+					<tr>
+						<td align="center" colSpan="2"><input type="button" value="Ime korisnika" class="buttonSearchInModal" @click="sortByUserName('ASCENDING')"></input></td>
+					</tr>
+					<tr>
+						<td align="center" colSpan="2"><input type="button" value="Prezime korisnika" class="buttonSearchInModal" @click="sortByUserSurname('ASCENDING')"></input></td>
+					</tr>
+					<tr>
+						<td align="center" colSpan="2"><input type="button" class="buttonSearchInModal" value="Korisničko ime" @click="sortByUserUsername('ASCENDING')"></input></td>
+					</tr>
+					<tr>
+						<td align="center" colSpan="2"><input type="button" class="buttonSearchInModal" value="Broj bodova" @click="sortByPointsCollected('ASCENDING')"></input></td>
+					</tr>
+					
+					</br>
+				
+					<tr>
+						<td align="center" colSpan="2">Filtriranje</td>
+					</tr>
+					<tr>
+						<td>Uloga: </td>
+						<td>
+							<select class="selectSearch" id="selectUser" name="selectUser" v-model="searchParams.userType">
+								<option value="">Izaberite...</option>
+								<option value="DELIVERER">Dostavljač</option>
+								<option value="CUSTOMER">Kupac</option>
+								<option value="MANAGER">Menadžer</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						</td>Tip kupca:</td>
+						<td>
+							<select class="selectSearch" id="selectCustomer" name="selectCustomer" v-model="searchParams.customerType">
+								<option value="" selected="selected">Izaberite...</option>
+								<option value="STANDARD">Standard</option>
+								<option value="PREMIUM">Premium</option>
+								<option value="LEGENDARY">Legendary</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" colSpan="2"><input type="button" class="buttonSearchInModal" value="Filtriraj" @click="filter"></input></td>
+					</tr>
+					
+					</br>
+				
+				</table>
+			
+			</div>
+		
+		</div>
+
+
 		<navigation-header></navigation-header>
 		<form class="searchForm" style="">
-			
+			<button class="buttonSearchDelivery" @click="showModalSearchFunction()">Pretraži korisnike</button>
 		</form>
 		<hr>
-			<div>
+		<div>
 				<div v-for="item in usersToDisplay">
 					<div class="lists">
 						<span style="float: left; margin-top: 2.5px">
@@ -35,17 +151,52 @@ template: `<div>
 		</div>`
 	,
 	methods: {
-	
-		deleteUser : function(item){
+
+		deleteUser: function(item) {
+
+			axios.post("/deleteUser", item)
+				.then(response => (alert("Korisnik je uspešno izbrisan!")))
+
+		},
+		showModalSearchFunction: function() {
+
+			event.preventDefault();
+			axios.get("/getAllUsers")
+				.then(response => { this.usersToDisplay = response.data, this.showModalSearch = true; })
+
+		},
+		search : function(){
 		
-				axios.post("/selectRestaurant", item)
-				.then(response =>(router.push("restaurantPageAdmin")))
-				
+		
+		},
+		
+		sortByUserName : function(type){
+		
+		
+		},
+		
+		sortByUserSurname : function(type){
+		
+		
+		},
+		
+		sortByUserUsername : function(type){
+		
+		
+		},
+		
+		sortByPointsCollected : function(type){
+		
+		
+		},
+		
+		filter : function(){
+		
 		}
 	}
 	,
-	mounted(){
+	mounted() {
 		axios.get("/getAllUsers")
-		.then(response => (this.usersToDisplay = response.data))
+			.then(response => (this.usersToDisplay = response.data))
 	}
 });
