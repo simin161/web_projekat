@@ -11,7 +11,14 @@ Vue.component('users', {
 				userType: null,
 				customerType: null
 			},
-			showModalSearch: false
+			showModalSearch: false,
+			
+			sortUsersDTO: {
+			
+				type: null,
+				usersToDisplay: null
+			
+			}
 		};
 	},
 	template: `<div>
@@ -167,30 +174,54 @@ Vue.component('users', {
 		},
 		search : function(){
 		
+			axios.post("/searchUsers", this.searchParams)
+			.then(response=>{this.usersToDisplay = response.data, this.sortUsersDTO.usersToDisplay = this.usersToDisplay})
+		
 		
 		},
 		
 		sortByUserName : function(type){
+		
+			this.sortDTO.type = type;
+			axios.post("/sortUsersByName", this.sortUsersDTO)
+			.then(response=>(this.usersToDisplay = response.data))
 		
 		
 		},
 		
 		sortByUserSurname : function(type){
 		
+			this.sortDTO.type = type;
+			axios.post("/sortUsersBySurname", this.sortUsersDTO)
+			.then(response=>(this.usersToDisplay = response.data))
+		
 		
 		},
 		
 		sortByUserUsername : function(type){
+		
+			this.sortDTO.type = type;
+			axios.post("/sortUsersByUsername", this.sortUsersDTO)
+			.then(response=>(this.usersToDisplay = response.data))
 		
 		
 		},
 		
 		sortByPointsCollected : function(type){
 		
+			this.sortDTO.type = type;
+			axios.post("/sortUsersByPoints", this.sortDTO)
+			.then(response=>(this.usersToDisplay = response.data))
+		
+		
 		
 		},
 		
 		filter : function(){
+		
+			axios.post("/searchUsers", this.searchParams)
+			.then(response=>{this.usersToDisplay = response.data, this.sortUsersDTO.usersToDisplay = this.usersToDisplay})
+		
 		
 		}
 	}
