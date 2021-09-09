@@ -99,7 +99,15 @@ template: `<div>
 			axios.post("/deleteComment", item)
 				.then(response => {alert("Komentar je uspešno izbrisan!"), this.comments = response.data})
 		
+		},
+		
+		deleteArticle : function(item){
+		
+			axios.post("/deleteArticleAdmin", item)
+				.then(response => {alert("Artikal je uspešno izbrisan!"), this.articles = response.data})
+		
 		}
+		
 		
 	}
 	,

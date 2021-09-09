@@ -407,6 +407,14 @@ public class SparkAppMain {
 			return gson.toJson(articleService.getArticlesForRestaurant(restaurant.getId()));
 		});
 		
+		post("/deleteArticleAdmin", (req, res) -> {
+			res.type("application/json");
+			articleService.deleteArticle(gson.fromJson(req.body(), Article.class));
+			Session session = req.session(true);
+			Restaurant selectedRestaurant = session.attribute("selectedRestaurant");
+			return gson.toJson(articleService.getArticlesForRestaurant(selectedRestaurant.getId()));
+		});
+		
 		post("/deleteUser", (req, res)->{
 			
 			res.type("application/json");
