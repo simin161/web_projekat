@@ -27,7 +27,12 @@ template: `<div>
 							<td><input type="text" v-model="searchParams.name" placeholder="Naziv restorana..."></input></td>
 						</tr>
 						<tr>
-							<td><input type="text" v-model="searchParams.type" placeholder="Tip..."></input></td>
+							<td>
+								<select>
+									<option value="">Izaberite tip...</option>
+									<option v-for="restaurant in restaurants" :value="restaurant.restaurantType">{{restaurant.restaurantType}}</option>
+								</select>
+							</td>
 						</tr>
 						<tr>
 							<td><input type="text" v-model="searchParams.location" placeholder="Lokacija..."></input></td>
@@ -56,7 +61,7 @@ template: `<div>
 						</tr>
 						<br/>
 						<tr>
-							<td>Sortiraj po (opadajuće):</tr>
+							<td>Sortiraj po (opadajuće):</td>
 						</tr>
 						<tr>
 							<td><input type="button" @click="sortByName('DESCENDING')"  value="nazivu restorana"></input></td>
@@ -66,6 +71,18 @@ template: `<div>
 						</tr>
 						<tr>
 							<td><input type="button" @click="sortByAverageMark('DESCENDING')" value="prosečnoj oceni"></input></td>
+						</tr>
+						<tr>
+							<td>Filtriranje</td>
+						</tr>
+						<tr>
+							<select>
+								<option value="">Izaberite tip...</option>
+								<option v-for="restaurant in restaurants" :value="restaurant.restaurantType">{{restaurant.restaurantType}}</option>
+							</select>
+						</tr>
+						<tr>
+							<input type="button" value="Filtriraj"></input>
 						</tr>
 					</table>
 			  </div>
