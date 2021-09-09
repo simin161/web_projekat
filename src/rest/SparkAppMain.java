@@ -42,6 +42,7 @@ import services.ManagerService;
 import services.OrderService;
 import services.RegistrationService;
 import services.RestaurantService;
+import services.UserService;
 import spark.Session;
 
 public class SparkAppMain {
@@ -57,7 +58,7 @@ public class SparkAppMain {
 	private static CommentService commentService = new CommentService();
 	private static CartService cartService = new CartService();
 	private static OrderService orderService = new OrderService();
-
+	private static UserService userService = new UserService();
 	
 	public static void main(String[] args) throws Exception {
 		port(8080);
@@ -433,6 +434,14 @@ public class SparkAppMain {
 			Session session = req.session(true);
 			session.attribute("article", gson.fromJson(req.body(), Article.class));
 			return "SUCCESS";
+		});
+		
+		get("/getAllUsers", (req, res)->{
+			
+			res.type("application/json");
+			String users = gson.toJson(userService.getAllUsersExceptAdmins());
+			return users;
+			
 		});
 		
 		get("/getChoosenArticle", (req, res) -> {

@@ -1,39 +1,29 @@
 Vue.component('users', {
 	data: function(){
 		return{
-			restaurantsToDisplay: null,
-			selectedRestaurant: null,
-			showComment: false,
-			comments: null
+			usersToDisplay: null,
+			selectedUser: null,
 		};
 	},
 template: `<div>
 		<navigation-header></navigation-header>
 		<form class="searchForm" style="">
-			<input type="text" placeholder="Naziv restorana..."/>
-			<select id="tipRestorana">
-				<option value="">Tip 1</option>
-				<option>Tip 2</option>
-				<option>Tip 3</option>
-			</select>
-			<input type="text" placeholder="Lokacija..."/> 
-			<input type="text" placeholder="Prosečna ocena"/>
-			<input type="button" class="buttonSearch"/>
+			
 		</form>
 		<hr>
 			<div>
-				<div v-for="item in restaurantsToDisplay">
+				<div v-for="item in usersToDisplay">
 					<div class="lists">
 						<span style="float: left; margin-top: 2.5px">
 							<img style="border-radius: 5px;" :src="item.restaurantLogo" height="150px" width="150px">
 						</span> 
 						<span>
-							<button title="Prikaži detaljnije..." class="infoRestaurant" @click="openRestaurant(item)"> </button> 
+							<button title="Obriši korisnika" class="deleteArticle" @click="deleteUser(item)"> </button> 
 						</span>
-						<p>{{item.name}}</p>
-						<p>{{item.restaurantType}} </p>
-						<p>POSTAVITI LOKACIJU KAD BUDE LOKACIJE</p> 
-						<p>Prosečna ocena restorana: {{item.averageMark}}</p>
+						<p>Korisničko ime: 	{{item.username}}</p>
+						<p>Ime: 			{{item.name}} </p>
+						<p>Prezime:			{{item.surname}} </p> 
+						<p>Tip korisnika: 	{{item.userType}}</p>
 						<br/>
 						<br/>
 					
@@ -44,7 +34,7 @@ template: `<div>
 	,
 	methods: {
 	
-		openRestaurant : function(item){
+		deleteUser : function(item){
 		
 				axios.post("/selectRestaurant", item)
 				.then(response =>(router.push("restaurantPageAdmin")))
@@ -53,7 +43,7 @@ template: `<div>
 	}
 	,
 	mounted(){
-		axios.get("/getAllRestaurants")
-		.then(response => (this.restaurantsToDisplay = response.data))
+		axios.get("/getAllUsers")
+		.then(response => (this.usersToDisplay = response.data))
 	}
 });

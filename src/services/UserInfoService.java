@@ -1,7 +1,11 @@
 package services;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import beans.User;
 import beans.UserInfo;
-import dao.CustomerDAO;
+import dao.UserDAO;
 import dao.UserInfoDAO;
 
 public class UserInfoService {
