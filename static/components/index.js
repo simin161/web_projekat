@@ -114,7 +114,7 @@ template: `<div>
 					<p>Prosečna ocena: {{item.averageMark}}</p>
 					<p v-if="item.status === 'OPEN'" style="color: green">OTVORENO</p>
 					<p v-if="item.status === 'CLOSED'" style="color: red">ZATVORENO</p>
-					<p>POSTAVITI LOKACIJU KAD BUDE LOKACIJE</p> 
+					<p>{{item.location.address}}</p> 
 					<br/>
 					<br/>
 				</div>

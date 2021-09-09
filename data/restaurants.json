@@ -5,65 +5,34 @@
     "restaurantType": "Tip",
     "articles": [
       {
-        "id": "1",
-        "price": 0.0,
-        "quantity": 0.0,
-        "isDeleted": false,
-        "totalNumberOrdered": 0,
-        "isDeletedFromCart": false
+        "id": "1"
       },
       {
-        "id": "2",
-        "price": 0.0,
-        "quantity": 0.0,
-        "isDeleted": false,
-        "totalNumberOrdered": 0,
-        "isDeletedFromCart": false
+        "id": "2"
       },
       {
-        "id": "3",
-        "price": 0.0,
-        "quantity": 0.0,
-        "isDeleted": false,
-        "totalNumberOrdered": 0,
-        "isDeletedFromCart": false
+        "id": "3"
       },
       {
-        "id": "4",
-        "price": 0.0,
-        "quantity": 0.0,
-        "isDeleted": false,
-        "totalNumberOrdered": 0,
-        "isDeletedFromCart": false
+        "id": "4"
       },
       {
-        "id": "5",
-        "price": 0.0,
-        "quantity": 0.0,
-        "isDeleted": false,
-        "totalNumberOrdered": 0,
-        "isDeletedFromCart": false
+        "id": "5"
       },
       {
-        "id": "6",
-        "price": 0.0,
-        "quantity": 0.0,
-        "isDeleted": false,
-        "totalNumberOrdered": 0,
-        "isDeletedFromCart": false
+        "id": "6"
       }
     ],
-	"location": {
+    "status": "OPEN",
+    "location": {
       "longitude": 0.0,
       "latitude": 0.0,
-      "address": "Negde iznad duge"
+      "address": "Tuzlanska 19a, Beograd"
     },
-    "status": "OPEN",
     "restaurantLogo": "..\\upload\\r1.jpg",
     "averageMark": 5.0,
     "customers": [
       {
-        "collectedPoints": 0,
         "id": "5"
       }
     ]
@@ -73,13 +42,13 @@
     "name": "da1",
     "restaurantType": "ad",
     "status": "CLOSED",
-    "restaurantLogo": "http://placekitten.com/g/200/200",
-    "averageMark": 0.0,
-	"location": {
+    "location": {
       "longitude": 0.0,
       "latitude": 0.0,
-      "address": "Teksas"
-    }
+      "address": "Negde daleko 1, Nedodjija"
+    },
+    "restaurantLogo": "http://placekitten.com/g/200/200",
+    "averageMark": 0.0
   },
   {
     "id": "3",
@@ -89,7 +58,8 @@
     "status": "CLOSED",
     "location": {
       "longitude": 0.0,
-      "latitude": 0.0
+      "latitude": 0.0,
+      "address": "Pitajte komsiju 22, Hehe"
     },
     "restaurantLogo": "..\\upload\\r3.png",
     "averageMark": 0.0
@@ -102,7 +72,8 @@
     "status": "CLOSED",
     "location": {
       "longitude": 0.0,
-      "latitude": 0.0
+      "latitude": 0.0,
+      "address": "Pitajte komsiju 21, Hehe"
     },
     "restaurantLogo": "..\\upload\\r4.jpg",
     "averageMark": 0.0
@@ -115,7 +86,8 @@
     "status": "CLOSED",
     "location": {
       "longitude": 0.0,
-      "latitude": 0.0
+      "latitude": 0.0,
+      "address": "Sssssssss 15, Zmijsssssko nasssselje"
     },
     "restaurantLogo": "..\\upload\\r5.jpg",
     "averageMark": 0.0
