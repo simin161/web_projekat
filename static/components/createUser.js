@@ -16,7 +16,8 @@ Vue.component('create-User', {
 			user: null,
 			isDisabled: true,
 			visibility: "hidden",
-			backgroundColor: "#f8f1f1",
+			backgroundColor : "#5EAAA8",
+			cursorStyle : "pointer",
 			message : ""
 		};
 	},
@@ -73,7 +74,7 @@ template: `<div>
 					</br>
 					<tr>
 						<td></td>
-						<td><input type="button" class="buttonSearchInModal" value="Registruj korisnika" @click="registerUser()"></input></td>
+						<td><input type="button" :disabled="!isComplete"  @mouseover="mouseOver" @mouseleave="mouseLeave" v-bind:style="{'background-color': backgroundColor, 'color': 'white', 'cursor': cursorStyle}"  class="buttonSearchInModal" value="Registruj korisnika" @click="registerUser"></input></td>
 					</tr>
 					
 				</table>
@@ -97,6 +98,9 @@ template: `<div>
 		    /\S/.test(this.createdUser.password) &&
 		    /\S/.test(this.createdUser.userType);
 		    
+		    this.backgroundColor = flag ? "#5EAAA8" : "#f8f1f1";
+		    this.cursorStyle = flag ? "pointer" : "default";
+		    return flag;
 		    
 		    return flag;
 		
