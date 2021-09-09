@@ -88,5 +88,10 @@
     "username": "brismena",
     "password": "brismena",
     "userType": "MANAGER"
+  },
+  {
+    "username": "dostavljac",
+    "password": "dostavljac",
+    "userType": "DELIVERER"
   }
 ]

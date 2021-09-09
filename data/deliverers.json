@@ -37,5 +37,16 @@
     "userType": "DELIVERER",
     "dateOfBirth": "2021-08-30",
     "isDeleted": false
+  },
+  {
+    "id": "3",
+    "username": "dostavljac",
+    "password": "dostavljac",
+    "name": "test dostavljac",
+    "surname": "test dostavljac",
+    "sex": "Muško",
+    "userType": "DELIVERER",
+    "dateOfBirth": "2021-08-31",
+    "isDeleted": true
   }
 ]

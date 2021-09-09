@@ -241,6 +241,40 @@ public class UserService {
 			deleteManager(userId);
 			
 		}
+		else {
+			
+			deleteDeliverer(userId);
+			
+		}
+		
+	}
+	
+	private void deleteDeliverer(String userId) {
+		
+		for(Deliverer d : DelivererDAO.getInstance().getAllDeliverers()) {
+			
+			if(d.getId().equals(userId)) {
+				
+				d.setDeleted(true);
+				break;
+				
+			}
+			
+		}
+		DelivererDAO.getInstance().save();
+		
+		for(Order o : OrderDAO.getInstance().getAllOrders()) {
+			
+			if(o.getDeliverer()!= null)
+			if(o.getDeliverer().getId().equals(userId)) {
+				
+				o.setDeleted(false);;
+				o.setOrderStatus(OrderStatus.WAITING_FOR_DELIVERER);
+			}
+			
+		}
+		
+		OrderDAO.getInstance().save();
 		
 	}
 	
