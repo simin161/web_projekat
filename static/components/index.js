@@ -9,11 +9,12 @@ Vue.component('first-page', {
 					location: "",
 					averageMark: ""
 					
-			}
+			},
+			loggedUser: null,
 		};
 	},
 template: `<div>
-		<navigation-header></navigation-header>
+			<navigation-header></navigation-header>
 				<ul :class="scrolled ? 'scrollRest' : 'rest'">
 			    	<li><a @click="showModal = true">Pretraga</a></li>
 			    </ul>
@@ -98,7 +99,14 @@ template: `<div>
 	methods : {
 		show : function(item){
 			axios.post("/saveSelectedRestaurant", item)
-			.then(respone => (router.push("/restaurant-detail")))
+			.then(respone => {
+				if(this.loggedUser != null && this.loggedUser.userType == 'MANAGER' && this.loggedUser.restaurant.id == item.id){
+					router.push("/show-restaurant")
+				}
+				else{
+					router.push("/restaurant-detail")
+				}
+			})
 		},
 		showOpened : function(){
 			axios.get("/getOpened")
@@ -121,5 +129,8 @@ template: `<div>
 	mounted(){
 		axios.get("/getAllRestaurants")
 		.then(response => (this.restaurants = response.data))
+		
+		axios.get("/getLoggedUser")
+		.then(response=>(this.loggedUser = response.data[0]))
 	}
 });

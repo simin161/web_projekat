@@ -7,7 +7,7 @@ Vue.component("restaurant-detail", {
 		};
 	},
 template: `<div>
-		<app-modal></app-modal>
+		<navigation-header></navigation-header>
 		<br/>
 		<ul class="rest">
 			<li><a @click="showComponent = '1'">Prikaz artikala</a></li>
