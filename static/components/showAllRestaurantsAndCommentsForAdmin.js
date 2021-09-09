@@ -29,7 +29,6 @@ template: `<div>
 						</span> 
 						<span>
 							<button class="deleteArticle" @click="deleteRestaurant(item)" title="Obriši restoran"></button>
-							<button title="Prikaži detaljnije..." class="infoRestaurant" @click="openRestaurant(item)"> </button> 	
 						</span>
 						<p>{{item.name}}</p>
 						<p>{{item.restaurantType}} </p>
