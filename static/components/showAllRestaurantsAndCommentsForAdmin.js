@@ -28,7 +28,8 @@ template: `<div>
 							<img style="border-radius: 5px;" :src="item.restaurantLogo" height="150px" width="150px">
 						</span> 
 						<span>
-							<button title="Prikaži detaljnije..." class="infoRestaurant" @click="openRestaurant(item)"> </button> 
+							<button class="deleteArticle" @click="deleteRestaurant(item)" title="Obriši restoran"></button>
+							<button title="Prikaži detaljnije..." class="infoRestaurant" @click="openRestaurant(item)"> </button> 	
 						</span>
 						<p>{{item.name}}</p>
 						<p>{{item.restaurantType}} </p>

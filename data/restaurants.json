@@ -18,6 +18,11 @@
         "id": "3"
       }
     ],
+	"location": {
+      "longitude": 0.0,
+      "latitude": 0.0,
+      "address": "Negde iznad duge"
+    },
     "status": "OPEN",
     "restaurantLogo": "..\\upload\\r1.jpg",
     "averageMark": 5.0,
@@ -31,7 +36,12 @@
     "restaurantType": "ad",
     "status": "CLOSED",
     "restaurantLogo": "http://placekitten.com/g/200/200",
-    "averageMark": 0.0
+    "averageMark": 0.0,
+	"location": {
+      "longitude": 0.0,
+      "latitude": 0.0,
+      "address": "Teksas"
+    }
   },
   {
     "id": "3",

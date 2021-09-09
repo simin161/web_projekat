@@ -15,7 +15,7 @@ template: `<div>
 			<p>Naziv restorana: {{restaurant.name}}</p>
 			<p>Tip restorana: {{restaurant.restaurantType}}</p>
 			<p>Prosečna ocena: {{restaurant.averageMark}}</p>
-			<p>Lokacija: TO BE CONTINUED </p>
+			<p>Lokacija: {{restaurant.location.address}} </p>
 			<p>Status: {{restaurant.status}}</p>
 		</div>
 		<hr/>
@@ -34,6 +34,9 @@ template: `<div>
 						<span style="float: left;">
 							<img style="border-radius: 5px;" :src="article.articleImage" height="90px" width="90px">
 						</span> 
+						<span>
+							<button class="deleteArticle" @click="deleteArticle(item)" title="Obriši artikal"></button>
+						</span>
 						<p>{{article.name}}</p>
 						<p>Cena: {{article.price}} dinara</p>
 						<p>Količina: {{article.quantity}}</p>
@@ -51,6 +54,9 @@ template: `<div>
 				</div>
 				<div>
 					<div class="lists" v-for="comment in comments"">
+						<span>
+							<button class="deleteArticle" @click="deleteComment(item)" title="Obriši komentar"></button>
+						</span>
 						<p>{{comment.customer.username}}</p>
 						<p>{{comment.text}} </p>
 						<p>Ocena: {{comment.mark}}</p>
