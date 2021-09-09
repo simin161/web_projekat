@@ -691,5 +691,12 @@ public class SparkAppMain {
 			boolean retVal = registrationService.changePassword(loggedUser, gson.fromJson(req.body(), PasswordDTO.class));
 			return retVal ? "SUCCESS" : "FAILURE";
 		});
+		
+		get("/getDeliverersRequests", (req, res) -> {
+			res.type("application/json");
+			Session session = req.session(true);
+			Deliverer loggedDeliverer = session.attribute("loggedUser");
+			return gson.toJson(delivererService.getDeliverersRequests(loggedDeliverer.getId()));
+		});
 	}
 }

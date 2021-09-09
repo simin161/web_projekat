@@ -41,8 +41,11 @@
       "collectedPoints": 0,
       "id": "5"
     },
-    "orderStatus": "PROCESSING",
+    "orderStatus": "WAITING_FOR_RESPONSE",
     "isDeleted": false,
-    "totalPrice": 800.0
+    "totalPrice": 800.0,
+    "deliverer": {
+      "id": "1"
+    }
   }
 ]
