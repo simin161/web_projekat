@@ -97,7 +97,7 @@
     },
     "restaurantLogo": "..\\upload\\r7.jpg",
     "averageMark": 0.0,
-    "isDeleted": false
+    "isDeleted": true
   },
   {
     "id": "2",
@@ -170,6 +170,6 @@
     },
     "restaurantLogo": "..\\upload\\r6.png",
     "averageMark": 0.0,
-    "isDeleted": false
+    "isDeleted": true
   }
 ]

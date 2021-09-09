@@ -62,6 +62,21 @@ public class RestaurantDAO {
 		return allRestaurants;
 	}
 	
+	public ArrayList<Restaurant> getAllUndeleted(){
+		
+		ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
+		
+		for(Restaurant r : allRestaurants) {
+			
+			if(!r.isDeleted())
+				restaurants.add(r);
+			
+		}
+		
+		return restaurants;
+		
+	}
+	
 	public void saveRestaurants() {
 		try {
 			

@@ -323,10 +323,12 @@ public class RestaurantService {
 		if(!searchParams.getAverageMark().equals(""))
 			borderNumber = Double.parseDouble(searchParams.getAverageMark());
 		
-		for(Restaurant r : RestaurantDAO.getInstance().getAll()) {
+		for(Restaurant r : RestaurantDAO.getInstance().getAllUndeleted()) {
 		    Matcher matcherName = patternName.matcher(r.getName());
 		    Matcher matcherType = patternType.matcher(r.getRestaurantType());
-		    Matcher matcherLocation = patternLocation.matcher(r.getLocation().getAddress());
+		    Matcher matcherLocation = patternLocation.matcher("");
+		    if(r.getLocation()!= null && r.getLocation().getAddress()!=null)
+		    	matcherLocation = patternLocation.matcher(r.getLocation().getAddress());
 		    
 		    if(matcherName.find() && matcherType.find() && matcherLocation.find() && r.getAverageMark() >= borderNumber) {
 		    	if(!r.isDeleted())
