@@ -102,7 +102,7 @@ Vue.component("orders-for-restaurant", {
 				<div class="lists">
 					<span>
 						<span>Status: {{order.orderStatus}}</span>
-						<input v-if="order.orderStatus !== 'WAITING_FOR_DELIVERER' && order.orderStatus !== 'IN_TRANSPORT' && order.orderStatus !== 'DELIVERED'" type="button" @click="changeOrderStatus(order.id)" value="Promena statusa"></input>
+						<input v-if="order.orderStatus !== 'WAITING_FOR_DELIVERER' && order.orderStatus !== 'IN_TRANSPORT' && order.orderStatus !== 'WAITING_FOR_RESPONSE' && order.orderStatus !== 'DELIVERED' && order.orderStatus !== 'CANCELED'" type="button" @click="changeOrderStatus(order.id)" value="Promena statusa"></input>
 					</span>
 					<p>{{order.customer.username}}</p>
 					<p>Cena: {{order.totalPrice}} dinara</p>
