@@ -45,12 +45,12 @@ Vue.component("add-article",{
 					<br/>
 					<tr>
 						<td>Količina:</td>
-						<td><input type="number" v-model.number="article.quantity"></input></td>
+						<td><input type="number" @keypress="validateNumberQuantity" min="0" v-model.number="article.quantity"></input></td>
 					</tr>
 					<br/>
 					<tr>
 						<td>Cena:</td>
-						<td><input type="number" v-model.number="article.price"></input></td>
+						<td><input type="number" @keypress="validateNumberPrice" min="0" v-model.number="article.price"></input></td>
 					</tr>
 					<br/>
 					<tr>
@@ -68,14 +68,38 @@ Vue.component("add-article",{
 	,
 	methods : {
 		save : function(){
-			if( /\S/.test(this.article.name) && /\S/.test(this.article.articleType) 
-					 && /\S/.test(this.article.price) && this.imagePath){
-				axios.post("/addArticle", this.article)
-				.then(response=>(this.message = response.data))
-			}
-			else{
-				this.message = "Naziv, tip, cena, opis i slika su obavezni!"
-			}
+				if( /\S/.test(this.article.name) && /\S/.test(this.article.articleType) 
+						 && /\S/.test(this.article.price) && this.imagePath){
+					if(!/-/.test(this.article.price)){
+						axios.post("/addArticle", this.article)
+						.then(response=>(this.message = response.data))
+					}else{
+						this.message = "Cena ne može biti negativan broj!"
+					}
+				}
+				else{
+					this.message = "Naziv, tip, cena, opis i slika su obavezni!"
+				}
+		},
+		validateNumberQuantity(event){
+			let keyCode = event.keyCode;
+			console.log(keyCode);
+			if(this.article.quantity == "" && this.article.quantity != "0" && keyCode == 46)
+				event.preventDefault();
+			
+			 if (!/^\d+\.?\d*$/.test(keyCode) || keyCode == 45 || keyCode == 43 || keyCode == 101) {
+			        event.preventDefault();
+			      }
+		},
+		validateNumberPrice(event){
+			let keyCode = event.keyCode;
+			console.log(keyCode);
+			if(this.article.price == "" && this.article.price != "0" && keyCode == 46)
+				event.preventDefault();
+			
+			 if (!/^\d+\.?\d*$/.test(keyCode) || keyCode == 45 || keyCode == 43 || keyCode == 101) {
+			        event.preventDefault();
+			      }
 		},
 		imageSelected(event){
 			const file = document.querySelector('input[type=file]').files[0]
