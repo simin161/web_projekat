@@ -7,12 +7,13 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.google.gson.JsonElement;
-
 import beans.Article;
 import beans.Comment;
 import beans.CommentStatus;
 import beans.Customer;
+import beans.Manager;
+import beans.Order;
+import beans.OrderStatus;
 import beans.Restaurant;
 import beans.RestaurantStatus;
 import beans.SortType;
@@ -20,6 +21,7 @@ import dao.ArticleDAO;
 import dao.CommentDAO;
 import dao.CustomerDAO;
 import dao.ManagerDAO;
+import dao.OrderDAO;
 import dao.RestaurantDAO;
 import dto.FilterRestaurantDTO;
 import dto.SearchRestaurantDTO;
@@ -57,9 +59,73 @@ public class RestaurantService {
 		return RestaurantDAO.getInstance().findRestaurantByName(name);
 	}
 	
+	public void deleteRestaurant(Restaurant restaurant) {
+		
+		for(Restaurant r : RestaurantDAO.getInstance().getAll()) {
+			
+			if(r.getId().equals(restaurant.getId())) {
+				r.setDeleted(true);
+				break;
+			}
+			
+		}
+		
+		RestaurantDAO.getInstance().save();
+		
+		for(Manager m : ManagerDAO.getInstance().getAllManagers()) {
+			
+			if(m.getRestaurant()!=null)
+			if(m.getRestaurant().getId().equals(restaurant.getId())) {
+				
+				m.setRestaurant(new Restaurant());
+			}
+			
+		}
+		
+		ManagerDAO.getInstance().save();
+		
+		for(Article a : ArticleDAO.getInstance().getAll()) {
+			
+			if(a.getRestaurant()!=null)
+			if(a.getRestaurant().getId().equals(restaurant.getId())) {
+				
+				a.setRestaurant(new Restaurant());
+			}
+			
+		}
+		
+		ArticleDAO.getInstance().save();
+		
+		for(Order o : OrderDAO.getInstance().getAllOrders()) {
+			
+			if(o.getRestaurant().getId().equals(restaurant.getId())) {
+				
+				o.setOrderStatus(OrderStatus.CANCELED);
+				o.setRestaurant(new Restaurant());
+				
+			}
+			
+		}
+		
+		OrderDAO.getInstance().save();
+		
+	}
+	
 	public ArrayList<Restaurant> getAllRestaurants() {
+		
 		sortRestaurantsByWorkingStatus();
-		return RestaurantDAO.getInstance().getAll();
+		
+		ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
+		
+		for(Restaurant r : RestaurantDAO.getInstance().getAll()) {
+			
+			if(!r.isDeleted()) {
+				restaurants.add(r);
+			}
+			
+		}
+		
+		return restaurants;
 	}
 	
 	private void sortRestaurantsByWorkingStatus() {

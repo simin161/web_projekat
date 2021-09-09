@@ -19,7 +19,7 @@ Vue.component('navigation-header', {
 								<li><a class="active" href="#/welcome-page">Početna</a></li>
 								<li><a href="#/createRestaurant">Dodavanje restorana </a></li>
 								<li><a href="#/createUser">Dodavanje korisnika</a></li>
-								<li><a href="#/restaurantsAdmin">Rad sa restoranima </a></li>
+								<li><a href="#/restaurantsAdmin">Brisanje restorana </a></li>
 								<li><a href="#/users">Pregled korisnika </a></li>
 								<li><a href="#/edit-profile"> Moj nalog </a></li>
 								<li class="right"><sign-out></sign-out></li>

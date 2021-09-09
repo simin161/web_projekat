@@ -44,11 +44,11 @@ template: `<div>
 	,
 	methods: {
 	
-		openRestaurant : function(item){
+		deleteRestaurant : function(item){
 		
-				axios.post("/selectRestaurant", item)
-				.then(response =>(router.push("restaurantPageAdmin")))
-				
+			axios.post("/deleteRestaurant", item)
+				.then(response => {alert("Restoran je uspešno izbrisan!"), this.restaurantsToDisplay = response.data})
+		
 		}
 	}
 	,

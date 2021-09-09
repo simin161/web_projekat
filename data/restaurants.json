@@ -34,7 +34,7 @@
     "averageMark": 5.0,
     "customers": [
       {
-        "id": "5"
+        "id": "5",
         "collectedPoints": 0,
         "id": "5",
         "isDeleted": false

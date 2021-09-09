@@ -25,9 +25,17 @@ public class Restaurant {
 	private Manager manager;
 	@Expose
 	private ArrayList<Customer> customers;
+	@Expose
+	private boolean isDeleted;
 	
 	
 	
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
 	public double getAverageMark() {
 		return averageMark;
 	}
