@@ -27,7 +27,10 @@ template: ` <div>
 							</tr>
 							<tr>
 								<td>Cena: {{item.totalPrice}} </td>
-								<td></td>
+								<td>Status zahteva: <span v-if="item.orderStatus === 'WAITING_FOR_RESPONSE'">Čeka na odgovor</span>
+													<span v-if="item.orderStatus === 'IN_TRANSPORT'">Prihvaćen</span>
+													<span v-if="item.orderStatus === 'WAITING_FOR_DELIVERER'">Odbijen</span>
+								</td>
 								<td></td>
 							</tr>					 
 							</table>

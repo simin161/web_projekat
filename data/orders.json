@@ -41,9 +41,58 @@
       "collectedPoints": 0,
       "id": "5"
     },
-    "orderStatus": "WAITING_FOR_RESPONSE",
+    "orderStatus": "DELIVERED",
     "isDeleted": false,
     "totalPrice": 800.0,
+    "deliverer": {
+      "id": "1"
+    }
+  },
+  {
+    "id": "2",
+    "articles": [
+      {
+        "id": "1",
+        "name": "Crystal burger",
+        "price": 500.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0
+        },
+        "quantity": 700.0,
+        "description": "Specijalitet kuÄ‡e!\nMnogo soÄ�no, mnogo masno",
+        "articleImage": "..\\upload\\a1.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 2,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Crystal",
+      "averageMark": 0.0
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 9
+      },
+      "time": {
+        "hour": 14,
+        "minute": 6,
+        "second": 21,
+        "nano": 106128200
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "5"
+    },
+    "orderStatus": "IN_TRANSPORT",
+    "isDeleted": false,
+    "totalPrice": 1000.0,
     "deliverer": {
       "id": "1"
     }

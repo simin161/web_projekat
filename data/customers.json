@@ -51,10 +51,11 @@
       },
       "price": 0.0,
       "restaurant": {
+        "id": "",
         "averageMark": 0.0
       }
     },
-    "collectedPoints": 133003336,
+    "collectedPoints": 133003469,
     "id": "5",
     "username": "customer",
     "password": "customer",

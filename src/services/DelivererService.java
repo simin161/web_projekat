@@ -110,7 +110,7 @@ public class DelivererService {
 		ArrayList<OrderDTO> orders = new ArrayList<OrderDTO>();
 
 		for (Order order : OrderDAO.getInstance().getAllOrders()) {
-			if(order.getOrderStatus() == OrderStatus.WAITING_FOR_RESPONSE && order.getDeliverer() != null && order.getDeliverer().getId().equals(id)) {
+			if(order.getOrderStatus() != OrderStatus.DELIVERED && order.getDeliverer() != null && order.getDeliverer().getId().equals(id)) {
 				orders.add(new OrderDTO(order));
 			}
 		}
