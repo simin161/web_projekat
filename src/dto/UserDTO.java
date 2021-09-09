@@ -12,6 +12,7 @@ public class UserDTO {
 	private int collectedPoints;
 	private UserType userType;
 	private CustomerType customerType;
+	private boolean isDeleted;
 	
 	public UserDTO() {
 		
@@ -83,6 +84,14 @@ public class UserDTO {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 	
 }

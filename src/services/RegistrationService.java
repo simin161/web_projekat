@@ -16,6 +16,9 @@ import dao.UserInfoDAO;
 import dto.PasswordDTO;
 
 public class RegistrationService {	
+	
+	private static UserService userService = new UserService();
+	
 	public boolean registerCustomer(Customer newCustomer) {
 		boolean returnValue = false;
 		
@@ -94,8 +97,13 @@ public class RegistrationService {
 		for(UserInfo user : UserInfoDAO.getInstance().getAllUsers()) {
 	    	if(userForLogIn.getUsername().equals(user.getUsername()) 
 	    			&& userForLogIn.getPassword().equals(user.getPassword())) {
-	    		returnValue = user.getUserType();
-	    		break;
+	    		
+	    		if(!userService.getUserByUsername(userForLogIn.getUsername()).getDeleted()) {
+	    			
+	    			returnValue = user.getUserType();
+		    		break;
+	    			
+	    		}
 	    	}
 	}
 		return returnValue;

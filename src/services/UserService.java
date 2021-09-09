@@ -3,9 +3,11 @@ package services;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import beans.Administrator;
 import beans.Comment;
 import beans.Customer;
 import beans.Deliverer;
@@ -15,7 +17,9 @@ import beans.OrderStatus;
 import beans.Restaurant;
 import beans.RestaurantStatus;
 import beans.SortType;
+import beans.User;
 import beans.UserType;
+import dao.AdministratorDAO;
 import dao.CommentDAO;
 import dao.CustomerDAO;
 import dao.DelivererDAO;
@@ -54,6 +58,33 @@ public class UserService {
 		}
 		
 		return users;
+		
+	}
+	
+	public User getUserByUsername(String username) {
+		
+		User user = new User();
+		
+		List<UserDTO> allUsers = getAllUsersExceptAdmins();
+		
+		for(Administrator a : AdministratorDAO.getInstance().getAllAdministrators()) {
+			
+			allUsers.add(new UserDTO(a.getId(), a.getUsername(), a.getName(), a.getSurname(), UserType.ADMINISTRATOR));
+			
+		}
+		
+		for(UserDTO u : allUsers) {
+			
+			if(u.getUsername().equals(username)) {
+				
+				user = new User(u.getUsername(), false);
+				return user;
+			}
+		}
+		
+		user = new User(username, true);
+		
+		return user;
 		
 	}
 	
@@ -268,7 +299,7 @@ public class UserService {
 			if(o.getDeliverer()!= null)
 			if(o.getDeliverer().getId().equals(userId)) {
 				
-				o.setDeleted(false);;
+				o.setDeleted(false);
 				o.setOrderStatus(OrderStatus.WAITING_FOR_DELIVERER);
 			}
 			

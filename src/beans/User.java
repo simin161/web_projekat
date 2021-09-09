@@ -76,5 +76,15 @@ public class User {
 		this.dateOfBirth = dateOfBirth;
 	}
 	
+	public User() {
+		
+	}
+	
+	public User(String username, boolean isDeleted) {
+		
+		this.username = username;
+		this.isDeleted = isDeleted;
+		
+	}
 	
 }
