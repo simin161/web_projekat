@@ -15,7 +15,7 @@ template: `<div>
 			<p>Naziv restorana: {{restaurant.name}}</p>
 			<p>Tip restorana: {{restaurant.restaurantType}}</p>
 			<p>Prosečna ocena: {{restaurant.averageMark}}</p>
-			<p>Lokacija: TO BE CONTINUED </p>
+			<p>Lokacija: {{restaurant.location.address}} </p>
 			<p>Status: {{restaurant.status}}</p>
 		</div>
 		<hr/>
