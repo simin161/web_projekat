@@ -251,9 +251,9 @@ public class RestaurantService {
 		for(Restaurant r : RestaurantDAO.getInstance().getAll()) {
 		    Matcher matcherName = patternName.matcher(r.getName());
 		    Matcher matcherType = patternType.matcher(r.getRestaurantType());
-		   // Matcher matcherLocation = patternType.matcher(r.getLocation().getAddress());
+		    Matcher matcherLocation = patternLocation.matcher(r.getLocation().getAddress());
 		    
-		    if(matcherName.find() && matcherType.find() /*&& matcherLocation.find()*/ && r.getAverageMark() >= borderNumber) {
+		    if(matcherName.find() && matcherType.find() && matcherLocation.find() && r.getAverageMark() >= borderNumber) {
 		    	retVal.add(r);
 		    }
 		}
