@@ -184,13 +184,22 @@ Vue.component('create-restaurant', {
 			},
 		
 			createRestaurant : function(){
-				if(/\S/.test(this.restaurantForCreate.name) && /\S/.test(this.restaurantForCreate.restaurantType)
+				correctType = /\S/.test(this.restaurantForCreate.restaurantType) && /^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,0-9]{1,20}$/.test(this.restaurantForCreate.restaurantType);
+				   
+				if(/\S/.test(this.restaurantForCreate.name) && correctType
 						&& /\S/.test(this.restaurantForCreate.location.address) && this.imagePosted && /\S/.test(this.restaurantForCreate.manager.id)){
 					axios.post("/createRestaurant", this.restaurantForCreate)
 					.then(response=>(this.message= response.data))
 				}
 				else{
-					this.message = "Niste uneli sva polja!";
+					if(correctType == true)
+					{
+						this.message = "Niste uneli sva polja!";
+
+					}
+					else{
+						this.message="Tip može da sadrži samo slova!";
+					}
 				}
 			},
 			
