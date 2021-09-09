@@ -128,6 +128,15 @@ template: `<div>
 				if(this.loggedUser != null && this.loggedUser.userType == 'MANAGER' && this.loggedUser.restaurant.id == item.id){
 					router.push("/show-restaurant")
 				}
+				else if(this.loggedUser != null && this.loggedUser.userType == 'CUSTOMER'){
+					
+					router.push("/showRestaurantForCustomer");
+				}
+				else if(this.loggedUser != null && this.loggedUser.userType == 'ADMINISTRATOR'){
+				
+					router.push("/restaurantPageAdmin");
+				
+				}
 				else{
 					router.push("/restaurant-detail")
 				}
