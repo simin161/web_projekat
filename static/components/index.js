@@ -62,7 +62,7 @@ template: `<div>
 							<td><input type="button" @click="sortByName('ASCENDING')" value="nazivu restorana"></input></td>
 						</tr>
 						<tr>
-							<td><input type="button" value="lokaciji"></input></td>
+							<td><input type="button" @click="sortByLocation('ASCENDING')" value="lokaciji"></input></td>
 						</tr>
 						<tr>
 							<td><input type="button" @click="sortByAverageMark('ASCENDING')" value="prosečnoj oceni"></input></td>
@@ -75,7 +75,7 @@ template: `<div>
 							<td><input type="button" @click="sortByName('DESCENDING')"  value="nazivu restorana"></input></td>
 						</tr>
 						<tr>
-							<td><input type="button" value="lokaciji"></input></td>
+							<td><input type="button" @click="sortByLocation('DESCENDING')" value="lokaciji"></input></td>
 						</tr>
 						<tr>
 							<td><input type="button" @click="sortByAverageMark('DESCENDING')" value="prosečnoj oceni"></input></td>
@@ -114,7 +114,7 @@ template: `<div>
 					<p>Prosečna ocena: {{item.averageMark}}</p>
 					<p v-if="item.status === 'OPEN'" style="color: green">OTVORENO</p>
 					<p v-if="item.status === 'CLOSED'" style="color: red">ZATVORENO</p>
-					<p>POSTAVITI LOKACIJU KAD BUDE LOKACIJE</p> 
+					<p>{{item.location.address}}</p> 
 					<br/>
 					<br/>
 				</div>
@@ -154,6 +154,11 @@ template: `<div>
 		sortByAverageMark : function(type){
 			this.sortDTO.sortType = type
 			axios.post("/sortRestaurantsByAverageMark", this.sortDTO)
+			.then(response => (this.restaurants = response.data))
+		},
+		sortByLocation : function(type){
+			this.sortDTO.sortType = type
+			axios.post("/sortRestaurantsByLocation", this.sortDTO)
 			.then(response => (this.restaurants = response.data))
 		},
 		search : function(){

@@ -51,7 +51,7 @@ Vue.component('show-restaurant',{
 					</br>
 					<tr>
 						<td>Lokacija:</td>
-						<td> <input :disabled="enable" type="text" v-model="restaurant.location"></input></td>
+						<td> <input :disabled="enable" type="text" v-model="restaurant.location.address"></input></td>
 					</tr>
 					</br>
 					<tr v-bind:style="{'visibility': visibility}">

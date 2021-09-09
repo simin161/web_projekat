@@ -1,8 +1,13 @@
 package beans;
 
+import com.google.gson.annotations.Expose;
+
 public class Location {
+	@Expose 
 	private double longitude; //geografska duzina
+	@Expose
 	private double latitude; //geografska sirina
+	@Expose
 	private String address;
 	
 	public double getLongitude() {

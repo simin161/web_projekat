@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.google.gson.JsonElement;
+
 import beans.Article;
 import beans.Comment;
 import beans.CommentStatus;
@@ -252,9 +254,9 @@ public class RestaurantService {
 		for(Restaurant r : RestaurantDAO.getInstance().getAll()) {
 		    Matcher matcherName = patternName.matcher(r.getName());
 		    Matcher matcherType = patternType.matcher(r.getRestaurantType());
-		   // Matcher matcherLocation = patternType.matcher(r.getLocation().getAddress());
+		    Matcher matcherLocation = patternLocation.matcher(r.getLocation().getAddress());
 		    
-		    if(matcherName.find() && matcherType.find() /*&& matcherLocation.find()*/ && r.getAverageMark() >= borderNumber) {
+		    if(matcherName.find() && matcherType.find() && matcherLocation.find() && r.getAverageMark() >= borderNumber) {
 		    	retVal.add(r);
 		    }
 		}
@@ -340,6 +342,25 @@ public class RestaurantService {
 		
 		return indicator;
 		
+	}
+
+	public ArrayList<Restaurant> sortByLocation(SortRestaurantDTO dto) {
+		if (dto.getSortType() == SortType.ASCENDING) {
+			Collections.sort(dto.getRestaurants(), new Comparator<Restaurant>() {
+				@Override
+				public int compare(final Restaurant object1, final Restaurant object2) {
+					return object1.getLocation().getAddress().compareTo(object2.getLocation().getAddress());
+				}
+			});
+		} else {
+			Collections.sort(dto.getRestaurants(), new Comparator<Restaurant>() {
+				@Override
+				public int compare(final Restaurant object1, final Restaurant object2) {
+					return -object1.getLocation().getAddress().compareTo(object2.getLocation().getAddress());
+				}
+			});
+		}
+		return dto.getRestaurants();
 	}
 	
 }

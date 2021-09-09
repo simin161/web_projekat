@@ -18,6 +18,7 @@ template: `<div>
 			<p>Naziv restorana: {{restaurant.name}}</p>
 			<p>Tip restorana: {{restaurant.restaurantType}}</p>
 			<p>Prosečna ocena: {{restaurant.averageMark}}</p>
+			<p>Lokacija: {{restaurant.location.address}}</p>
 		</div>
 		<hr/>
 			<div v-if="showComponent === '1'">
