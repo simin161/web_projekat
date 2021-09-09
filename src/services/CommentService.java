@@ -6,10 +6,13 @@ import beans.Customer;
 import beans.Restaurant;
 import dao.CommentDAO;
 import dao.CustomerDAO;
+import dao.RestaurantDAO;
 import dto.CommentDTO;
 
 public class CommentService {
 
+	private RestaurantService restaurantService = new RestaurantService();
+	
 	public void changeStatus(String id, CommentStatus status) {
 		for(Comment comment : CommentDAO.getInstance().getAll()) {
 			if(comment.getId().equals(id)) {
@@ -36,7 +39,7 @@ public class CommentService {
 			commentToPost.setMark(Integer.valueOf(commentDTO.getMark()));
 			commentToPost.setStatus(CommentStatus.PENDING);
 			commentToPost.setText(commentDTO.getComment());
-			
+			commentToPost.setDeleted(false);
 			postComment(commentToPost);
 			
 			retVal = true;
@@ -62,4 +65,20 @@ public class CommentService {
 		
 	}
 
+	public void deleteComment(Comment comment) {
+		
+		for(Comment c : CommentDAO.getInstance().getAll()) {
+			
+			if(c.getId().equals(comment.getId())) {
+				
+				c.setDeleted(true);
+				CommentDAO.getInstance().save();
+				restaurantService.calculateAndSaveAverageMark(c.getCommentedRestaurant().getId());
+				break;
+			}
+			
+		}
+		
+	}
+	
 }

@@ -426,6 +426,18 @@ public class SparkAppMain {
 			
 		});
 		
+		post("/deleteComment", (req, res)->{
+			
+			res.type("application/json");
+			Session session = req.session(true);
+			Comment comment = gson.fromJson(req.body(), Comment.class);
+			commentService.deleteComment(comment);
+			Restaurant selectedRestaurant = session.attribute("selectedRestaurant");
+			ArrayList<Comment> comments = restaurantService.getAllCommentsForRestaurant(selectedRestaurant.getId());
+			return gson.toJson(comments);
+			
+		});
+		
 		post("/removeFromCart", (req, res) -> {
 			
 			res.type("application/json");

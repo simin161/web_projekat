@@ -55,7 +55,7 @@ template: `<div>
 				<div>
 					<div class="lists" v-for="comment in comments"">
 						<span>
-							<button class="deleteArticle" @click="deleteComment(item)" title="Obriši komentar"></button>
+							<button class="deleteArticle" @click="deleteComment(comment)" title="Obriši komentar"></button>
 						</span>
 						<p>{{comment.customer.username}}</p>
 						<p>{{comment.text}} </p>
@@ -92,6 +92,13 @@ template: `<div>
 			event.preventDefault();
 			axios.get("/getAllCommentsForRestaurantAdmin")
 			.then(response =>(this.comments = response.data))
+		},
+		
+		deleteComment : function(item){
+		
+			axios.post("/deleteComment", item)
+				.then(response => {alert("Komentar je uspešno izbrisan!"), this.comments = response.data})
+		
 		}
 		
 	}

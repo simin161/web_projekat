@@ -203,7 +203,9 @@ public class RestaurantService {
 		for (Comment comment : CommentDAO.getInstance().getAll()) {
 			if (comment.getCommentedRestaurant().getId().equals(id)) {
 				if (comment.getStatus() == CommentStatus.ACCEPTED) {
-					retVal.add(comment);
+					if(!comment.isDeleted())
+						if(!comment.getCustomer().getDeleted())
+							retVal.add(comment);
 				}
 			}
 		}
@@ -217,7 +219,9 @@ public class RestaurantService {
 		for (Comment comment : CommentDAO.getInstance().getAll()) {
 			if (comment.getCommentedRestaurant().getId().equals(id)) {
 				if(!CustomerDAO.getInstance().findCustomerById(comment.getCustomer().getId()).getDeleted())
-					retVal.add(comment);
+					if(!comment.isDeleted())
+						if(!comment.getCustomer().getDeleted())
+							retVal.add(comment);
 			}
 		}
 
@@ -298,13 +302,14 @@ public class RestaurantService {
 		Restaurant restaurant = RestaurantDAO.getInstance().findById(id);
 		if (comments.size() != 0) {
 			for (Comment comment : comments) {
-				sum += comment.getMark();
+				if(!comment.isDeleted())
+					sum += comment.getMark();
 			}
 
 			avg = sum / comments.size();
 		}
 		restaurant.setAverageMark(avg);
-		RestaurantDAO.getInstance().getAll().set(Integer.parseInt(id) - 1, restaurant);
+		//RestaurantDAO.getInstance().getAll().set(Integer.parseInt(id) - 1, restaurant);
 		RestaurantDAO.getInstance().save();
 	}
 

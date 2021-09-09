@@ -28,28 +28,21 @@
       "longitude": 0.0,
       "latitude": 0.0,
       "address": "Tuzlanska 19a, Beograd"
-
     },
     "restaurantLogo": "..\\upload\\r1.jpg",
     "averageMark": 5.0,
     "customers": [
       {
-        "id": "5",
-        "collectedPoints": 0,
-        "id": "5",
-        "isDeleted": false
+        "id": "5"
       },
       {
-        "collectedPoints": 0,
-        "id": "8",
-        "isDeleted": false
+        "id": "8"
       },
       {
-        "collectedPoints": 0,
-        "id": "9",
-        "isDeleted": false
+        "id": "9"
       }
-    ]
+    ],
+    "isDeleted": false
   },
   {
     "id": "7",
@@ -62,7 +55,8 @@
       "latitude": 0.0
     },
     "restaurantLogo": "..\\upload\\r7.jpg",
-    "averageMark": 0.0
+    "averageMark": 0.0,
+    "isDeleted": false
   },
   {
     "id": "2",
@@ -73,10 +67,10 @@
       "longitude": 0.0,
       "latitude": 0.0,
       "address": "Negde daleko 1, Nedodjija"
-
     },
     "restaurantLogo": "http://placekitten.com/g/200/200",
-    "averageMark": 0.0
+    "averageMark": 0.0,
+    "isDeleted": false
   },
   {
     "id": "3",
@@ -90,7 +84,8 @@
       "address": "Pitajte komsiju 22, Hehe"
     },
     "restaurantLogo": "..\\upload\\r3.png",
-    "averageMark": 0.0
+    "averageMark": 0.0,
+    "isDeleted": false
   },
   {
     "id": "4",
@@ -104,7 +99,8 @@
       "address": "Pitajte komsiju 21, Hehe"
     },
     "restaurantLogo": "..\\upload\\r4.jpg",
-    "averageMark": 0.0
+    "averageMark": 0.0,
+    "isDeleted": false
   },
   {
     "id": "5",
@@ -118,7 +114,8 @@
       "address": "Sssssssss 15, Zmijsssssko nasssselje"
     },
     "restaurantLogo": "..\\upload\\r5.jpg",
-    "averageMark": 0.0
+    "averageMark": 0.0,
+    "isDeleted": false
   },
   {
     "id": "6",
@@ -131,6 +128,7 @@
       "latitude": 0.0
     },
     "restaurantLogo": "..\\upload\\r6.png",
-    "averageMark": 0.0
+    "averageMark": 0.0,
+    "isDeleted": false
   }
 ]

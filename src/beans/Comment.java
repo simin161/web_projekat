@@ -7,6 +7,7 @@ public class Comment {
 	private String text;
 	private int mark;
 	private CommentStatus status;
+	private boolean isDeleted;
 	
 	public CommentStatus getStatus() {
 		return status;
@@ -43,6 +44,12 @@ public class Comment {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 	
 	
