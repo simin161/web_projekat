@@ -33,6 +33,7 @@ import dto.SearchCustomerOrdersDTO;
 import dto.SearchRestaurantDTO;
 import dto.SearchUsersDTO;
 import dto.SortDTO;
+import dto.SortUsersDTO;
 import services.AdministratorService;
 import services.ArticleService;
 import services.CartService;
@@ -717,6 +718,30 @@ public class SparkAppMain {
 			SearchUsersDTO searchParams = gson.fromJson(req.body(), SearchUsersDTO.class);
 			return gson.toJson(userService.search(searchParams));
 			
+		});
+		
+		post("/sortUsersByName", (req, res) -> {
+			res.type("application/json");
+			SortUsersDTO type = gson.fromJson(req.body(), SortUsersDTO.class);
+			return gson.toJson(userService.sortUsersByName(type));
+		});
+		
+		post("/sortUsersBySurname", (req, res) -> {
+			res.type("application/json");
+			SortUsersDTO type = gson.fromJson(req.body(), SortUsersDTO.class);
+			return gson.toJson(userService.sortUsersBySurname(type));
+		});
+		
+		post("/sortUsersByUsername", (req, res) -> {
+			res.type("application/json");
+			SortUsersDTO type = gson.fromJson(req.body(), SortUsersDTO.class);
+			return gson.toJson(userService.sortUsersByUsername(type));
+		});
+		
+		post("/sortUsersByPoints", (req, res) -> {
+			res.type("application/json");
+			SortUsersDTO type = gson.fromJson(req.body(), SortUsersDTO.class);
+			return gson.toJson(userService.sortUsersByPoints(type));
 		});
 	}
 }

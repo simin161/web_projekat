@@ -228,6 +228,6 @@ Vue.component('users', {
 	,
 	mounted() {
 		axios.get("/getAllUsers")
-			.then(response => (this.usersToDisplay = response.data))
+			.then(response => {this.usersToDisplay = response.data, this.sortUsersDTO.usersToDisplay = this.usersToDisplay})
 	}
 });

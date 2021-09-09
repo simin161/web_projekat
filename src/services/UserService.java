@@ -1,18 +1,22 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import beans.Customer;
 import beans.Deliverer;
 import beans.Manager;
-import beans.Restaurant;
+import beans.SortType;
+import beans.UserType;
 import dao.CustomerDAO;
 import dao.DelivererDAO;
 import dao.ManagerDAO;
-import dao.RestaurantDAO;
+import dto.OrderDTO;
 import dto.SearchUsersDTO;
+import dto.SortUsersDTO;
 import dto.UserDTO;
 
 public class UserService {
@@ -108,4 +112,110 @@ public class UserService {
 		
 	}
 	
+	
+	public ArrayList<UserDTO> sortUsersByName(SortUsersDTO sortData){
+		
+		ArrayList<UserDTO> sortedUsers = sortData.getUsersToDisplay();
+		
+		if (sortData.getType() == SortType.ASCENDING) {
+
+			Collections.sort(sortedUsers, new Comparator<UserDTO>() {
+				@Override
+				public int compare(final UserDTO object1, final UserDTO object2) {
+					return object1.getName().compareTo(object2.getName());
+				}
+			});
+		} else {
+			Collections.sort(sortedUsers, new Comparator<UserDTO>() {
+				@Override
+				public int compare(final UserDTO object1, final UserDTO object2) {
+					return -object1.getName().compareTo(object2.getName());
+				}
+			});
+		}
+		
+		return sortedUsers;
+		
+	}
+	
+	public ArrayList<UserDTO> sortUsersBySurname(SortUsersDTO sortData){
+		
+		ArrayList<UserDTO> sortedUsers = sortData.getUsersToDisplay();
+		
+		if (sortData.getType() == SortType.ASCENDING) {
+
+			Collections.sort(sortedUsers, new Comparator<UserDTO>() {
+				@Override
+				public int compare(final UserDTO object1, final UserDTO object2) {
+					return object1.getSurname().compareTo(object2.getSurname());
+				}
+			});
+		} else {
+			Collections.sort(sortedUsers, new Comparator<UserDTO>() {
+				@Override
+				public int compare(final UserDTO object1, final UserDTO object2) {
+					return -object1.getSurname().compareTo(object2.getSurname());
+				}
+			});
+		}
+		
+		return sortedUsers;
+		
+	}
+	
+	public ArrayList<UserDTO> sortUsersByUsername(SortUsersDTO sortData){
+		
+		ArrayList<UserDTO> sortedUsers = sortData.getUsersToDisplay();
+		
+		if (sortData.getType() == SortType.ASCENDING) {
+
+			Collections.sort(sortedUsers, new Comparator<UserDTO>() {
+				@Override
+				public int compare(final UserDTO object1, final UserDTO object2) {
+					return object1.getUsername().compareTo(object2.getUsername());
+				}
+			});
+		} else {
+			Collections.sort(sortedUsers, new Comparator<UserDTO>() {
+				@Override
+				public int compare(final UserDTO object1, final UserDTO object2) {
+					return -object1.getUsername().compareTo(object2.getUsername());
+				}
+			});
+		}
+		
+		return sortedUsers;
+		
+	}
+	
+	public ArrayList<UserDTO> sortUsersByPoints(SortUsersDTO sortData){
+		
+		ArrayList<UserDTO> sortedUsers = sortData.getUsersToDisplay();
+		
+		for(UserDTO u : sortedUsers) {
+			
+			if(u.getUserType() != UserType.CUSTOMER)
+				u.setCollectedPoints(0);
+		}
+		
+		if (sortData.getType() == SortType.ASCENDING) {
+
+			Collections.sort(sortedUsers, new Comparator<UserDTO>() {
+				@Override
+				public int compare(final UserDTO object1, final UserDTO object2) {
+					return Integer.compare(object1.getCollectedPoints(), object2.getCollectedPoints());
+				}
+			});
+		} else {
+			Collections.sort(sortedUsers, new Comparator<UserDTO>() {
+				@Override
+				public int compare(final UserDTO object1, final UserDTO object2) {
+					return -Integer.compare(object1.getCollectedPoints(), object2.getCollectedPoints());
+				}
+			});
+		}
+		
+		return sortedUsers;
+		
+	}
 }
