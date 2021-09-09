@@ -2,7 +2,6 @@ const firstPage = { template: '<first-page></first-page>' }
 const welcomePage = { template: '<welcome-page></welcome-page>'}
 const editProfile = { template: '<edit-profile></edit-profile>'}
 const createRestaurant = { template: '<create-restaurant></create-restaurant>'}
-const createManager = {template: '<create-manager></create-manager>'}
 const ordersForAcceptance = { template: '<orders-for-acceptance></orders-for-acceptance>'}
 const restaurantPage = {template: '<show-restaurant></show-restaurant>'}
 const ordersWithoutDeliverer = {template: '<orders-without-deliverer></orders-without-deliverer>'}
@@ -28,7 +27,6 @@ const router = new VueRouter({
 	    { path: '/welcome-page', component: welcomePage},
 	    { path: '/edit-profile', component: editProfile},
 	    { path: '/createRestaurant', component: createRestaurant},
-	    { path: '/createManager', component: createManager},
 	    { path: '/orders-for-acceptance', component: ordersForAcceptance},
 	    { path: '/show-restaurant', component: restaurantPage},
 	    { path: '/orders-without-deliverer', component: ordersWithoutDeliverer},
