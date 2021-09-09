@@ -154,7 +154,7 @@ public class SparkAppMain {
 		get("/logOutUser", (req, res) -> {
 
 			Session session = req.session(true);
-			User user = req.attribute("loggedUser");
+			User user = session.attribute("loggedUser");
 
 			if (user != null) {
 				session.invalidate();
@@ -172,8 +172,9 @@ public class SparkAppMain {
 			
 			res.type("application/json");
 			Session session = req.session(true);
+			User user = session.attribute("loggedUser");
 			ArrayList<User> users = new ArrayList<User>();
-			users.add(session.attribute("loggedUser"));
+			users.add(user);
 			return gson.toJson(users);
 			
 		});

@@ -6,6 +6,7 @@ Vue.component('navigation-header', {
 		};
 	},
 	template : `<div>
+					<div v-if="loggedUser !== null">
 						<ul :class="scrolled ? 'scroll' : ''" v-if="loggedUser.userType === 'CUSTOMER'">
 							<li><a class="active" href="#/welcome-page">Početna</a></li>
 							<li><a href="#/restaurants">Pregled restorana</a></li>
@@ -39,6 +40,10 @@ Vue.component('navigation-header', {
 								<li class="right"><sign-out></sign-out></li>
 							</ul>
 					<br/>
+					</div>
+					<div v-if="loggedUser === null">
+						<app-modal></app-modal>
+					</div>
 				</div>`
 		,
 		methods: {

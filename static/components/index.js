@@ -13,7 +13,7 @@ Vue.component('first-page', {
 		};
 	},
 template: `<div>
-		<app-modal></app-modal>
+		<navigation-header></navigation-header>
 				<ul :class="scrolled ? 'scrollRest' : 'rest'">
 			    	<li><a @click="showModal = true">Pretraga</a></li>
 			    </ul>
