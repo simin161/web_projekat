@@ -66,7 +66,7 @@ public class SparkAppMain {
 	private static UserService userService = new UserService();
 	
 	public static void main(String[] args) throws Exception {
-		port(8080);
+		port(9000);
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
 
 		post("/registerUser", (req, res) -> {

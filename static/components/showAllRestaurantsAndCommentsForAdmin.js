@@ -32,7 +32,7 @@ template: `<div>
 						</span>
 						<p>{{item.name}}</p>
 						<p>{{item.restaurantType}} </p>
-						<p>POSTAVITI LOKACIJU KAD BUDE LOKACIJE</p> 
+						<p>{{item.location.address}}</p> 
 						<p>Prosečna ocena restorana: {{item.averageMark}}</p>
 						<br/>
 						<br/>
