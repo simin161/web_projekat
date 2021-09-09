@@ -10,6 +10,11 @@
         "id": "2",
         "isDeleted": false,
         "totalPrice": 0.0
+      },
+      {
+        "id": "5",
+        "isDeleted": false,
+        "totalPrice": 0.0
       }
     ],
     "id": "1",
@@ -19,7 +24,8 @@
     "surname": "Postarovic",
     "sex": "Muško",
     "userType": "DELIVERER",
-    "dateOfBirth": "1985-02-03"
+    "dateOfBirth": "1985-02-03",
+    "isDeleted": false
   },
   {
     "id": "2",
@@ -29,6 +35,18 @@
     "surname": "Vukelic",
     "sex": "Žensko",
     "userType": "DELIVERER",
-    "dateOfBirth": "2021-08-30"
+    "dateOfBirth": "2021-08-30",
+    "isDeleted": false
+  },
+  {
+    "id": "3",
+    "username": "dostavljac",
+    "password": "dostavljac",
+    "name": "test dostavljac",
+    "surname": "test dostavljac",
+    "sex": "Muško",
+    "userType": "DELIVERER",
+    "dateOfBirth": "2021-08-31",
+    "isDeleted": true
   }
 ]

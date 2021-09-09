@@ -6,15 +6,22 @@ import java.util.Comparator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import beans.Comment;
 import beans.Customer;
 import beans.Deliverer;
 import beans.Manager;
+import beans.Order;
+import beans.OrderStatus;
+import beans.Restaurant;
+import beans.RestaurantStatus;
 import beans.SortType;
 import beans.UserType;
+import dao.CommentDAO;
 import dao.CustomerDAO;
 import dao.DelivererDAO;
 import dao.ManagerDAO;
-import dto.OrderDTO;
+import dao.OrderDAO;
+import dao.RestaurantDAO;
 import dto.SearchUsersDTO;
 import dto.SortUsersDTO;
 import dto.UserDTO;
@@ -27,19 +34,22 @@ public class UserService {
 		
 		for(Customer c : CustomerDAO.getInstance().getAllCustomers()) {
 			
-			users.add(new UserDTO(c.getId(), c.getUsername(), c.getName(), c.getSurname(), c.getCollectedPoints(), c.getCustomerType()));
+			if(!c.getDeleted())
+				users.add(new UserDTO(c.getId(), c.getUsername(), c.getName(), c.getSurname(), c.getCollectedPoints(), c.getCustomerType()));
 			
 		}
 		
 		for(Manager m : ManagerDAO.getInstance().getAllManagers()) {
 			
-			users.add(new UserDTO(m.getId(), m.getUsername(), m.getName(), m.getSurname(), m.getUserType()));
+			if(!m.getDeleted())
+				users.add(new UserDTO(m.getId(), m.getUsername(), m.getName(), m.getSurname(), m.getUserType()));
 			
 		}
 		
 		for(Deliverer d : DelivererDAO.getInstance().getAllDeliverers()){
 			
-			users.add(new UserDTO(d.getId(), d.getUsername(), d.getName(), d.getSurname(), d.getUserType()));
+			if(!d.getDeleted())
+				users.add(new UserDTO(d.getId(), d.getUsername(), d.getName(), d.getSurname(), d.getUserType()));
 			
 		}
 		
@@ -218,4 +228,141 @@ public class UserService {
 		return sortedUsers;
 		
 	}
+	
+	public void deleteUser(String userId, UserType type) {
+		
+		if(type == UserType.CUSTOMER) {
+			
+			deleteCustomer(userId);
+			
+		}
+		else if(type == UserType.MANAGER) {
+			
+			deleteManager(userId);
+			
+		}
+		else {
+			
+			deleteDeliverer(userId);
+			
+		}
+		
+	}
+	
+	private void deleteDeliverer(String userId) {
+		
+		for(Deliverer d : DelivererDAO.getInstance().getAllDeliverers()) {
+			
+			if(d.getId().equals(userId)) {
+				
+				d.setDeleted(true);
+				break;
+				
+			}
+			
+		}
+		DelivererDAO.getInstance().save();
+		
+		for(Order o : OrderDAO.getInstance().getAllOrders()) {
+			
+			if(o.getDeliverer()!= null)
+			if(o.getDeliverer().getId().equals(userId)) {
+				
+				o.setDeleted(false);;
+				o.setOrderStatus(OrderStatus.WAITING_FOR_DELIVERER);
+			}
+			
+		}
+		
+		OrderDAO.getInstance().save();
+		
+	}
+	
+	private void deleteManager(String userId) {
+		
+		for(Manager m : ManagerDAO.getInstance().getAllManagers()) {
+			
+			if(m.getId().equals(userId)) {
+				
+				m.setDeleted(true);
+				break;
+			}
+			
+		}
+		
+		ManagerDAO.getInstance().save();
+		
+		for(Restaurant r : RestaurantDAO.getInstance().getAll()) {
+			
+			if(r.getId().equals(ManagerDAO.getInstance().findManagerById(userId).getRestaurant().getId())) {
+				
+				r.setStatus(RestaurantStatus.CLOSED);
+				
+			}
+			
+		}
+		
+		RestaurantDAO.getInstance().save();
+		
+	}
+	
+	private void deleteCustomer(String userId) {
+		
+		for(Customer c : CustomerDAO.getInstance().getAllCustomers()) {
+			
+			if(c.getId().equals(userId)) {
+				
+				c.setDeleted(true);
+				break;
+			}
+			
+		}
+		
+		CustomerDAO.getInstance().save();
+		
+		for(Order o : OrderDAO.getInstance().getAllOrders()) {
+			
+			if(o.getCustomer().getId().equals(userId)) {
+				
+				o.getCustomer().setDeleted(true);
+				if(o.getOrderStatus() != OrderStatus.DELIVERED)
+					o.setOrderStatus(OrderStatus.CANCELED);
+				
+			}
+			
+		}
+		
+		OrderDAO.getInstance().save();
+		
+		for(Restaurant r : RestaurantDAO.getInstance().getAll()) {
+			
+			if(r.getCustomers() != null)
+			for(Customer c : r.getCustomers()) {
+				
+				if(c.getId().equals(userId)) {
+					c.setDeleted(true);
+					break;
+				}
+				
+			}
+			
+		}
+		
+		RestaurantDAO.getInstance().save();
+		
+		for(Comment c : CommentDAO.getInstance().getAll()) {
+			
+			if(c.getCustomer().getId().equals(userId)) {
+				
+				c.getCustomer().setName("Izbrisan korisnik");
+				c.getCustomer().setDeleted(true);
+				
+			}
+			
+		}
+		
+		CommentDAO.getInstance().save();
+		
+	}
+	
 }

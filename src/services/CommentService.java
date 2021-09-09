@@ -5,6 +5,7 @@ import beans.CommentStatus;
 import beans.Customer;
 import beans.Restaurant;
 import dao.CommentDAO;
+import dao.CustomerDAO;
 import dto.CommentDTO;
 
 public class CommentService {
@@ -30,6 +31,7 @@ public class CommentService {
 			
 			commentToPost.setCommentedRestaurant(new Restaurant(commentDTO.getCommentedRestaurant()));
 			commentToPost.setCustomer(new Customer(customerId));
+			commentToPost.getCustomer().setName(CustomerDAO.getInstance().findCustomerById(customerId).getName());
 			commentToPost.setId(String.valueOf(CommentDAO.getInstance().getAll().size()+1));
 			commentToPost.setMark(Integer.valueOf(commentDTO.getMark()));
 			commentToPost.setStatus(CommentStatus.PENDING);

@@ -160,7 +160,7 @@ public class OrderService {
 		ArrayList<OrderDTO> retVal = new ArrayList<OrderDTO>();
 
 		for (OrderDTO order : getAllOrdersForRestaurant(id)) {
-			if (order.getOrderStatus() == OrderStatus.WAITING_FOR_RESPONSE) {
+			if (order.getOrderStatus() == OrderStatus.WAITING_FOR_RESPONSE && !order.getDeliverer().getDeleted()) {
 				order.setDeliverer(DelivererDAO.getInstance().findDelivererById(order.getDeliverer().getId()));
 				retVal.add(order);
 			}

@@ -150,7 +150,8 @@ public class RestaurantService {
 
 		for (Comment comment : CommentDAO.getInstance().getAll()) {
 			if (comment.getCommentedRestaurant().getId().equals(id)) {
-				retVal.add(comment);
+				if(!CustomerDAO.getInstance().findCustomerById(comment.getCustomer().getId()).getDeleted())
+					retVal.add(comment);
 			}
 		}
 
@@ -290,7 +291,8 @@ public class RestaurantService {
 		
 		for(Customer customer : restaurant.getCustomers()) {
 			customer = CustomerDAO.getInstance().findCustomerById(customer.getId());
-			retVal.add(customer);
+			if(!customer.getDeleted())
+				retVal.add(customer);
 		}
 		
 		return retVal;

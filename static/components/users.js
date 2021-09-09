@@ -162,7 +162,7 @@ Vue.component('users', {
 		deleteUser: function(item) {
 
 			axios.post("/deleteUser", item)
-				.then(response => (alert("Korisnik je uspešno izbrisan!")))
+				.then(response => {alert("Korisnik je uspešno izbrisan!"), this.usersToDisplay = response.data})
 
 		},
 		showModalSearchFunction: function() {
