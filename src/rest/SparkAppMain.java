@@ -21,7 +21,6 @@ import beans.Customer;
 import beans.Deliverer;
 import beans.Manager;
 import beans.Restaurant;
-import beans.SortType;
 import beans.User;
 import beans.UserInfo;
 import beans.UserType;
@@ -30,10 +29,12 @@ import dto.CommentDTO;
 import dto.EditedArticleDTO;
 import dto.EditedRestaurantDTO;
 import dto.FilterOrdersDTO;
+import dto.FilterRestaurantDTO;
 import dto.PasswordDTO;
 import dto.SearchCustomerOrdersDTO;
 import dto.SearchRestaurantDTO;
 import dto.SortDTO;
+import dto.SortRestaurantDTO;
 import services.AdministratorService;
 import services.ArticleService;
 import services.CartService;
@@ -535,14 +536,14 @@ public class SparkAppMain {
 		
 		post("/sortRestaurantsByName", (req, res) -> {
 			res.type("application/json");
-			SortType type = gson.fromJson(req.body(), SortType.class);
-			return gson.toJson(restaurantService.sortByName(type));
+			SortRestaurantDTO dto = gson.fromJson(req.body(), SortRestaurantDTO.class);
+			return gson.toJson(restaurantService.sortByName(dto));
 		});
 		
 		post("/sortRestaurantsByAverageMark", (req, res) -> {
 			res.type("application/json");
-			SortType type = gson.fromJson(req.body(), SortType.class);
-			return gson.toJson(restaurantService.sortByAverageMark(type));
+			SortRestaurantDTO dto = gson.fromJson(req.body(), SortRestaurantDTO.class);
+			return gson.toJson(restaurantService.sortByAverageMark(dto));
 		});
 		
 		post("/sortOrdersByRestaurantName", (req, res)->{
@@ -698,6 +699,12 @@ public class SparkAppMain {
 			Session session = req.session(true);
 			Deliverer loggedDeliverer = session.attribute("loggedUser");
 			return gson.toJson(delivererService.getDeliverersRequests(loggedDeliverer.getId()));
+		});
+		
+		post("/filterRestaurantsByType", (req,res) -> {
+			res.type("application/json");
+			FilterRestaurantDTO dto = gson.fromJson(req.body(), FilterRestaurantDTO.class);
+			return gson.toJson(restaurantService.filterRestaurants(dto));
 		});
 	}
 }

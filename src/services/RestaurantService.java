@@ -11,7 +11,6 @@ import beans.Article;
 import beans.Comment;
 import beans.CommentStatus;
 import beans.Customer;
-import beans.Order;
 import beans.Restaurant;
 import beans.RestaurantStatus;
 import beans.SortType;
@@ -19,9 +18,10 @@ import dao.ArticleDAO;
 import dao.CommentDAO;
 import dao.CustomerDAO;
 import dao.ManagerDAO;
-import dao.OrderDAO;
 import dao.RestaurantDAO;
+import dto.FilterRestaurantDTO;
 import dto.SearchRestaurantDTO;
+import dto.SortRestaurantDTO;
 
 public class RestaurantService {
 	
@@ -171,42 +171,54 @@ public class RestaurantService {
 		return retVal;
 	}
 
-	public ArrayList<Restaurant> sortByName(SortType type) {
-		if (type == SortType.ASCENDING) {
-			Collections.sort(RestaurantDAO.getInstance().getAll(), new Comparator<Restaurant>() {
+	public ArrayList<Restaurant> sortByName(SortRestaurantDTO dto) {
+		if (dto.getSortType()== SortType.ASCENDING) {
+			Collections.sort(dto.getRestaurants(), new Comparator<Restaurant>() {
 				@Override
 				public int compare(final Restaurant object1, final Restaurant object2) {
 					return object1.getName().compareTo(object2.getName());
 				}
 			});
 		} else {
-			Collections.sort(RestaurantDAO.getInstance().getAll(), new Comparator<Restaurant>() {
+			Collections.sort(dto.getRestaurants(), new Comparator<Restaurant>() {
 				@Override
 				public int compare(final Restaurant object1, final Restaurant object2) {
 					return -object1.getName().compareTo(object2.getName());
 				}
 			});
 		}
-		return RestaurantDAO.getInstance().getAll();
+		return dto.getRestaurants();
 	}
 
-	public ArrayList<Restaurant> sortByAverageMark(SortType type) {
-		if (type == SortType.ASCENDING) {
-			Collections.sort(RestaurantDAO.getInstance().getAll(), new Comparator<Restaurant>() {
+	public ArrayList<Restaurant> sortByAverageMark(SortRestaurantDTO dto) {
+		if (dto.getSortType() == SortType.ASCENDING) {
+			Collections.sort(dto.getRestaurants(), new Comparator<Restaurant>() {
 				@Override
 				public int compare(final Restaurant object1, final Restaurant object2) {
 					return Double.compare(object1.getAverageMark(), object2.getAverageMark());
 				}
 			});
 		} else {
-			Collections.sort(RestaurantDAO.getInstance().getAll(), new Comparator<Restaurant>() {
+			Collections.sort(dto.getRestaurants(), new Comparator<Restaurant>() {
 				@Override
 				public int compare(final Restaurant object1, final Restaurant object2) {
 					return -Double.compare(object1.getAverageMark(), object2.getAverageMark());
 				}
 			});
 		}
-		return RestaurantDAO.getInstance().getAll();
+		return dto.getRestaurants();
+	}
+	
+	public ArrayList<Restaurant> filterRestaurants(FilterRestaurantDTO dto){
+		ArrayList<Restaurant> retVal = new ArrayList<Restaurant>();
+		
+		for(Restaurant r : dto.getRestaurants()) {
+			if(r.getRestaurantType().equals(dto.getRestaurantType())) {
+				retVal.add(r);
+			}
+		}
+		
+		return retVal;
 	}
 
 	public void calculateAndSaveAverageMark(String id) {

@@ -11,6 +11,14 @@ Vue.component('first-page', {
 					
 			},
 			loggedUser: null,
+			sortDTO : {
+				sortType: null,
+				restaurants: null
+			},
+			filterDTO : {
+				restaurantType : "",
+				restaurants : null
+			}
 		};
 	},
 template: `<div>
@@ -28,7 +36,7 @@ template: `<div>
 						</tr>
 						<tr>
 							<td>
-								<select>
+								<select v-model="searchParams.type">
 									<option value="">Izaberite tip...</option>
 									<option v-for="restaurant in restaurants" :value="restaurant.restaurantType">{{restaurant.restaurantType}}</option>
 								</select>
@@ -76,13 +84,13 @@ template: `<div>
 							<td>Filtriranje</td>
 						</tr>
 						<tr>
-							<select>
+							<select v-model="filterDTO.restaurantType">
 								<option value="">Izaberite tip...</option>
 								<option v-for="restaurant in restaurants" :value="restaurant.restaurantType">{{restaurant.restaurantType}}</option>
 							</select>
 						</tr>
 						<tr>
-							<input type="button" value="Filtriraj"></input>
+							<input type="button" value="Filtriraj" @click="filter"></input>
 						</tr>
 					</table>
 			  </div>
@@ -127,25 +135,31 @@ template: `<div>
 		},
 		showOpened : function(){
 			axios.get("/getOpened")
-			.then(response => (this.restaurants = response.data))
+			.then(response =>  {this.restaurants = response.data, this.sortDTO.restaurants = this.restaurants, this.filterDTO.restaurants = this.restaurants })
 		},
 		sortByName : function(type){
-			axios.post("/sortRestaurantsByName", type)
+			this.sortDTO.sortType = type
+			axios.post("/sortRestaurantsByName", this.sortDTO)
 			.then(response => (this.restaurants = response.data))
 		},
 		sortByAverageMark : function(type){
-			axios.post("/sortRestaurantsByAverageMark", type)
+			this.sortDTO.sortType = type
+			axios.post("/sortRestaurantsByAverageMark", this.sortDTO)
 			.then(response => (this.restaurants = response.data))
 		},
 		search : function(){
 			axios.post("/searchRestaurants", this.searchParams)
-			.then(response => (this.restaurants = response.data))
+			.then(response =>  {this.restaurants = response.data, this.sortDTO.restaurants = this.restaurants, this.filterDTO.restaurants = this.restaurants })
+		},
+		filter : function(){
+			axios.post("/filterRestaurantsByType", this.filterDTO)
+			.then(response =>  {this.restaurants = response.data, this.sortDTO.restaurants = this.restaurants, this.filterDTO.restaurants = this.restaurants })
 		}
 	}
 	,
 	mounted(){
 		axios.get("/getAllRestaurants")
-		.then(response => (this.restaurants = response.data))
+		.then(response => {this.restaurants = response.data, this.sortDTO.restaurants = this.restaurants, this.filterDTO.restaurants = this.restaurants })
 		
 		axios.get("/getLoggedUser")
 		.then(response=>(this.loggedUser = response.data[0]))
