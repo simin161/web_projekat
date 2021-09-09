@@ -10,7 +10,8 @@ Vue.component('show-restaurant',{
 			dto: {
 				restaurant: null,
 				edited: null
-			}
+			},
+			comments : { type: Object, default: () => ({}) }
 			};
 	}
 	,
@@ -18,81 +19,92 @@ Vue.component('show-restaurant',{
 		 <div>
 		 	<navigation-header></navigation-header>
 		 	<div v-if="restaurant != null">
-			<ul :class="scrolled ? 'scrollRest' : 'rest'">
-				<li><a @click="enable = false; visibility='visible'">Izmeni podatake</a></li>
-				<li><a @click="showComponent = '1'">Prikaži kupce</a></li>
-				<li><a @click="showComponent='2'">Prikaži artikle</a></li>
-				<li><a @click="showComponent='3'">Prikaži porudžbine</a></li>
-				<li><a @click="showComponent='4'">Prikaži komentare</a></li>
-				<li v-if="showComponent === '2'" ><a class="add" href="#/add-article">Dodaj artikal</a></li>
-			</ul>
-			<br/>
-			<img :src="restaurant.restaurantLogo" height="100%" width="100%">	
-			<div style=" margin-left: 35%">
-			<!---	<p style="float: left;">
-					<img :src="restaurant.restaurantLogo" height="65%" width="65%">
-				</p> --->
-				<table>
-					</br>					
-					<tr>
-						<td>Restoran:</td>
-						<td><input type="text" :disabled="enable" v-model="restaurant.name"></input></td>
-					</tr>
-					</br>
+				<ul :class="scrolled ? 'scrollRest' : 'rest'">
+					<li><a @click="enable = false; visibility='visible'">Izmeni podatake</a></li>
+					<li><a @click="showComponent = '1'">Prikaži kupce</a></li>
+					<li><a @click="showComponent='2'">Prikaži artikle</a></li>
+					<li><a @click="showComponent='3'">Prikaži porudžbine</a></li>
+					<li><a @click="showComponent='4'">Prikaži komentare</a></li>
+					<li v-if="showComponent === '2'" ><a class="add" href="#/add-article">Dodaj artikal</a></li>
+				</ul>
+				<br/>
+				<img :src="restaurant.restaurantLogo" height="100%" width="100%">	
+				<div style=" margin-left: 35%">
+					<table>
+						</br>					
+						<tr>
+							<td>Restoran:</td>
+							<td><input type="text" :disabled="enable" v-model="restaurant.name"></input></td>
+						</tr>
+						</br>
+						
+						<tr>
+							<td>Tip restorana: </td>
+							<td> 
+								<input type="text" :disabled="enable" v-model="restaurant.restaurantType"></input>
+							</td>
+						</tr>
+						</br>
+						<tr>
+							<td>Lokacija:</td>
+							<td> <input :disabled="enable" type="text" v-model="restaurant.location.address"></input></td>
+						</tr>
+						</br>
+						<tr>
+							<td>Status:</td>
+							<td>
+								<select :disabled="enable" v-model="restaurant.status">
+									<option value="OPEN">Otvoren</option>
+									<option value="CLOSED">Zatvoren</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Prosečna ocena:</td>
+							<td><input type="text" v-model="restaurant.averageMark" :disabled="true"></input></td>
+						</tr>
+						<tr v-bind:style="{'visibility': visibility}">
+							<td>Slika: </td>
+							<td><input type="file" @change="imageSelected"></input></td>
+						</tr>
+					</table>
 					
-					<tr>
-						<td>Tip restorana: </td>
-						<td> 
-							<input type="text" :disabled="enable" v-model="restaurant.restaurantType"></input>
-						</td>
-					</tr>
-					</br>
-					<tr>
-						<td>Lokacija:</td>
-						<td> <input :disabled="enable" type="text" v-model="restaurant.location.address"></input></td>
-					</tr>
-					</br>
-					<tr>
-						<td>Status:</td>
-						<td>
-							<select :disabled="enable" v-model="restaurant.status">
-								<option value="OPEN">Otvoren</option>
-								<option value="CLOSED">Zatvoren</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>Prosečna ocena:</td>
-						<td><input type="text" v-model="restaurant.averageMark" :disabled="true"></input></td>
-					</tr>
-					<tr v-bind:style="{'visibility': visibility}">
-						<td>Slika: </td>
-						<td><input type="file" @change="imageSelected"></input></td>
-					</tr>
-				</table>
-				
-				<input type="button" v-bind:style="{'visibility': visibility}" value="Sačuvaj"  v-on:click="save"></input>
-				<p>{{message}}</p>
+					<input type="button" v-bind:style="{'visibility': visibility}" value="Sačuvaj"  v-on:click="save"></input>
+					<p>{{message}}</p>
+				</div>
+				<hr style="width: 100%">
+				</br>
+				<div v-if="showComponent === '1'">
+					<customers-for-restaurant></customers-for-restaurant>
+				</div>
+				<div v-if="showComponent === '2'">
+					<articles-for-restaurant></articles-for-restaurant>
+				</div>
+				<div v-if="showComponent === '3'">
+					<orders-for-restaurant></orders-for-restaurant>
+				</div>
+				<div v-if="showComponent === '4'">
+					<div class="lists" v-for="comment in comments">
+						<div>
+							<span style="float: right" v-if="comment.status === 'PENDING'">
+								<input type="button" @click="acceptComment(comment.id)" class="accept"></input>
+								<input type="button" @click="declineComment(comment.id)" class="decline"></input>
+							</span>
+							<p>{{comment.customer.username}}</p>
+							<p>{{comment.text}}</p>
+							<p>Ocena: {{comment.mark}}</p> 
+							<p>Status: {{comment.status}}</p>
+						</div>
+					</div>
+					<div v-if="comments === null" class="animated fadeIn">
+						<img class="center" src="../images/noComments.png"/>
+					</div>
+					<div v-if="restaurant == null" class="animated fadeIn" >
+						<img class="center" src="../images/noRestaurant.png"/>
+					</div>
+				</div>
+				</div>
 			</div>
-			<hr style="width: 100%">
-			</br>
-			<div v-if="showComponent === '1'">
-				<customers-for-restaurant></customers-for-restaurant>
-			</div>
-			<div v-if="showComponent === '2'">
-				<articles-for-restaurant></articles-for-restaurant>
-			</div>
-			<div v-if="showComponent === '3'">
-				<orders-for-restaurant></orders-for-restaurant>
-			</div>
-			<div v-if="showComponent === '4'">
-				<comments-for-restaurant></comments-for-restaurant>
-			</div>
-			</div>
-			<div v-if="restaurant == null" class="animated fadeIn" >
-				<img class="center" src="../images/noRestaurant.png"/>
-			</div>
-		 </div>
 	`,
 	methods:{
 		 handleScroll () {
@@ -124,6 +136,17 @@ Vue.component('show-restaurant',{
 			}
 			reader.readAsDataURL(file);
 			
+		},
+		declineComment : function(id){
+			axios.post("/declineComment", id)
+			.then(response => (this.comments = response.data))
+		},
+		acceptComment: function(id){
+			axios.post("/acceptComment", id)
+			.then(response => {this.comments = response.data
+				axios.get("/restaurantForManager")
+				.then(response => (this.restaurant = response.data[0] ))
+				})
 		}
 	},
 	created () {
@@ -135,5 +158,7 @@ Vue.component('show-restaurant',{
 	mounted(){
 		axios.get("/restaurantForManager")
 		.then(response => (this.restaurant = response.data[0] ))
+		axios.get("/getAllCommentsForRestaurant")
+			.then(response => (this.comments = response.data))
 	}
 });

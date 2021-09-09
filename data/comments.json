@@ -119,7 +119,7 @@
     },
     "text": "proba 2",
     "mark": 4,
-    "status": "PENDING",
-    "isDeleted": true
+    "status": "ACCEPTED",
+    "isDeleted": false
   }
 ]
