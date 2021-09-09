@@ -104,7 +104,7 @@ template: `<div>
 		deleteArticle : function(item){
 		
 			axios.post("/deleteArticleAdmin", item)
-				.then(response => {alert("Artikal je uspešno izbrisan!"), this.articles = response.data})
+				.then(response => {alert("Artikal je uspešno izbrisan!"), this.restaurant.articles = response.data})
 		
 		}
 		
