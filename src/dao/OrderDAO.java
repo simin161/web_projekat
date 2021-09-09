@@ -161,7 +161,7 @@ public class OrderDAO {
 		double pointsToRemove = 0;
 		double totalPrice = 0;
 		double articlePrice= 0;
-		
+		double tempPrice= 0;
 		
 		for(Article a : o.getArticles()) {
 			
@@ -169,11 +169,46 @@ public class OrderDAO {
 			totalPrice += articlePrice;
 		}
 		
+		if(CustomerDAO.getInstance().findCustomerById(o.getCustomer().getId()).getCustomerType().getName().equals("PREMIUM")) {
+			
+			tempPrice = totalPrice;
+			totalPrice = totalPrice - (tempPrice * 0.05);
+			
+		}
+		if(CustomerDAO.getInstance().findCustomerById(o.getCustomer().getId()).getCustomerType().getName().equals("LEGENDARY")) {
+			
+			tempPrice = totalPrice;
+			totalPrice = totalPrice - (tempPrice * 0.1);
+			
+		}
+		
 		pointsToRemove = totalPrice / 1000 * 133 * 4;
 		
 		points = points - pointsToRemove;
 		
 		CustomerDAO.getInstance().findCustomerById(o.getCustomer().getId()).setCollectedPoints((int)points);
+		
+		if(points < 10000 && points >=5000) {
+			
+			CustomerDAO.getInstance().findCustomerById(o.getCustomer().getId()).getCustomerType().setName("PREMIUM");
+			CustomerDAO.getInstance().findCustomerById(o.getCustomer().getId()).getCustomerType().setDiscount(0.05);
+			CustomerDAO.getInstance().findCustomerById(o.getCustomer().getId()).getCustomerType().setNeededPoints(5000);
+			
+		}
+		if(points<5000) {
+			
+			CustomerDAO.getInstance().findCustomerById(o.getCustomer().getId()).getCustomerType().setName("STANDARD");
+			CustomerDAO.getInstance().findCustomerById(o.getCustomer().getId()).getCustomerType().setDiscount(0);
+			CustomerDAO.getInstance().findCustomerById(o.getCustomer().getId()).getCustomerType().setNeededPoints(0);
+			
+		}
+		
+		if(points < 0) {
+			
+			CustomerDAO.getInstance().findCustomerById(o.getCustomer().getId()).setCollectedPoints(0);
+			
+		}
+		
 		CustomerDAO.getInstance().save();
 	}
 	

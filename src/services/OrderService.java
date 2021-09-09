@@ -56,7 +56,7 @@ public class OrderService {
 
 		order.setOrderStatus(OrderStatus.PROCESSING);
 		order.setDeleted(false);
-		order.setTotalPrice(calculateCost(cart.getArticles()));
+		order.setTotalPrice(calculateCost(cart.getArticles(), cart.getCartId()));
 		order.setRestaurant(new Restaurant(cart.getArticles().get(0).getRestaurant().getId()));
 		order.getRestaurant().setName(RestaurantDAO.getInstance().findById(order.getRestaurant().getId()).getName());
 		OrderDAO.getInstance().addOrder(order);
@@ -67,14 +67,28 @@ public class OrderService {
 
 	}
 
-	private double calculateCost(List<Article> articles) {
+	private double calculateCost(List<Article> articles, String customerId) {
 
 		double price = 0;
+		double tempPrice = 0;
 
 		for (Article a : articles) {
 
 			price += (a.getPrice() * a.getTotalNumberOrdered());
 
+		}
+		
+		if(CustomerDAO.getInstance().findCustomerById(customerId).getCustomerType().getName().equals("PREMIUM")) {
+			
+			tempPrice = price;
+			price = price - (tempPrice * 0.05);
+			
+		}
+		if(CustomerDAO.getInstance().findCustomerById(customerId).getCustomerType().getName().equals("LEGENDARY")) {
+			
+			tempPrice = price;
+			price = price - (tempPrice * 0.1);
+			
 		}
 
 		return price;
@@ -99,6 +113,23 @@ public class OrderService {
 		points += pointsToAssign;
 
 		CustomerDAO.getInstance().findCustomerById(customerId).setCollectedPoints((int) points);
+		
+		if(points>=5000) {
+			
+			CustomerDAO.getInstance().findCustomerById(customerId).getCustomerType().setName("PREMIUM");
+			CustomerDAO.getInstance().findCustomerById(customerId).getCustomerType().setDiscount(0.05);
+			CustomerDAO.getInstance().findCustomerById(customerId).getCustomerType().setNeededPoints(5000);
+			
+		}
+		if(points>=10000) {
+			
+			CustomerDAO.getInstance().findCustomerById(customerId).getCustomerType().setName("LEGENDARY");
+			CustomerDAO.getInstance().findCustomerById(customerId).getCustomerType().setDiscount(0.1);
+			CustomerDAO.getInstance().findCustomerById(customerId).getCustomerType().setNeededPoints(10000);
+			
+		}
+		
+		CustomerDAO.getInstance().save();
 
 	}
 

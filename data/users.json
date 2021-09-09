@@ -93,5 +93,10 @@
     "username": "dostavljac",
     "password": "dostavljac",
     "userType": "DELIVERER"
+  },
+  {
+    "username": "customerr",
+    "password": "customerr",
+    "userType": "CUSTOMER"
   }
 ]

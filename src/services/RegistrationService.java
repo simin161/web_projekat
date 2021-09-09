@@ -2,6 +2,7 @@ package services;
 
 import beans.Administrator;
 import beans.Customer;
+import beans.CustomerType;
 import beans.Deliverer;
 import beans.Manager;
 import beans.Restaurant;
@@ -25,6 +26,7 @@ public class RegistrationService {
 		if(!checkExistanceOfUsername(newCustomer.getUsername())) {
 			newCustomer.setId(Integer.toString(CustomerDAO.getInstance().getAllCustomers().size() + 1));
 			newCustomer.setUserType(UserType.CUSTOMER);
+			newCustomer.setCustomerType(new CustomerType("STANDARD", 0, 0));
 			CustomerDAO.getInstance().addCustomer(newCustomer);
 			CustomerDAO.getInstance().save();
 			UserInfoDAO.getInstance().addUser(new UserInfo(newCustomer.getUsername(), newCustomer.getPassword(), UserType.CUSTOMER));

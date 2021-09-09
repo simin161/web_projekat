@@ -5,6 +5,14 @@ public class CustomerType {
 	private double discount;
 	private int neededPoints;
 	
+	public CustomerType(String name, double discount, int neededPoints) {
+		
+		this.name = name;
+		this.discount = discount;
+		this.neededPoints = neededPoints;
+		
+	}
+	
 	public String getName() {
 		return name;
 	}

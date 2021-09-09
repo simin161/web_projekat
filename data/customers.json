@@ -57,7 +57,8 @@
       "price": 0.0,
       "restaurant": {
         "id": "",
-        "averageMark": 0.0
+        "averageMark": 0.0,
+        "isDeleted": false
       }
     },
     "collectedPoints": 133004027,
@@ -81,7 +82,8 @@
           "articleType": "FOOD",
           "restaurant": {
             "id": "1",
-            "averageMark": 0.0
+            "averageMark": 0.0,
+            "isDeleted": false
           },
           "quantity": 650.0,
           "description": "Specijalitet kuće",
@@ -97,7 +99,8 @@
           "articleType": "FOOD",
           "restaurant": {
             "id": "1",
-            "averageMark": 0.0
+            "averageMark": 0.0,
+            "isDeleted": false
           },
           "quantity": 500.0,
           "description": "Salata sa avokadom",
@@ -114,7 +117,8 @@
       "price": 0.0,
       "restaurant": {
         "id": "",
-        "averageMark": 0.0
+        "averageMark": 0.0,
+        "isDeleted": false
       }
     },
     "collectedPoints": 0,
@@ -150,7 +154,8 @@
       "price": 0.0,
       "restaurant": {
         "id": "",
-        "averageMark": 0.0
+        "averageMark": 0.0,
+        "isDeleted": false
       }
     },
     "collectedPoints": 133000243,
@@ -174,7 +179,8 @@
       "price": 0.0,
       "restaurant": {
         "id": "",
-        "averageMark": 0.0
+        "averageMark": 0.0,
+        "isDeleted": false
       }
     },
     "collectedPoints": 166,
@@ -187,5 +193,35 @@
     "userType": "CUSTOMER",
     "dateOfBirth": "2021-08-31",
     "isDeleted": true
+  },
+  {
+    "cart": {
+      "articles": [],
+      "customer": {
+        "collectedPoints": 0,
+        "isDeleted": false
+      },
+      "price": 0.0,
+      "restaurant": {
+        "id": "",
+        "averageMark": 0.0,
+        "isDeleted": false
+      }
+    },
+    "collectedPoints": -2147483648,
+    "customerType": {
+      "name": "STANDARD",
+      "discount": 0.0,
+      "neededPoints": 0
+    },
+    "id": "10",
+    "username": "customerr",
+    "password": "customerr",
+    "name": "customer provera",
+    "surname": "customer prov",
+    "sex": "Muško",
+    "userType": "CUSTOMER",
+    "dateOfBirth": "2021-08-30",
+    "isDeleted": false
   }
 ]
