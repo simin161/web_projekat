@@ -329,7 +329,8 @@ public class RestaurantService {
 		    Matcher matcherLocation = patternLocation.matcher(r.getLocation().getAddress());
 		    
 		    if(matcherName.find() && matcherType.find() && matcherLocation.find() && r.getAverageMark() >= borderNumber) {
-		    	retVal.add(r);
+		    	if(!r.isDeleted())
+		    		retVal.add(r);
 		    }
 		}
 		

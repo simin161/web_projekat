@@ -225,7 +225,8 @@ public class OrderService {
 
 									if (matcherName.find()) {
 
-										searchedOrders.add(o);
+										if (!o.isDeleted())
+											searchedOrders.add(o);
 
 									}
 
@@ -244,8 +245,8 @@ public class OrderService {
 						if (o.getTotalPrice() <= priceTop) {
 
 							if (matcherName.find()) {
-
-								searchedOrders.add(o);
+								if (!o.isDeleted())
+									searchedOrders.add(o);
 
 							}
 
@@ -264,8 +265,8 @@ public class OrderService {
 					if (dateTop.isAfter(orderDate)) {
 
 						if (matcherName.find()) {
-
-							searchedOrders.add(o);
+							if (!o.isDeleted())
+								searchedOrders.add(o);
 
 						}
 
@@ -274,7 +275,8 @@ public class OrderService {
 				}
 
 			} else if (matcherName.find()) {
-				searchedOrders.add(o);
+				if (!o.isDeleted())
+					searchedOrders.add(o);
 			}
 
 		}
@@ -301,7 +303,8 @@ public class OrderService {
 
 					if (o.getOrderStatus().equals(filterParams.getOrderStatus())) {
 
-						filteredOrders.add(o);
+						if (!o.isDeleted())
+							filteredOrders.add(o);
 
 					}
 
@@ -309,13 +312,17 @@ public class OrderService {
 
 			} else if (checkType) {
 
-				if (o.getRestaurant().getRestaurantType().equals(filterParams.getRestaurantType()))
-					filteredOrders.add(o);
+				if (o.getRestaurant().getRestaurantType().equals(filterParams.getRestaurantType())) {
+					if (!o.isDeleted())
+						filteredOrders.add(o);
+				}
 
 			} else if (checkStatus) {
-				if (o.getOrderStatus().equals(filterParams.getOrderStatus()))
-					filteredOrders.add(o);
-			} else
+				if (o.getOrderStatus().equals(filterParams.getOrderStatus())) {
+					if (!o.isDeleted())
+						filteredOrders.add(o);
+				}
+			} else if (!o.isDeleted())
 				filteredOrders.add(o);
 
 		}
@@ -464,7 +471,8 @@ public class OrderService {
 					if (dateBottom.isBefore(orderDate) && dateTop.isAfter(orderDate)) {
 
 						if (o.getTotalPrice() >= priceBottom && o.getTotalPrice() <= priceTop) {
-							searchedOrders.add(o);
+							if (!o.isDeleted())
+								searchedOrders.add(o);
 						}
 
 					}
@@ -472,7 +480,8 @@ public class OrderService {
 				} else {
 
 					if (o.getTotalPrice() >= priceBottom && o.getTotalPrice() <= priceTop) {
-						searchedOrders.add(o);
+						if (!o.isDeleted())
+							searchedOrders.add(o);
 					}
 
 				}
@@ -483,7 +492,8 @@ public class OrderService {
 
 				if (dateBottom.isBefore(orderDate) && dateTop.isAfter(orderDate)) {
 
-					searchedOrders.add(o);
+					if (!o.isDeleted())
+						searchedOrders.add(o);
 
 				}
 
@@ -528,10 +538,10 @@ public class OrderService {
 		boolean priceBottomCheck = priceBottom != -1 ? true : false;
 		boolean priceTopCheck = priceTop != -1 ? true : false;
 
-		if(searchParams.getOrders() == null) {
+		if (searchParams.getOrders() == null) {
 			return null;
 		}
-		
+
 		for (OrderDTO o : searchParams.getOrders()) {
 
 			Matcher matcherName = patternName.matcher(o.getRestaurant().getName());
@@ -552,7 +562,8 @@ public class OrderService {
 
 									if (matcherName.find()) {
 
-										searchedOrders.add(o);
+										if (!o.isDeleted())
+											searchedOrders.add(o);
 
 									}
 
@@ -572,7 +583,8 @@ public class OrderService {
 
 							if (matcherName.find()) {
 
-								searchedOrders.add(o);
+								if (!o.isDeleted())
+									searchedOrders.add(o);
 
 							}
 
@@ -592,7 +604,8 @@ public class OrderService {
 
 						if (matcherName.find()) {
 
-							searchedOrders.add(o);
+							if (!o.isDeleted())
+								searchedOrders.add(o);
 
 						}
 
@@ -601,7 +614,8 @@ public class OrderService {
 				}
 
 			} else if (matcherName.find()) {
-				searchedOrders.add(o);
+				if (!o.isDeleted())
+					searchedOrders.add(o);
 			}
 
 		}
