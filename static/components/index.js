@@ -102,19 +102,19 @@ template: `<div>
 		<br/>
 		<br/>
 			<div>
-				<div class="lists" v-for="item in restaurants">
-					<span style="float: left; margin-top: 2.5px">
-						<img style="border-radius: 5px;" :src="item.restaurantLogo" height="150px" width="150px">
-					</span> 
-					<span>
-						<button class="infoRestaurant" @click="show(item)"> </button> 
-					</span>
+				<div class="lists" style="width: 35%; text-align:center" v-for="item in restaurants">
+				<div>
+					<img style="border-radius: 5px;" class="center" :src="item.restaurantLogo" height="100%" width="100%"> 
+				</div>
+					<hr/>
 					<p>{{item.name}}</p>
 					<p>{{item.restaurantType}} </p>
 					<p>Prosečna ocena: {{item.averageMark}}</p>
 					<p v-if="item.status === 'OPEN'" style="color: green">OTVORENO</p>
 					<p v-if="item.status === 'CLOSED'" style="color: red">ZATVORENO</p>
 					<p>{{item.location.address}}</p> 
+					<hr/>
+					<input type="button" style="margin: auto" @click="show(item)" value="Detaljnije"> </input> 
 					<br/>
 					<br/>
 				</div>
