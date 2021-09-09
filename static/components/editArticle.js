@@ -48,12 +48,12 @@ template: `
 						</br>
 						<tr>
 							<td>Količina:</td>
-							<td><input type="number" :disabled="isDisabled" v-model="article.quantity"></input></td>
+							<td><input type="number" @keypress="validateNumberQuantity" :disabled="isDisabled" v-model="article.quantity"></input></td>
 						</tr>
 						</br>
 						<tr>
 							<td>Cena: </td>
-							<td><input type="number" :disabled="isDisabled" v-model="article.price"></input></td>
+							<td><input type="number" @keypress="validateNumberPrice" :disabled="isDisabled" v-model="article.price"></input></td>
 						</tr>					
 						</br>
 						<tr v-bind:style="{'visibility': visibility}">
@@ -84,7 +84,6 @@ template: `
 					
 			  },
 		save : function(){
-			if(!/-/.test(this.article.quantity)){
 				if(/\S/.test(this.article.name) && /\S/.test(this.article.articleType) 
 						 && /\S/.test(this.article.price)){
 							if(!/-/.test(this.article.price)){
@@ -100,10 +99,27 @@ template: `
 				}else{
 					this.message = "Naziv, tip, cena, opis su obavezni!"
 				}
-			}else{
-				this.message = "Količina ne može biti negativan broj!"
-			}
-		  }
+		  },
+			validateNumberQuantity(event){
+					let keyCode = event.keyCode;
+					console.log(keyCode);
+					if(this.article.quantity == "" && this.article.quantity != "0" && keyCode == 46)
+						event.preventDefault();
+					
+					 if (!/^\d+\.?\d*$/.test(keyCode) || keyCode == 45 || keyCode == 43 || keyCode == 101) {
+					        event.preventDefault();
+					      }
+				},
+			validateNumberPrice(event){
+					let keyCode = event.keyCode;
+					console.log(keyCode);
+					if(this.article.price == "" && this.article.price != "0" && keyCode == 46)
+						event.preventDefault();
+					
+					 if (!/^\d+\.?\d*$/.test(keyCode) || keyCode == 45 || keyCode == 43 || keyCode == 101) {
+					        event.preventDefault();
+					      }
+				}
 		},
 		created () {
 		  window.addEventListener('scroll', this.handleScroll);
