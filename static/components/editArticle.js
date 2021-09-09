@@ -9,7 +9,8 @@ Vue.component('edit-article', {
 			dto: {
 				article: null,
 				edited: null
-			}
+			},
+			imagePosted: false
 		}
 },
 template: `
@@ -47,12 +48,12 @@ template: `
 						</br>
 						<tr>
 							<td>Količina:</td>
-							<td><input type="number" :disabled="isDisabled" v-model="article.quantity"></input></td>
+							<td><input type="number" @keypress="validateNumberQuantity" :disabled="isDisabled" v-model="article.quantity"></input></td>
 						</tr>
 						</br>
 						<tr>
 							<td>Cena: </td>
-							<td><input type="number" :disabled="isDisabled" v-model="article.price"></input></td>
+							<td><input type="number" @keypress="validateNumberPrice" :disabled="isDisabled" v-model="article.price"></input></td>
 						</tr>					
 						</br>
 						<tr v-bind:style="{'visibility': visibility}">
@@ -74,23 +75,51 @@ template: `
 		imageSelected(event){
 			const file = document.querySelector('input[type=file]').files[0]
 			const reader = new FileReader()
-
-			let rawImg;
-			reader.onloadend = () => {
-				this.article.articleImage = reader.result;
-				console.log(this.article.articleImage);
-			}
-			reader.readAsDataURL(file);
+				let rawImg;
+				reader.onloadend = () => {
+					this.article.articleImage = reader.result;
+					console.log(this.article.articleImage);
+				}
+				reader.readAsDataURL(file);
 					
 			  },
 		save : function(){
-				axios.post("/editArticle", this.article)
-				.then(response => {
-					this.dto = response.data,
-					this.article = this.dto.article,
-					this.message = this.dto.edited ? "Uspešno je izmenjen artikal!" : "Došlo je do greške prilikom promene slike!"
-					this.visibility = 'hidden'})
-			}
+				if(/\S/.test(this.article.name) && /\S/.test(this.article.articleType) 
+						 && /\S/.test(this.article.price)){
+							if(!/-/.test(this.article.price)){
+								axios.post("/editArticle", this.article)
+								.then(response => {
+									this.dto = response.data,
+									this.article = this.dto.article,
+									this.message = this.dto.edited ? "Uspešno je izmenjen artikal!" : "Došlo je do greške prilikom promene slike!"
+									this.visibility = 'hidden'})
+							}else{
+								this.message = "Cena ne može biti negativan broj!"
+							}
+				}else{
+					this.message = "Naziv, tip, cena, opis su obavezni!"
+				}
+		  },
+			validateNumberQuantity(event){
+					let keyCode = event.keyCode;
+					console.log(keyCode);
+					if(this.article.quantity == "" && this.article.quantity != "0" && keyCode == 46)
+						event.preventDefault();
+					
+					 if (!/^\d+\.?\d*$/.test(keyCode) || keyCode == 45 || keyCode == 43 || keyCode == 101) {
+					        event.preventDefault();
+					      }
+				},
+			validateNumberPrice(event){
+					let keyCode = event.keyCode;
+					console.log(keyCode);
+					if(this.article.price == "" && this.article.price != "0" && keyCode == 46)
+						event.preventDefault();
+					
+					 if (!/^\d+\.?\d*$/.test(keyCode) || keyCode == 45 || keyCode == 43 || keyCode == 101) {
+					        event.preventDefault();
+					      }
+				}
 		},
 		created () {
 		  window.addEventListener('scroll', this.handleScroll);

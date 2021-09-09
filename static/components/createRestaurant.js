@@ -36,7 +36,8 @@ Vue.component('create-restaurant', {
 				userType: "MANAGER"
 			
 			},
-			showOther: true
+			showOther: true,
+			imagePosted : false
 			
 		};
 	
@@ -183,22 +184,39 @@ Vue.component('create-restaurant', {
 			},
 		
 			createRestaurant : function(){
-			
-				axios.post("/createRestaurant", this.restaurantForCreate)
-				.then(response=>(this.message= response.data))
+				correctType = /\S/.test(this.restaurantForCreate.restaurantType) && /^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,0-9]{1,20}$/.test(this.restaurantForCreate.restaurantType);
+				   
+				if(/\S/.test(this.restaurantForCreate.name) && correctType
+						&& /\S/.test(this.restaurantForCreate.location.address) && this.imagePosted && /\S/.test(this.restaurantForCreate.manager.id)){
+					axios.post("/createRestaurant", this.restaurantForCreate)
+					.then(response=>(this.message= response.data))
+				}
+				else{
+					if(correctType == true)
+					{
+						this.message = "Niste uneli sva polja!";
+
+					}
+					else{
+						this.message="Tip može da sadrži samo slova!";
+					}
+				}
 			},
 			
 			imageSelected(event){
 			const file = document.querySelector('input[type=file]').files[0]
 			const reader = new FileReader()
-
-			let rawImg;
-			reader.onloadend = () => {
-			   this.restaurantForCreate.restaurantLogo = reader.result;
-			   console.log(this.restaurantForCreate.restaurantLogo);
+			if(file != null){
+				let rawImg;
+				this.imagePosted = true;
+				reader.onloadend = () => {
+					this.restaurantForCreate.restaurantLogo = reader.result;
+					console.log(this.restaurantForCreate.restaurantLogo);
+				}
+				reader.readAsDataURL(file);
+			}else{
+				this.imagePosted = false;
 			}
-			reader.readAsDataURL(file);
-			
 		}
 		
 		},

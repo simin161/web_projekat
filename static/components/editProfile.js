@@ -78,8 +78,19 @@ template: `<div>
 	,
 	methods : {
 		save : function(){
-			axios.post("/editProfile", this.loggedUser)
-			.then(response => (this.message = response.data))
+			 	correctName = /\S/.test(this.loggedUser.name) && /^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,0-9]{1,20}$/.test(this.loggedUser.name);
+			    correctSurname = /\S/.test(this.loggedUser.surname) && /^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,0-9]{1,20}$/.test(this.loggedUser.surname);
+			    
+			    if(correctName && correctSurname && 
+			    		/\S/.test(this.loggedUser.dateOfBirth) && 
+			    		/\S/.test(this.loggedUser.sex) && 
+			    		/^[a-z0-9_-]{3,16}$/.test(this.loggedUser.username)){
+			    		axios.post("/editProfile", this.loggedUser)
+			    		.then(response => (this.message = response.data))
+			    }
+			    else{
+			    	this.message = "Nevalidni podaci/niste popunili sva polja!";
+			    }
 		},
 		changePassword : function(){
 			if(/\S/.test(this.dto.newPassword) && /\S/.test(this.dto.newPasswordAgain)){
