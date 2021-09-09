@@ -37,7 +37,8 @@ public class RestaurantService {
 			newRestaurant.setRestaurantLogo(ImageService.getInstance().saveImage(newRestaurant.getRestaurantLogo(), "r" + newRestaurant.getId()));
 			ManagerDAO.getInstance().findManagerById(newRestaurant.getManager().getId()).setRestaurant(newRestaurant);
 			ManagerDAO.getInstance().save();
-			
+			newRestaurant.getLocation().setLatitude(0);
+			newRestaurant.getLocation().setLongitude(0);
 			RestaurantDAO.getInstance().addRestaurant(newRestaurant);
 			RestaurantDAO.getInstance().saveRestaurants();
 			returnValue = true;

@@ -53,12 +53,12 @@
         "isDeletedFromCart": false
       }
     ],
-	"location": {
+    "status": "OPEN",
+    "location": {
       "longitude": 0.0,
       "latitude": 0.0,
       "address": "Negde iznad duge"
     },
-    "status": "OPEN",
     "restaurantLogo": "..\\upload\\r1.jpg",
     "averageMark": 5.0,
     "customers": [
@@ -73,13 +73,13 @@
     "name": "da1",
     "restaurantType": "ad",
     "status": "CLOSED",
-    "restaurantLogo": "http://placekitten.com/g/200/200",
-    "averageMark": 0.0,
-	"location": {
+    "location": {
       "longitude": 0.0,
       "latitude": 0.0,
       "address": "Teksas"
-    }
+    },
+    "restaurantLogo": "http://placekitten.com/g/200/200",
+    "averageMark": 0.0
   },
   {
     "id": "3",
@@ -119,5 +119,22 @@
     },
     "restaurantLogo": "..\\upload\\r5.jpg",
     "averageMark": 0.0
+  },
+  {
+    "id": "6",
+    "name": "proba",
+    "restaurantType": "proba",
+    "articles": [],
+    "status": "CLOSED",
+    "location": {
+      "longitude": 0.0,
+      "latitude": 0.0,
+      "address": "lokacijaaaa"
+    },
+    "restaurantLogo": "..\\upload\\r6.png",
+    "averageMark": 0.0,
+    "manager": {
+      "id": "5"
+    }
   }
 ]

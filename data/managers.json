@@ -93,5 +93,32 @@
     "sex": "Muško",
     "userType": "MANAGER",
     "dateOfBirth": "2021-08-29"
+  },
+  {
+    "restaurant": {
+      "id": "6",
+      "name": "proba",
+      "restaurantType": "proba",
+      "articles": [],
+      "status": "CLOSED",
+      "location": {
+        "longitude": 0.0,
+        "latitude": 0.0,
+        "address": "lokacijaaaa"
+      },
+      "restaurantLogo": "..\\upload\\r6.png",
+      "averageMark": 0.0,
+      "manager": {
+        "id": "5"
+      }
+    },
+    "id": "5",
+    "username": "asa",
+    "password": "asa",
+    "name": "ss",
+    "surname": "ssss",
+    "sex": "Žensko",
+    "userType": "MANAGER",
+    "dateOfBirth": "2021-08-30"
   }
 ]

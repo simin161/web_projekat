@@ -68,5 +68,10 @@
     "username": "yuki",
     "password": "yuki",
     "userType": "MANAGER"
+  },
+  {
+    "username": "asa",
+    "password": "asa",
+    "userType": "MANAGER"
   }
 ]

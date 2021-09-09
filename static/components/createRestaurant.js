@@ -149,8 +149,13 @@ Vue.component('create-restaurant', {
 			   			<tr>
 			   				<td colSpan="3" align="center"><input class="buttonCreateRestaurant" type="button" value="Kreiraj restoran"  v-on:click="createRestaurant"></input></input></td>
 			   			</tr>
+			   			</br>
+			   			<tr>
+			   				<td colSpan="3" align="center"><p> {{message}} </p></td>
+			   			</tr>
+			   			
 			   		</table>
-			   		<p>{{message}}</p>
+			   		
 			   	</form>
 			</div>
 		</div>`
