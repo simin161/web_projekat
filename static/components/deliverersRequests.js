@@ -6,6 +6,8 @@ Vue.component('deliverers-requests', {
 	},
 template: ` <div>
 			<navigation-header></navigation-header>
+			<br/>
+			<br/>
 			<div v-if="orders != null">
 					<div class="lists" style="cursor: default" v-for="item in orders">
 						<p>Kupac: {{item.customer.name}} {{item.customer.surname}} </p>

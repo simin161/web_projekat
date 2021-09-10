@@ -85,9 +85,10 @@ Vue.component("orders-for-restaurant", {
 								<option value="PROCESSING">U obradi</option>
 								<option value="IN_PREPARATION">U pripremi</option>
 								<option value="WAITING_FOR_DELIVERER">Čeka na dostavljača</option>
-								<!---<option value="WAITING_FOR_RESPONSE">Dostavljač čeka odgovor</option>--->
+								<option value="WAITING_FOR_RESPONSE">Dostavljač čeka odgovor</option>
 								<option value="IN_TRANSPORT">U transportu</option>
 								<option value="DELIVERED">Dostavljena</option>
+								<option value="CANCELED">Otkazana</option>
 							</select>
 						</td>
 					</tr>
@@ -102,7 +103,15 @@ Vue.component("orders-for-restaurant", {
 			<div  v-for="order in orders">
 				<div class="lists">
 					<span>
-						<span>Status: {{order.orderStatus}}</span>
+						<span>Status: 
+									<span v-if="order.orderStatus === 'PROCESSING' ">U obradi</span>
+									<span v-if="order.orderStatus === 'IN_PREPARATION' ">U obradi</span>
+									<span v-if="order.orderStatus === 'WAITING_FOR_DELIVERER'">Čeka dostavljača</span>
+									<span v-if="order.orderStatus === 'WAITING_FOR_RESPONSE'">Dostavljač je poslao zahtev. Čekanje odgovora </span>
+									<span v-if="order.orderStatus === 'IN_TRANSPORT' ">U transportu</span>
+									<span v-if="order.orderStatus === 'DELIVERED' ">Dostavljena</span>
+									<span v-if="order.orderStatus === 'CANCELED' ">Otkazana</span>
+						</span>
 						<input v-if="order.orderStatus !== 'WAITING_FOR_DELIVERER' && order.orderStatus !== 'IN_TRANSPORT' && order.orderStatus !== 'WAITING_FOR_RESPONSE' && order.orderStatus !== 'DELIVERED' && order.orderStatus !== 'CANCELED'" type="button" @click="changeOrderStatus(order.id)" value="Promena statusa"></input>
 					</span>
 					<p>{{order.customer.username}}</p>
@@ -129,7 +138,7 @@ Vue.component("orders-for-restaurant", {
 		methods : {
 			changeOrderStatus : function(orderId){
 				axios.post("/changeOrderStatus", orderId)
-				.then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders})
+				.then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders, this.filterDTO.orders = this.orders})
 			},
 			sortByPrice: function(type){
 				this.sortDTO.type = type;
