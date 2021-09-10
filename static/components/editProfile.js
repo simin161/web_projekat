@@ -22,28 +22,33 @@ template: `<div>
 			</ul>
 			<br/>
 		
-		<div style="margin-top: 100px; margin-left: 38%; margin-bottom:23%" >
-			<form>
-				<table style="width: 50%">
+		<div style="margin-top: 100px; margin-bottom:23%" >
+			<form class="formBackground">
+				<table class="tableCreateRestaurant">
+					</br>
+					<tr>
+			   			<th colSpan="3" text-align="center" class="header">Vaši lični podaci</th>
+			   		</tr>
+			   		<br/>
 					<tr >
 						<td>Ime: </td>
-						<td> <input type="text" v-model="loggedUser.name" :disabled="isDisabled"> </input> </td>
+						<td> <input class="selectRestaurant" type="text" v-model="loggedUser.name" :disabled="isDisabled"> </input> </td>
 					</tr>
 					<br/>
 					<tr>
 						<td>Prezime: </td>
-						<td><input type="text" v-model="loggedUser.surname" :disabled="isDisabled"></input></td>
+						<td><input class="selectRestaurant" type="text" v-model="loggedUser.surname" :disabled="isDisabled"></input></td>
 					</tr>
 					<br/>
 					<tr>
 						<td>Datum rođenja:</td>
-						<td><input style="width:57%" type="date" v-model="loggedUser.dateOfBirth" :disabled="isDisabled"></input> </td>
+						<td><input class="selectRestaurant" type="date" v-model="loggedUser.dateOfBirth" :disabled="isDisabled"></input> </td>
 					</tr>
 					<br/>
 					<tr>
 						<td>Pol:</td>
 						<td>
-							<select v-model="loggedUser.sex" style="width:57%" :disabled="isDisabled">
+							<select v-model="loggedUser.sex" class="selectRestaurant" :disabled="isDisabled">
 								<option>Muško</option>
 								<option>Žensko</option>
 							</select>
@@ -52,29 +57,29 @@ template: `<div>
 					<br/>
 					<tr>
 						<td>Korisničko ime: </td>
-						<td><input type="text" v-model="loggedUser.username" :disabled="isDisabled"></input></td>
+						<td><input type="text" class="selectRestaurant" v-model="loggedUser.username" :disabled="isDisabled"></input></td>
 					</tr>
 					<br/>
 					<tr>
-						<td><input type="button" @click="showPasswordChange = true" value="Promeni lozinku"></input></td>
+						<td colSpan="2" text-align="center"><input class="buttonCreateRestaurant" type="button" @click="showPasswordChange = true" value="Promeni lozinku"></input></td>
 					</tr>
 					<tr v-if="showPasswordChange === true">
-						<td>Nova lozinka: <input type="password" v-model="dto.newPassword"></input></td>
-						<td>Potvrda nove lozinke: <input type="password" v-model="dto.newPasswordAgain"></input></td>
-						<td><input type="button" value="Sačuvaj lozinku" @click="changePassword"></input></td>
+						<td>Nova lozinka: <input class="selectRestaurant" type="password" v-model="dto.newPassword"></input></td>
+						<td>Potvrda nove lozinke: <input class="selectRestaurant" type="password" v-model="dto.newPasswordAgain"></input></td>
+						<td><input class="buttonCreateRestaurant" type="button" value="Sačuvaj lozinku" @click="changePassword"></input></td>
 					</tr>
 					<br v-if="loggedUser.userType === 'CUSTOMER'"/>
 					<tr v-if="loggedUser.userType === 'CUSTOMER'">
 						<td>Osvojeni poeni: </td>
-						<td><p>{{loggedUser.collectedPoints}}</p></td>
+						<td><p class="selectRestaurant">{{loggedUser.collectedPoints}}</p></td>
 					</tr>
 					<tr v-if="loggedUser.userType === 'CUSTOMER'">
 						<td>Tip kupca: </td>
-						<td><p>{{loggedUser.customerType.name}}</p></td>
+						<td><p class="selectRestaurant">{{loggedUser.customerType.name}}</p></td>
 					</tr>
 					<tr v-if="loggedUser.userType === 'CUSTOMER'">
 						<td>Popust na ukupnu cenu: </td>
-						<td><p>{{loggedUser.customerType.discount}}</p></td>
+						<td><p class="selectRestaurant">{{loggedUser.customerType.discount}}</p></td>
 					</tr>
 					<br/>
 				</table>

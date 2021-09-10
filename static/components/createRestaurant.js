@@ -106,6 +106,7 @@ Vue.component('create-restaurant', {
 			   <div style="margin-top: 100px; margin-bottom:23%">
 			   	<form class="formBackground">
 			   		<table class="tableCreateRestaurant">
+			   		</br>
 			   		<tr>
 			   			<th colSpan="3" text-align="center" class="header">Unesite podatke za novi restoran</th>
 			   		</tr>
@@ -155,7 +156,7 @@ Vue.component('create-restaurant', {
 			   			<tr>
 			   				<td colSpan="3" align="center"><p> {{message}} </p></td>
 			   			</tr>
-			   			
+			   			</br>
 			   		</table>
 			   		
 			   	</form>
