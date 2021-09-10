@@ -2,7 +2,6 @@ Vue.component('edit-article', {
 	data: function(){
 		return{
 			article: null,
-			scrolled: false,
 			visibility: 'hidden',
 			isDisabled: true,
 			message : "",
@@ -16,7 +15,7 @@ Vue.component('edit-article', {
 template: `
 			<div>
 				<navigation-header></navigation-header>
-				<ul  :class="scrolled ? 'scrollRest' : 'rest'">
+				<ul  class="rest">
 					<li><a @click="isDisabled = false; visibility = 'visible'">Izmeni podatke</a> </li>
 				</ul>
 				<br/>
@@ -69,9 +68,6 @@ template: `
 		  `
 	,
 	methods:{
-		 handleScroll () {
-			    this.scrolled = window.scrollY > 0;
-			  },
 		imageSelected(event){
 			const file = document.querySelector('input[type=file]').files[0]
 			const reader = new FileReader()
@@ -120,12 +116,6 @@ template: `
 					        event.preventDefault();
 					      }
 				}
-		},
-		created () {
-		  window.addEventListener('scroll', this.handleScroll);
-		},
-		destroyed () {
-		  window.removeEventListener('scroll', this.handleScroll);
 		},
 	mounted(){
 	axios.get("/getChoosenArticle")

@@ -10,7 +10,7 @@ Vue.component("customerCart", {
 	template: `
 		<div>
 		<navigation-header></navigation-header>
-		<ul :class="scrolled ? 'scrollRest' : 'rest'">
+		<ul class="rest">
 				<li><a @click="placeOrder(item)">Plaćanje</a></li>
 		</ul>
 		
