@@ -28,17 +28,18 @@ import dto.SearchRestaurantDTO;
 import dto.SortRestaurantDTO;
 
 public class RestaurantService {
-	
+
 	public boolean createRestaurant(Restaurant newRestaurant) {
-		
+
 		boolean returnValue = false;
-		
+
 		try {
-			
+
 			newRestaurant.setId(Integer.toString(RestaurantDAO.getInstance().getAll().size() + 1));
 			newRestaurant.setStatus(RestaurantStatus.CLOSED);
 			newRestaurant.setArticles(new ArrayList<Article>());
-			newRestaurant.setRestaurantLogo(ImageService.getInstance().saveImage(newRestaurant.getRestaurantLogo(), "r" + newRestaurant.getId()));
+			newRestaurant.setRestaurantLogo(ImageService.getInstance().saveImage(newRestaurant.getRestaurantLogo(),
+					"r" + newRestaurant.getId()));
 			ManagerDAO.getInstance().findManagerById(newRestaurant.getManager().getId()).setRestaurant(newRestaurant);
 			ManagerDAO.getInstance().save();
 			newRestaurant.getLocation().setLatitude(0);
@@ -46,88 +47,88 @@ public class RestaurantService {
 			RestaurantDAO.getInstance().addRestaurant(newRestaurant);
 			RestaurantDAO.getInstance().saveRestaurants();
 			returnValue = true;
-			
-		}catch(Exception e) {
+
+		} catch (Exception e) {
 			returnValue = false;
 		}
-		
+
 		return returnValue;
-		
+
 	}
-	
-	public List<Restaurant> findRestaurantsByName(String name){
+
+	public List<Restaurant> findRestaurantsByName(String name) {
 		return RestaurantDAO.getInstance().findRestaurantByName(name);
 	}
-	
+
 	public void deleteRestaurant(Restaurant restaurant) {
-		
-		for(Restaurant r : RestaurantDAO.getInstance().getAll()) {
-			
-			if(r.getId().equals(restaurant.getId())) {
+
+		for (Restaurant r : RestaurantDAO.getInstance().getAll()) {
+
+			if (r.getId().equals(restaurant.getId())) {
 				r.setDeleted(true);
 				break;
 			}
-			
+
 		}
-		
+
 		RestaurantDAO.getInstance().save();
-		
-		for(Manager m : ManagerDAO.getInstance().getAllManagers()) {
-			
-			if(m.getRestaurant()!=null)
-			if(m.getRestaurant().getId().equals(restaurant.getId())) {
-				
-				m.setRestaurant(new Restaurant());
-			}
-			
+
+		for (Manager m : ManagerDAO.getInstance().getAllManagers()) {
+
+			if (m.getRestaurant() != null)
+				if (m.getRestaurant().getId().equals(restaurant.getId())) {
+
+					m.setRestaurant(new Restaurant());
+				}
+
 		}
-		
+
 		ManagerDAO.getInstance().save();
-		
-		for(Article a : ArticleDAO.getInstance().getAll()) {
-			
-			if(a.getRestaurant()!=null)
-			if(a.getRestaurant().getId().equals(restaurant.getId())) {
-				
-				a.setRestaurant(new Restaurant());
-			}
-			
+
+		for (Article a : ArticleDAO.getInstance().getAll()) {
+
+			if (a.getRestaurant() != null)
+				if (a.getRestaurant().getId().equals(restaurant.getId())) {
+
+					a.setRestaurant(new Restaurant());
+				}
+
 		}
-		
+
 		ArticleDAO.getInstance().save();
-		
-		for(Order o : OrderDAO.getInstance().getAllOrders()) {
-			
-			if(o.getRestaurant().getId().equals(restaurant.getId())) {
-				
+
+		for (Order o : OrderDAO.getInstance().getAllOrders()) {
+
+			if (o.getRestaurant().getId().equals(restaurant.getId())) {
+
 				o.setOrderStatus(OrderStatus.CANCELED);
 				o.setRestaurant(new Restaurant());
-				
+
 			}
-			
+
 		}
-		
+
 		OrderDAO.getInstance().save();
-		
+
 	}
-	
+
 	public ArrayList<Restaurant> getAllRestaurants() {
-		
+
 		sortRestaurantsByWorkingStatus();
-		
+
 		ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
-		
-		for(Restaurant r : RestaurantDAO.getInstance().getAll()) {
-			
-			if(!r.isDeleted()) {
+
+		for (Restaurant r : RestaurantDAO.getInstance().getAll()) {
+
+			if (!r.isDeleted()) {
 				restaurants.add(r);
 			}
-			
+
 		}
-		
+
 		return restaurants;
 	}
-	
+
 	private void sortRestaurantsByWorkingStatus() {
 		Collections.sort(RestaurantDAO.getInstance().getAll(), new Comparator<Restaurant>() {
 			@Override
@@ -148,7 +149,7 @@ public class RestaurantService {
 						ImageService.getInstance().saveImage(newArticle.getArticleImage(), "a" + newArticle.getId()));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				 
+
 			}
 
 			ArticleDAO.getInstance().addArticle(newArticle);
@@ -182,7 +183,7 @@ public class RestaurantService {
 						editedRestaurant.setRestaurantLogo(ImageService.getInstance()
 								.saveImage(editedRestaurant.getRestaurantLogo(), "r" + editedRestaurant.getId()));
 					} catch (Exception e) {
-						 
+
 						retVal = false;
 					}
 				}
@@ -203,9 +204,11 @@ public class RestaurantService {
 		for (Comment comment : CommentDAO.getInstance().getAll()) {
 			if (comment.getCommentedRestaurant().getId().equals(id)) {
 				if (comment.getStatus() == CommentStatus.ACCEPTED) {
-					if(!comment.isDeleted())
-						if(!comment.getCustomer().getDeleted())
-							retVal.add(comment);
+					if (!comment.isDeleted()) {
+						if (!comment.getCustomer().getDeleted())
+							comment.getCustomer().setName("Izbrisan korisnik");
+						retVal.add(comment);
+					}
 				}
 			}
 		}
@@ -218,11 +221,12 @@ public class RestaurantService {
 
 		for (Comment comment : CommentDAO.getInstance().getAll()) {
 			if (comment.getCommentedRestaurant().getId().equals(id)) {
-				if(!CustomerDAO.getInstance().findCustomerById(comment.getCustomer().getId()).getDeleted())
-					if(!comment.isDeleted())
-						if(!comment.getCustomer().getDeleted())
+				if (!CustomerDAO.getInstance().findCustomerById(comment.getCustomer().getId()).getDeleted())
+					if (!comment.isDeleted()) {
+						if (!comment.getCustomer().getDeleted())
 							comment.getCustomer().setName("Izbrisan korisnik");
 						retVal.add(comment);
+					}
 			}
 		}
 
@@ -247,7 +251,7 @@ public class RestaurantService {
 	}
 
 	public ArrayList<Restaurant> sortByName(SortRestaurantDTO dto) {
-		if (dto.getSortType()== SortType.ASCENDING) {
+		if (dto.getSortType() == SortType.ASCENDING) {
 			Collections.sort(dto.getRestaurants(), new Comparator<Restaurant>() {
 				@Override
 				public int compare(final Restaurant object1, final Restaurant object2) {
@@ -283,16 +287,16 @@ public class RestaurantService {
 		}
 		return dto.getRestaurants();
 	}
-	
-	public ArrayList<Restaurant> filterRestaurants(FilterRestaurantDTO dto){
+
+	public ArrayList<Restaurant> filterRestaurants(FilterRestaurantDTO dto) {
 		ArrayList<Restaurant> retVal = new ArrayList<Restaurant>();
-		
-		for(Restaurant r : dto.getRestaurants()) {
-			if(r.getRestaurantType().equals(dto.getRestaurantType())) {
+
+		for (Restaurant r : dto.getRestaurants()) {
+			if (r.getRestaurantType().equals(dto.getRestaurantType())) {
 				retVal.add(r);
 			}
 		}
-		
+
 		return retVal;
 	}
 
@@ -303,120 +307,120 @@ public class RestaurantService {
 		Restaurant restaurant = RestaurantDAO.getInstance().findById(id);
 		if (comments.size() != 0) {
 			for (Comment comment : comments) {
-				if(!comment.isDeleted())
+				if (!comment.isDeleted())
 					sum += comment.getMark();
 			}
 
 			avg = sum / comments.size();
 		}
 		restaurant.setAverageMark(avg);
-		//RestaurantDAO.getInstance().getAll().set(Integer.parseInt(id) - 1, restaurant);
+		// RestaurantDAO.getInstance().getAll().set(Integer.parseInt(id) - 1,
+		// restaurant);
 		RestaurantDAO.getInstance().save();
 	}
 
 	public ArrayList<Restaurant> search(SearchRestaurantDTO searchParams) {
 		ArrayList<Restaurant> retVal = new ArrayList<Restaurant>();
-		
-		Pattern patternName = Pattern.compile(searchParams.getName(), Pattern.CASE_INSENSITIVE);		
+
+		Pattern patternName = Pattern.compile(searchParams.getName(), Pattern.CASE_INSENSITIVE);
 		Pattern patternType = Pattern.compile(searchParams.getType(), Pattern.CASE_INSENSITIVE);
 		Pattern patternLocation = Pattern.compile(searchParams.getLocation(), Pattern.CASE_INSENSITIVE);
 		double borderNumber = 0;
-		if(!searchParams.getAverageMark().equals(""))
+		if (!searchParams.getAverageMark().equals(""))
 			borderNumber = Double.parseDouble(searchParams.getAverageMark());
-		
-		for(Restaurant r : RestaurantDAO.getInstance().getAll()) {
-		    Matcher matcherName = patternName.matcher(r.getName());
-		    Matcher matcherType = patternType.matcher(r.getRestaurantType());
-		    Matcher matcherLocation = patternLocation.matcher(r.getLocation().getAddress());
-		    
-		    if(matcherName.find() && matcherType.find() && matcherLocation.find() && r.getAverageMark() >= borderNumber) {
-		    	if(!r.isDeleted())
-		    		retVal.add(r);
-		    }
+
+		for (Restaurant r : RestaurantDAO.getInstance().getAll()) {
+			Matcher matcherName = patternName.matcher(r.getName());
+			Matcher matcherType = patternType.matcher(r.getRestaurantType());
+			Matcher matcherLocation = patternLocation.matcher(r.getLocation().getAddress());
+
+			if (matcherName.find() && matcherType.find() && matcherLocation.find()
+					&& r.getAverageMark() >= borderNumber) {
+				if (!r.isDeleted())
+					retVal.add(r);
+			}
 		}
-		
+
 		return retVal;
 	}
-	
+
 	public Restaurant findRestaurantById(String restaurantId) {
-		
+
 		Restaurant restaurant = new Restaurant();
-		
-		for(Restaurant r : RestaurantDAO.getInstance().getAll()) {
-			
-			if(r.getId().equals(restaurantId)) {
+
+		for (Restaurant r : RestaurantDAO.getInstance().getAll()) {
+
+			if (r.getId().equals(restaurantId)) {
 				restaurant = r;
 				break;
 			}
-			
+
 		}
-		
-		
+
 		return restaurant;
 	}
-	
-	public ArrayList<Customer> getAllCustomersForRestaurant(String id){
+
+	public ArrayList<Customer> getAllCustomersForRestaurant(String id) {
 		ArrayList<Customer> retVal = new ArrayList<Customer>();
 		Restaurant restaurant = findRestaurantById(id);
-		
-		if(restaurant.getCustomers() == null)
+
+		if (restaurant.getCustomers() == null)
 			return retVal;
-		
-		for(Customer customer : restaurant.getCustomers()) {
+
+		for (Customer customer : restaurant.getCustomers()) {
 			customer = CustomerDAO.getInstance().findCustomerById(customer.getId());
-			if(!customer.getDeleted())
+			if (!customer.getDeleted())
 				retVal.add(customer);
 		}
-		
+
 		return retVal;
 	}
-	
+
 	public void addCustomerToRestaurant(String restaurantId, String customerId) {
-		
+
 		boolean indicator = false;
-		
-		for(Restaurant r : RestaurantDAO.getInstance().getAll()) {
-			
-			if(r.getId().equals(restaurantId)) {
-				
-				if(r.getCustomers()==null) {
+
+		for (Restaurant r : RestaurantDAO.getInstance().getAll()) {
+
+			if (r.getId().equals(restaurantId)) {
+
+				if (r.getCustomers() == null) {
 					r.setCustomers(new ArrayList<Customer>());
 				}
-				
+
 				indicator = checkIfCustomerExists(r.getCustomers(), customerId);
-				
-				if(indicator == false) {
-				
+
+				if (indicator == false) {
+
 					r.getCustomers().add(new Customer(customerId));
-					
+
 				}
-				
-			
+
 			}
-			
+
 		}
-		
+
 		RestaurantDAO.getInstance().saveRestaurants();
-		
+
 	}
-		
+
 	private boolean checkIfCustomerExists(List<Customer> customers, String customerId) {
-		
+
 		boolean indicator = false;
-		
-		for(Customer c : customers) {
-			
-			if(c.getId().equals(customerId)) {
+
+		for (Customer c : customers) {
+
+			if (c.getId().equals(customerId)) {
 				indicator = true;
 				break;
-			}else {
+			} else {
 				indicator = false;
 			}
-			
+
 		}
-		
+
 		return indicator;
-		
+
 	}
 
 	public ArrayList<Restaurant> sortByLocation(SortRestaurantDTO dto) {
@@ -437,5 +441,5 @@ public class RestaurantService {
 		}
 		return dto.getRestaurants();
 	}
-	
+
 }
