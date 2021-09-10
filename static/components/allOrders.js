@@ -29,7 +29,7 @@ Vue.component('all-orders',{
 	template: `
 		 <div>
 		 	<navigation-header></navigation-header>
-			<ul :class="scrolled ? 'scrollRest' : 'rest'">
+			<ul class="rest">
 				<li><a @click="loadAll">Sve porudžbine</a></li>
 				<li><a @click="loadDelivered">Dostavljene porudžbine</a></li>
 				<li><a @click="loadUndelivered">Nedostavljene porudžbine</a></li>

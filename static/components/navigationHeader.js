@@ -6,7 +6,7 @@ Vue.component('navigation-header', {
 	},
 	template : `<div>
 					<div v-if="loggedUser !== null">
-						<ul :class="scrolled ? 'scroll' : ''" v-if="loggedUser.userType === 'CUSTOMER'">
+						<ul class="scroll" v-if="loggedUser.userType === 'CUSTOMER'">
 							<li><a class="active" href="#/welcome-page">Početna</a></li>
 							<li><a href="#/restaurants">Pregled restorana</a></li>
 							<li><a href="#/customerOrders">Pregled porudžbina</a></li>
@@ -14,7 +14,7 @@ Vue.component('navigation-header', {
 							<li><a href="#/customerCart"> Korpa </a></li>
 							<li class="right"><sign-out></sign-out></li>
 						</ul>
-							<ul :class="scrolled ? 'scroll' : ''" v-if="loggedUser.userType === 'ADMINISTRATOR'" >
+							<ul class="scroll" v-if="loggedUser.userType === 'ADMINISTRATOR'" >
 								<li><a class="active" href="#/welcome-page">Početna</a></li>
 								<li><a href="#/createRestaurant">Dodavanje restorana </a></li>
 								<li><a href="#/createUser">Dodavanje korisnika</a></li>
@@ -23,14 +23,14 @@ Vue.component('navigation-header', {
 								<li><a href="#/edit-profile"> Moj nalog </a></li>
 								<li class="right"><sign-out></sign-out></li>
 							</ul>
-							<ul :class="scrolled ? 'scroll' : ''" v-if="loggedUser.userType === 'MANAGER'">
+							<ul class="scroll" v-if="loggedUser.userType === 'MANAGER'">
 								<li><a class="active" href="#/welcome-page">Početna</a></li>
 								<li><a href="#/show-restaurant">Prikaz restorana</a></li>
 								<li><a href="#/orders-for-acceptance">Pregled zahteva </a></li>
 								<li><a href="#/edit-profile"> Moj nalog </a></li>
 								<li class="right"><sign-out></sign-out></li>
 							</ul>
-							<ul :class="scrolled ? 'scroll' : ''" v-if="loggedUser.userType === 'DELIVERER'">
+							<ul class="scroll" v-if="loggedUser.userType === 'DELIVERER'">
 								<li><a class="active" href="#/welcome-page">Početna</a></li>
 								<li><a href="#/deliverers-requests">Prikaz zahteva</a></li>
 								<li><a href='#/orders-without-deliverer'>Porudžbine bez dostavljača</a></li>

@@ -93,7 +93,7 @@
 	height: 2rem; 
 }
 .buttonDecline:hover{
-	background-color: #ff5e5e!important;
+	background-color: #ff5e5e !important;
 	transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
 }
 .commentSection{
