@@ -80,11 +80,11 @@ template: `<div>
 					</tr>
 					<tr>
 						<td>Cena od: </td>
-						<td><input class="selectSearch" type="number" v-model="searchParams.priceBottom"></input></td>
+						<td><input class="selectSearch" min="0" @keypress="validateNumberPriceBottom" type="number" v-model="searchParams.priceBottom"></input></td>
 					</tr>
 					<tr>
 						<td>Cena do: </td>
-						<td><input class="selectSearch" type="number" v-model="searchParams.priceTop"></input></td>
+						<td><input class="selectSearch" @keypress="validateNumberPriceTop" min="0" type="number" v-model="searchParams.priceTop"></input></td>
 					</tr>
 					<tr>
 						<td>Datum od: </td>
@@ -306,7 +306,27 @@ template: `<div>
 		enter: function(el, done) {
 
 		      var that = this;
-		    }
+		},
+		validateNumberPriceBottom(event){
+			let keyCode = event.keyCode;
+			console.log(keyCode);
+			if(this.searchParams.priceBottom == "" && this.searchParams.priceBottom != "0" && keyCode == 46)
+				event.preventDefault();
+			
+			 if (!/^\d+\.?\d*$/.test(keyCode) || keyCode == 45 || keyCode == 43 || keyCode == 101) {
+			        event.preventDefault();
+			      }
+		},
+		validateNumberPriceTop(event){
+			let keyCode = event.keyCode;
+			console.log(keyCode);
+			if(this.searchParams.priceTop == "" && this.searchParams.priceTop != "0" && keyCode == 46)
+				event.preventDefault();
+			
+			 if (!/^\d+\.?\d*$/.test(keyCode) || keyCode == 45 || keyCode == 43 || keyCode == 101) {
+			        event.preventDefault();
+			      }
+		}
 		
 		
 	},

@@ -47,7 +47,7 @@ template: `<div>
 							<td><input type="text" v-model="searchParams.location" placeholder="Lokacija..."></input></td>
 						</tr>
 						<tr>
-							<td><input type="number" min="0" v-model="searchParams.averageMark" placeholder="Prosečna ocena..."></input></td>
+							<td><input type="number" min="0" max="5" onKeyDown="return false" v-model="searchParams.averageMark" placeholder="Prosečna ocena..."></input></td>
 						</tr>
 						<tr>
 							<td><input type="button" @click="search" value="Pretraži"></input></td>
