@@ -120,6 +120,6 @@
     "text": "proba 2",
     "mark": 4,
     "status": "ACCEPTED",
-    "isDeleted": false
+    "isDeleted": true
   }
 ]

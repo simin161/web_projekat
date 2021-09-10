@@ -14,11 +14,33 @@ template: `<div>
 			<li><a @click="loadComments">Prikaz komentara</a></li>
 		</ul>
 		<img :src="restaurant.restaurantLogo" height="100%" width="100%"/>
-		<div style="margin-left: 45%">
-			<p>Naziv restorana: {{restaurant.name}}</p>
-			<p>Tip restorana: {{restaurant.restaurantType}}</p>
-			<p>Prosečna ocena: {{restaurant.averageMark}}</p>
-			<p>Lokacija: {{restaurant.location.address}}</p>
+		<div>
+		<form class="formBackground">
+			<table class="tableFrontRestaurant">
+				<tr>
+					<td>Naziv restorana:</td>
+					<td>{{restaurant.name}}</td>
+				</tr>
+				<tr>
+					<td>Tip restorana:</td>
+					<td>{{restaurant.restaurantType}}</td>
+				</tr>
+				<tr>
+					<td>Prosečna ocena:</td>
+					<td>{{restaurant.averageMark}}</td>
+				</tr>
+				<tr>
+					<td>Lokacija:</td>
+					<td>{{restaurant.location.address}}</td>
+				</tr>
+				<tr>
+					<td>Status:</td>
+					<td v-if="restaurant.status === 'OPEN'">OTVORENO</td>
+					<td v-if="restaurant.status === 'CLOSED'">ZATVORENO</td>
+				</tr>
+			</table>
+		</form>
+		
 		</div>
 		<hr/>
 			<div v-if="showComponent === '1'">

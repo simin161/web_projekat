@@ -12,6 +12,19 @@
   	margin-right: auto;
 }
 
+.tableFrontRestaurant{
+	
+  	margin-left: auto;
+  	margin-right: auto;
+}
+
+.nistaBrate{
+	
+	width: 30px;
+	border-bottom: none;
+	
+}
+
 .formBackground{
 	
 	background-image: url(../images/formBackground.png);
@@ -50,6 +63,13 @@
 .selectRestaurant{
 	
 	width: 200px;
+	font-size: 16px;
+	
+}
+
+.selectRestaurant2{
+	
+	width: 300px;
 	font-size: 16px;
 	
 }
