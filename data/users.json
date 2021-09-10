@@ -118,5 +118,10 @@
     "username": "guyyiou",
     "password": "asd",
     "userType": "DELIVERER"
+  },
+  {
+    "username": "sasdad",
+    "password": "sasdad",
+    "userType": "CUSTOMER"
   }
 ]

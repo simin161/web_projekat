@@ -115,7 +115,7 @@ public class UserService {
 						retVal.add(u);
 					}
 
-				} else if (searchParams.getCustomerType().equals("")) {
+				} else if (searchParams.getCustomerType().equals("") && !searchParams.getUserType().equals("")) {
 
 					if (u.getUserType().toString().toLowerCase().equals(searchParams.getUserType().toLowerCase())) {
 						if (matcherName.find() && matcherSurname.find() && matcherUsername.find()) {
@@ -123,9 +123,9 @@ public class UserService {
 						}
 					}
 
-				} else if (searchParams.getUserType().equals("")) {
+				} else if (searchParams.getUserType().equals("") && !searchParams.getCustomerType().equals("")) {
 
-					if (u.getCustomerType().getName().toLowerCase().equals(searchParams.getCustomerType())) {
+					if (u.getCustomerType().getName().toLowerCase().equals(searchParams.getCustomerType().toLowerCase())) {
 
 						if (matcherName.find() && matcherSurname.find() && matcherUsername.find()) {
 							retVal.add(u);
