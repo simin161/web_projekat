@@ -352,7 +352,7 @@
       "id": "5",
       "isDeleted": false
     },
-    "orderStatus": "WAITING_FOR_RESPONSE",
+    "orderStatus": "IN_TRANSPORT",
     "isDeleted": false,
     "totalPrice": 4200.0,
     "deliverer": {

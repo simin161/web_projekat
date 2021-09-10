@@ -138,18 +138,21 @@ Vue.component('all-orders',{
 				</div>
 				</div>
 			<div style="margin-top: 6%" v-if="orders != null">
-				<div class="lists" v-for="order in orders">
+				<div class="lists" style="cursor: default" v-for="order in orders">
 					<div>
-						<span>Status: {{order.orderStatus}}</span>
-						<span v-if="order.orderStatus === 'IN_TRANSPORT'">
-							<input type="button" value="Promena statusa" @click="changeStatus(order.id)"></input>
-						</span>
+						<p>Status: <span v-if="order.orderStatus === 'IN_TRANSPORT'">U transportu</span>
+								   <span v-if="order.orderStatus === 'DELIVERED'">Dostavljena</span>
+						</p>
 						<p>{{order.customer.username}}</p>
 						<p>Restoran: {{order.restaurant.name}} </p>
 						<p>Lokacija: {{order.restaurant.location.address}}</p>
 						<p>Cena: {{order.totalPrice}} dinara</p>
 						<p>Datum i vreme porudžbine: {{order.date}} {{order.time}}</p> 
+						<span v-if="order.orderStatus === 'IN_TRANSPORT'">
+							<input type="button" value="Promena statusa" @click="changeStatus(order.id)"></input>
+						</span>
 					</div>
+					<br/>
 				</div>
 			</div>
 			<div class="animated fadeIn" v-if="orders === null">
