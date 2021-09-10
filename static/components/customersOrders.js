@@ -48,7 +48,7 @@ template: `<div>
 					<table style="text-align: left; margin: auto">
 		
 						<tr>
-							<td><p class="commentMarkCustomer">Unesite ocenu:</p></td>
+							<td>Unesite ocenu:</td>
 							<td><input type="number" v-model="commentToPost.mark" min="1" max="5" onKeyDown="return false" class="numberAddToCart"></input></td>
 						</tr>
 					</table>
@@ -167,15 +167,16 @@ template: `<div>
 		</transition>
 		<navigation-header></navigation-header>
 		
-		<form class="searchForm" style="">
+		<form class="searchForm">
 			<button class="aaa" @click="showUndelivered()">Prikaži nedostavljene porudžbine</button>
 			<button class="aaa" @click="showAll()">Prikaži sve porudžbine</button>
-			<button class="buttonSearchDelivery" @click="showModalSearchFunction()">Pretraži porudžbine</button>
+			<button class="aaa" @click="showModalSearchFunction()">Pretraži porudžbine</button>
 		</form>
 		<hr>
 			<div v-for="item in ordersToDisplay">
 				<div class="lists">
 					<span>
+					</br>
 							<button class="buttonCommentLeave" @click="showModalDialog(item)" title="Ostavite komentar" v-if="item.orderStatus === 'DELIVERED'"></button>
 							<button class="buttonCustomerCancelOrder" @click="cancelOrder(item)" title="Otkaži porudžbinu" v-if="item.orderStatus === 'PROCESSING'"></button> 
 					</br>

@@ -50,10 +50,12 @@ template: `<div>
 							<img style="border-radius: 5px;" :src="article.articleImage" height="100%" width="100%">
 						</div> 
 						<p>{{article.name}}</p>
-						<p>Cena: {{article.price}} dinara</p>
-						<p>Količina: {{article.quantity}}</p>
+						<p>Cena: {{article.price}} din.</p>
+						<p>Količina: {{article.quantity}} grama</p>
 						<p>{{article.description}}</p>
-						<p>{{article.articleType}}</p>
+						<p v-if="article.articleType === 'FOOD'">Tip artikla: Hrana</p>
+						<p v-if="article.articleType === 'DRINK'">Tip artikla: Piće</p>
+						</br>
 					</div>
 				</div>
 				<div class="animated fadeIn" v-if="!restaurant.articles || !restaurant.articles.length">
