@@ -212,7 +212,7 @@ Vue.component('create-restaurant', {
 				if(/\S/.test(this.restaurantForCreate.name) && correctType
 						&& /\S/.test(this.restaurantForCreate.location.address) && this.imagePosted && /\S/.test(this.restaurantForCreate.manager.id)){
 					axios.post("/createRestaurant", this.restaurantForCreate)
-					.then(response=>(this.message= response.data))
+					.then(response=>{this.message= response.data, this.$page.go()})
 				}
 				else{
 					if(correctType == true)
