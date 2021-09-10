@@ -78,7 +78,7 @@ public class OrderService {
 
 		}
 		
-		/*if(CustomerDAO.getInstance().findCustomerById(customerId).getCustomerType().getName().equals("PREMIUM")) {
+		if(CustomerDAO.getInstance().findCustomerById(customerId).getCustomerType().getName().equals("PREMIUM")) {
 			
 			tempPrice = price;
 			price = price - (tempPrice * 0.05);
@@ -89,7 +89,7 @@ public class OrderService {
 			tempPrice = price;
 			price = price - (tempPrice * 0.1);
 			
-		}*/
+		}
 
 		return price;
 
@@ -114,7 +114,7 @@ public class OrderService {
 
 		CustomerDAO.getInstance().findCustomerById(customerId).setCollectedPoints((int) points);
 		
-		/*if(points>=5000) {
+		if(points>=5000) {
 			
 			CustomerDAO.getInstance().findCustomerById(customerId).getCustomerType().setName("PREMIUM");
 			CustomerDAO.getInstance().findCustomerById(customerId).getCustomerType().setDiscount(0.05);
@@ -127,7 +127,7 @@ public class OrderService {
 			CustomerDAO.getInstance().findCustomerById(customerId).getCustomerType().setDiscount(0.1);
 			CustomerDAO.getInstance().findCustomerById(customerId).getCustomerType().setNeededPoints(10000);
 			
-		}*/
+		}
 		
 		CustomerDAO.getInstance().save();
 
