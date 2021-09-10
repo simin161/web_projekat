@@ -25,6 +25,13 @@ textarea:focus{
 	border-bottom: 2px solid #5eaaa8;
 }
 
+.aaa{
+	
+	width: 200px;
+	font: 24px;
+	
+	
+}
 .aaa:hover{
 	background-color: #79b9b6;
 		transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
