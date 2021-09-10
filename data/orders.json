@@ -439,9 +439,13 @@
       "id": "5",
       "isDeleted": false
     },
-    "orderStatus": "WAITING_FOR_DELIVERER",
+    "orderStatus": "WAITING_FOR_RESPONSE",
     "isDeleted": false,
-    "totalPrice": 1420.0
+    "totalPrice": 1420.0,
+    "deliverer": {
+      "id": "1",
+      "isDeleted": false
+    }
   },
   {
     "id": "8",
@@ -522,7 +526,7 @@
       "id": "5",
       "isDeleted": false
     },
-    "orderStatus": "PROCESSING",
+    "orderStatus": "WAITING_FOR_DELIVERER",
     "isDeleted": false,
     "totalPrice": 1420.0
   },
@@ -605,9 +609,13 @@
       "id": "5",
       "isDeleted": false
     },
-    "orderStatus": "WAITING_FOR_DELIVERER",
+    "orderStatus": "WAITING_FOR_RESPONSE",
     "isDeleted": false,
-    "totalPrice": 1420.0
+    "totalPrice": 1420.0,
+    "deliverer": {
+      "id": "1",
+      "isDeleted": false
+    }
   },
   {
     "id": "10",
@@ -656,6 +664,10 @@
     },
     "orderStatus": "WAITING_FOR_RESPONSE",
     "isDeleted": false,
-    "totalPrice": 250.0
+    "totalPrice": 250.0,
+    "deliverer": {
+      "id": "1",
+      "isDeleted": false
+    }
   }
 ]
