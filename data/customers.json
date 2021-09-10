@@ -260,7 +260,38 @@
     "isDeleted": false
   },
   {
-    "collectedPoints": 0,
+    "cart": {
+      "articles": [
+        {
+          "id": "1",
+          "name": "Crystal burger",
+          "price": 500.0,
+          "articleType": "FOOD",
+          "restaurant": {
+            "id": "1",
+            "averageMark": 0.0,
+            "isDeleted": false
+          },
+          "quantity": 700.0,
+          "description": "Specijalitet kuÄ‡e!\nMnogo soÄ�no, mnogo masno",
+          "articleImage": "..\\upload\\a1.jpg",
+          "isDeleted": false,
+          "totalNumberOrdered": 1,
+          "isDeletedFromCart": true
+        }
+      ],
+      "customer": {
+        "collectedPoints": 0,
+        "isDeleted": false
+      },
+      "price": 0.0,
+      "restaurant": {
+        "id": "",
+        "averageMark": 0.0,
+        "isDeleted": false
+      }
+    },
+    "collectedPoints": 529,
     "customerType": {
       "name": "STANDARD",
       "discount": 0.0,

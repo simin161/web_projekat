@@ -18,6 +18,14 @@
   	margin-right: auto;
 }
 
+.tableCustOrd{
+	
+	width: 100%;
+	table-layout: auto;
+	white-space: nowrap;
+	
+}
+
 .nistaBrate{
 	
 	width: 30px;
@@ -140,6 +148,13 @@
 .lists .details{
 	color: #f6f6f6;
 	font-family: "Comfortaa", sans-serif; 
+}
+
+.articleInOrder{
+	
+	margin: auto;
+	float: left;
+	
 }
 
 .listsArticles{

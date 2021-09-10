@@ -5,22 +5,52 @@
     "restaurantType": "Tradicionalna kuhinja u novom ruhu",
     "articles": [
       {
-        "id": "1"
+        "id": "1",
+        "price": 0.0,
+        "quantity": 0.0,
+        "isDeleted": false,
+        "totalNumberOrdered": 0,
+        "isDeletedFromCart": false
       },
       {
-        "id": "2"
+        "id": "2",
+        "price": 0.0,
+        "quantity": 0.0,
+        "isDeleted": false,
+        "totalNumberOrdered": 0,
+        "isDeletedFromCart": false
       },
       {
-        "id": "3"
+        "id": "3",
+        "price": 0.0,
+        "quantity": 0.0,
+        "isDeleted": false,
+        "totalNumberOrdered": 0,
+        "isDeletedFromCart": false
       },
       {
-        "id": "4"
+        "id": "4",
+        "price": 0.0,
+        "quantity": 0.0,
+        "isDeleted": false,
+        "totalNumberOrdered": 0,
+        "isDeletedFromCart": false
       },
       {
-        "id": "5"
+        "id": "5",
+        "price": 0.0,
+        "quantity": 0.0,
+        "isDeleted": false,
+        "totalNumberOrdered": 0,
+        "isDeletedFromCart": false
       },
       {
-        "id": "6"
+        "id": "6",
+        "price": 0.0,
+        "quantity": 0.0,
+        "isDeleted": false,
+        "totalNumberOrdered": 0,
+        "isDeletedFromCart": false
       }
     ],
     "status": "OPEN",
@@ -33,16 +63,29 @@
     "averageMark": 5.0,
     "customers": [
       {
-        "id": "5"
+        "collectedPoints": 0,
+        "id": "5",
+        "isDeleted": false
       },
       {
-        "id": "8"
+        "collectedPoints": 0,
+        "id": "8",
+        "isDeleted": false
       },
       {
-        "id": "9"
+        "collectedPoints": 0,
+        "id": "9",
+        "isDeleted": false
       },
       {
-        "id": "10"
+        "collectedPoints": 0,
+        "id": "10",
+        "isDeleted": false
+      },
+      {
+        "collectedPoints": 0,
+        "id": "11",
+        "isDeleted": false
       }
     ],
     "isDeleted": false
