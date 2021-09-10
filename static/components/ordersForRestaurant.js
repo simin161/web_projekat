@@ -105,7 +105,7 @@ Vue.component("orders-for-restaurant", {
 					<span>
 						<span>Status: 
 									<span v-if="order.orderStatus === 'PROCESSING' ">U obradi</span>
-									<span v-if="order.orderStatus === 'IN_PREPARATION' ">U obradi</span>
+									<span v-if="order.orderStatus === 'IN_PREPARATION' ">U pripremi</span>
 									<span v-if="order.orderStatus === 'WAITING_FOR_DELIVERER'">Čeka dostavljača</span>
 									<span v-if="order.orderStatus === 'WAITING_FOR_RESPONSE'">Dostavljač je poslao zahtev. Čekanje odgovora </span>
 									<span v-if="order.orderStatus === 'IN_TRANSPORT' ">U transportu</span>

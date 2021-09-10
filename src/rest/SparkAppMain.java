@@ -451,6 +451,8 @@ public class SparkAppMain {
 			Comment comment = gson.fromJson(req.body(), Comment.class);
 			commentService.deleteComment(comment);
 			Restaurant selectedRestaurant = session.attribute("selectedRestaurant");
+			selectedRestaurant = restaurantService.findRestaurantById(selectedRestaurant.getId());
+			session.attribute("selectedRestaurant", selectedRestaurant);
 			ArrayList<Comment> comments = restaurantService.getAllCommentsForRestaurant(selectedRestaurant.getId());
 			return gson.toJson(comments);
 

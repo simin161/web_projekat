@@ -45,7 +45,7 @@ Vue.component("customerCart", {
 						
 							
 							<input type="number" v-model= "article.totalNumberOrdered" min="1" onKeyDown="return false" class="numberAddToCart"></input>
-							<button class="changeArticle" @click="editFromCart(article)" title="Izmeni artikal"></button> 
+							<button class="buttonCommentLeave" @click="editFromCart(article)" title="Izmeni artikal"></button> 
 							<button class="deleteArticle" @click="removeFromCart(article)" title="Izbaci iz korpe"></button>
 							</br>
 							

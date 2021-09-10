@@ -62,7 +62,7 @@ template: `<div>
 						<p v-if="article.articleType === 'FOOD'">Hrana</p>
 						<p v-if="article.articleType === 'DRINK'">Piće</p>
 						<span>
-							<button class="deleteArticle" @click="deleteArticle(item)" title="Obriši artikal"></button>
+							<button class="deleteArticle" @click="deleteArticle(article)" title="Obriši artikal"></button>
 						</span>
 						</br>
 						</br>
@@ -129,7 +129,9 @@ template: `<div>
 		deleteComment : function(item){
 		
 			axios.post("/deleteComment", item)
-				.then(response => {alert("Komentar je uspešno izbrisan!"), this.comments = response.data})
+				.then(response => {alert("Komentar je uspešno izbrisan!"), this.comments = response.data,
+					axios.get("/getSelectedRestaurantFrontCustomer")
+					.then(response => {this.restaurant = response.data[0]})})
 		
 		},
 		

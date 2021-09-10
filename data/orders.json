@@ -1,0 +1,671 @@
+[
+  {
+    "id": "1",
+    "articles": [
+      {
+        "id": "1",
+        "name": "Prva suza Lepe Lukić",
+        "price": 420.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 500.0,
+        "description": "Ubitačni koktel ima i što treba i što ne treba",
+        "articleImage": "..\\upload\\a1.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 5,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Tako je suđeno",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 10
+      },
+      "time": {
+        "hour": 21,
+        "minute": 17,
+        "second": 7,
+        "nano": 406387800
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "1",
+      "isDeleted": true
+    },
+    "orderStatus": "DELIVERED",
+    "isDeleted": false,
+    "totalPrice": 2100.0,
+    "deliverer": {
+      "id": "1",
+      "isDeleted": false
+    }
+  },
+  {
+    "id": "2",
+    "articles": [
+      {
+        "id": "1",
+        "name": "Prva suza Lepe Lukić",
+        "price": 420.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 500.0,
+        "description": "Ubitačni koktel ima i što treba i što ne treba",
+        "articleImage": "..\\upload\\a1.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 10,
+        "isDeletedFromCart": false
+      },
+      {
+        "id": "2",
+        "name": "Mleko od kokosa",
+        "price": 1000.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 500.0,
+        "description": "Kokosovo mleko iz Cecine pesme \"Nevaljala\"",
+        "articleImage": "..\\upload\\a2.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 1,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Tako je suđeno",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 10
+      },
+      "time": {
+        "hour": 21,
+        "minute": 24,
+        "second": 4,
+        "nano": 244012200
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "1",
+      "isDeleted": true
+    },
+    "orderStatus": "CANCELED",
+    "isDeleted": false,
+    "totalPrice": 5200.0
+  },
+  {
+    "id": "3",
+    "articles": [
+      {
+        "id": "1",
+        "name": "Prva suza Lepe Lukić",
+        "price": 420.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 500.0,
+        "description": "Ubitačni koktel ima i što treba i što ne treba",
+        "articleImage": "..\\upload\\a1.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 1,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Tako je suđeno",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 10
+      },
+      "time": {
+        "hour": 22,
+        "minute": 28,
+        "second": 54,
+        "nano": 79440200
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "2",
+      "isDeleted": true
+    },
+    "orderStatus": "DELIVERED",
+    "isDeleted": false,
+    "totalPrice": 420.0,
+    "deliverer": {
+      "id": "1",
+      "isDeleted": false
+    }
+  },
+  {
+    "id": "4",
+    "articles": [
+      {
+        "id": "4",
+        "name": "Molim te nemoj se vratiti",
+        "price": 10.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 1500.0,
+        "description": "Alkohol za raskid, zbog toga je jeftino",
+        "articleImage": "..\\upload\\a4.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 1,
+        "isDeletedFromCart": false
+      },
+      {
+        "id": "3",
+        "name": "proba",
+        "price": 43434.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 344343.0,
+        "description": "dfgs",
+        "articleImage": "..\\upload\\a3.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 1,
+        "isDeletedFromCart": false
+      },
+      {
+        "id": "2",
+        "name": "Mleko od kokosa",
+        "price": 1000.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 500.0,
+        "description": "Kokosovo mleko iz Cecine pesme \"Nevaljala\"",
+        "articleImage": "..\\upload\\a2.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 1,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Tako je suđeno",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 10
+      },
+      "time": {
+        "hour": 22,
+        "minute": 29,
+        "second": 27,
+        "nano": 465100
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "2",
+      "isDeleted": true
+    },
+    "orderStatus": "CANCELED",
+    "isDeleted": false,
+    "totalPrice": 44444.0
+  },
+  {
+    "id": "5",
+    "articles": [
+      {
+        "id": "4",
+        "name": "Molim te nemoj se vratiti",
+        "price": 10.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 1500.0,
+        "description": "Alkohol za raskid, zbog toga je jeftino",
+        "articleImage": "..\\upload\\a4.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 100,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Tako je suđeno",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 10
+      },
+      "time": {
+        "hour": 22,
+        "minute": 45,
+        "second": 37,
+        "nano": 51556000
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "2",
+      "isDeleted": true
+    },
+    "orderStatus": "CANCELED",
+    "isDeleted": true,
+    "totalPrice": 1000.0
+  },
+  {
+    "id": "6",
+    "articles": [
+      {
+        "id": "2",
+        "name": "Mleko od kokosa",
+        "price": 1000.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 500.0,
+        "description": "Kokosovo mleko iz Cecine pesme \"Nevaljala\"",
+        "articleImage": "..\\upload\\a2.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 1,
+        "isDeletedFromCart": false
+      },
+      {
+        "id": "1",
+        "name": "Prva suza Lepe Lukić",
+        "price": 420.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 500.0,
+        "description": "Ubitačni koktel ima i što treba i što ne treba",
+        "articleImage": "..\\upload\\a1.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 1,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Tako je suđeno",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 10
+      },
+      "time": {
+        "hour": 23,
+        "minute": 21,
+        "second": 34,
+        "nano": 144237100
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "2",
+      "isDeleted": true
+    },
+    "orderStatus": "DELIVERED",
+    "isDeleted": false,
+    "totalPrice": 1420.0,
+    "deliverer": {
+      "id": "1",
+      "isDeleted": false
+    }
+  },
+  {
+    "id": "7",
+    "articles": [
+      {
+        "id": "2",
+        "name": "Mleko od kokosa",
+        "price": 1000.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 500.0,
+        "description": "Kokosovo mleko iz Cecine pesme \"Nevaljala\"",
+        "articleImage": "..\\upload\\a2.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 4,
+        "isDeletedFromCart": false
+      },
+      {
+        "id": "1",
+        "name": "Prva suza Lepe Lukić",
+        "price": 420.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 500.0,
+        "description": "Ubitačni koktel ima i što treba i što ne treba",
+        "articleImage": "..\\upload\\a1.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 4,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Tako je suđeno",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 10
+      },
+      "time": {
+        "hour": 23,
+        "minute": 32,
+        "second": 19,
+        "nano": 749258100
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "3",
+      "isDeleted": false
+    },
+    "orderStatus": "CANCELED",
+    "isDeleted": true,
+    "totalPrice": 5680.0
+  },
+  {
+    "id": "8",
+    "articles": [
+      {
+        "id": "2",
+        "name": "Mleko od kokosa",
+        "price": 1000.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 500.0,
+        "description": "Kokosovo mleko iz Cecine pesme \"Nevaljala\"",
+        "articleImage": "..\\upload\\a2.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 5,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Tako je suđeno",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 10
+      },
+      "time": {
+        "hour": 23,
+        "minute": 32,
+        "second": 37,
+        "nano": 313128800
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "3",
+      "isDeleted": false
+    },
+    "orderStatus": "DELIVERED",
+    "isDeleted": false,
+    "totalPrice": 5000.0,
+    "deliverer": {
+      "id": "1",
+      "isDeleted": false
+    }
+  },
+  {
+    "id": "9",
+    "articles": [
+      {
+        "id": "4",
+        "name": "Molim te nemoj se vratiti",
+        "price": 10.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 1500.0,
+        "description": "Alkohol za raskid, zbog toga je jeftino",
+        "articleImage": "..\\upload\\a4.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 7,
+        "isDeletedFromCart": false
+      },
+      {
+        "id": "3",
+        "name": "proba",
+        "price": 43434.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 344343.0,
+        "description": "dfgs",
+        "articleImage": "..\\upload\\a3.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 4,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Tako je suđeno",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 10
+      },
+      "time": {
+        "hour": 23,
+        "minute": 32,
+        "second": 52,
+        "nano": 36508500
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "3",
+      "isDeleted": false
+    },
+    "orderStatus": "DELIVERED",
+    "isDeleted": false,
+    "totalPrice": 173806.0,
+    "deliverer": {
+      "id": "1",
+      "isDeleted": false
+    }
+  },
+  {
+    "id": "10",
+    "articles": [
+      {
+        "id": "1",
+        "name": "Prva suza Lepe Lukić",
+        "price": 420.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 500.0,
+        "description": "Ubitačni koktel ima i što treba i što ne treba",
+        "articleImage": "..\\upload\\a1.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 1,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Tako je suđeno",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 10
+      },
+      "time": {
+        "hour": 23,
+        "minute": 36,
+        "second": 14,
+        "nano": 853452700
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "3",
+      "isDeleted": false
+    },
+    "orderStatus": "DELIVERED",
+    "isDeleted": false,
+    "totalPrice": 420.0,
+    "deliverer": {
+      "id": "1",
+      "isDeleted": false
+    }
+  },
+  {
+    "id": "11",
+    "articles": [
+      {
+        "id": "2",
+        "name": "Mleko od kokosa",
+        "price": 1000.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 500.0,
+        "description": "Kokosovo mleko iz Cecine pesme \"Nevaljala\"",
+        "articleImage": "..\\upload\\a2.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 1,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Tako je suđeno",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 10
+      },
+      "time": {
+        "hour": 23,
+        "minute": 36,
+        "second": 30,
+        "nano": 319882500
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "3",
+      "isDeleted": false
+    },
+    "orderStatus": "DELIVERED",
+    "isDeleted": false,
+    "totalPrice": 1000.0,
+    "deliverer": {
+      "id": "1",
+      "isDeleted": false
+    }
+  }
+]

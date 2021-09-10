@@ -1,7 +1,7 @@
 [
   {
-    "username": "Silfaa",
-    "password": "ad",
+    "username": "draganche",
+    "password": "isusHrist",
     "userType": "CUSTOMER"
   },
   {
@@ -10,98 +10,28 @@
     "userType": "ADMINISTRATOR"
   },
   {
-    "username": "milenica",
-    "password": "milena",
-    "userType": "CUSTOMER"
-  },
-  {
-    "username": "xxxZivoradxxx",
-    "password": "zivorad",
-    "userType": "CUSTOMER"
-  },
-  {
-    "username": "manager",
-    "password": "manager1",
+    "username": "gdeSamDosla",
+    "password": "gdeSamDosla",
     "userType": "MANAGER"
   },
   {
-    "username": "deliverer",
-    "password": "deliverer",
+    "username": "zeljkic",
+    "password": "zeljkic",
     "userType": "DELIVERER"
   },
   {
-    "username": "da",
-    "password": "ad",
-    "userType": "CUSTOMER"
-  },
-  {
-    "username": "customer",
-    "password": "customer",
-    "userType": "CUSTOMER"
-  },
-  {
-    "username": "customer2",
-    "password": "customer2",
-    "userType": "CUSTOMER"
-  },
-  {
-    "username": "22sas",
-    "password": "1sdad",
-    "userType": "CUSTOMER"
-  },
-  {
-    "username": "vendi",
-    "password": "vendi",
-    "userType": "DELIVERER"
-  },
-  {
-    "username": "zoricabre",
-    "password": "zoricabre",
+    "username": "izaoblaka",
+    "password": "izaOblaka",
     "userType": "MANAGER"
   },
   {
-    "username": "wolfboy",
-    "password": "wolfboy",
-    "userType": "MANAGER"
-  },
-  {
-    "username": "yuki",
-    "password": "yuki",
-    "userType": "MANAGER"
-  },
-  {
-    "username": "asa",
-    "password": "asa",
-    "userType": "MANAGER"
-  },
-  {
-    "username": "brisime",
-    "password": "brisime",
+    "username": "abrakadabra",
+    "password": "1234",
     "userType": "CUSTOMER"
   },
   {
-    "username": "jojbre",
-    "password": "jojbre",
-    "userType": "CUSTOMER"
-  },
-  {
-    "username": "brismena",
-    "password": "brismena",
-    "userType": "MANAGER"
-  },
-  {
-    "username": "dostavljac",
-    "password": "dostavljac",
-    "userType": "DELIVERER"
-  },
-  {
-    "username": "customerr",
-    "password": "customerr",
-    "userType": "CUSTOMER"
-  },
-  {
-    "username": "novi",
-    "password": "novi",
+    "username": "dfadfa",
+    "password": "1",
     "userType": "CUSTOMER"
   }
 ]

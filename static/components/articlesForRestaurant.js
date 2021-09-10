@@ -8,7 +8,7 @@ Vue.component("articles-for-restaurant", {
 	template: `
 		<div>
 			<div v-if="articles != null">
-				<div class="lists" v-for="article in articles" @click="editArticle(article)">
+				<div class="lists" v-for="article in articles">
 						<div>
 							<img style="border-radius: 5px;" :src="article.articleImage" height="100%" width="100%">
 						</div>
