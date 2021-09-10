@@ -101,9 +101,6 @@ select option{
 }
 
 .deleteArticle{
-	float: right; 
-	margin-top: 40px; 
-	margin-right: 15px; 
 	height: 24px;
 	width: 24px;
 	background-image: url(../images/delete2.png);
@@ -143,9 +140,6 @@ select option{
 }
 
 .changeArticle{
-	float: right; 
-	margin-top: 40px; 
-	margin-right: 15px; 
 	height: 24px;
 	width: 24px;
 	background-image: url(../images/edit2.png);
