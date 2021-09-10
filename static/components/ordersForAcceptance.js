@@ -6,8 +6,7 @@ Vue.component('orders-for-acceptance', {
 	},
 template: ` <div>
 			<navigation-header></navigation-header>
-			<div class="searchForm">
-			</div>
+
 			<hr/>
 				<div class="lists" v-for="order in orders">
 					<div>

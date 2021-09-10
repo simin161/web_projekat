@@ -9,21 +9,16 @@ Vue.component("articles-for-restaurant", {
 		<div>
 			<div v-if="articles != null">
 				<div class="lists" v-for="article in articles">
-					<div>
-						<span style="float: left;">
-							<img style="border-radius: 5px;" :src="article.articleImage" height="90px" width="90px">
-						</span> 
-						<span>
-							<button class="deleteArticle" @click="deleteArticle(article)"></button> 
-							<button class="changeArticle" @click="editArticle(article)"></button>
-						</span>
+						<div>
+							<img style="border-radius: 5px;" :src="article.articleImage" height="100%" width="100%">
+						</div>
 						<p>{{article.name}}</p>
 						<p>Cena: {{article.price}} dinara</p>
 						<p>Količina: {{article.quantity}}</p>
 						<p>{{article.description}}</p>
 						<p>{{article.articleType}}</p>
-						 
-					</div>
+						<button class="deleteArticle" @click="deleteArticle(article)"></button> 
+						<button  class="changeArticle" @click="editArticle(article)"></button>
 				</div>
 			</div>
 			<div class="animated fadeIn" v-if="articles === null">

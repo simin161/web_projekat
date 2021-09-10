@@ -24,9 +24,9 @@ template: `<div>
 			<div v-if="showComponent === '1'">
 				<div v-if="restaurant.articles != null">
 					<div class="lists" v-for="article in restaurant.articles">
-						<span style="float: left;">
-							<img style="border-radius: 5px;" :src="article.articleImage" height="90px" width="90px">
-						</span> 
+						<div>
+							<img style="border-radius: 5px;" :src="article.articleImage" height="100%" width="100%">
+						</div> 
 						<p>{{article.name}}</p>
 						<p>Cena: {{article.price}} dinara</p>
 						<p>Količina: {{article.quantity}}</p>
