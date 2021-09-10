@@ -114,7 +114,7 @@ template: `<div>
 					<p v-if="item.status === 'CLOSED'" style="color: red">ZATVORENO</p>
 					<p>{{item.location.address}}</p> 
 					<hr/>
-					<input type="button" style="margin: auto" @click="show(item)" value="Detaljnije"> </input> 
+					<button class="fill" @click="show(item)" value="Detaljnije"> </button> 
 					<br/>
 					<br/>
 				</div>
