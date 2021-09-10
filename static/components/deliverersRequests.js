@@ -11,30 +11,14 @@ template: ` <div>
 			<hr/>
 			<div v-if="orders != null">
 					<div class="lists" v-for="item in orders">
-						<div>
-							<table style="width: 100%">
-							<tr>
-								<td>Kupac: {{item.customer.name}} {{item.customer.surname}} </td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>Restoran: {{item.restaurant.name}}</td>
-								<td>Lokacija</td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>Cena: {{item.totalPrice}} </td>
-								<td>Status zahteva: <span v-if="item.orderStatus === 'WAITING_FOR_RESPONSE'">Čeka na odgovor</span>
-													<span v-if="item.orderStatus === 'IN_TRANSPORT'">Prihvaćen</span>
-													<span v-if="item.orderStatus === 'WAITING_FOR_DELIVERER'">Odbijen</span>
-								</td>
-								<td></td>
-							</tr>					 
-							</table>
-						</div>
+						<p>Kupac: {{item.customer.name}} {{item.customer.surname}} </p>
+						<p>Restoran: {{item.restaurant.name}}</p>
+						<p>Lokacija: {{item.restaurant.location.address}}</p>
+						<p>Cena: {{item.totalPrice}} </p>
+						<p>Status zahteva: <span v-if="item.orderStatus === 'WAITING_FOR_RESPONSE'">Čeka na odgovor</span>
+										   <span v-if="item.orderStatus === 'IN_TRANSPORT'">Prihvaćen</span>
+										   <span v-if="item.orderStatus === 'WAITING_FOR_DELIVERER'">Odbijen</span>
+						</p>
 					</div>
 				</div>
 				<div class="animated fadeIn" v-if="orders === null">
