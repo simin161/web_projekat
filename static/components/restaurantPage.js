@@ -28,46 +28,48 @@ Vue.component('show-restaurant',{
 				</ul>
 				<br/>
 				<img :src="restaurant.restaurantLogo" height="100%" width="100%">	
-				<div style=" margin-left: 35%">
-					<table>
+				<div>
+					<form class="formBackground">
+					<table class="tableCreateRestaurant">
 						</br>					
 						<tr>
 							<td>Restoran:</td>
-							<td><input type="text" :disabled="enable" v-model="restaurant.name"></input></td>
+							<td><input class="selectRestaurant2" type="text" :disabled="enable" v-model="restaurant.name"></input></td>
 						</tr>
 						</br>
 						
 						<tr>
 							<td>Tip restorana: </td>
 							<td> 
-								<input type="text" :disabled="enable" v-model="restaurant.restaurantType"></input>
+								<input class="selectRestaurant2" type="text" :disabled="enable" v-model="restaurant.restaurantType"></input>
 							</td>
 						</tr>
 						</br>
 						<tr>
 							<td>Lokacija:</td>
-							<td> <input :disabled="enable" type="text" v-model="restaurant.location.address"></input></td>
+							<td> <input class="selectRestaurant2" :disabled="enable" type="text" v-model="restaurant.location.address"></input></td>
 						</tr>
 						</br>
 						<tr>
 							<td>Status:</td>
 							<td>
-								<select :disabled="enable" v-model="restaurant.status">
+								<select class="selectRestaurant2" :disabled="enable" v-model="restaurant.status">
 									<option value="OPEN">Otvoren</option>
 									<option value="CLOSED">Zatvoren</option>
 								</select>
 							</td>
 						</tr>
+						</br>
 						<tr>
 							<td>Prosečna ocena:</td>
-							<td><input type="text" v-model="restaurant.averageMark" :disabled="true"></input></td>
+							<td><input class="selectRestaurant2" type="text" v-model="restaurant.averageMark" :disabled="true"></input></td>
 						</tr>
 						<tr v-bind:style="{'visibility': visibility}">
 							<td>Slika: </td>
 							<td><input type="file" @change="imageSelected"></input></td>
 						</tr>
 					</table>
-					
+					</form>
 					<input type="button" v-bind:style="{'visibility': visibility}" value="Sačuvaj"  v-on:click="save"></input>
 					<p>{{message}}</p>
 				</div>

@@ -10,39 +10,50 @@ Vue.component("customerCart", {
 	template: `
 		<div>
 		<navigation-header></navigation-header>
-		<ul class="rest">
-				<li><a @click="placeOrder(item)">Plaćanje</a></li>
-		</ul>
-		
+
 		<br/><br/>
 		<br/><br/>
 		<br/><br/>
 			<div v-if="articles != null">
-				<div class="lists" v-for="article in articles" v-if="article.isDeletedFromCart === false">
-					<div>
-						<span style="float: left;">
-							<img style="border-radius: 5px;" :src="article.articleImage" height="90px" width="90px">
-						</span> 
-						<span>
-							<button class="deleteArticle" @click="removeFromCart(article)" title="Izbaci iz korpe"></button>
-							<button class="changeArticle" @click="editFromCart(article)" title="Izmeni artikal"></button> 
-							<input type="number" v-model= "article.totalNumberOrdered" min="1" onKeyDown="return false" class="numberAddToCart"></input>
-						</span>
-						<p>{{article.name}}</p>
-						<p>Cena: {{article.price}} dinara</p>
-						<p>Količina: {{article.totalNumberOrdered}}</p>
-						<p>{{article.description}}</p>
-						<p>{{article.articleType}}</p>
-						 
-					</div>
-				</div>
-				
+			
 				<div class="lists">
 				
 					<div>
+					</br>
 						<p>Ukupno za platiti: {{total = totalCost()}} din.</p>
+						<button v-if="total != 0" @click="placeOrder(item)" class="buttonCreateRestaurant">Plaćanje</button>
+					</br>
+					<span v-if="total != 0"></br>
+					
+					</br></span>
 					</div>
 				
+				</div>
+			
+				<div class="lists" v-for="article in articles" v-if="article.isDeletedFromCart === false">
+					<div>
+					</br>
+						<span style="float: left;">
+							<img style="border-radius: 5px;" :src="article.articleImage" height="40%" width="40%">
+						</span> 
+						</br>
+						<p>{{article.name}}</p>
+						<p>Cena: {{article.price}} din.</p>
+						<p>Količina: {{article.totalNumberOrdered}} kom.</p>
+						 
+						 <span>
+						
+							
+							<input type="number" v-model= "article.totalNumberOrdered" min="1" onKeyDown="return false" class="numberAddToCart"></input>
+							<button class="changeArticle" @click="editFromCart(article)" title="Izmeni artikal"></button> 
+							<button class="deleteArticle" @click="removeFromCart(article)" title="Izbaci iz korpe"></button>
+							</br>
+							
+						</span>
+						
+						</br>
+						 
+					</div>
 				</div>
 				
 			</div>

@@ -178,25 +178,42 @@ template: `<div>
 					<span>
 							<button class="buttonCommentLeave" @click="showModalDialog(item)" title="Ostavite komentar" v-if="item.orderStatus === 'DELIVERED'"></button>
 							<button class="buttonCustomerCancelOrder" @click="cancelOrder(item)" title="Otkaži porudžbinu" v-if="item.orderStatus === 'PROCESSING'"></button> 
+					</br>
+							
 					</span>
 					
 					<p>Ime restorana: {{item.restaurant.name}}</p>
 					<p>Datum kreiranja porudžbine: {{item.date}} </p>
 					<p>Vreme kreiranja porudžbine: {{item.time}} </p>
-					<p>Stanje porudžbine: {{item.orderStatus}}</p> 
-
+					<p v-if="item.orderStatus === 'PROCESSING'">Stanje porudžbine: u obradi</p> 
+					<p v-if="item.orderStatus === 'IN_PREPARATION'">Stanje porudžbine: u pripremi</p> 
+					<p v-if="item.orderStatus === 'WAITING_FOR_DELIVERER'">Stanje porudžbine: čeka dostavljača</p>
+					<p v-if="item.orderStatus === 'WAITING_FOR_RESPONSE'">Stanje porudžbine: čeka dostavljača</p>
+					<p v-if="item.orderStatus === 'IN_TRANSPORT'">Stanje porudžbine: u transportu</p>
+					<p v-if="item.orderStatus === 'DELIVERED'">Stanje porudžbine: dostavljena</p>
+					
 					<p>Ukupno za platiti: {{item.totalPrice}} din.</p>
-					<p>Artikli koji su naručeni:</p>
+					<p>Spisak naručenih artikala možete pogledati ispod.</p>
+					</br>
 					
 				</div>
 				<div class="listsArticles" v-for="article in item.articles">
+						
+						<table class="tableCustOrd">
+						
+							<tr>
+								<td>Artikal: {{article.name}}</td>
+    							<td rowSpan="3"><div align="right"><img style="border-radius: 5px;" :src="article.articleImage" height="30%" width="30%"></div></td>
+  							</tr>
+  							<tr>
+    							<td>Cena: {{article.price}} din.</td>
+  							</tr>
+ 							<tr>
+    							<td>Količina: {{article.totalNumberOrdered}}</td>
+ 							</tr>
+						
+						</table>	
 							
-							<span style="float: left;">
-								<img style="border-radius: 5px;" :src="article.articleImage" height="90px" width="90px">
-							</span> 
-							<p>{{article.name}}</p>
-							<p>Cena: {{article.price}} dinara</p>
-							<p>Količina: {{article.totalNumberOrdered}}</p>
 							
 						</div>
 			</div>

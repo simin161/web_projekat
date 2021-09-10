@@ -11,12 +11,32 @@ template: `<div>
 		<navigation-header></navigation-header>
 		<br/>
 		<img :src="restaurant.restaurantLogo" height="100%" width="100%"/>
-		<div style="margin-left: 45%">
-			<p>Naziv restorana: {{restaurant.name}}</p>
-			<p>Tip restorana: {{restaurant.restaurantType}}</p>
-			<p>Prosečna ocena: {{restaurant.averageMark}}</p>
-			<p>Lokacija: {{restaurant.location.address}} </p>
-			<p>Status: {{restaurant.status}}</p>
+		<div>
+			<form class="formBackground">
+			<table class="tableFrontRestaurant">
+				<tr>
+					<td>Naziv restorana:</td>
+					<td>{{restaurant.name}}</td>
+				</tr>
+				<tr>
+					<td>Tip restorana:</td>
+					<td>{{restaurant.restaurantType}}</td>
+				</tr>
+				<tr>
+					<td>Prosečna ocena:</td>
+					<td><input type="text" class="nistaBrate" :disabled="true" v-model="restaurant.averageMark"></input></td>
+				</tr>
+				<tr>
+					<td>Lokacija:</td>
+					<td>{{restaurant.location.address}}</td>
+				</tr>
+				<tr>
+					<td>Status:</td>
+					<td v-if="restaurant.status === 'OPEN'">OTVORENO</td>
+					<td v-if="restaurant.status === 'CLOSED'">ZATVORENO</td>
+				</tr>
+			</table>
+		</form>
 		</div>
 		<hr/>
 		
@@ -31,17 +51,21 @@ template: `<div>
 			<div v-if="showComponent === '1'">
 				<div v-if="restaurant.articles != null">
 					<div class="lists" v-for="article in restaurant.articles">
+					</br>
 						<span style="float: left;">
-							<img style="border-radius: 5px;" :src="article.articleImage" height="90px" width="90px">
+							<img style="border-radius: 5px;" :src="article.articleImage" height="40%" width="40%">
 						</span> 
+						<p>{{article.name}}</p>
+						<p>Cena: {{article.price}} dinara</p>
+						<p>Količina: {{article.quantity}} grama</p>
+						<p>{{article.description}}</p>
+						<p v-if="article.articleType === 'FOOD'">Hrana</p>
+						<p v-if="article.articleType === 'DRINK'">Piće</p>
 						<span>
 							<button class="deleteArticle" @click="deleteArticle(item)" title="Obriši artikal"></button>
 						</span>
-						<p>{{article.name}}</p>
-						<p>Cena: {{article.price}} dinara</p>
-						<p>Količina: {{article.quantity}}</p>
-						<p>{{article.description}}</p>
-						<p>{{article.articleType}}</p>
+						</br>
+						</br>
 					</div>
 				</div>
 				<div class="animated fadeIn" v-if="!restaurant.articles || !restaurant.articles.length">
@@ -54,13 +78,21 @@ template: `<div>
 				</div>
 				<div>
 					<div class="lists" v-for="comment in comments"">
+						
+						</br>
 						<span>
-							<button class="deleteArticle" @click="deleteComment(comment)" title="Obriši komentar"></button>
-						</span>
+							<img style="border-radius: 5px;" src="./images/user.png" height="20%" width="20%">
+						</span> 
+					
 						<p>{{comment.customer.username}}</p>
 						<p>{{comment.text}} </p>
 						<p>Ocena: {{comment.mark}}</p>
 						<p>Status komentara: {{comment.status}}</p>
+						<span>
+							<button class="deleteArticle" @click="deleteComment(comment)" title="Obriši komentar"></button>
+						</span>
+						</br>
+						</br>
 					</div>
 				</div>
 			</div>

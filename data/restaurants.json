@@ -60,7 +60,7 @@
       "address": "Tuzlanska 19a, Beograd"
     },
     "restaurantLogo": "..\\upload\\r1.jpg",
-    "averageMark": 4.5,
+    "averageMark": 5.0,
     "customers": [
       {
         "collectedPoints": 0,
@@ -80,6 +80,11 @@
       {
         "collectedPoints": 0,
         "id": "10",
+        "isDeleted": false
+      },
+      {
+        "collectedPoints": 0,
+        "id": "11",
         "isDeleted": false
       }
     ],

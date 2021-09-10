@@ -12,9 +12,30 @@
   	margin-right: auto;
 }
 
+.tableFrontRestaurant{
+	
+  	margin-left: auto;
+  	margin-right: auto;
+}
+
+.tableCustOrd{
+	
+	width: 100%;
+	table-layout: auto;
+	white-space: nowrap;
+	
+}
+
+.nistaBrate{
+	
+	width: 30px;
+	border-bottom: none;
+	
+}
+
 .formBackground{
 	
-	background-image: url(../images/formBackground.jpg);
+	background-image: url(../images/formBackground.png);
 	background-repeat: no-repeat;
 	
 }
@@ -50,6 +71,13 @@
 .selectRestaurant{
 	
 	width: 200px;
+	font-size: 16px;
+	
+}
+
+.selectRestaurant2{
+	
+	width: 300px;
 	font-size: 16px;
 	
 }
@@ -136,6 +164,13 @@
 	font-family: "Comfortaa", sans-serif; 
 }
 
+.articleInOrder{
+	
+	margin: auto;
+	float: left;
+	
+}
+
 .listsArticles{
 	
 	margin: auto;
@@ -191,7 +226,7 @@
 }
 .animated {
     -webkit-animation-duration: 10s;
-    animation-duration: 5s;
+    animation-duration: 2.5s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
