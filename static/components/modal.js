@@ -25,7 +25,7 @@ Vue.component('app-modal', {
 	},
 template: `<div>
 			    <ul :class="scrolled ? 'scroll' : ''">
-			    	<li><p style="color: #f8f1f1; margin-left: 15%">Porudžbinac</p> </li>
+			    	<li><a class="active" href="#/">Porudžbinac</a> </li>
 			    	<li class="right"><a @click="showLogIn = true">Prijava</a></li>
 			    	<li class="right"><a @click="showRegister = true">Registracija</a></li>
 			    </ul>
