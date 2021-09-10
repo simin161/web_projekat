@@ -3,7 +3,6 @@ Vue.component('show-restaurant',{
 		return{
 			restaurant:  { type: Object, default: () => ({}) },
 			showComponent : '1',
-			scrolled: false,
 			enable : true,
 			visibility: "hidden",
 			message: "",
@@ -19,7 +18,7 @@ Vue.component('show-restaurant',{
 		 <div>
 		 	<navigation-header></navigation-header>
 		 	<div v-if="restaurant != null">
-				<ul :class="scrolled ? 'scrollRest' : 'rest'">
+				<ul class="rest">
 					<li><a @click="enable = false; visibility='visible'">Izmeni podatake</a></li>
 					<li><a @click="showComponent = '1'">Prikaži kupce</a></li>
 					<li><a @click="showComponent='2'">Prikaži artikle</a></li>
@@ -107,9 +106,6 @@ Vue.component('show-restaurant',{
 			</div>
 	`,
 	methods:{
-		 handleScroll () {
-	    this.scrolled = window.scrollY > 0;
-	  },
 	  save : function(){
 		correctType = /\S/.test(this.restaurant.restaurantType) && /^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,0-9]{1,}$/.test(this.restaurant.restaurantType);
 		  if(/\S/.test(this.restaurant.name) && correctType
@@ -148,12 +144,6 @@ Vue.component('show-restaurant',{
 				.then(response => (this.restaurant = response.data[0] ))
 				})
 		}
-	},
-	created () {
-	  window.addEventListener('scroll', this.handleScroll);
-	},
-	destroyed () {
-	  window.removeEventListener('scroll', this.handleScroll);
 	},
 	mounted(){
 		axios.get("/restaurantForManager")

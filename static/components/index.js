@@ -23,7 +23,7 @@ Vue.component('first-page', {
 	},
 template: `<div>
 			<navigation-header></navigation-header>
-				<ul :class="scrolled ? 'scrollRest' : 'rest'">
+				<ul class="rest">
 			    	<li><a @click="showModal = true">Pretraga</a></li>
 			    </ul>
 			   <transition name="fade" v-on:enter="enter">

@@ -17,7 +17,7 @@ Vue.component('edit-profile', {
 	},
 template: `<div>
 			<navigation-header></navigation-header>
-			<ul :class="scrolled ? 'scrollRest' : 'rest'">
+			<ul class="rest">
 				<li><a @click="isDisabled = false; backgroundColor = '#5eaaa8'; visibility = 'visible'">Izmeni nalog</a> </li>
 			</ul>
 			<br/>

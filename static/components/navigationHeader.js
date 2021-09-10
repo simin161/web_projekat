@@ -2,7 +2,6 @@ Vue.component('navigation-header', {
 	data: function(){
 		return{
 			loggedUser: { type: Object, default: () => ({}) },
-		    scrolled: false
 		};
 	},
 	template : `<div>
@@ -46,17 +45,6 @@ Vue.component('navigation-header', {
 					</div>
 				</div>`
 		,
-		methods: {
-			  handleScroll () {
-			    this.scrolled = window.scrollY > 0;
-			  }
-			},
-			created () {
-			  window.addEventListener('scroll', this.handleScroll);
-			},
-			destroyed () {
-			  window.removeEventListener('scroll', this.handleScroll);
-			},
 		mounted(){
 		axios.get("/getLoggedUser")
 		.then(response => (this.loggedUser = response.data[0]))

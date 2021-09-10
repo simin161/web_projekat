@@ -3,7 +3,6 @@ Vue.component('app-modal', {
 		return{
 			showLogIn: false,
 			showRegister: false,
-		    scrolled: false,
 			returnMessage: "",
 			returnLogInMessage: "",
 			backgroundColor : "#5EAAA8",
@@ -24,7 +23,7 @@ Vue.component('app-modal', {
 		};
 	},
 template: `<div>
-			    <ul :class="scrolled ? 'scroll' : ''">
+			    <ul class="scroll">
 			    	<li><a class="active" href="#/">Porudžbinac</a> </li>
 			    	<li class="right"><a @click="fadeLogIn">Prijava</a></li>
 			    	<li class="right"><a @click="fadeRegister">Registracija</a></li>
@@ -153,9 +152,6 @@ template: `<div>
 				
 			});
 		},
-		handleScroll () {
-		    this.scrolled = window.scrollY > 0;
-		  },
 		  mouseOver : function(){
 			  this.backgroundColorLogIn =  "#79b9b6";
 			  this.backgroundColor =  "#79b9b6";
@@ -175,11 +171,5 @@ template: `<div>
 
 		      var that = this;
 		    }
-	},
-	created () {
-	  window.addEventListener('scroll', this.handleScroll);
-	},
-	destroyed () {
-	  window.removeEventListener('scroll', this.handleScroll);
 	}
 });

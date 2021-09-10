@@ -2,7 +2,6 @@ Vue.component('all-orders',{
 	data: function(){
 		return{
 			orders: null,
-			scrolled: false,
 			restaurants: null,
 			sortDTO: {
 				ordersToDisplay: null,
@@ -159,9 +158,7 @@ Vue.component('all-orders',{
 		 </div>
 	`,
 	methods:{
-		 handleScroll () {
-	    this.scrolled = window.scrollY > 0;
-	  },
+
 	  loadAll : function(){
 		  axios.get("/getDeliverersOrders")
 			.then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders, this.filterParams.orders = this.orders, this.searchParams.orders = this.orders})
@@ -214,12 +211,6 @@ Vue.component('all-orders',{
 
 		      var that = this;
 		    }
-	},
-	created () {
-	  window.addEventListener('scroll', this.handleScroll);
-	},
-	destroyed () {
-	  window.removeEventListener('scroll', this.handleScroll);
 	},
 	mounted() {
 		axios.get("/getDeliverersOrders")
