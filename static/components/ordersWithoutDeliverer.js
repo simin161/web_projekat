@@ -10,29 +10,13 @@ template: ` <div>
 			</div>
 			<hr/>
 			<div v-if="orders != null">
-				<div class="lists" v-for="order in orders">
+				<div class="lists" v-for="order in orders" @click="sendRequest(order.id)">
 					<div>
-						<table style="width: 100%">
-						<tr>
-							<td>Restoran: {{order.restaurant.name}} </td>
-							<td>Korisnik: {{order.customer.username}} </td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>Lokacija restorana: {{order.restaurant.location.address}}</td>
-							<td></td>
-							<td>
-								<input type="button" @click="sendRequest(order.id)" value="Pošalji zahtev"></input>
-							 </td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>Cena: {{order.totalPrice}} </td>
-							<td></td>
-							<td></td>
-						</tr>					 
-							</table>
+						<p>Restoran: {{order.restaurant.name}} </p>
+						<p>Korisnik: {{order.customer.username}} </p>
+						<p>Lokacija restorana: {{order.restaurant.location.address}}</p>
+						<p>Cena: {{order.totalPrice}} </td>
+						<p class="details">Kliknite za slanje zahteva!</p>
 						</div>
 					</div>
 				</div>
