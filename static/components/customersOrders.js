@@ -176,8 +176,8 @@ template: `<div>
 			<div v-for="item in ordersToDisplay">
 				<div class="lists">
 					<span>
-							<button class="changeArticle" @click="showModalDialog(item)" title="Ostavite komentar" v-if="item.orderStatus === 'DELIVERED'"></button>
-							<button class="deleteArticle" @click="cancelOrder(item)" title="Otkaži porudžbinu" v-if="item.orderStatus === 'PROCESSING'"></button> 
+							<button class="buttonCommentLeave" @click="showModalDialog(item)" title="Ostavite komentar" v-if="item.orderStatus === 'DELIVERED'"></button>
+							<button class="buttonCustomerCancelOrder" @click="cancelOrder(item)" title="Otkaži porudžbinu" v-if="item.orderStatus === 'PROCESSING'"></button> 
 					</span>
 					
 					<p>Ime restorana: {{item.restaurant.name}}</p>
