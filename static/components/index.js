@@ -18,7 +18,8 @@ Vue.component('first-page', {
 			filterDTO : {
 				restaurantType : "",
 				restaurants : null
-			}
+			},
+			restaurantTypes: null
 		};
 	},
 template: `<div>
@@ -86,7 +87,7 @@ template: `<div>
 						<tr>
 							<select v-model="filterDTO.restaurantType">
 								<option value="">Izaberite tip...</option>
-								<option v-for="restaurant in restaurants" :value="restaurant.restaurantType">{{restaurant.restaurantType}}</option>
+								<option v-for="restaurantType in restaurantTypes" :value="restaurantType">{{restaurantType}}</option>
 							</select>
 						</tr>
 						<tr>
@@ -180,5 +181,8 @@ template: `<div>
 		
 		axios.get("/getLoggedUser")
 		.then(response=>(this.loggedUser = response.data[0]))
+		
+		axios.get("/getUniqueRestaurantTypes")
+		.then(response=> (this.restaurantTypes = response.data))
 	}
 });

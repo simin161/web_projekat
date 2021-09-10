@@ -800,6 +800,14 @@ public class SparkAppMain {
 			return gson.toJson(userService.sortUsersBySurname(type));
 		});
 
+		get("/getUniqueRestaurantTypes", (req, res)->{
+			
+			res.type("application/json");
+			String restaurantTypes = gson.toJson(restaurantService.getUniqueTypes());
+			return restaurantTypes;
+			
+		});
+		
 		post("/sortUsersByUsername", (req, res) -> {
 			res.type("application/json");
 			SortUsersDTO type = gson.fromJson(req.body(), SortUsersDTO.class);

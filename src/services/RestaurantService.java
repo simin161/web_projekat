@@ -3,7 +3,9 @@ package services;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -54,6 +56,22 @@ public class RestaurantService {
 
 		return returnValue;
 
+	}
+	
+	public Set<String> getUniqueTypes(){
+		
+		List<String> types = new ArrayList<String>();
+		
+		for(Restaurant r : RestaurantDAO.getInstance().getAll()) {
+			
+			types.add(r.getRestaurantType());
+			
+		}
+		
+		Set<String> uniqueTypes = new HashSet<String>(types);
+		
+		return uniqueTypes;
+		
 	}
 
 	public List<Restaurant> findRestaurantsByName(String name) {
