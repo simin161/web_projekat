@@ -106,15 +106,13 @@ template: `<div>
 				<div>
 					<img style="border-radius: 5px;" class="center" :src="item.restaurantLogo" height="100%" width="100%"> 
 				</div>
-					<hr/>
 					<p>{{item.name}}</p>
 					<p>{{item.restaurantType}} </p>
 					<p>Prosečna ocena: {{item.averageMark}}</p>
 					<p v-if="item.status === 'OPEN'" style="color: green">OTVORENO</p>
 					<p v-if="item.status === 'CLOSED'" style="color: red">ZATVORENO</p>
 					<p>{{item.location.address}}</p> 
-					<hr/>
-					<button class="fill" @click="show(item)" value="Detaljnije"> </button> 
+					<button  @click="show(item)" value="Detaljnije"> </button> 
 					<br/>
 					<br/>
 				</div>
