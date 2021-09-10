@@ -10,7 +10,7 @@ template: ` <div>
 			</div>
 			<hr/>
 			<div v-if="orders != null">
-					<div class="lists" v-for="item in orders">
+					<div class="lists" style="cursor: default" v-for="item in orders">
 						<p>Kupac: {{item.customer.name}} {{item.customer.surname}} </p>
 						<p>Restoran: {{item.restaurant.name}}</p>
 						<p>Lokacija: {{item.restaurant.location.address}}</p>
