@@ -114,7 +114,7 @@ template: `<div>
 					<p v-if="item.status === 'CLOSED'" style="color: red">ZATVORENO</p>
 					<p>{{item.location.address}}</p> 
 					<hr/>
-					<button @click="show(item)">Detaljnije</button> 
+					<button class="button" @click="show(item)">Detaljnije</button> 
 					<br/>
 					<br/>
 				</div>
