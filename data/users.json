@@ -78,5 +78,25 @@
     "username": "licnakarta",
     "password": "bajpas",
     "userType": "DELIVERER"
+  },
+  {
+    "username": "zika",
+    "password": "zika",
+    "userType": "MANAGER"
+  },
+  {
+    "username": "indy",
+    "password": "indy",
+    "userType": "MANAGER"
+  },
+  {
+    "username": "seve",
+    "password": "stikla",
+    "userType": "MANAGER"
+  },
+  {
+    "username": "miljacka",
+    "password": "miljacka",
+    "userType": "MANAGER"
   }
 ]

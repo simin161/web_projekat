@@ -4,7 +4,93 @@
       "id": "1",
       "name": "Kod Josipe",
       "restaurantType": "Egzotična kuhinja",
-      "articles": [],
+      "articles": [
+        {
+          "id": "1",
+          "name": "Štuka u šlagu",
+          "price": 620.0,
+          "articleType": "FOOD",
+          "restaurant": {
+            "id": "1",
+            "averageMark": 0.0,
+            "isDeleted": false
+          },
+          "quantity": 600.0,
+          "description": "Delikatesna štuka sa savršenim prelivom od šlaga",
+          "articleImage": "..\\upload\\a1.jpg",
+          "isDeleted": false,
+          "totalNumberOrdered": 0,
+          "isDeletedFromCart": false
+        },
+        {
+          "id": "2",
+          "name": "Recimo neke žabe",
+          "price": 800.0,
+          "articleType": "FOOD",
+          "restaurant": {
+            "id": "1",
+            "averageMark": 0.0,
+            "isDeleted": false
+          },
+          "quantity": 500.0,
+          "description": "Sveže uhvaćene žabe iz komšiluka. Spremljene na francuski način sa balkanskim okretom.",
+          "articleImage": "..\\upload\\a2.jpg",
+          "isDeleted": false,
+          "totalNumberOrdered": 0,
+          "isDeletedFromCart": false
+        },
+        {
+          "id": "3",
+          "name": "Magla",
+          "price": 1200.0,
+          "articleType": "DRINK",
+          "restaurant": {
+            "id": "1",
+            "averageMark": 0.0,
+            "isDeleted": false
+          },
+          "quantity": 250.0,
+          "description": "Magla iz MOJE čuvene pesme \"Magla\". Sveže prikupljena sa obale Dunava",
+          "articleImage": "..\\upload\\a3.jpg",
+          "isDeleted": false,
+          "totalNumberOrdered": 0,
+          "isDeletedFromCart": false
+        },
+        {
+          "id": "4",
+          "name": "Randevu Sa Sotonom",
+          "price": 1200.0,
+          "articleType": "DRINK",
+          "restaurant": {
+            "id": "1",
+            "averageMark": 0.0,
+            "isDeleted": false
+          },
+          "quantity": 250.0,
+          "description": "Baš kao i moja pesma, i ovo piće garantuje da ćete biti začarani mračnim silama.",
+          "articleImage": "..\\upload\\a4.jpg",
+          "isDeleted": false,
+          "totalNumberOrdered": 0,
+          "isDeletedFromCart": false
+        },
+        {
+          "id": "5",
+          "name": "Kafa sa kakaom",
+          "price": 300.0,
+          "articleType": "DRINK",
+          "restaurant": {
+            "id": "1",
+            "averageMark": 0.0,
+            "isDeleted": false
+          },
+          "quantity": 250.0,
+          "description": "Zadivljujuće dobra kombinacija ukusa.",
+          "articleImage": "..\\upload\\a5.jpg",
+          "isDeleted": false,
+          "totalNumberOrdered": 0,
+          "isDeletedFromCart": false
+        }
+      ],
       "status": "CLOSED",
       "location": {
         "longitude": 0.0,
@@ -34,7 +120,59 @@
       "id": "2",
       "name": "Ognjište",
       "restaurantType": "Narodna kuhinja",
-      "articles": [],
+      "articles": [
+        {
+          "id": "6",
+          "name": "Rakija",
+          "price": 200.0,
+          "articleType": "DRINK",
+          "restaurant": {
+            "id": "2",
+            "averageMark": 0.0,
+            "isDeleted": false
+          },
+          "quantity": 20.0,
+          "description": "Pre svega.",
+          "articleImage": "..\\upload\\a6.jpg",
+          "isDeleted": false,
+          "totalNumberOrdered": 0,
+          "isDeletedFromCart": false
+        },
+        {
+          "id": "7",
+          "name": "Sarma",
+          "price": 620.0,
+          "articleType": "FOOD",
+          "restaurant": {
+            "id": "2",
+            "averageMark": 0.0,
+            "isDeleted": false
+          },
+          "quantity": 500.0,
+          "description": "Gde ste mislili bez sarme?",
+          "articleImage": "..\\upload\\a7.jpg",
+          "isDeleted": false,
+          "totalNumberOrdered": 0,
+          "isDeletedFromCart": false
+        },
+        {
+          "id": "8",
+          "name": "Jagnjetina",
+          "price": 620.0,
+          "articleType": "FOOD",
+          "restaurant": {
+            "id": "2",
+            "averageMark": 0.0,
+            "isDeleted": false
+          },
+          "quantity": 500.0,
+          "description": "SveCka, a naša!",
+          "articleImage": "..\\upload\\a8.jpg",
+          "isDeleted": false,
+          "totalNumberOrdered": 0,
+          "isDeletedFromCart": false
+        }
+      ],
       "status": "CLOSED",
       "location": {
         "longitude": 0.0,
@@ -64,7 +202,25 @@
       "id": "3",
       "name": "Biserna suza",
       "restaurantType": "Bistro",
-      "articles": [],
+      "articles": [
+        {
+          "id": "13",
+          "name": "Nervni slom",
+          "price": 2100.0,
+          "articleType": "DRINK",
+          "restaurant": {
+            "id": "3",
+            "averageMark": 0.0,
+            "isDeleted": false
+          },
+          "quantity": 250.0,
+          "description": "Savršen za suzbijanje, prevenciju i podsticanje nervnog sloma.",
+          "articleImage": "..\\upload\\a13.jpg",
+          "isDeleted": false,
+          "totalNumberOrdered": 0,
+          "isDeletedFromCart": false
+        }
+      ],
       "status": "CLOSED",
       "location": {
         "longitude": 0.0,
@@ -94,7 +250,76 @@
       "id": "4",
       "name": "Zabranjeni grad",
       "restaurantType": "Comfort food",
-      "articles": [],
+      "articles": [
+        {
+          "id": "9",
+          "name": "Mleko od kokosa",
+          "price": 1500.0,
+          "articleType": "DRINK",
+          "restaurant": {
+            "id": "4",
+            "averageMark": 0.0,
+            "isDeleted": false
+          },
+          "quantity": 500.0,
+          "description": "\"Plave noći u satenu i mleko od kokosa\", mleko od kokosa iz čuvene pesme \"Nevaljala\"",
+          "articleImage": "..\\upload\\a9.jpg",
+          "isDeleted": false,
+          "totalNumberOrdered": 0,
+          "isDeletedFromCart": false
+        },
+        {
+          "id": "10",
+          "name": "Pile",
+          "price": 2000.0,
+          "articleType": "FOOD",
+          "restaurant": {
+            "id": "4",
+            "averageMark": 0.0,
+            "isDeleted": false
+          },
+          "quantity": 650.0,
+          "description": "A moje srce je pile, drhti od straha kada grmi",
+          "articleImage": "..\\upload\\a10.png",
+          "isDeleted": false,
+          "totalNumberOrdered": 0,
+          "isDeletedFromCart": false
+        },
+        {
+          "id": "11",
+          "name": "Viski",
+          "price": 1250.0,
+          "articleType": "DRINK",
+          "restaurant": {
+            "id": "4",
+            "averageMark": 0.0,
+            "isDeleted": false
+          },
+          "quantity": 50.0,
+          "description": "Sipaj viski preko malo leda, ajde ljuljaj ljuljaj tako treba",
+          "articleImage": "..\\upload\\a11.jpg",
+          "isDeleted": false,
+          "totalNumberOrdered": 0,
+          "isDeletedFromCart": false
+        },
+        {
+          "id": "12",
+          "name": "Trula višnja",
+          "price": 1700.0,
+          "articleType": "FOOD",
+          "restaurant": {
+            "id": "4",
+            "averageMark": 0.0,
+            "isDeleted": false
+          },
+          "quantity": 350.0,
+          "description": "Pala sam u zoru pala, više nisam izdržala!",
+          "articleImage": "..\\upload\\a12.jpg",
+          "isDeleted": false,
+          "totalNumberOrdered": 0,
+          "isDeletedFromCart": false
+        }
+      ],
       "status": "CLOSED",
       "location": {
         "longitude": 0.0,
@@ -147,6 +372,126 @@
     "sex": "Muško",
     "userType": "MANAGER",
     "dateOfBirth": "1962-09-12",
+    "isDeleted": false
+  },
+  {
+    "restaurant": {
+      "id": "6",
+      "name": "Tako je suđeno",
+      "restaurantType": "Sudbonosna kuhinja",
+      "articles": [],
+      "status": "CLOSED",
+      "location": {
+        "longitude": 0.0,
+        "latitude": 0.0,
+        "address": "Kamenički put 32a, Novi Sad"
+      },
+      "restaurantLogo": "..\\upload\\r6.jpg",
+      "averageMark": 0.0,
+      "manager": {
+        "id": "6",
+        "isDeleted": false
+      },
+      "isDeleted": false
+    },
+    "id": "6",
+    "username": "zika",
+    "password": "zika",
+    "name": "Živorad",
+    "surname": "Milosavljević",
+    "sex": "Muško",
+    "userType": "MANAGER",
+    "dateOfBirth": "1982-01-01",
+    "isDeleted": false
+  },
+  {
+    "restaurant": {
+      "id": "7",
+      "name": "Složna braća",
+      "restaurantType": "Narodna kuhinja",
+      "articles": [],
+      "status": "CLOSED",
+      "location": {
+        "longitude": 0.0,
+        "latitude": 0.0,
+        "address": "Maršala Tita 45, Titograd"
+      },
+      "restaurantLogo": "..\\upload\\r7.jpg",
+      "averageMark": 0.0,
+      "manager": {
+        "id": "7",
+        "isDeleted": false
+      },
+      "isDeleted": false
+    },
+    "id": "7",
+    "username": "indy",
+    "password": "indy",
+    "name": "Indira",
+    "surname": "Radić",
+    "sex": "Žensko",
+    "userType": "MANAGER",
+    "dateOfBirth": "1966-06-14",
+    "isDeleted": false
+  },
+  {
+    "restaurant": {
+      "id": "9",
+      "name": "Zvanično poslednji restoran",
+      "restaurantType": "Italijanska kuhinja",
+      "articles": [],
+      "status": "CLOSED",
+      "location": {
+        "longitude": 0.0,
+        "latitude": 0.0,
+        "address": "Poslednja lokacija 123, Lokacija"
+      },
+      "restaurantLogo": "..\\upload\\r9.jpg",
+      "averageMark": 0.0,
+      "manager": {
+        "id": "8",
+        "isDeleted": false
+      },
+      "isDeleted": false
+    },
+    "id": "8",
+    "username": "seve",
+    "password": "stikla",
+    "name": "Severina",
+    "surname": "Vučković",
+    "sex": "Žensko",
+    "userType": "MANAGER",
+    "dateOfBirth": "1972-04-21",
+    "isDeleted": false
+  },
+  {
+    "restaurant": {
+      "id": "8",
+      "name": "Vavilonska kula",
+      "restaurantType": "Persijska kuhinja",
+      "articles": [],
+      "status": "CLOSED",
+      "location": {
+        "longitude": 0.0,
+        "latitude": 0.0,
+        "address": "Gilgameša 4, Mesopotamija"
+      },
+      "restaurantLogo": "..\\upload\\r8.jpg",
+      "averageMark": 0.0,
+      "manager": {
+        "id": "9",
+        "isDeleted": false
+      },
+      "isDeleted": false
+    },
+    "id": "9",
+    "username": "miljacka",
+    "password": "miljacka",
+    "name": "Halid",
+    "surname": "Bešlić",
+    "sex": "Muško",
+    "userType": "MANAGER",
+    "dateOfBirth": "1953-11-20",
     "isDeleted": false
   }
 ]
