@@ -38,7 +38,7 @@ public class CustomerDAO {
 			
 		}catch(Exception e) {
 			allCustomers = new ArrayList<Customer>();
-			e.printStackTrace();
+			 
 		}
 	}
 	
@@ -72,7 +72,7 @@ public class CustomerDAO {
 			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			 
 		}
 	}
 	

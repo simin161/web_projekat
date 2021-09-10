@@ -41,7 +41,7 @@ public class ArticleDAO {
 			
 		}catch(Exception e) {
 			allArticles = new ArrayList<Article>();
-			e.printStackTrace();
+			 
 		}
 	}
 	
@@ -78,7 +78,7 @@ public class ArticleDAO {
 			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			 
 		}
 	}
 

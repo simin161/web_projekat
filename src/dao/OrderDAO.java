@@ -48,7 +48,7 @@ public class OrderDAO {
 			
 		}catch(Exception e) {
 			allOrders = new ArrayList<Order>();
-			e.printStackTrace();
+			 
 		}
 		
 	}
@@ -116,7 +116,7 @@ public class OrderDAO {
 			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			 
 		}
 		
 	}

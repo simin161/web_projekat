@@ -42,7 +42,7 @@ public class CommentDAO {
 			
 		}catch(Exception e) {
 			allComments = new ArrayList<Comment>();
-			e.printStackTrace();
+			 
 
 		}
 	}
@@ -55,7 +55,7 @@ public class CommentDAO {
 			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			 
 			
 		}
 	}

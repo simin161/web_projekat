@@ -39,7 +39,7 @@ public class DelivererDAO {
 			
 		}catch(Exception e) {
 			allDeliverers = new ArrayList<Deliverer>();
-			e.printStackTrace();
+			 
 		}
 	}
 	
@@ -61,7 +61,7 @@ public class DelivererDAO {
 			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			 
 		}
 	}
 	

@@ -91,7 +91,10 @@ Vue.component('create-restaurant', {
 							</br>
 							<tr>
 								<td></td>
-								<td><input type="button" class="buttonSearchInModal" value="Registruj korisnika" @click="registerUser()"></input></td>
+								<td><input type="button" :disabled="!isComplete" class="buttonSearchInModal" value="Registruj korisnika" @click="registerUser()"></input></td>
+							</tr>
+							<tr>
+								
 							</tr>
 						
 						</table>
@@ -163,6 +166,24 @@ Vue.component('create-restaurant', {
 			</div>
 		</div>`
 		,
+		computed : {
+		
+			isComplete () {  
+		    	correctName = /\S/.test(this.newManager.name) && /^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,0-9]{1,20}$/.test(this.newManager.name);
+		    	correctSurname = /\S/.test(this.newManager.surname) && /^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,0-9]{1,20}$/.test(this.newManager.surname);
+		    
+		    	flag = correctName && correctSurname && 
+		    	/\S/.test(this.newManager.dateOfBirth) && 
+		    	/\S/.test(this.newManager.sex) && 
+		    	/^[a-zA-Z0-9_-]{3,16}$/.test(this.newManager.username) && 
+		    	/\S/.test(this.newManager.password);
+		    
+		    	this.backgroundColor = flag ? "#5EAAA8" : "#f8f1f1";
+		    	this.cursorStyle = flag ? "pointer" : "default";
+		    	return flag;
+		  }
+		
+		},
 		methods: {
 		
 			showModalCreateManager : function(){

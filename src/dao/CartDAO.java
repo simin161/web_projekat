@@ -41,7 +41,7 @@ public class CartDAO {
 		
 		}catch(Exception e){
 			allCarts = new ArrayList<Cart>();
-			e.printStackTrace();
+			 
 		}
 		
 	}
@@ -59,7 +59,7 @@ public class CartDAO {
 			writer.close();
 			
 		}catch(Exception e) {
-			e.printStackTrace();
+			 
 		}
 	}
 	

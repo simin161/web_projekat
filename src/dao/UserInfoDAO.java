@@ -42,7 +42,7 @@ public class UserInfoDAO {
 			
 		}catch(Exception e) {
 			allUsers = new ArrayList<UserInfo>();
-			e.printStackTrace();
+			 
 
 		}
 	}
@@ -55,7 +55,7 @@ public class UserInfoDAO {
 			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			 
 			
 		}
 	}

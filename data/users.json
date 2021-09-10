@@ -103,5 +103,10 @@
     "username": "novi",
     "password": "novi",
     "userType": "CUSTOMER"
+  },
+  {
+    "username": "ADA",
+    "password": "ADA",
+    "userType": "MANAGER"
   }
 ]

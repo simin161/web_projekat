@@ -41,7 +41,7 @@ public class RestaurantDAO {
 			reader.close();
 		}catch(Exception e) {
 			allRestaurants = new ArrayList<Restaurant>();
-			e.printStackTrace();
+			 
 		}
 	}
 
@@ -54,7 +54,7 @@ public class RestaurantDAO {
 			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			 
 		}
 	}
 	
@@ -70,7 +70,7 @@ public class RestaurantDAO {
 			gson.toJson(allRestaurants, writer);
 			writer.close();
 		}catch(Exception e) {
-			e.printStackTrace();
+			 
 		}
 	}
 	

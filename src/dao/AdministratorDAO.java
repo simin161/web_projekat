@@ -37,7 +37,7 @@ public class AdministratorDAO {
 			
 		}catch(Exception e) {
 			allAdministrators = new ArrayList<Administrator>();
-			e.printStackTrace();
+			
 		}
 	}
 	
@@ -53,7 +53,7 @@ public class AdministratorDAO {
 			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			 
 		}
 	}
 	

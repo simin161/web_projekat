@@ -44,7 +44,7 @@ public class UserDAO {
 			
 		}catch(Exception e) {
 			allUsers = new ArrayList<User>();
-			e.printStackTrace();
+			 
 
 		}
 	}
@@ -57,7 +57,7 @@ public class UserDAO {
 			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			 
 			
 		}
 	}

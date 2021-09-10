@@ -148,7 +148,7 @@ public class RestaurantService {
 						ImageService.getInstance().saveImage(newArticle.getArticleImage(), "a" + newArticle.getId()));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				 
 			}
 
 			ArticleDAO.getInstance().addArticle(newArticle);
@@ -182,7 +182,7 @@ public class RestaurantService {
 						editedRestaurant.setRestaurantLogo(ImageService.getInstance()
 								.saveImage(editedRestaurant.getRestaurantLogo(), "r" + editedRestaurant.getId()));
 					} catch (Exception e) {
-						e.printStackTrace();
+						 
 						retVal = false;
 					}
 				}

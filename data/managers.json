@@ -2,7 +2,8 @@
   {
     "restaurant": {
       "id": "1",
-      "averageMark": 0.0
+      "averageMark": 0.0,
+      "isDeleted": false
     },
     "id": "1",
     "username": "manager",
@@ -31,7 +32,8 @@
       "manager": {
         "id": "2",
         "isDeleted": false
-      }
+      },
+      "isDeleted": false
     },
     "id": "2",
     "username": "zoricabre",
@@ -60,7 +62,8 @@
       "manager": {
         "id": "3",
         "isDeleted": false
-      }
+      },
+      "isDeleted": false
     },
     "id": "3",
     "username": "wolfboy",
@@ -89,7 +92,8 @@
       "manager": {
         "id": "4",
         "isDeleted": false
-      }
+      },
+      "isDeleted": false
     },
     "id": "4",
     "username": "yuki",
@@ -118,7 +122,8 @@
       "manager": {
         "id": "5",
         "isDeleted": false
-      }
+      },
+      "isDeleted": false
     },
     "id": "5",
     "username": "asa",
@@ -147,7 +152,8 @@
       "manager": {
         "id": "6",
         "isDeleted": false
-      }
+      },
+      "isDeleted": false
     },
     "id": "6",
     "username": "brismena",
@@ -158,5 +164,21 @@
     "userType": "MANAGER",
     "dateOfBirth": "2021-08-30",
     "isDeleted": true
+  },
+  {
+    "restaurant": {
+      "id": "",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "id": "7",
+    "username": "ADA",
+    "password": "ADA",
+    "name": "Proba menadzer",
+    "surname": "Proba",
+    "sex": "Žensko",
+    "userType": "MANAGER",
+    "dateOfBirth": "2021-08-31",
+    "isDeleted": false
   }
 ]

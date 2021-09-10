@@ -111,7 +111,7 @@ template: `<div>
 		    flag = correctName && correctSurname && 
 		    /\S/.test(this.userForRegistration.dateOfBirth) && 
 		    /\S/.test(this.userForRegistration.sex) && 
-		    /^[a-z0-9_-]{3,16}$/.test(this.userForRegistration.username) && 
+		    /^[a-zA-Z0-9_-]{3,16}$/.test(this.userForRegistration.username) && 
 		    /\S/.test(this.userForRegistration.password);
 		    
 		    this.backgroundColor = flag ? "#5EAAA8" : "#f8f1f1";

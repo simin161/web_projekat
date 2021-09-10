@@ -41,7 +41,7 @@ public class ManagerDAO {
 			
 		}catch(Exception e) {
 			allManagers = new ArrayList<Manager>();
-			e.printStackTrace();
+			 
 		}
 	}
 	
@@ -57,7 +57,7 @@ public class ManagerDAO {
 			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			 
 		}
 	}
 	

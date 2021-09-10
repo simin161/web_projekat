@@ -229,7 +229,7 @@ public class OrderService {
 
 		} catch (Exception e) {
 
-			e.printStackTrace();
+			 
 
 		}
 
@@ -483,7 +483,7 @@ public class OrderService {
 
 		} catch (Exception e) {
 
-			e.printStackTrace();
+			 
 
 		}
 
@@ -564,7 +564,7 @@ public class OrderService {
 
 		} catch (Exception e) {
 
-			e.printStackTrace();
+			 
 
 		}
 
@@ -685,7 +685,7 @@ public class OrderService {
 
 		} catch (Exception e) {
 
-			e.printStackTrace();
+			 
 
 		}
 
