@@ -132,6 +132,7 @@ Vue.component('users', {
 		<navigation-header></navigation-header>
 		<form class="searchForm" style="">
 			<button class="buttonSearchDelivery" @click="showModalSearchFunction()">Pretraži korisnike</button>
+			<button class="buttonSearchDelivery" @click="showAll()">Prikaži sve korisnike</button>
 		</form>
 		<hr>
 		<div>
@@ -229,7 +230,13 @@ Vue.component('users', {
 		enter: function(el, done) {
 
 		      var that = this;
-		    }
+		},
+		showAll : function(){
+		
+			axios.get("/getAllUsers")
+			.then(response => {this.usersToDisplay = response.data, this.sortUsersDTO.usersToDisplay = this.usersToDisplay})
+		
+		}
 	}
 	,
 	mounted() {
