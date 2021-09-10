@@ -221,7 +221,8 @@ public class RestaurantService {
 				if(!CustomerDAO.getInstance().findCustomerById(comment.getCustomer().getId()).getDeleted())
 					if(!comment.isDeleted())
 						if(!comment.getCustomer().getDeleted())
-							retVal.add(comment);
+							comment.getCustomer().setName("Izbrisan korisnik");
+						retVal.add(comment);
 			}
 		}
 
