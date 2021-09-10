@@ -85,14 +85,18 @@ Vue.component('show-restaurant',{
 				<div v-if="showComponent === '4'">
 					<div class="lists" v-for="comment in comments">
 						<div>
-							<span style="float: right" v-if="comment.status === 'PENDING'">
-								<input type="button" @click="acceptComment(comment.id)" class="accept"></input>
-								<input type="button" @click="declineComment(comment.id)" class="decline"></input>
-							</span>
 							<p>{{comment.customer.username}}</p>
 							<p>{{comment.text}}</p>
 							<p>Ocena: {{comment.mark}}</p> 
-							<p>Status: {{comment.status}}</p>
+							<p>Status: <span v-if="comment.status === 'ACCEPTED'">Prihvaćen</span>
+									   <span v-if="comment.status === 'DECLINED'">Odbijen</span>
+									   <span v-if="comment.status === 'PENDING'">Na čekanju</span>
+							</p>
+							<div v-if="comment.status === 'PENDING'">
+								<input type="button" @click="acceptComment(comment.id)" class="buttonAccept" value="Prihvati"></input>
+								<input type="button" @click="declineComment(comment.id)" class="buttonDecline" value="Odbij"></input>
+							</div>
+							<br/>
 						</div>
 					</div>
 					<div v-if="comments === null" class="animated fadeIn">

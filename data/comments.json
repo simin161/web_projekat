@@ -22,7 +22,8 @@
     "customer": {
       "collectedPoints": 0,
       "id": "5",
-      "isDeleted": false
+      "isDeleted": false,
+      "username": "customer"
     },
     "commentedRestaurant": {
       "id": "1",
@@ -31,7 +32,7 @@
     },
     "text": "Mega mi se svideo obrok iz ovog restorana sve desetke svaka cast za osoblje a najvise za kuvara Zorana iz Sumadije zemlje Srbije pozz od Slavice!!!",
     "mark": 10,
-    "status": "DECLINED",
+    "status": "PENDING",
     "isDeleted": false
   },
   {

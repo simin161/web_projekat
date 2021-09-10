@@ -8,7 +8,7 @@ Vue.component("articles-for-restaurant", {
 	template: `
 		<div>
 			<div v-if="articles != null">
-				<div class="lists" v-for="article in articles">
+				<div class="lists" v-for="article in articles" @click="editArticle(article)">
 						<div>
 							<img style="border-radius: 5px;" :src="article.articleImage" height="200px" width="200px">
 						</div>
@@ -17,8 +17,8 @@ Vue.component("articles-for-restaurant", {
 						<p>Količina: {{article.quantity}}</p>
 						<p>{{article.description}}</p>
 						<p>{{article.articleType}}</p>
-						<button class="deleteArticle" @click="deleteArticle(article)"></button> 
-						<button  class="changeArticle" @click="editArticle(article)"></button>
+						<input type="button"  class="changeArticle" @click="editArticle(article)" value="Izmeni"></input>
+						<input type="button" class="buttonDecline"  @click="deleteArticle(article)" value="Izbriši"></input> 
 				</div>
 			</div>
 			<div class="animated fadeIn" v-if="articles === null">

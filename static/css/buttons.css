@@ -109,6 +109,7 @@ select option{
 	background-image: url(../images/delete2.png);
 	background-repeat: no-repeat;
 	vertical-align: middle;
+	content: 'Izbrisi';
 	
 }
 
@@ -137,11 +138,14 @@ select option{
 }
 
 .changeArticle{
-	height: 24px;
-	width: 24px;
-	background-image: url(../images/edit2.png);
-	background-repeat: no-repeat;
-	vertical-align: middle;
+	color: white;
+  	cursor: pointer;
+  	border: none;
+  	text-align: center;
+  	border-radius: 3px;
+	width: 4rem; 
+	height: 2rem; 
+	margin-right: 1.5rem
 	
 }
 
