@@ -19,7 +19,7 @@ template: ` <div>
 							<td></td>
 						</tr>
 						<tr>
-							<td>Lokacija restorana</td>
+							<td>Lokacija restorana: {{order.restaurant.location.address}}</td>
 							<td></td>
 							<td>
 								<input type="button" @click="accept(order.id)" class="buttonAccept"></input>
@@ -28,8 +28,8 @@ template: ` <div>
 							<td></td>
 						</tr>
 						<tr>
-							<td>Cena porudzbine </td>
-							<td>{{order.deliverer.name}} {{order.deliverer.surname}}</td>
+							<td>Cena: {{order.totalPrice}} </td>
+							<td>Dostavljač: {{order.deliverer.name}} {{order.deliverer.surname}}</td>
 							<td></td>
 							<td></td>
 						</tr>					 

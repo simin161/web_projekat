@@ -48,7 +48,7 @@ li a.add:hover{
 
 .scroll {
     box-shadow: 1px 2px 18px rgba(0, 0, 0, 0.1);
-    border-bottom: 2px solid #257942;
+    border-bottom: 2px solid #b94a09;
   }
  
  .rest{
@@ -71,5 +71,5 @@ li a.add:hover{
   margin-top: 5.6vh;
   width: 100%;
    box-shadow: 1px 2px 18px rgba(0, 0, 0, 0.1);
-    border-bottom: 2px solid #257942;
+    border-bottom: 2px solid #b94a09;
  }

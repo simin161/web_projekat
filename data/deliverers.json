@@ -15,6 +15,11 @@
         "id": "5",
         "isDeleted": false,
         "totalPrice": 0.0
+      },
+      {
+        "id": "7",
+        "isDeleted": false,
+        "totalPrice": 0.0
       }
     ],
     "id": "1",

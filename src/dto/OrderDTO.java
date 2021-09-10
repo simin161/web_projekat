@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import beans.Article;
 import beans.Customer;
 import beans.Deliverer;
+import beans.Location;
 import beans.Order;
 import beans.OrderStatus;
 import beans.Restaurant;
@@ -20,7 +21,6 @@ public class OrderDTO {
 
 	private String date;
 	private String time;
-	
 	private Customer customer;
 	private OrderStatus orderStatus;
 	private boolean isDeleted;
@@ -63,8 +63,7 @@ public class OrderDTO {
 			this.deliverer = DelivererDAO.getInstance().findDelivererById(o.getDeliverer().getId());
 		else
 			this.deliverer = null;
-	}
-
+		}
 	
 	public Deliverer getDeliverer() {
 		return deliverer;

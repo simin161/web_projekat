@@ -184,7 +184,7 @@ Vue.component('create-restaurant', {
 			},
 		
 			createRestaurant : function(){
-				correctType = /\S/.test(this.restaurantForCreate.restaurantType) && /^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,0-9]{1,20}$/.test(this.restaurantForCreate.restaurantType);
+				correctType = /\S/.test(this.restaurantForCreate.restaurantType) && /^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,0-9]{1,}$/.test(this.restaurantForCreate.restaurantType);
 				   
 				if(/\S/.test(this.restaurantForCreate.name) && correctType
 						&& /\S/.test(this.restaurantForCreate.location.address) && this.imagePosted && /\S/.test(this.restaurantForCreate.manager.id)){

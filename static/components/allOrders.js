@@ -146,6 +146,7 @@ Vue.component('all-orders',{
 						</span>
 						<p>{{order.customer.username}}</p>
 						<p>Restoran: {{order.restaurant.name}} </p>
+						<p>Lokacija: {{order.restaurant.location.address}}</p>
 						<p>Cena: {{order.totalPrice}} dinara</p>
 						<p>Datum i vreme porudžbine: {{order.date}} {{order.time}}</p> 
 					</div>
