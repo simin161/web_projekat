@@ -129,7 +129,7 @@ template: `<div>
 		  registerUser : function(){
 		  
 		  	axios.post("/registerUserFromAdmin", this.createdUser)
-			.then(response => (this.message = response.data))
+			.then(response => {this.message = response.data, this.$page.go()})
 		  
 		  }
 	}
