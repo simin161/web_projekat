@@ -258,5 +258,22 @@
     "userType": "CUSTOMER",
     "dateOfBirth": "2021-08-30",
     "isDeleted": false
+  },
+  {
+    "collectedPoints": 0,
+    "customerType": {
+      "name": "STANDARD",
+      "discount": 0.0,
+      "neededPoints": 0
+    },
+    "id": "11",
+    "username": "novi",
+    "password": "novi",
+    "name": "novi customer",
+    "surname": "novi",
+    "sex": "Muško",
+    "userType": "CUSTOMER",
+    "dateOfBirth": "2021-08-31",
+    "isDeleted": false
   }
 ]

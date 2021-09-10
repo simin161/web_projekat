@@ -66,6 +66,9 @@ template: `<div>
 					<tr v-if="showPasswordChange === true">
 						<td>Nova lozinka: <input class="selectRestaurant" type="password" v-model="dto.newPassword"></input></td>
 						<td>Potvrda nove lozinke: <input class="selectRestaurant" type="password" v-model="dto.newPasswordAgain"></input></td>
+					</tr>
+					<tr v-if="showPasswordChange === true">
+						<td></td>
 						<td><input class="buttonCreateRestaurant" type="button" value="Sačuvaj lozinku" @click="changePassword"></input></td>
 					</tr>
 					<br v-if="loggedUser.userType === 'CUSTOMER'"/>
@@ -82,10 +85,19 @@ template: `<div>
 						<td><p class="selectRestaurant">{{loggedUser.customerType.discount}}</p></td>
 					</tr>
 					<br/>
+					</tr>
+						<td colSpan="2">	<input class="buttonCreateRestaurant" @mouseover="mouseOver" @mouseleave="mouseLeave" type="button" v-bind:style="{'background-color': backgroundColor, 'color': 'white', 'visibility': visibility}" value="Sačuvaj"  v-on:click="save"></input>
+						</td>
+					</tr>
+					</br>
+					<tr>
+						<td colSpan="2"><p>{{message}} </p></td>
+					</tr>
+					</br>
+					</br>
 				</table>
-				<input @mouseover="mouseOver" @mouseleave="mouseLeave" type="button" v-bind:style="{'background-color': backgroundColor, 'color': 'white', 'visibility': visibility, 'width':'37%'}" value="Sačuvaj"  v-on:click="save"></input>
 			</form>
-			<p>{{message}} </p>
+			
 		</div>
 		</div>`
 	,

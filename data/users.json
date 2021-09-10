@@ -98,5 +98,10 @@
     "username": "customerr",
     "password": "customerr",
     "userType": "CUSTOMER"
+  },
+  {
+    "username": "novi",
+    "password": "novi",
+    "userType": "CUSTOMER"
   }
 ]
