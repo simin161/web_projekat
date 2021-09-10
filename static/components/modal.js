@@ -26,13 +26,13 @@ Vue.component('app-modal', {
 template: `<div>
 			    <ul :class="scrolled ? 'scroll' : ''">
 			    	<li><a class="active" href="#/">Porudžbinac</a> </li>
-			    	<li class="right"><a @click="showLogIn = true">Prijava</a></li>
-			    	<li class="right"><a @click="showRegister = true">Registracija</a></li>
+			    	<li class="right"><a @click="fadeLogIn">Prijava</a></li>
+			    	<li class="right"><a @click="fadeRegister">Registracija</a></li>
 			    </ul>
-			   
+			   <transition name="fade" v-on:enter="enter">
 			  <div id="logInModal" class="modal" v-show="showLogIn">
 			  <div class="modal-content">
-				<span class="close" @click="showLogIn = false">&times;</span>
+				<span class="close" @click="fadeLogIn">&times;</span>
 				<form>
 					<table style="text-align: left; margin: auto">
 					<br/>
@@ -58,10 +58,11 @@ template: `<div>
 				</form>
 			  </div>
 			</div>
-			
-			<div id="registerModal" class="modal" v-if="showRegister">
+			</transition>
+			<transition name="fade" v-on:enter="enter">
+			<div id="registerModal" class="modal" v-show="showRegister">
 			  <div class="modal-content">
-				<span class="close" @click="showRegister = false">&times;</span>
+				<span class="close" @click="fadeRegister">&times;</span>
 				<form id="register">
 					<table style="text-align: left; margin: auto">
 					<br/>
@@ -100,6 +101,7 @@ template: `<div>
 				</form>
 			  </div>
 			</div>
+			</transition>
 		</div>`
 	,
 	computed : {
@@ -162,7 +164,17 @@ template: `<div>
 				  this.backgroundColorLogIn =  "#5eaaa8" ;
 				  this.backgroundColor =  "#5eaaa8" ;
 
-		 }
+		 },
+		 fadeLogIn: function() {
+		      this.showLogIn = !this.showLogIn
+		    },
+		 fadeRegister: function() {
+			      this.showRegister = !this.showRegister
+		 },
+		 enter: function(el, done) {
+
+		      var that = this;
+		    }
 	},
 	created () {
 	  window.addEventListener('scroll', this.handleScroll);

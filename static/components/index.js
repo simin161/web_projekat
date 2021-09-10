@@ -26,7 +26,7 @@ template: `<div>
 				<ul :class="scrolled ? 'scrollRest' : 'rest'">
 			    	<li><a @click="showModal = true">Pretraga</a></li>
 			    </ul>
-			   
+			   <transition name="fade" v-on:enter="enter">
 			  <div class="modal" v-show="showModal">
 			  <div class="modal-content">
 				<span class="close" @click="showModal = false">&times;</span>
@@ -95,6 +95,7 @@ template: `<div>
 					</table>
 			  </div>
 			</div>
+			</transition>
 		<br/> 
 		<br/>
 		<br/>
@@ -140,6 +141,10 @@ template: `<div>
 				}
 			})
 		},
+		enter: function(el, done) {
+
+		      var that = this;
+		    },
 		showOpened : function(){
 			axios.get("/getOpened")
 			.then(response =>  {this.restaurants = response.data, this.sortDTO.restaurants = this.restaurants, this.filterDTO.restaurants = this.restaurants })
