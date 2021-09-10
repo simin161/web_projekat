@@ -66,7 +66,7 @@ public class SparkAppMain {
 	private static UserService userService = new UserService();
 
 	public static void main(String[] args) throws Exception {
-		port(8080);
+		port(9000);
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
 
 		post("/registerUser", (req, res) -> {
@@ -356,8 +356,7 @@ public class SparkAppMain {
 
 			res.type("application/json");
 			Restaurant selectedRestaurant = gson.fromJson(req.body(), Restaurant.class);
-			ArrayList<Comment> comments = restaurantService
-					.getAcceptedCommentsForRestaurant(selectedRestaurant.getId());
+			ArrayList<Comment> comments = restaurantService.getAcceptedCommentsForRestaurant(selectedRestaurant.getId());
 			return gson.toJson(comments);
 
 		});
@@ -802,14 +801,6 @@ public class SparkAppMain {
 			return gson.toJson(userService.sortUsersBySurname(type));
 		});
 
-		get("/getUniqueRestaurantTypes", (req, res)->{
-			
-			res.type("application/json");
-			String restaurantTypes = gson.toJson(restaurantService.getUniqueTypes());
-			return restaurantTypes;
-			
-		});
-		
 		post("/sortUsersByUsername", (req, res) -> {
 			res.type("application/json");
 			SortUsersDTO type = gson.fromJson(req.body(), SortUsersDTO.class);
