@@ -498,6 +498,14 @@ public class SparkAppMain {
 			return users;
 
 		});
+		
+		get("/getUniqueRestaurantTypes", (req, res)->{
+
+			res.type("application/json");
+			String restaurantTypes = gson.toJson(restaurantService.getUniqueTypes());
+			return restaurantTypes;
+
+		});
 
 		get("/getChoosenArticle", (req, res) -> {
 			res.type("application/json");
