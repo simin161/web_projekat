@@ -51,17 +51,21 @@ template: `<div>
 			<div v-if="showComponent === '1'">
 				<div v-if="restaurant.articles != null">
 					<div class="lists" v-for="article in restaurant.articles">
+					</br>
 						<span style="float: left;">
-							<img style="border-radius: 5px;" :src="article.articleImage" height="90px" width="90px">
+							<img style="border-radius: 5px;" :src="article.articleImage" height="40%" width="40%">
 						</span> 
+						<p>{{article.name}}</p>
+						<p>Cena: {{article.price}} dinara</p>
+						<p>Količina: {{article.quantity}} grama</p>
+						<p>{{article.description}}</p>
+						<p v-if="article.articleType === 'FOOD'">Hrana</p>
+						<p v-if="article.articleType === 'DRINK'">Piće</p>
 						<span>
 							<button class="deleteArticle" @click="deleteArticle(item)" title="Obriši artikal"></button>
 						</span>
-						<p>{{article.name}}</p>
-						<p>Cena: {{article.price}} dinara</p>
-						<p>Količina: {{article.quantity}}</p>
-						<p>{{article.description}}</p>
-						<p>{{article.articleType}}</p>
+						</br>
+						</br>
 					</div>
 				</div>
 				<div class="animated fadeIn" v-if="!restaurant.articles || !restaurant.articles.length">
@@ -74,13 +78,21 @@ template: `<div>
 				</div>
 				<div>
 					<div class="lists" v-for="comment in comments"">
+						
+						</br>
 						<span>
-							<button class="deleteArticle" @click="deleteComment(comment)" title="Obriši komentar"></button>
-						</span>
+							<img style="border-radius: 5px;" src="./images/user.png" height="20%" width="20%">
+						</span> 
+					
 						<p>{{comment.customer.username}}</p>
 						<p>{{comment.text}} </p>
 						<p>Ocena: {{comment.mark}}</p>
 						<p>Status komentara: {{comment.status}}</p>
+						<span>
+							<button class="deleteArticle" @click="deleteComment(comment)" title="Obriši komentar"></button>
+						</span>
+						</br>
+						</br>
 					</div>
 				</div>
 			</div>
