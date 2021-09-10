@@ -1,0 +1,87 @@
+[
+  {
+    "collectedPoints": 0,
+    "customerType": {
+      "name": "STANDARD",
+      "discount": 0.0,
+      "neededPoints": 0
+    },
+    "id": "1",
+    "username": "kraljicaGongo",
+    "password": "kraljicaGongo",
+    "name": "Dragana",
+    "surname": "Mirković",
+    "sex": "Žensko",
+    "userType": "CUSTOMER",
+    "dateOfBirth": "1968-01-18",
+    "isDeleted": false
+  },
+  {
+    "collectedPoints": 0,
+    "customerType": {
+      "name": "STANDARD",
+      "discount": 0.0,
+      "neededPoints": 0
+    },
+    "id": "2",
+    "username": "vendi",
+    "password": "uljez",
+    "name": "Vesna",
+    "surname": "Vukelić",
+    "sex": "Žensko",
+    "userType": "CUSTOMER",
+    "dateOfBirth": "1971-11-25",
+    "isDeleted": false
+  },
+  {
+    "collectedPoints": 0,
+    "customerType": {
+      "name": "STANDARD",
+      "discount": 0.0,
+      "neededPoints": 0
+    },
+    "id": "3",
+    "username": "veseljak",
+    "password": "zlatiborskeZore123",
+    "name": "Ana",
+    "surname": "Bekuta",
+    "sex": "Žensko",
+    "userType": "CUSTOMER",
+    "dateOfBirth": "1959-09-06",
+    "isDeleted": false
+  },
+  {
+    "collectedPoints": 0,
+    "customerType": {
+      "name": "STANDARD",
+      "discount": 0.0,
+      "neededPoints": 0
+    },
+    "id": "4",
+    "username": "knez",
+    "password": "dalsiikada",
+    "name": "Nenad",
+    "surname": "Knežević",
+    "sex": "Muško",
+    "userType": "CUSTOMER",
+    "dateOfBirth": "1967-12-05",
+    "isDeleted": false
+  },
+  {
+    "collectedPoints": 0,
+    "customerType": {
+      "name": "STANDARD",
+      "discount": 0.0,
+      "neededPoints": 0
+    },
+    "id": "5",
+    "username": "laneMoje",
+    "password": "nijeljubavstvar",
+    "name": "Željko",
+    "surname": "Joksimović",
+    "sex": "Muško",
+    "userType": "CUSTOMER",
+    "dateOfBirth": "1972-04-20",
+    "isDeleted": false
+  }
+]

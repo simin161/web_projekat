@@ -1,0 +1,57 @@
+[
+  {
+    "id": "1",
+    "username": "tiksi",
+    "password": "piksi",
+    "name": "Tijana",
+    "surname": "Dapčević",
+    "sex": "Žensko",
+    "userType": "DELIVERER",
+    "dateOfBirth": "1976-02-03",
+    "isDeleted": false
+  },
+  {
+    "id": "2",
+    "username": "crnoizlatno",
+    "password": "crno",
+    "name": "Seka",
+    "surname": "Aleksić",
+    "sex": "Žensko",
+    "userType": "DELIVERER",
+    "dateOfBirth": "1981-04-23",
+    "isDeleted": false
+  },
+  {
+    "id": "3",
+    "username": "beovizija2006",
+    "password": "romaleromali",
+    "name": "Ana",
+    "surname": "Nikolić",
+    "sex": "Žensko",
+    "userType": "DELIVERER",
+    "dateOfBirth": "1978-09-27",
+    "isDeleted": false
+  },
+  {
+    "id": "4",
+    "username": "madjionicar",
+    "password": "madjionicar",
+    "name": "Mile",
+    "surname": "Kitić",
+    "sex": "Muško",
+    "userType": "DELIVERER",
+    "dateOfBirth": "1952-01-01",
+    "isDeleted": false
+  },
+  {
+    "id": "5",
+    "username": "licnakarta",
+    "password": "bajpas",
+    "name": "Aca",
+    "surname": "Lukas",
+    "sex": "Muško",
+    "userType": "DELIVERER",
+    "dateOfBirth": "1968-11-03",
+    "isDeleted": false
+  }
+]

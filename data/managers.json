@@ -1,0 +1,152 @@
+[
+  {
+    "restaurant": {
+      "id": "1",
+      "name": "Kod Josipe",
+      "restaurantType": "Egzotična kuhinja",
+      "articles": [],
+      "status": "CLOSED",
+      "location": {
+        "longitude": 0.0,
+        "latitude": 0.0,
+        "address": "Bulevar Oslobođenja 30, Novi Sad"
+      },
+      "restaurantLogo": "..\\upload\\r1.jpg",
+      "averageMark": 0.0,
+      "manager": {
+        "id": "1",
+        "isDeleted": false
+      },
+      "isDeleted": false
+    },
+    "id": "1",
+    "username": "magla",
+    "password": "magla",
+    "name": "Josipa",
+    "surname": "Lisac",
+    "sex": "Žensko",
+    "userType": "MANAGER",
+    "dateOfBirth": "1950-02-14",
+    "isDeleted": false
+  },
+  {
+    "restaurant": {
+      "id": "2",
+      "name": "Ognjište",
+      "restaurantType": "Narodna kuhinja",
+      "articles": [],
+      "status": "CLOSED",
+      "location": {
+        "longitude": 0.0,
+        "latitude": 0.0,
+        "address": "Bulevar Vojvode Stepe 5, Novi Sad"
+      },
+      "restaurantLogo": "..\\upload\\r2.jpg",
+      "averageMark": 0.0,
+      "manager": {
+        "id": "2",
+        "isDeleted": false
+      },
+      "isDeleted": false
+    },
+    "id": "2",
+    "username": "dgrcgr",
+    "password": "obrcgr",
+    "name": "Zorica ",
+    "surname": "Marković",
+    "sex": "Žensko",
+    "userType": "MANAGER",
+    "dateOfBirth": "1959-06-09",
+    "isDeleted": false
+  },
+  {
+    "restaurant": {
+      "id": "3",
+      "name": "Biserna suza",
+      "restaurantType": "Bistro",
+      "articles": [],
+      "status": "CLOSED",
+      "location": {
+        "longitude": 0.0,
+        "latitude": 0.0,
+        "address": "Bulevar Jaše Tomića 10, Novi Sad"
+      },
+      "restaurantLogo": "..\\upload\\r3.jpg",
+      "averageMark": 0.0,
+      "manager": {
+        "id": "3",
+        "isDeleted": false
+      },
+      "isDeleted": false
+    },
+    "id": "3",
+    "username": "puca",
+    "password": "aonasamo",
+    "name": "Luna",
+    "surname": "Đogani",
+    "sex": "Žensko",
+    "userType": "MANAGER",
+    "dateOfBirth": "1996-03-08",
+    "isDeleted": false
+  },
+  {
+    "restaurant": {
+      "id": "4",
+      "name": "Zabranjeni grad",
+      "restaurantType": "Comfort food",
+      "articles": [],
+      "status": "CLOSED",
+      "location": {
+        "longitude": 0.0,
+        "latitude": 0.0,
+        "address": "Knez Mihajlova 10, Beograd"
+      },
+      "restaurantLogo": "..\\upload\\r4.jpg",
+      "averageMark": 0.0,
+      "manager": {
+        "id": "4",
+        "isDeleted": false
+      },
+      "isDeleted": false
+    },
+    "id": "4",
+    "username": "CECA",
+    "password": "beograd123",
+    "name": "Svetlana",
+    "surname": "Ražnatović",
+    "sex": "Žensko",
+    "userType": "MANAGER",
+    "dateOfBirth": "1973-06-14",
+    "isDeleted": false
+  },
+  {
+    "restaurant": {
+      "id": "5",
+      "name": "Jorgovan",
+      "restaurantType": "Balkanska kuhinja",
+      "articles": [],
+      "status": "CLOSED",
+      "location": {
+        "longitude": 0.0,
+        "latitude": 0.0,
+        "address": "Knez Mloševa 10, Beograd"
+      },
+      "restaurantLogo": "..\\upload\\r5.jpg",
+      "averageMark": 0.0,
+      "manager": {
+        "id": "5",
+        "isDeleted": false
+      },
+      "isDeleted": false
+    },
+    "id": "5",
+    "username": "dinche",
+    "password": "hitna",
+    "name": "Dino",
+    "surname": "Merlin",
+    "sex": "Muško",
+    "userType": "MANAGER",
+    "dateOfBirth": "1962-09-12",
+    "isDeleted": false
+  }
+]

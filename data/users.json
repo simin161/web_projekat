@@ -3,5 +3,80 @@
     "username": "admin",
     "password": "admin",
     "userType": "ADMINISTRATOR"
+  },
+  {
+    "username": "kraljicaGongo",
+    "password": "kraljicaGongo",
+    "userType": "CUSTOMER"
+  },
+  {
+    "username": "vendi",
+    "password": "uljez",
+    "userType": "CUSTOMER"
+  },
+  {
+    "username": "veseljak",
+    "password": "zlatiborskeZore123",
+    "userType": "CUSTOMER"
+  },
+  {
+    "username": "knez",
+    "password": "dalsiikada",
+    "userType": "CUSTOMER"
+  },
+  {
+    "username": "laneMoje",
+    "password": "nijeljubavstvar",
+    "userType": "CUSTOMER"
+  },
+  {
+    "username": "magla",
+    "password": "magla",
+    "userType": "MANAGER"
+  },
+  {
+    "username": "dgrcgr",
+    "password": "obrcgr",
+    "userType": "MANAGER"
+  },
+  {
+    "username": "puca",
+    "password": "aonasamo",
+    "userType": "MANAGER"
+  },
+  {
+    "username": "CECA",
+    "password": "beograd123",
+    "userType": "MANAGER"
+  },
+  {
+    "username": "dinche",
+    "password": "hitna",
+    "userType": "MANAGER"
+  },
+  {
+    "username": "tiksi",
+    "password": "piksi",
+    "userType": "DELIVERER"
+  },
+  {
+    "username": "crnoizlatno",
+    "password": "crno",
+    "userType": "DELIVERER"
+  },
+  {
+    "username": "beovizija2006",
+    "password": "romaleromali",
+    "userType": "DELIVERER"
+  },
+  {
+    "username": "madjionicar",
+    "password": "madjionicar",
+    "userType": "DELIVERER"
+  },
+  {
+    "username": "licnakarta",
+    "password": "bajpas",
+    "userType": "DELIVERER"
   }
 ]
