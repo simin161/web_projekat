@@ -112,8 +112,6 @@ template: `<div>
 					<p v-if="item.status === 'OPEN'" style="color: green">OTVORENO</p>
 					<p v-if="item.status === 'CLOSED'" style="color: red">ZATVORENO</p>
 					<p>{{item.location.address}}</p> 
-					<hr/>
-					<button class="button" @click="show(item)">Detaljnije</button> 
 					<h3 class="details">Kliknite za više informacija!</h3> 
 					<br/>
 					<br/>

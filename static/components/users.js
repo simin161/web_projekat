@@ -137,9 +137,9 @@ Vue.component('users', {
 		<div>
 				<div v-for="item in usersToDisplay">
 					<div class="lists">
-						<span style="float: left; margin-top: 2.5px">
-							<img style="border-radius: 5px;" src="../images/user.png" height="150px" width="150px">
-						</span> 
+						<div>
+							<img style="border-radius: 5px;" src="../images/user.png" height="100%" width="100%">
+						</div> 
 						<span>
 							<button title="Obriši korisnika" class="deleteArticle" @click="deleteUser(item)"> </button> 
 						</span>

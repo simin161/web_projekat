@@ -10,7 +10,7 @@ Vue.component("articles-for-restaurant", {
 			<div v-if="articles != null">
 				<div class="lists" v-for="article in articles">
 						<div>
-							<img style="border-radius: 5px;" :src="article.articleImage" height="100%" width="100%">
+							<img style="border-radius: 5px;" :src="article.articleImage" height="200px" width="200px">
 						</div>
 						<p>{{article.name}}</p>
 						<p>Cena: {{article.price}} dinara</p>
