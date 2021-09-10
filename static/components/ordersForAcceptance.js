@@ -1,39 +1,23 @@
 Vue.component('orders-for-acceptance', {
 	data: function(){
 		return{
-			orders : null
+			orders : null,
 		};
 	},
 template: ` <div>
 			<navigation-header></navigation-header>
 
-			<hr/>
-				<div class="lists" v-for="order in orders">
+			<br/>
+			<br/>
+				<div class="lists" style="cursor: default" v-for="order in orders">
 					<div>
-						<table style="width: 100%">
-						<tr>
-							<td>{{order.customer.username}} </td>
-							<td> </td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>Lokacija restorana: {{order.restaurant.location.address}}</td>
-							<td></td>
-							<td>
-								<input type="button" @click="accept(order.id)" class="buttonAccept"></input>
-								<input type="button" @click="decline(order.id)"class="buttonDecline"></input>
-							 </td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>Cena: {{order.totalPrice}} </td>
-							<td>Dostavljač: {{order.deliverer.name}} {{order.deliverer.surname}}</td>
-							<td></td>
-							<td></td>
-						</tr>					 
-						</table>
+						<p>Kupac: {{order.customer.name}} {{order.customer.name}} </p>
+						<p>Dostavljač: {{order.deliverer.name}} {{order.deliverer.surname}}</p>
+						<p>Cena: {{order.totalPrice}} </p>
+						<input @click="accept(order.id)" class="buttonAccept" type="button" value="Prihvati"></input>
+						<input @click="decline(order.id)"class="buttonDecline" type="button" value="Odbaci"></input>
 					</div>
+					<br/>
 				</div>
 				<div v-if="orders === null" class="animated fadeIn">
 					<img class="center" src="../images/noDelivery.jpg"/>

@@ -61,13 +61,21 @@
 }
 
 .buttonAccept{
-	width: 23px;
-	heigth: 20px;
-	background-image: url(../images/accept.png);
-	background-repeat: no-repeat;
-	vertical-align : middle;
-	margin-right: 15%;
+	color: white;
+  	cursor: pointer;
+  	border: none;
+  	text-align: center;
+  	border-radius: 3px;
+	background-color: green !important; 
+	width: 4rem; 
+	height: 2rem; 
+	margin-right: 1.5rem
 }
+.buttonAccept:hover{
+	background-color: #00bd00 !important;
+	transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
 .center {
   display: block;
   margin-left: auto;
@@ -75,13 +83,19 @@
   margin-top: 2%;
 }
 .buttonDecline{
-	width: 23px;
-	height: 22px;
-	background-image: url(../images/decline.png);
-	background-repeat: no-repeat;
-	vertical-align: middle;
+	color: white;
+  	cursor: pointer;
+  	border: none;
+  	text-align: center;
+  	border-radius: 3px;
+	background-color: red !important; 
+	width: 4rem; 
+	height: 2rem; 
 }
-
+.buttonDecline:hover{
+	background-color: #ff5e5e!important;
+	transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
+}
 .commentSection{
 	
 	width: 50vh;
