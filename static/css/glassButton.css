@@ -12,14 +12,14 @@ body {
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
-  font-size: 20px;
-  letter-spacing: 4px;
+ /* font-size: 20px;*/
+  /*letter-spacing: 2px;*/
   position: relative;
   background-color: #16a085;
   border: none;
   color: #fff;
-  padding: 20px;
-  width: 200px;
+ /* padding: 20px;*/
+  width: 100px;
   text-align: center;
   transition-duration: 0.4s;
   overflow: hidden;
