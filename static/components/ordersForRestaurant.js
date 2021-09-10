@@ -129,7 +129,7 @@ Vue.component("orders-for-restaurant", {
 		methods : {
 			changeOrderStatus : function(orderId){
 				axios.post("/changeOrderStatus", orderId)
-				.then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders})
+				.then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders, this.filterDTO.orders = this.orders})
 			},
 			sortByPrice: function(type){
 				this.sortDTO.type = type;

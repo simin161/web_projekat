@@ -528,6 +528,8 @@ public class OrderService {
 
 				}
 
+			}else {
+				searchedOrders = getAllOrdersForRestaurant(id);
 			}
 		}
 
