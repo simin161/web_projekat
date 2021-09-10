@@ -6,9 +6,6 @@ Vue.component('orders-without-deliverer', {
 	},
 template: ` <div>
 			<navigation-header></navigation-header>
-			<div class="searchForm">
-			</div>
-			<hr/>
 			<div v-if="orders != null">
 				<div class="lists" v-for="order in orders" @click="sendRequest(order.id)">
 					<div>
