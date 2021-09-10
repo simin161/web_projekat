@@ -37,6 +37,7 @@ Vue.component('all-orders',{
 				<li><a @click="showSearch">Pretraži</a></li>
 			</ul>
 				<div>
+				<transition name="fade" @enter="enter">
 				<div class= "modal" v-show="showModalSearch">
 					<div class="modal-content">
 					
@@ -208,7 +209,11 @@ Vue.component('all-orders',{
 			axios.get("/getAllRestaurants")
 			.then(response=>{this.restaurants = response.data, this.showModalSearch = true})
 			
-		}
+		},
+		enter: function(el, done) {
+
+		      var that = this;
+		    }
 	},
 	created () {
 	  window.addEventListener('scroll', this.handleScroll);

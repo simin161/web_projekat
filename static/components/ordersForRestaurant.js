@@ -28,6 +28,7 @@ Vue.component("orders-for-restaurant", {
 		<ul style="margin-top: 6%">
 			<li><a @click="showModal = true">Pretraži</a></li>
 		</ul>
+		<transition name="fade" v-on:enter="enter">
 			<div class="modal" v-show="showModal">
 			  <div class="modal-content">
 				<span class="close" @click="showModal = false">&times;</span>
@@ -97,7 +98,7 @@ Vue.component("orders-for-restaurant", {
 				</table>
 			  </div>
 			</div>
-		
+			</transition>
 			<div  v-for="order in orders">
 				<div class="lists">
 					<span>
@@ -147,7 +148,11 @@ Vue.component("orders-for-restaurant", {
 			search: function(){
 				axios.post("/searchOrdersForRestaurantManager", this.searchParams)
 				.then(response => {this.orders = response.data, this.sortDTO.ordersToDisplay = this.orders, this.filterDTO.orders = this.orders})
-			}
+			},
+			enter: function(el, done) {
+
+			      var that = this;
+			    }
 		}
 		,
 		mounted(){

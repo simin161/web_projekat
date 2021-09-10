@@ -46,6 +46,7 @@ Vue.component('create-restaurant', {
 	template: `<div>
 	
 				<app-modal></app-modal>
+				<transition name="fade" v-on:enter="enter">
 				<div class="modal" v-show="showModal">
 					<div class="modal-content">
 					
@@ -97,7 +98,7 @@ Vue.component('create-restaurant', {
 					
 					</div>
 				</div>
-	
+				</transition>
 	
 			   	<navigation-header></navigation-header>
 				<br/>
@@ -217,7 +218,11 @@ Vue.component('create-restaurant', {
 			}else{
 				this.imagePosted = false;
 			}
-		}
+		},
+		enter: function(el, done) {
+
+		      var that = this;
+		    }
 		
 		},
 		mounted() {

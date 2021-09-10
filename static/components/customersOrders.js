@@ -40,7 +40,7 @@ Vue.component('customerOrders', {
 template: `<div>
 
 		<app-modal></app-modal>
-
+		<transition name="fade" v-on:enter="enter">
 		<div class="modal" v-show="showModal">
 			<div class="modal-content">
 				
@@ -58,7 +58,8 @@ template: `<div>
 						<button class="aaa" @click="postComment()">Postavi komentar</button>
 			</div>
 		</div>
-
+		</transition>
+		<transition name="fade" v-on:enter="enter">
 		<div class= "modal" v-show="showModalSearch">
 			<div class="modal-content">
 			
@@ -163,7 +164,7 @@ template: `<div>
 				</table>
 			</div>
 		</div>
-
+		</transition>
 		<navigation-header></navigation-header>
 		
 		<form class="searchForm" style="">
@@ -283,7 +284,11 @@ template: `<div>
 			axios.post("/sortByDate", this.sortDTO)
 			.then(response=>(this.ordersToDisplay = response.data))
 			
-		}
+		},
+		enter: function(el, done) {
+
+		      var that = this;
+		    }
 		
 		
 	},

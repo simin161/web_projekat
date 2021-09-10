@@ -29,7 +29,7 @@ template: `<div>
 			<button @click="showAll()">Prikaži sve restorane</button>
 		</form>
 			   
-			   
+			   <transition name="fade" v-on:enter="enter">
 			  <div class="modal" v-show="showModal">
 			  <div class="modal-content">
 				<span class="close" @click="showModal = false">&times;</span>
@@ -98,6 +98,7 @@ template: `<div>
 					</table>
 			  </div>
 			</div>
+			</transition>
 		<br/> 
 	
 	
@@ -185,7 +186,11 @@ template: `<div>
 			axios.get("/getAllRestaurants")
 		.then(response => {this.restaurants = response.data, this.sortDTO.restaurants = this.restaurants, this.filterDTO.restaurants = this.restaurants })
 		
-		}
+		},
+		enter: function(el, done) {
+
+		      var that = this;
+		    }
 	}
 	,
 	mounted(){

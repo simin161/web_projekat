@@ -24,7 +24,7 @@ Vue.component('users', {
 	template: `<div>
 
 		<app-modal></app-modal>
-
+		<transition name="fade" v-on:enter="enter">
 		<div class ="modal" v-show="showModalSearch">
 			
 			<div class="modal-content">
@@ -127,7 +127,7 @@ Vue.component('users', {
 			</div>
 		
 		</div>
-
+		</transition>
 
 		<navigation-header></navigation-header>
 		<form class="searchForm" style="">
@@ -223,7 +223,11 @@ Vue.component('users', {
 			.then(response=>{this.usersToDisplay = response.data, this.sortUsersDTO.usersToDisplay = this.usersToDisplay})
 		
 		
-		}
+		},
+		enter: function(el, done) {
+
+		      var that = this;
+		    }
 	}
 	,
 	mounted() {
