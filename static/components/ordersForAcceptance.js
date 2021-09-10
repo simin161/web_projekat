@@ -11,7 +11,7 @@ template: ` <div>
 			<br/>
 				<div class="lists" style="cursor: default" v-for="order in orders">
 					<div>
-						<p>Kupac: {{order.customer.name}} {{order.customer.name}} </p>
+						<p>Kupac: {{order.customer.name}} {{order.customer.surname}} </p>
 						<p>Dostavljač: {{order.deliverer.name}} {{order.deliverer.surname}}</p>
 						<p>Cena: {{order.totalPrice}} </p>
 						<input @click="accept(order.id)" class="buttonAccept" type="button" value="Prihvati"></input>

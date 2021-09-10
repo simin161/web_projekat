@@ -1,0 +1,223 @@
+[
+  {
+    "id": "1",
+    "name": "Štuka u šlagu",
+    "price": 620.0,
+    "articleType": "FOOD",
+    "restaurant": {
+      "id": "1",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "quantity": 600.0,
+    "description": "Delikatesna štuka sa savršenim prelivom od šlaga",
+    "articleImage": "..\\upload\\a1.jpg",
+    "isDeleted": false,
+    "totalNumberOrdered": 0,
+    "isDeletedFromCart": false
+  },
+  {
+    "id": "2",
+    "name": "Recimo neke žabe",
+    "price": 800.0,
+    "articleType": "FOOD",
+    "restaurant": {
+      "id": "1",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "quantity": 500.0,
+    "description": "Sveže uhvaćene žabe iz komšiluka. Spremljene na francuski način sa balkanskim okretom.",
+    "articleImage": "..\\upload\\a2.jpg",
+    "isDeleted": false,
+    "totalNumberOrdered": 0,
+    "isDeletedFromCart": false
+  },
+  {
+    "id": "3",
+    "name": "Magla",
+    "price": 1200.0,
+    "articleType": "DRINK",
+    "restaurant": {
+      "id": "1",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "quantity": 250.0,
+    "description": "Magla iz MOJE čuvene pesme \"Magla\". Sveže prikupljena sa obale Dunava",
+    "articleImage": "..\\upload\\a3.jpg",
+    "isDeleted": false,
+    "totalNumberOrdered": 0,
+    "isDeletedFromCart": false
+  },
+  {
+    "id": "4",
+    "name": "Randevu Sa Sotonom",
+    "price": 1200.0,
+    "articleType": "DRINK",
+    "restaurant": {
+      "id": "1",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "quantity": 250.0,
+    "description": "Baš kao i moja pesma, i ovo piće garantuje da ćete biti začarani mračnim silama.",
+    "articleImage": "..\\upload\\a4.jpg",
+    "isDeleted": false,
+    "totalNumberOrdered": 0,
+    "isDeletedFromCart": false
+  },
+  {
+    "id": "5",
+    "name": "Kafa sa kakaom",
+    "price": 300.0,
+    "articleType": "DRINK",
+    "restaurant": {
+      "id": "1",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "quantity": 250.0,
+    "description": "Zadivljujuće dobra kombinacija ukusa.",
+    "articleImage": "..\\upload\\a5.jpg",
+    "isDeleted": false,
+    "totalNumberOrdered": 0,
+    "isDeletedFromCart": false
+  },
+  {
+    "id": "6",
+    "name": "Rakija",
+    "price": 200.0,
+    "articleType": "DRINK",
+    "restaurant": {
+      "id": "2",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "quantity": 20.0,
+    "description": "Pre svega.",
+    "articleImage": "..\\upload\\a6.jpg",
+    "isDeleted": false,
+    "totalNumberOrdered": 0,
+    "isDeletedFromCart": false
+  },
+  {
+    "id": "7",
+    "name": "Sarma",
+    "price": 620.0,
+    "articleType": "FOOD",
+    "restaurant": {
+      "id": "2",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "quantity": 500.0,
+    "description": "Gde ste mislili bez sarme?",
+    "articleImage": "..\\upload\\a7.jpg",
+    "isDeleted": false,
+    "totalNumberOrdered": 0,
+    "isDeletedFromCart": false
+  },
+  {
+    "id": "8",
+    "name": "Jagnjetina",
+    "price": 620.0,
+    "articleType": "FOOD",
+    "restaurant": {
+      "id": "2",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "quantity": 500.0,
+    "description": "SveCka, a naša!",
+    "articleImage": "..\\upload\\a8.jpg",
+    "isDeleted": false,
+    "totalNumberOrdered": 0,
+    "isDeletedFromCart": false
+  },
+  {
+    "id": "9",
+    "name": "Mleko od kokosa",
+    "price": 1500.0,
+    "articleType": "DRINK",
+    "restaurant": {
+      "id": "4",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "quantity": 500.0,
+    "description": "\"Plave noći u satenu i mleko od kokosa\", mleko od kokosa iz čuvene pesme \"Nevaljala\"",
+    "articleImage": "..\\upload\\a9.jpg",
+    "isDeleted": false,
+    "totalNumberOrdered": 0,
+    "isDeletedFromCart": false
+  },
+  {
+    "id": "10",
+    "name": "Pile",
+    "price": 2000.0,
+    "articleType": "FOOD",
+    "restaurant": {
+      "id": "4",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "quantity": 650.0,
+    "description": "A moje srce je pile, drhti od straha kada grmi",
+    "articleImage": "..\\upload\\a10.png",
+    "isDeleted": false,
+    "totalNumberOrdered": 0,
+    "isDeletedFromCart": false
+  },
+  {
+    "id": "11",
+    "name": "Viski",
+    "price": 1250.0,
+    "articleType": "DRINK",
+    "restaurant": {
+      "id": "4",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "quantity": 50.0,
+    "description": "Sipaj viski preko malo leda, ajde ljuljaj ljuljaj tako treba",
+    "articleImage": "..\\upload\\a11.jpg",
+    "isDeleted": false,
+    "totalNumberOrdered": 0,
+    "isDeletedFromCart": false
+  },
+  {
+    "id": "12",
+    "name": "Trula višnja",
+    "price": 1700.0,
+    "articleType": "FOOD",
+    "restaurant": {
+      "id": "4",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "quantity": 350.0,
+    "description": "Pala sam u zoru pala, više nisam izdržala!",
+    "articleImage": "..\\upload\\a12.jpg",
+    "isDeleted": false,
+    "totalNumberOrdered": 0,
+    "isDeletedFromCart": false
+  },
+  {
+    "id": "13",
+    "name": "Nervni slom",
+    "price": 2100.0,
+    "articleType": "DRINK",
+    "restaurant": {
+      "id": "3",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "quantity": 250.0,
+    "description": "Savršen za suzbijanje, prevenciju i podsticanje nervnog sloma.",
+    "articleImage": "..\\upload\\a13.jpg",
+    "isDeleted": false,
+    "totalNumberOrdered": 0,
+    "isDeletedFromCart": false
+  }
+]

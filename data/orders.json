@@ -1,0 +1,459 @@
+[
+  {
+    "id": "1",
+    "articles": [
+      {
+        "id": "4",
+        "name": "Randevu Sa Sotonom",
+        "price": 1200.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 250.0,
+        "description": "Baš kao i moja pesma, i ovo piće garantuje da ćete biti začarani mračnim silama.",
+        "articleImage": "..\\upload\\a4.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 3,
+        "isDeletedFromCart": false
+      },
+      {
+        "id": "1",
+        "name": "Štuka u šlagu",
+        "price": 620.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 600.0,
+        "description": "Delikatesna štuka sa savršenim prelivom od šlaga",
+        "articleImage": "..\\upload\\a1.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 2,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Kod Josipe",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 11
+      },
+      "time": {
+        "hour": 1,
+        "minute": 18,
+        "second": 3,
+        "nano": 401569500
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "1",
+      "isDeleted": false
+    },
+    "orderStatus": "IN_TRANSPORT",
+    "isDeleted": false,
+    "totalPrice": 4840.0,
+    "deliverer": {
+      "id": "3",
+      "isDeleted": false
+    }
+  },
+  {
+    "id": "2",
+    "articles": [
+      {
+        "id": "2",
+        "name": "Recimo neke žabe",
+        "price": 800.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "1",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 500.0,
+        "description": "Sveže uhvaćene žabe iz komšiluka. Spremljene na francuski način sa balkanskim okretom.",
+        "articleImage": "..\\upload\\a2.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 2,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "1",
+      "name": "Kod Josipe",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 11
+      },
+      "time": {
+        "hour": 1,
+        "minute": 18,
+        "second": 46,
+        "nano": 528695100
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "1",
+      "isDeleted": false
+    },
+    "orderStatus": "IN_PREPARATION",
+    "isDeleted": false,
+    "totalPrice": 1600.0
+  },
+  {
+    "id": "3",
+    "articles": [
+      {
+        "id": "6",
+        "name": "Rakija",
+        "price": 200.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "2",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 20.0,
+        "description": "Pre svega.",
+        "articleImage": "..\\upload\\a6.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 5,
+        "isDeletedFromCart": false
+      },
+      {
+        "id": "7",
+        "name": "Sarma",
+        "price": 620.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "2",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 500.0,
+        "description": "Gde ste mislili bez sarme?",
+        "articleImage": "..\\upload\\a7.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 4,
+        "isDeletedFromCart": false
+      },
+      {
+        "id": "8",
+        "name": "Jagnjetina",
+        "price": 620.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "2",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 500.0,
+        "description": "SveCka, a naša!",
+        "articleImage": "..\\upload\\a8.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 2,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "2",
+      "name": "Ognjište",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 11
+      },
+      "time": {
+        "hour": 1,
+        "minute": 19,
+        "second": 35,
+        "nano": 792570700
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "2",
+      "isDeleted": false
+    },
+    "orderStatus": "CANCELED",
+    "isDeleted": true,
+    "totalPrice": 4720.0
+  },
+  {
+    "id": "4",
+    "articles": [
+      {
+        "id": "6",
+        "name": "Rakija",
+        "price": 200.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "2",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 20.0,
+        "description": "Pre svega.",
+        "articleImage": "..\\upload\\a6.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 5,
+        "isDeletedFromCart": false
+      },
+      {
+        "id": "7",
+        "name": "Sarma",
+        "price": 620.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "2",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 500.0,
+        "description": "Gde ste mislili bez sarme?",
+        "articleImage": "..\\upload\\a7.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 6,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "2",
+      "name": "Ognjište",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 11
+      },
+      "time": {
+        "hour": 1,
+        "minute": 20,
+        "second": 15,
+        "nano": 487060900
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "2",
+      "isDeleted": false
+    },
+    "orderStatus": "WAITING_FOR_DELIVERER",
+    "isDeleted": false,
+    "totalPrice": 4720.0
+  },
+  {
+    "id": "5",
+    "articles": [
+      {
+        "id": "9",
+        "name": "Mleko od kokosa",
+        "price": 1500.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "4",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 500.0,
+        "description": "\"Plave noći u satenu i mleko od kokosa\", mleko od kokosa iz čuvene pesme \"Nevaljala\"",
+        "articleImage": "..\\upload\\a9.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 2,
+        "isDeletedFromCart": false
+      },
+      {
+        "id": "10",
+        "name": "Pile",
+        "price": 2000.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "4",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 650.0,
+        "description": "A moje srce je pile, drhti od straha kada grmi",
+        "articleImage": "..\\upload\\a10.png",
+        "isDeleted": false,
+        "totalNumberOrdered": 1,
+        "isDeletedFromCart": false
+      },
+      {
+        "id": "12",
+        "name": "Trula višnja",
+        "price": 1700.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "4",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 350.0,
+        "description": "Pala sam u zoru pala, više nisam izdržala!",
+        "articleImage": "..\\upload\\a12.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 4,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "4",
+      "name": "Zabranjeni grad",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 11
+      },
+      "time": {
+        "hour": 1,
+        "minute": 21,
+        "second": 13,
+        "nano": 505466100
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "4",
+      "isDeleted": false
+    },
+    "orderStatus": "PROCESSING",
+    "isDeleted": false,
+    "totalPrice": 11800.0
+  },
+  {
+    "id": "6",
+    "articles": [
+      {
+        "id": "8",
+        "name": "Jagnjetina",
+        "price": 620.0,
+        "articleType": "FOOD",
+        "restaurant": {
+          "id": "2",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 500.0,
+        "description": "SveCka, a naša!",
+        "articleImage": "..\\upload\\a8.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 10,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "2",
+      "name": "Ognjište",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 11
+      },
+      "time": {
+        "hour": 1,
+        "minute": 28,
+        "second": 26,
+        "nano": 214189600
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "5",
+      "isDeleted": false
+    },
+    "orderStatus": "DELIVERED",
+    "isDeleted": false,
+    "totalPrice": 6200.0,
+    "deliverer": {
+      "id": "2",
+      "isDeleted": false
+    }
+  },
+  {
+    "id": "7",
+    "articles": [
+      {
+        "id": "9",
+        "name": "Mleko od kokosa",
+        "price": 1500.0,
+        "articleType": "DRINK",
+        "restaurant": {
+          "id": "4",
+          "averageMark": 0.0,
+          "isDeleted": false
+        },
+        "quantity": 500.0,
+        "description": "\"Plave noći u satenu i mleko od kokosa\", mleko od kokosa iz čuvene pesme \"Nevaljala\"",
+        "articleImage": "..\\upload\\a9.jpg",
+        "isDeleted": false,
+        "totalNumberOrdered": 10,
+        "isDeletedFromCart": false
+      }
+    ],
+    "restaurant": {
+      "id": "4",
+      "name": "Zabranjeni grad",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "orderDateAndTime": {
+      "date": {
+        "year": 2021,
+        "month": 9,
+        "day": 11
+      },
+      "time": {
+        "hour": 1,
+        "minute": 32,
+        "second": 21,
+        "nano": 181987200
+      }
+    },
+    "customer": {
+      "collectedPoints": 0,
+      "id": "5",
+      "isDeleted": false
+    },
+    "orderStatus": "DELIVERED",
+    "isDeleted": false,
+    "totalPrice": 15000.0,
+    "deliverer": {
+      "id": "1",
+      "isDeleted": false
+    }
+  }
+]

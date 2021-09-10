@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "customer": {
+      "collectedPoints": 0,
+      "id": "5",
+      "name": "Izbrisan korisnik",
+      "isDeleted": false
+    },
+    "commentedRestaurant": {
+      "id": "2",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "text": "SVE TOP ZORICE NAJBOLJA SIIII \u003c3333333333",
+    "mark": 5,
+    "status": "ACCEPTED",
+    "isDeleted": false
+  },
+  {
+    "id": "2",
+    "customer": {
+      "collectedPoints": 0,
+      "id": "5",
+      "name": "Izbrisan korisnik",
+      "isDeleted": false
+    },
+    "commentedRestaurant": {
+      "id": "4",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "text": "Mleko od kokosa nije toliko dobro kao što pričaju. Mnogo para, malo kvaliteta",
+    "mark": 3,
+    "status": "ACCEPTED",
+    "isDeleted": true
+  }
+]

@@ -1,5 +1,12 @@
 [
   {
+    "ordersForDelivery": [
+      {
+        "id": "7",
+        "isDeleted": false,
+        "totalPrice": 0.0
+      }
+    ],
     "id": "1",
     "username": "tiksi",
     "password": "piksi",
@@ -11,6 +18,13 @@
     "isDeleted": false
   },
   {
+    "ordersForDelivery": [
+      {
+        "id": "6",
+        "isDeleted": false,
+        "totalPrice": 0.0
+      }
+    ],
     "id": "2",
     "username": "crnoizlatno",
     "password": "crno",
@@ -22,6 +36,13 @@
     "isDeleted": false
   },
   {
+    "ordersForDelivery": [
+      {
+        "id": "1",
+        "isDeleted": false,
+        "totalPrice": 0.0
+      }
+    ],
     "id": "3",
     "username": "beovizija2006",
     "password": "romaleromali",

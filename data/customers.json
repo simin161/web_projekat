@@ -1,6 +1,19 @@
 [
   {
-    "collectedPoints": 0,
+    "cart": {
+      "articles": [],
+      "customer": {
+        "collectedPoints": 0,
+        "isDeleted": false
+      },
+      "price": 0.0,
+      "restaurant": {
+        "id": "",
+        "averageMark": 0.0,
+        "isDeleted": false
+      }
+    },
+    "collectedPoints": 855,
     "customerType": {
       "name": "STANDARD",
       "discount": 0.0,
@@ -17,7 +30,20 @@
     "isDeleted": false
   },
   {
-    "collectedPoints": 0,
+    "cart": {
+      "articles": [],
+      "customer": {
+        "collectedPoints": 0,
+        "isDeleted": false
+      },
+      "price": 0.0,
+      "restaurant": {
+        "id": "",
+        "averageMark": 0.0,
+        "isDeleted": false
+      }
+    },
+    "collectedPoints": 627,
     "customerType": {
       "name": "STANDARD",
       "discount": 0.0,
@@ -51,7 +77,20 @@
     "isDeleted": false
   },
   {
-    "collectedPoints": 0,
+    "cart": {
+      "articles": [],
+      "customer": {
+        "collectedPoints": 0,
+        "isDeleted": false
+      },
+      "price": 0.0,
+      "restaurant": {
+        "id": "",
+        "averageMark": 0.0,
+        "isDeleted": false
+      }
+    },
+    "collectedPoints": 1569,
     "customerType": {
       "name": "STANDARD",
       "discount": 0.0,
@@ -68,7 +107,20 @@
     "isDeleted": false
   },
   {
-    "collectedPoints": 0,
+    "cart": {
+      "articles": [],
+      "customer": {
+        "collectedPoints": 0,
+        "isDeleted": false
+      },
+      "price": 0.0,
+      "restaurant": {
+        "id": "",
+        "averageMark": 0.0,
+        "isDeleted": false
+      }
+    },
+    "collectedPoints": 2819,
     "customerType": {
       "name": "STANDARD",
       "discount": 0.0,
