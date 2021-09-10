@@ -167,8 +167,8 @@ template: `<div>
 		</transition>
 		<navigation-header></navigation-header>
 		
-		<form class="searchForm" style="">
-			<button class="aaa" @click="showUndelivered()">Prikaži nedostavljene porudžbine</button>
+		<form class="searchForm">
+			<button class="buttonTest" @click="showUndelivered()">Prikaži nedostavljene porudžbine</button>
 			<button class="aaa" @click="showAll()">Prikaži sve porudžbine</button>
 			<button class="buttonSearchDelivery" @click="showModalSearchFunction()">Pretraži porudžbine</button>
 		</form>
@@ -176,6 +176,7 @@ template: `<div>
 			<div v-for="item in ordersToDisplay">
 				<div class="lists">
 					<span>
+					</br>
 							<button class="buttonCommentLeave" @click="showModalDialog(item)" title="Ostavite komentar" v-if="item.orderStatus === 'DELIVERED'"></button>
 							<button class="buttonCustomerCancelOrder" @click="cancelOrder(item)" title="Otkaži porudžbinu" v-if="item.orderStatus === 'PROCESSING'"></button> 
 					</br>

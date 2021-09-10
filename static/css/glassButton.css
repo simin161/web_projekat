@@ -8,18 +8,18 @@ body {
 }
 
 
-.button {
+.buttonTest {
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
- /* font-size: 20px;*/
+  font-size: 16px;
   /*letter-spacing: 2px;*/
   position: relative;
-  background-color: #16a085;
+  background-color: #e4da9c;
   border: none;
-  color: #fff;
+  color: #000000;
  /* padding: 20px;*/
-  width: 100px;
+  width: 200px;
   text-align: center;
   transition-duration: 0.4s;
   overflow: hidden;

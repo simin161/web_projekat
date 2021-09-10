@@ -46,6 +46,7 @@ textarea:focus{
     background-image: url(../images/edit2.png);
     background-repeat: no-repeat;
     vertical-align: middle;
+    cursor: pointer;
 }
 
 .buttonCustomerCancelOrder{
@@ -54,6 +55,7 @@ textarea:focus{
     background-image: url(../images/delete2.png);
     background-repeat: no-repeat;
     vertical-align: middle;
+    cursor: pointer;
 	
 }
 .buttonCreateRestaurant{
@@ -62,7 +64,7 @@ textarea:focus{
 	font-size: 18px;
 	background-color: #79b9b6;
 		transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
-	
+	cursor: pointer;
 	
 	
 }
@@ -73,7 +75,7 @@ textarea:focus{
 	font-size: 18px;
 	background-color: #79b9b6;
 		transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
-	
+	cursor: pointer;
 	
 	
 }
@@ -126,20 +128,21 @@ select option{
 	background-repeat: no-repeat;
 	vertical-align: middle;
 	content: 'Izbrisi';
-	
+	cursor: pointer;
 }
 
 .addToCart{
 	height: 24px;
 	width: 24px;
 	vertical-align: middle;
-	
+	cursor: pointer;
 }
 
 .numberAddToCart{
 	height: 24px;
 	width: 40px;
 	vertical-align: middle;
+	cursor: pointer;
 	
 }
 
