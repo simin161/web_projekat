@@ -109,10 +109,10 @@ Vue.component("orders-for-restaurant", {
 					<p>Datum i vreme porudžbine: {{order.date}} {{order.time}}</p>
 					<p>Poručeni artikli:</p>
 				</div>
-				<div class="listsArticles" v-for="article in order.articles">			
-					<span style="float: left;">
-						<img style="border-radius: 5px;" :src="article.articleImage" height="90px" width="90px">
-					</span> 
+				<div class="listsArticles" style="width: 20%" v-for="article in order.articles">			
+					<div>
+						<img style="border-radius: 5px;" :src="article.articleImage" height="100%" width="100%">
+					</div> 
 					<p>{{article.name}}</p>
 					<p>Cena: {{article.price}} dinara</p>
 					<p>Količina: {{article.totalNumberOrdered}}</p>
