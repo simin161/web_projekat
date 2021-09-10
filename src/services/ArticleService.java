@@ -29,7 +29,7 @@ public class ArticleService {
 								.saveImage(editedArticle.getArticleImage(), "a" + editedArticle.getId()));
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+						 
 						retVal = false;
 					}
 				}

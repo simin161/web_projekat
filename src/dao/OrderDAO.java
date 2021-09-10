@@ -5,7 +5,6 @@ import java.io.Reader;
 import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -13,8 +12,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import beans.Article;
+import beans.Customer;
 import beans.Order;
 import beans.OrderStatus;
+import beans.Restaurant;
 import dto.OrderDTO;
 
 public class OrderDAO {
@@ -153,6 +154,9 @@ public class OrderDAO {
 				
 			}
 		}
+		
+		OrderDAO.getInstance().save();
+		
 	}
 	
 	private void removePoints(Order o) {

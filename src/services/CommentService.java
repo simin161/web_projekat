@@ -46,7 +46,7 @@ public class CommentService {
 			
 		}catch(Exception e) {
 			
-			e.printStackTrace();
+			 
 			retVal = false;
 			
 		}

@@ -108,5 +108,15 @@
     "username": "ADA",
     "password": "ADA",
     "userType": "MANAGER"
+  },
+  {
+    "username": "hjhjh",
+    "password": "asd",
+    "userType": "MANAGER"
+  },
+  {
+    "username": "guyyiou",
+    "password": "asd",
+    "userType": "DELIVERER"
   }
 ]

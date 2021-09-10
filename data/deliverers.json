@@ -1,7 +1,6 @@
 [
   {
-    "ordersForDelivery": [
-    ],
+    "ordersForDelivery": [],
     "id": "1",
     "username": "deliverer",
     "password": "deliverer",
@@ -33,5 +32,16 @@
     "userType": "DELIVERER",
     "dateOfBirth": "2021-08-31",
     "isDeleted": true
+  },
+  {
+    "id": "4",
+    "username": "guyyiou",
+    "password": "asd",
+    "name": "ghf",
+    "surname": "ghsa",
+    "sex": "Žensko",
+    "userType": "DELIVERER",
+    "dateOfBirth": "2021-09-02",
+    "isDeleted": false
   }
 ]

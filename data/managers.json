@@ -180,5 +180,21 @@
     "userType": "MANAGER",
     "dateOfBirth": "2021-08-31",
     "isDeleted": false
+  },
+  {
+    "restaurant": {
+      "id": "",
+      "averageMark": 0.0,
+      "isDeleted": false
+    },
+    "id": "8",
+    "username": "hjhjh",
+    "password": "asd",
+    "name": "ghf",
+    "surname": "ghsa",
+    "sex": "Žensko",
+    "userType": "MANAGER",
+    "dateOfBirth": "2021-09-08",
+    "isDeleted": false
   }
 ]
