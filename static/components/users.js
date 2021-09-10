@@ -151,7 +151,7 @@ Vue.component('users', {
 						<p>Prezime:			{{item.surname}} </p> 
 						<p>Tip korisnika: 	{{item.userType}}</p>
 						<p v-if="item.userType === 'CUSTOMER'">Broj osvojenih bodova: {{item.collectedPoints}}</p>
-						<p v-if="item.userType === 'CUSTOMER'">Tip kupca: {{item.customerType}}</p>
+						<p v-if="item.userType === 'CUSTOMER'">Tip kupca: {{item.customerType.name}}</p>
 						<br/>
 						<br/>
 					

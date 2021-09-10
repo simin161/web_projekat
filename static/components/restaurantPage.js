@@ -87,7 +87,7 @@ Vue.component('show-restaurant',{
 				<div v-if="showComponent === '4'">
 					<div class="lists" v-for="comment in comments">
 						<div>
-							<p>{{comment.customer.username}}</p>
+							<p>{{comment.customer.name}}</p>
 							<p>{{comment.text}}</p>
 							<p>Ocena: {{comment.mark}}</p> 
 							<p>Status: <span v-if="comment.status === 'ACCEPTED'">Prihvaćen</span>
