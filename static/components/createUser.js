@@ -101,7 +101,7 @@ template: `<div>
 		    flag = correctName && correctSurname && 
 		    /\S/.test(this.createdUser.dateOfBirth) && 
 		    /\S/.test(this.createdUser.sex) && 
-		    /^[a-z0-9_-]{3,16}$/.test(this.createdUser.username) && 
+		    /^[a-zA-Z0-9_-]{3,16}$/.test(this.createdUser.username) && 
 		    /\S/.test(this.createdUser.password) &&
 		    /\S/.test(this.createdUser.userType);
 		    
