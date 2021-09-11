@@ -83,13 +83,13 @@ public class ManagerDAO {
 		
 		for(Manager m : allManagers) {
 			
-			if(m.getRestaurant() == null) {
+			if(m.getRestaurant() == null && !m.getDeleted()) {
 				
 				m.setRestaurant(new Restaurant());
 				managers.add(m);
 				
 			}
-			else if(m.getRestaurant().getId().equals("")) {
+			else if(m.getRestaurant().getId().equals("") && !m.getDeleted()) {
 				
 				managers.add(m);
 				
