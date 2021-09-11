@@ -216,7 +216,7 @@
     "quantity": 250.0,
     "description": "Savršen za suzbijanje, prevenciju i podsticanje nervnog sloma.",
     "articleImage": "..\\upload\\a13.jpg",
-    "isDeleted": false,
+    "isDeleted": true,
     "totalNumberOrdered": 0,
     "isDeletedFromCart": false
   }

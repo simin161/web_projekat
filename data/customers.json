@@ -108,7 +108,25 @@
   },
   {
     "cart": {
-      "articles": [],
+      "articles": [
+        {
+          "id": "3",
+          "name": "Magla",
+          "price": 1200.0,
+          "articleType": "DRINK",
+          "restaurant": {
+            "id": "1",
+            "averageMark": 0.0,
+            "isDeleted": false
+          },
+          "quantity": 250.0,
+          "description": "Magla iz MOJE čuvene pesme \"Magla\". Sveže prikupljena sa obale Dunava",
+          "articleImage": "..\\upload\\a3.jpg",
+          "isDeleted": false,
+          "totalNumberOrdered": 1,
+          "isDeletedFromCart": true
+        }
+      ],
       "customer": {
         "collectedPoints": 0,
         "isDeleted": false
