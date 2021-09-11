@@ -5,7 +5,7 @@
       "collectedPoints": 0,
       "id": "5",
       "name": "Izbrisan korisnik",
-      "isDeleted": false
+      "isDeleted": true
     },
     "commentedRestaurant": {
       "id": "2",
@@ -23,7 +23,7 @@
       "collectedPoints": 0,
       "id": "5",
       "name": "Izbrisan korisnik",
-      "isDeleted": false
+      "isDeleted": true
     },
     "commentedRestaurant": {
       "id": "4",

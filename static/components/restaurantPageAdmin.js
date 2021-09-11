@@ -84,7 +84,7 @@ template: `<div>
 							<img style="border-radius: 5px;" src="./images/user.png" height="20%" width="20%">
 						</span> 
 					
-						<p>{{comment.customer.username}}</p>
+						<p>{{comment.customer.name}}</p>
 						<p>{{comment.text}} </p>
 						<p>Ocena: {{comment.mark}}</p>
 						<p>Status komentara: {{comment.status}}</p>

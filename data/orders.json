@@ -393,7 +393,7 @@
     "customer": {
       "collectedPoints": 0,
       "id": "5",
-      "isDeleted": false
+      "isDeleted": true
     },
     "orderStatus": "DELIVERED",
     "isDeleted": false,
@@ -446,7 +446,7 @@
     "customer": {
       "collectedPoints": 0,
       "id": "5",
-      "isDeleted": false
+      "isDeleted": true
     },
     "orderStatus": "DELIVERED",
     "isDeleted": false,

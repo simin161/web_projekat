@@ -68,7 +68,7 @@ template: `<div>
 				</div>
 				<div>
 					<div class="lists" v-for="comment in comments"">
-						<p>{{comment.customer.username}}</p>
+						<p>{{comment.customer.name}}</p>
 						<p>{{comment.text}} </p>
 						<p>Ocena: {{comment.mark}}</p>
 					</div>

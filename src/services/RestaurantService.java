@@ -239,9 +239,9 @@ public class RestaurantService {
 
 		for (Comment comment : CommentDAO.getInstance().getAll()) {
 			if (comment.getCommentedRestaurant().getId().equals(id)) {
-				if (!CustomerDAO.getInstance().findCustomerById(comment.getCustomer().getId()).getDeleted())
+				//if (!CustomerDAO.getInstance().findCustomerById(comment.getCustomer().getId()).getDeleted())
 					if (!comment.isDeleted()) {
-						if (!comment.getCustomer().getDeleted())
+						if (comment.getCustomer().getDeleted())
 							comment.getCustomer().setName("Izbrisan korisnik");
 						retVal.add(comment);
 					}

@@ -152,6 +152,6 @@
     "sex": "Muško",
     "userType": "CUSTOMER",
     "dateOfBirth": "1972-04-20",
-    "isDeleted": false
+    "isDeleted": true
   }
 ]
