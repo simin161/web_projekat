@@ -135,7 +135,7 @@ public class UserService {
 
 				} else {
 
-					if (u.getCustomerType().getName().toLowerCase().equals(searchParams.getCustomerType()))
+					if (u.getCustomerType().getName().toLowerCase().equals(searchParams.getCustomerType().toLowerCase()))
 						if (u.getUserType().toString().toLowerCase().equals(searchParams.getUserType().toLowerCase())) {
 
 							if (matcherName.find() && matcherSurname.find() && matcherUsername.find()) {
